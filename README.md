@@ -1,3 +1,3 @@
 # GAL: Genome Annotator Light
-Latest Version: 1.1
+Latest Version: 1.1 
 User Mannual

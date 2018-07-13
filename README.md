@@ -12,8 +12,6 @@ https://github.com/computational-genomics-lab/GAL/blob/master/User_Guide_Latest.
   - www.eumicrobedb.org/bga
 - For Fungi Genomes
   - www.eumicrobedb.org/Fungi
-### Bug report
-Please use this github portal to report any bug.
 
 ## Quick Start
  - Once Docker is set up on the host computer, GAL can be downloaded and installed using the following command:
@@ -35,3 +33,5 @@ Please use this github portal to report any bug.
         
  - GAL can now be used to upload your data using the browser.
 
+### Bug report
+Please use this github portal to report any bug.

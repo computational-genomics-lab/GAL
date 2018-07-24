@@ -11,7 +11,7 @@ https://github.com/computational-genomics-lab/GAL/blob/master/User_Guide_Latest.
 - For Blue Green Algee Genomes 
   - www.eumicrobedb.org/bga
 - For Fungi Genomes
-  - www.eumicrobedb.org/Fungi
+  - www.eumicrobedb.org/fungi
 
 ## Quick Start
  - Once Docker is set up on the host computer, GAL can be downloaded and installed using the following command:

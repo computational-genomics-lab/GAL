@@ -1,7 +1,7 @@
 # GAL: Genome Annotator Light
 ###### A Docker package for analyzing and visualizing a genome or a group of genomes. 
 
-**Latest Version**: 1.0 
+**Latest Version**: 1.1
 ### Source
 https://hub.docker.com/u/cglabiicb/
 

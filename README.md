@@ -34,3 +34,11 @@ https://github.com/computational-genomics-lab/GAL/blob/master/User_Guide_Latest.
 
 ### Bug report
 Please use this github portal to report any bug.
+
+
+### Performance
+| __Annotation Type__ | __Organism Name__ | __Genome Size__ | __System Specification__ | __Processing Time__ |
+|---------------------|-------------------|-----------------|--------------------------|---------------------|
+| Genbank| Candidatus Protochlamydia amoebophila UWE25|  2.41MB          | RAM 16GB; 4 core, 3.3 GHz processor           |  8 Min  |
+
+

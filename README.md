@@ -37,8 +37,13 @@ Please use this github portal to report any bug.
 
 
 ### Performance
+
 | __Annotation Type__ | __Organism Name__ | __Genome Size__ | __System Specification__ | __Processing Time__ |
 |---------------------|-------------------|-----------------|--------------------------|---------------------|
-| Genbank| Candidatus Protochlamydia amoebophila UWE25|  2.41MB          | RAM 16GB; 4 core, 3.3 GHz processor           |  8 Min  |
+| Genbank| *Candidatus Protochlamydia amoebophila* UWE25|  2.41MB          | RAM 16GB; 4 core, 3.3 GHz processor           |  8 Min  |
+| Genbank| *Colletotrichum fioriniae* PJ7 |  49.0028MB          | RAM 16GB; 4 core, 3.3 GHz processor           |  1h5m  |
+| Genbank| *Melampsora larici-populina* 98AG31|  101.129MB          | RAM 16GB; 4 core, 3.3 GHz processor           |  1h15m  |
+| Genbank| *Drosophila grimshawi* |  200.468MB          | RAM 16GB; 4 core, 3.3 GHz processor           | 1h22m  |
+| Genbank| *Heliothis virescens* HvINT-(11)-1-pool|  403.154MB          | RAM 16GB; 4 core, 3.3 GHz processor           |  8 Min  |
 
 

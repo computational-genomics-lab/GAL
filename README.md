@@ -38,12 +38,15 @@ Please use this github portal to report any bug.
 
 ### Performance
 
-| __Annotation Type__ | __Organism Name__ | __Genome Size (MB)__ | __System Specification__ | __Processing Time__ |
+| __Annotation Type__ | __Organism Name__ | __Genome Size (MB)__ | __System Requirment__ | __Processing Time__ |
 |---------------------|-------------------|-----------------|--------------------------|---------------------|
-| Genbank| *Candidatus Protochlamydia amoebophila* UWE25|  2.41          | RAM 16GB; 4 core, 3.3 GHz processor           |  8 Min  |
+| Genbank| *Candidatus Protochlamydia amoebophila* UWE25|  2.41          | RAM 16GB; 4 core, 3.3 GHz processor           |  8m  |
 | Genbank| *Colletotrichum fioriniae* PJ7 |  49.00          | RAM 16GB; 4 core, 3.3 GHz processor           |  1h5m  |
 | Genbank| *Melampsora larici-populina* 98AG31|  101.13          | RAM 16GB; 4 core, 3.3 GHz processor           |  1h15m  |
 | Genbank| *Drosophila grimshawi* |  200.47          | RAM 16GB; 4 core, 3.3 GHz processor           | 1h22m  |
-| Genbank| *Heliothis virescens* HvINT-(11)-1-pool|  403.15          | RAM 16GB; 4 core, 3.3 GHz processor           |  NA  |
-
+| Demo Data| *Heliothis virescens* HvINT-(11)-1-pool|  403.15          | RAM 16GB; 4 core, 3.3 GHz processor           |  NA  |
+| Genbank| *Lactobacillus casei* str. Zhang|  2.8          | 16GB, 40 core, 2.20GHz           |  15m  |
+| Genbank| *Abiotrophia defectiva* ATCC 49176|  2.04          | RAM 16GB, 40 core, 2.20GHz           |  7m  |
+| Genbank| *Rhodotorula graminis* WP1|  21          | RAM 16GB, 40 core, 2.20GHz           |  42m  |
+| Genbank| *Escherichia coli* PA5|  5.3          | RAM 16GB, 40 core, 2.20GHz           |  47m  |
 

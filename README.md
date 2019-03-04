@@ -44,9 +44,9 @@ Please use this github portal to report any bug.
 | Genbank| *Colletotrichum fioriniae* PJ7 |  49.00          | RAM 16GB; 4 core, 3.3 GHz processor           |  1h5m  |
 | Genbank| *Melampsora larici-populina* 98AG31|  101.13          | RAM 16GB; 4 core, 3.3 GHz processor           |  1h15m  |
 | Genbank| *Drosophila grimshawi* |  200.47          | RAM 16GB; 4 core, 3.3 GHz processor           | 1h22m  |
-| Demo Data|
+| <td colspan=5> In-build Demo Data|
 | Genbank| *Lactobacillus casei* str. Zhang|  2.8          | 16GB, 40 core, 2.20GHz           |  15m  |
-| Genbank| *Abiotrophia defectiva* ATCC 49176|  2.04          | RAM 16GB, 40 core, 2.20GHz           |  7m  |
-| Genbank| *Rhodotorula graminis* WP1|  21          | RAM 16GB, 40 core, 2.20GHz           |  42m  |
-| Genbank| *Escherichia coli* PA5|  5.3          | RAM 16GB, 40 core, 2.20GHz           |  47m  |
+| Product| *Abiotrophia defectiva* ATCC 49176|  2.04          | RAM 16GB, 40 core, 2.20GHz           |  7m  |
+| Minimal| *Rhodotorula graminis* WP1|  21          | RAM 16GB, 40 core, 2.20GHz           |  42m  |
+| No Annotation| *Escherichia coli* PA5|  5.3          | RAM 16GB, 40 core, 2.20GHz           |  47m  |
 

@@ -38,7 +38,7 @@ Please use this github portal to report any bug.
 
 ### Performance
 
-| __Annotation Type__ | __Organism Name__ | __Genome Size (MB)__ | __System Requirment__ | __Processing Time__ |
+| __Annotation Type__ | __Organism Name__ | __Genome Size (MB)__ | __System Requirement__ | __Processing Time__ |
 |---------------------|-------------------|-----------------|--------------------------|---------------------|
 | Genbank| *Candidatus Protochlamydia amoebophila* UWE25|  2.41          | RAM 16GB; 4 core, 3.3 GHz           |  8m  |
 | Genbank| *Colletotrichum fioriniae* PJ7 |  49.00          | RAM 16GB; 4 core, 3.3 GHz            |  1h5m  |

@@ -9,7 +9,7 @@ https://hub.docker.com/u/cglabiicb/
 https://github.com/computational-genomics-lab/GAL/blob/master/User_Guide_Latest.pdf
 ### Demo Application
 - For Blue Green Algee Genomes 
-  - www.eumicrobedb.org/bga
+  - www.eumicrobedb.org/cglab
 
 
 ## Quick Start

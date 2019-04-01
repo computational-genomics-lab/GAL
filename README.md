@@ -13,8 +13,8 @@ https://github.com/computational-genomics-lab/GAL/blob/master/User_Guide_Latest.
 ### Publication
 GAL paper is recently published in ***Genomics***.  
 
-**Please cite:**
-Panda, Arijit, Narendrakumar M. Chaudhari, and Sucheta Tripathy. "Genome Annotator Light (GAL): A Docker-based package for genome analysis and visualization." *Genomics* (2019).  
+**Please cite:**  
+Panda A, Chaudhari NM, Tripathy S. Genome Annotator Light (GAL): A Docker-based package for genome analysis and visualization. *Genomics*. 2019 Mar 26.  
 DOI: https://doi.org/10.1016/j.ygeno.2019.03.012  
 
 ## Quick Start

@@ -11,10 +11,11 @@ https://github.com/computational-genomics-lab/GAL/blob/master/User_Guide_Latest.
 - For Blue Green Algee Genomes 
   - www.eumicrobedb.org/cglab
 ### Publication
-GAL paper is recently published in ***Genomics***.
-DOI: https://doi.org/10.1016/j.ygeno.2019.03.012
+GAL paper is recently published in ***Genomics***.  
+
 **Please cite:**
-Panda, Arijit, Narendrakumar M. Chaudhari, and Sucheta Tripathy. "Genome Annotator Light (GAL): A Docker-based package for genome analysis and visualization." *Genomics* (2019).
+Panda, Arijit, Narendrakumar M. Chaudhari, and Sucheta Tripathy. "Genome Annotator Light (GAL): A Docker-based package for genome analysis and visualization." *Genomics* (2019).  
+DOI: https://doi.org/10.1016/j.ygeno.2019.03.012  
 
 ## Quick Start
  - Once Docker is set up on the host computer, GAL can be downloaded and installed using the following command:

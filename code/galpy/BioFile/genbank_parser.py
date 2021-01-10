@@ -555,9 +555,14 @@ class HeaderScan:
                 self.Length = tmp[2]
                 self.Type = tmp[3]
                 self.Topology = tmp[4]
-                if len(tmp) > 4:
+                try:
                     self.DivisionCode = tmp[5]
+                except IndexError:
+                    self.DivisionCode = None
+                try:
                     self.Date = tmp[6]
+                except IndexError:
+                    self.Date = None
 
             if re.match("^DEFINITION", data):
                 tmp = re.split(" +", data)
@@ -569,7 +574,10 @@ class HeaderScan:
 
             if re.match("^VERSION", data):
                 tmp = re.split(" +", data)
-                self.version = tmp[1]
+                try:
+                    self.version = tmp[1]
+                except IndexError:
+                    self.version = None
 
             if re.match("^SOURCE", data):
                 tmp = re.split(" +", data)

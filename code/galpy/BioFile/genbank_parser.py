@@ -555,8 +555,9 @@ class HeaderScan:
                 self.Length = tmp[2]
                 self.Type = tmp[3]
                 self.Topology = tmp[4]
-                self.DivisionCode = tmp[5]
-                self.Date = tmp[6]
+                if len(tmp) > 4:
+                    self.DivisionCode = tmp[5]
+                    self.Date = tmp[6]
 
             if re.match("^DEFINITION", data):
                 tmp = re.split(" +", data)

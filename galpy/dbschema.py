@@ -30,9 +30,11 @@ class DefaultSchemaPath:
         sres_schema = "SRes.sql"
         dots_schema = "DoTS.sql"
 
-        self.schema_path = pkg_resources.resource_filename('galpy', 'data', 'DbSchema')
-        self.sres_schema_path = Path(self.schema_path).joinpath(sres_schema)
-        self.dots_schema_path = Path(self.schema_path).joinpath(dots_schema)
+        self.default_data_path = pkg_resources.resource_filename('galpy', 'data')
+        schema_path = Path(self.default_data_path).joinpath('DbSchema')
+
+        self.sres_schema_path = schema_path.joinpath(sres_schema)
+        self.dots_schema_path = schema_path.joinpath(dots_schema)
 
 
 class UploadSchema(DefaultSchemaPath):

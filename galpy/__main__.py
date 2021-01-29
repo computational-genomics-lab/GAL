@@ -2,6 +2,7 @@ import argparse
 import logging
 import pkg_resources
 from pathlib import Path
+from .app import App
 
 
 def main():
@@ -14,8 +15,9 @@ def main():
     default_config_path = Path(default_data_path).joinpath('DefaultConfig')
 
     default_db_config = default_config_path.joinpath('database.ini')
-    default_path_config = default_config_path.joinpath('organism_config_format.ini')
-    default_org_config = default_config_path.joinpath('path.ini')
+    default_path_config = default_config_path.joinpath('path.ini')
+    default_org_config = default_config_path.joinpath('organism_config_format.ini')
+
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-db", "--dbconfig", help='Database configuration file name', default=default_db_config)
@@ -38,6 +40,13 @@ def main():
     logger.debug("DB Config: {}".format(db_config_file))
     logger.debug("Path Config: {}".format(path_config_file))
     logger.debug("Organism Config: {}".format(org_config_file))
+
+    if args.NewUpload:
+        app = App(db_config_file, path_config_file, org_config_file)
+        app.upload_schema()
+
+    else:
+        print("checking the db connection")
 
 
 def get_logger(args):

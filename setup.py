@@ -11,13 +11,14 @@ setup(
     author_email='arijpanda@gmail.com',
     packages=['galpy'],
     package_dir={'galpy': 'galpy'},
-    package_data={'galpy': ['imgs/*.png','data/*']},
+    package_data={'galpy': ['data/DbSchema/*', 'data/DefaultConfig/*']},
     description=description,
     long_description=description,
     long_description_content_type='text/markdown',
     url='https://github.com/computational-genomics-lab/GAL',
     install_requires=[
-        'pathlib>=1.0'
+        'pathlib>=1.0',
+        'pymysql>=1.0.0',
         'numpy>=1.16',
     ],
     classifiers=[

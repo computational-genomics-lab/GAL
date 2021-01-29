@@ -12,7 +12,7 @@ class ConfigFileHandler:
 
         _logger.info("DB configuration file: {}".format(self.db_config_file))
         _logger.info("Path configuration file: {}".format(self.path_config_file))
-        _logger.info("Organism configuration file: {}".format(self.path_config_file))
+        _logger.info("Organism configuration file: {}".format(self.org_config_file))
 
         if self.db_config_file.exists():
             self.db_config = DatabaseConf(self.db_config_file)

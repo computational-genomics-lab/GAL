@@ -18,7 +18,6 @@ def main():
     default_path_config = default_config_path.joinpath('path.ini')
     default_org_config = default_config_path.joinpath('organism_config_format.ini')
 
-
     parser = argparse.ArgumentParser()
     parser.add_argument("-db", "--dbconfig", help='Database configuration file name', default=default_db_config)
     parser.add_argument("-path", "--pathconfig", help='path configuration file name', default=default_path_config)

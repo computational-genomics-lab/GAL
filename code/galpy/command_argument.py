@@ -14,7 +14,7 @@ def str2bool(v):
 
 class ProcessArguments:
     def __init__(self, content_dir):
-        default_db_config_file = 'config/database.Ini'
+        default_db_config_file = 'config/database.ini'
         default_path_config_file = 'config/path.ini'
         default_organism_file = 'config/set1/type1/case1.Ini'
         default_log_file = 'gal.log'

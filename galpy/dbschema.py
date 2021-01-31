@@ -54,7 +54,7 @@ class UploadSchema(DefaultSchemaPath):
         self.shared_resource = self.db.create(self.db_name.sres)
 
         self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.dots, 0)
-        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.sres, 0)
+        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.sres, 1)
 
     def check_schema_existence(self):
         sql_tax = "SELECT * FROM {}.GeneticCode;".format(self.db_name.sres)

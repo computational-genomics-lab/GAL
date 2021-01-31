@@ -1,10 +1,12 @@
 import logging
 from pathlib import Path
 from .configutility import ConfigFileHandler
-from .dbconnect import check_db_connection
+from .dbconnect import check_db_connection, DbNames, Database
 from .dbschema import database_schema
 from .BioFile import genbank_parser
 from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
+from .taxomony import Taxonomy, OrganismInfo
+from .dbtableutility import get_table_status
 _logger = logging.getLogger("galpy.app")
 
 
@@ -67,23 +69,50 @@ class CentralDogmaAnnotator(AnnotationCategory):
         self.db_config = db_config
         self.org_config = org_config
         self.path_config = path_config
+        db_name = DbNames(db_config.db_prefix)
+        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 0)
+        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0)
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data...')
         file_path = Path(self.org_config.GenBank)
-        if not file_path.exists:
-            file_path = self.org_config.config_file_path.joinpath(file_path)
+        if not file_path.exists():
+            file_path = self.org_config.config_file_path.parent.joinpath(file_path)
 
-        if file_path.exists:
+        if file_path.exists():
             file_handler = genbank_parser.open_input_file(file_path)
             (feature_dct, sequence_dct) = genbank_parser.get_data(file_handler)
 
             feature_dct = fix_multiple_splicing_bugs(feature_dct)
             model_gff_dct = create_gal_model_dct(sequence_dct, feature_dct)
 
+            id_list = get_table_status(self.db_dots)
             # (sequence_dct, feature_dct) = process_type1_data(org_config)
-            # process_minimal_annotation_data(db_config, org_config, path_config, sequence_dct, feature_dct, id_list)
+            self.minimal_annotation_data(sequence_dct, feature_dct, id_list)
             # db_table.upload_gal_table_data(db_config, path_config.upload_dir, logger)
         else:
             _logger.error("File not found: {}".format(self.org_config.GenBank))
 
+    def minimal_annotation_data(self, sequence_dct, feature_dct, id_list):
+        taxonomy_1 = Taxonomy(self.org_config.organism, self.org_config.version)
+        taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
+        _logger.info("taxonomy_id: {}".format(taxonomy_id))
+        # taxonomy_id = organism_function.get_taxonomy_id(db_config, org_config.organism)
+        org_info = OrganismInfo(self.org_config.organism, taxonomy_id, self.org_config.version)
+        gal_id = DatabaseID(id_list)
+
+
+class DatabaseID:
+    def __init__(self, id_list):
+        self.NaSequenceId = id_list[0]
+        self.NaFeatureId = id_list[1]
+        self.na_location_Id = id_list[2]
+        self.GeneInstanceId = id_list[3]
+        self.ProteinId = id_list[4]
+
+    def increase_by_value(self, value):
+        self.NaSequenceId += value
+        self.NaFeatureId += value
+        self.na_location_Id += value
+        self.GeneInstanceId += value
+        self.ProteinId += value

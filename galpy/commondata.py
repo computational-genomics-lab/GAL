@@ -199,7 +199,7 @@ class DownloadCommonData:
         More Info : ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_readme.txt
         """
         if read_file is None:
-            read_file = Path(self.download_path).joinpath("go_daily-termdb-tables/gencode.dmp")
+            read_file = Path(self.download_path).joinpath("taxdump/gencode.dmp")
         if write_file is None:
             write_file = Path(self.download_path).joinpath("gene_code.out")
 

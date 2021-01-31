@@ -2,6 +2,7 @@ from pathlib import Path
 import pkg_resources
 import logging
 from .dbconnect import DatabaseCreate, DbNames, Database
+from .commondata import DownloadCommonData, UploadCommonData
 _logger = logging.getLogger("galpy.dbschema")
 
 
@@ -21,6 +22,10 @@ def database_schema(db_config):
 
         schema.add_database_constrain()
         _logger.debug('Uploading Database Scheme : Complete')
+
+        _logger.debug('Uploading Shared data : Processing')
+        schema.download_upload_commondata()
+        _logger.debug('Uploading Shared data : Complete')
     else:
         _logger.debug('Database Schema already exist')
 
@@ -44,13 +49,12 @@ class UploadSchema(DefaultSchemaPath):
         self.db = DatabaseCreate(db_config.host, db_config.db_username, db_config.db_password)
         self.db_name = DbNames(db_config.db_prefix)
 
-        self.core = self.db.create(self.db_name.core)
+        # self.core = self.db.create(self.db_name.core)
         self.dots = self.db.create(self.db_name.dots)
         self.shared_resource = self.db.create(self.db_name.sres)
 
         self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.dots, 0)
-        self.db_shared_resource = Database(db_config.host, db_config.db_username, db_config.db_password,
-                                           self.db_name.sres, 0)
+        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.sres, 0)
 
     def check_schema_existence(self):
         sql_tax = "SELECT * FROM {}.GeneticCode;".format(self.db_name.sres)
@@ -60,9 +64,9 @@ class UploadSchema(DefaultSchemaPath):
         else:
             return True
 
-    def upload_shared_resource_schema(self):
+    def upload_sres_schema(self):
         if self.sres_schema_path:
-            upload_schema_based_on_line(self.sres_schema_path, self.db_shared_resource)
+            upload_schema_based_on_line(self.sres_schema_path, self.db_sres)
         else:
             _logger.error("File not found: {}".format(self.sres_schema_path))
 
@@ -82,6 +86,19 @@ class UploadSchema(DefaultSchemaPath):
 
         self.db_dots.query(organism_constrain_query)
 
+    def download_upload_commondata(self):
+        default_data_path = pkg_resources.resource_filename('galpy', 'data')
+        default_common_data_path = Path(default_data_path).joinpath('CommonData')
+        download_1 = DownloadCommonData(default_common_data_path)
+        download_1.download_goterm_data()
+        download_1.download_taxon_data()
+
+        shared_data = UploadCommonData(default_common_data_path, self.db_sres)
+        shared_data.upload_genetic_code()
+        shared_data.upload_taxonomy_data()
+        shared_data.upload_go_evidence()
+        shared_data.upload_go_term()
+        shared_data.upload_gram_strain()
 
 def upload_schema_based_on_line(filename, db):
     try:

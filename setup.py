@@ -11,7 +11,7 @@ setup(
     author_email='arijpanda@gmail.com',
     packages=['galpy'],
     package_dir={'galpy': 'galpy'},
-    package_data={'galpy': ['data/DbSchema/*', 'data/DefaultConfig/*']},
+    package_data={'galpy': ['data/DbSchema/*', 'data/DefaultConfig/*', 'data/CommonData/*']},
     description=description,
     long_description=description,
     long_description_content_type='text/markdown',

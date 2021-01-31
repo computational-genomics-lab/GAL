@@ -3,6 +3,7 @@ import logging
 import pkg_resources
 from pathlib import Path
 from .app import App
+from .commondata import DownloadCommonData
 
 
 def main():
@@ -43,6 +44,14 @@ def main():
     if args.NewUpload:
         app = App(db_config_file, path_config_file, org_config_file)
         app.upload_schema()
+        '''
+        default_data_path = pkg_resources.resource_filename('galpy', 'data')
+        default_common_data_path = Path(default_data_path).joinpath('CommonData')
+        print(default_common_data_path)
+        download_1 = DownloadCommonData(default_common_data_path)
+        download_1.download_goterm_data()
+        download_1.download_taxon_data()
+        '''
 
     else:
         print("checking the db connection")

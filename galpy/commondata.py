@@ -127,14 +127,16 @@ class DownloadCommonData:
             _logger.info("Download Complete: {}".format(url))
             return filename
 
-    def unpack_tar(self, filename):
+    def unpack_tar(self, filename, out_file=None):
+        if out_file is None:
+            out_file = self.download_path
         # theTarFile = Path +FileName
         tar_file = filename
         _logger.info("Starting to unpack {}".format(filename))
 
         tfile = tarfile.open(tar_file)
         if tarfile.is_tarfile(tar_file):
-            tfile.extractall(self.download_path)
+            tfile.extractall(out_file)
         else:
             _logger.info(tar_file + " is not a tarfile.")
         tfile.close()
@@ -149,9 +151,9 @@ class DownloadCommonData:
     def download_taxon_data(self):
         _logger.info("Starting downloading NCBI taxon data...............")
         target = "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
-        filename = self.download_file(target).joinpath("taxdump")
-        taxon_data_path = PurePosixPath("taxdump/")
-        self.unpack_tar(filename)
+        filename = self.download_file(target)
+        taxon_data_path = Path(self.download_path).joinpath("taxdump")
+        self.unpack_tar(filename, taxon_data_path)
 
     def make_taxon(self, genetic_code_id_dct):
         """

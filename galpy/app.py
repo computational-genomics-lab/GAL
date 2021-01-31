@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 from .configutility import ConfigFileHandler
 from .dbconnect import check_db_connection
 from .dbschema import database_schema
@@ -69,7 +70,7 @@ class CentralDogmaAnnotator(AnnotationCategory):
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data...')
-        file_path = self.org_config.GenBank
+        file_path = Path(self.org_config.GenBank)
         if not file_path.exists:
             file_path = self.org_config.config_file_path.joinpath(file_path)
 

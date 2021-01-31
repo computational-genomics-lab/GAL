@@ -25,6 +25,7 @@ class App(ConfigFileHandler):
     def process_central_dogma_annotation(self):
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         print(app1.annotation_type)
+        app1.process_genbank_annotation()
 
 
 class AnnotationCategory:

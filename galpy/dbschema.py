@@ -14,7 +14,7 @@ def database_schema(db_config):
     if not schema_existence:
         _logger.debug('Uploading Database Scheme : Processing')
 
-        schema.upload_shared_resource_schema()
+        schema.upload_sres_schema()
         _logger.debug('Shared resource Schema upload complete')
 
         schema.upload_dots_schema()

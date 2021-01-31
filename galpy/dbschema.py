@@ -100,6 +100,7 @@ class UploadSchema(DefaultSchemaPath):
         shared_data.upload_go_term()
         shared_data.upload_gram_strain()
 
+
 def upload_schema_based_on_line(filename, db):
     try:
         with open(filename, 'r') as FH:

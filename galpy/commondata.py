@@ -74,7 +74,7 @@ class UploadCommonData(DefaultSharedData):
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GeneticCode FIELDS TERMINATED BY '\t' OPTIONALLY 
                 ENCLOSED BY '"' LINES TERMINATED BY '\n'(GENETIC_CODE_ID, NCBI_GENETIC_CODE_ID, ABBREVIATION, NAME,
                 CODE, STARTS);""".format(self.genetic_code_file)
-            self.db_shared_resource.insert(query)
+            self.db_sres.insert(query)
 
     def upload_taxonomy_data(self):
         if self.row_taxonomy == 0:
@@ -82,7 +82,7 @@ class UploadCommonData(DefaultSharedData):
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Taxon FIELDS TERMINATED BY '\t' 
                 OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' (NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN,
                 RANK, GENETIC_CODE_ID, MITOCHONDRIAL_GENETIC_CODE_ID);""".format(self.taxonomy_file)
-            self.db_shared_resource.insert(query)
+            self.db_sres.insert(query)
 
     def upload_go_evidence(self):
         if self.row_go_evidence_code == 0:
@@ -90,14 +90,14 @@ class UploadCommonData(DefaultSharedData):
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GOEvidenceCode FIELDS TERMINATED BY '\t' OPTIONALLY
                 ENCLOSED BY '"' LINES TERMINATED BY '\n' (NAME, DESCRIPTION, MODIFICATION_DATE);""".format(
                 self.go_evidence_file)
-            self.db_shared_resource.insert(query)
+            self.db_sres.insert(query)
 
     def upload_go_term(self):
         if self.row_go_term == 0:
             _logger.debug("Upload shared go term data")
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GOTerm FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED
                 BY '"' LINES TERMINATED BY '\n';""".format(self.go_term_file)
-            self.db_shared_resource.insert(query)
+            self.db_sres.insert(query)
 
     def upload_gram_strain(self):
         if self.gram_strain_file == 0:
@@ -105,7 +105,7 @@ class UploadCommonData(DefaultSharedData):
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GramStrain FIELDS TERMINATED BY '\t' OPTIONALLY 
                 ENCLOSED BY '"' LINES TERMINATED BY '\n'(TAXON_ID, STRAIN_TYPE, ORGANISM, MEMBRANE_TYPE);""".format(
                 self.gram_strain_file)
-            self.db_shared_resource.insert(query)
+            self.db_sres.insert(query)
 
 
 class DownloadCommonData:

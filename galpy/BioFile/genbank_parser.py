@@ -1,7 +1,8 @@
 import re
 from collections import defaultdict, OrderedDict
 import sys, json
-
+import logging
+_logger = logging.getLogger("galpy.BioFile.genbank_parser")
 
 def default_dct_structure():
     return defaultdict(default_dct_structure)
@@ -532,15 +533,17 @@ def parse_location(location):
 
 def open_input_file(input_filename):
     try:
+        _logger.debug("Genbank file: {}".format(input_filename))
         fp_in = open(input_filename, "rb")
     except IOError as e:
-        print("I/O error({0}): {1}".format(e.errno, e.strerror))
+        _logger.error("Genbank file: {}".format(input_filename))
+        _logger.error("I/O error({0}): {1}".format(e.errno, e.strerror))
         sys.exit(0)
     except ValueError:
-        print("Could not convert data to an integer.")
+        _logger.error("Could not convert data to an integer.")
         sys.exit(0)
     except:
-        print("Unexpected error:", sys.exc_info()[0])
+        _logger.error("Unexpected error:", sys.exc_info()[0])
         raise
     return fp_in
 

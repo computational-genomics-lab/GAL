@@ -69,13 +69,20 @@ class CentralDogmaAnnotator(AnnotationCategory):
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data...')
-        file_handler = genbank_parser.open_input_file(self.org_config.GenBank)
-        (feature_dct, sequence_dct) = genbank_parser.get_data(file_handler)
+        file_path = self.org_config.GenBank
+        if not file_path.exists:
+            file_path = self.org_config.config_file_path.joinpath(file_path)
 
-        feature_dct = fix_multiple_splicing_bugs(feature_dct)
-        model_gff_dct = create_gal_model_dct(sequence_dct, feature_dct)
+        if file_path.exists:
+            file_handler = genbank_parser.open_input_file(file_path)
+            (feature_dct, sequence_dct) = genbank_parser.get_data(file_handler)
 
-        # (sequence_dct, feature_dct) = process_type1_data(org_config)
-        # process_minimal_annotation_data(db_config, org_config, path_config, sequence_dct, feature_dct, id_list)
-        # db_table.upload_gal_table_data(db_config, path_config.upload_dir, logger)
+            feature_dct = fix_multiple_splicing_bugs(feature_dct)
+            model_gff_dct = create_gal_model_dct(sequence_dct, feature_dct)
+
+            # (sequence_dct, feature_dct) = process_type1_data(org_config)
+            # process_minimal_annotation_data(db_config, org_config, path_config, sequence_dct, feature_dct, id_list)
+            # db_table.upload_gal_table_data(db_config, path_config.upload_dir, logger)
+        else:
+            _logger.error("File not found: {}".format(self.org_config.GenBank))
 

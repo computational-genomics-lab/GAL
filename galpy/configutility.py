@@ -141,7 +141,7 @@ def organism_config_reader(filename):
 class OrganismConf:
     def __init__(self, filename):
         organism_config_dct = organism_config_reader(filename)
-
+        self.config_file_path = Path(filename)
         self.organism = organism_config_dct['organism']
         self.version = organism_config_dct['orgVersion']
 

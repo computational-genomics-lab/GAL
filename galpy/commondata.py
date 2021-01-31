@@ -37,7 +37,7 @@ class DefaultSharedData:
     def __init__(self, data_path):
         self.data_path = Path(data_path)
 
-        gram_strain_file = 'GramStrain/Data.txt'
+        gram_strain_file = 'GramStrain.txt'
         go_term_file = 'go_daily-termdb-tables/term.txt'
         go_evidence_file = 'goevidence.out'
         taxonomy_file = 'taxon.out'
@@ -119,6 +119,7 @@ class DownloadCommonData:
         filename = Path(self.download_path).joinpath(url_filename)
         try:
             _logger.info("Starting to download: {}.".format(url))
+            _logger.info("Downloading to : {}.".format(filename))
             urllib.request.urlretrieve(url, filename)
         except urllib.error.URLError as e:
             _logger.error("Error in the URL")
@@ -148,7 +149,7 @@ class DownloadCommonData:
     def download_taxon_data(self):
         _logger.info("Starting downloading NCBI taxon data...............")
         target = "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
-        filename = self.download_file(target)
+        filename = self.download_file(target).joinpath("taxdump")
         taxon_data_path = PurePosixPath("taxdump/")
         self.unpack_tar(filename)
 
@@ -161,9 +162,9 @@ class DownloadCommonData:
         The nodes.dmp file does not have proper mitochondrial code
         so just replacing it with 1 for the time being
         """
-
-        name_file = Path(self.download_path).joinpath("names.dmp")
-        nodes_file = Path(self.download_path).joinpath("nodes.dmp")
+        default_download_path = Path(self.download_path).joinpath("taxdump")
+        name_file = default_download_path.joinpath("names.dmp")
+        nodes_file = default_download_path.joinpath("nodes.dmp")
 
         taxonomy_file = Path(self.download_path).joinpath("taxon.out")
 

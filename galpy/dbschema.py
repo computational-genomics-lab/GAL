@@ -90,8 +90,7 @@ class UploadSchema(DefaultSchemaPath):
         default_data_path = pkg_resources.resource_filename('galpy', 'data')
         default_common_data_path = Path(default_data_path).joinpath('CommonData')
         download_1 = DownloadCommonData(default_common_data_path)
-        download_1.download_goterm_data()
-        download_1.download_taxon_data()
+        download_1.download_parse_goterm_and_taxon()
 
         shared_data = UploadCommonData(default_common_data_path, self.db_sres)
         shared_data.upload_genetic_code()

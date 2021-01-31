@@ -187,7 +187,7 @@ class DownloadCommonData:
             write_fh.write(string1)
         return taxonomy_file
 
-    def parse_genetic_code(self, read_file=None, write_file="gene_code.out"):
+    def parse_genetic_code(self, read_file=None, write_file=None):
         """
         Author : Arijit
         Date : 20th Jun 2017

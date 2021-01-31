@@ -6,7 +6,10 @@ from .dbschema import database_schema
 from .BioFile import genbank_parser
 from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
 from .taxomony import Taxonomy, OrganismInfo
-from .dbtableutility import get_table_status
+from .generalutility import get_date
+from .dbtableutility import get_table_status, na_sequence_imp_scaffold, upload_gal_table_data
+from .directoryutility import GALFileHandler
+from .process_tables import process_gff_gene_data, process_repeat_data
 _logger = logging.getLogger("galpy.app")
 
 
@@ -89,7 +92,7 @@ class CentralDogmaAnnotator(AnnotationCategory):
             id_list = get_table_status(self.db_dots)
             # (sequence_dct, feature_dct) = process_type1_data(org_config)
             self.minimal_annotation_data(sequence_dct, feature_dct, id_list)
-            # db_table.upload_gal_table_data(db_config, path_config.upload_dir, logger)
+            upload_gal_table_data(self.db_config, self.path_config.upload_dir)
         else:
             _logger.error("File not found: {}".format(self.org_config.GenBank))
 
@@ -100,6 +103,24 @@ class CentralDogmaAnnotator(AnnotationCategory):
         # taxonomy_id = organism_function.get_taxonomy_id(db_config, org_config.organism)
         org_info = OrganismInfo(self.org_config.organism, taxonomy_id, self.org_config.version)
         gal_id = DatabaseID(id_list)
+        gal_fh = GALFileHandler(self.path_config.upload_dir)
+        gal_id.increase_by_value(1)
+        present_day = get_date()
+
+        for scaffold, scaffold_dct in feature_dct.items():
+            if scaffold in sequence_dct:
+                sequence = sequence_dct[scaffold]
+                na_sequence_imp_scaffold(gal_fh, gal_id.NaSequenceId, scaffold, sequence, org_info, present_day)
+                scaffold_na_sequence_id = gal_id.NaSequenceId
+                gal_id.NaSequenceId += 1
+                for feature, feature_dct in scaffold_dct.items():
+                    if feature == 'gene':
+                        for gene_id, gene_dct in feature_dct.items():
+                            process_gff_gene_data(gal_id, gal_fh, org_info, scaffold, gene_id, gene_dct,
+                                                      scaffold_na_sequence_id)
+                            gal_id.NaSequenceId += 1
+                    elif feature == 'repeat_region':
+                        process_repeat_data(gal_id, gal_fh, feature, feature_dct, scaffold_na_sequence_id)
 
 
 class DatabaseID:

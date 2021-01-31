@@ -5,6 +5,12 @@ _logger = logging.getLogger("galpy.directoryutility")
 
 class UploadDirectory:
     def __init__(self, upload_dir):
+        """ class constructor creates a directory if the upload directory doesn;t exist
+        parameters
+        ---------
+        upload_dir: basestring
+
+        """
         self.upload_dir = Path(upload_dir)
         if not self.upload_dir.exists():
             self.upload_dir = Path("GALUploadTmp")
@@ -12,11 +18,11 @@ class UploadDirectory:
                 self.create_directory(self.upload_dir)
 
         _logger.info("Upload path: {}".format(self.upload_dir))
-        self.NaSequenceImp = upload_dir.joinpath("NASequenceImp.parsed")
-        self.NaFeatureImp = upload_dir.joinpath("NAFeatureImp.parsed")
-        self.NaLocation = upload_dir.joinpath("NALocation.parsed")
-        self.GeneInstance = upload_dir.joinpath("geneInstance.parsed")
-        self.Protein = upload_dir.joinpath("Protein.parsed")
+        self.NaSequenceImp = self.upload_dir.joinpath("NASequenceImp.parsed")
+        self.NaFeatureImp = self.upload_dir.joinpath("NAFeatureImp.parsed")
+        self.NaLocation = self.upload_dir.joinpath("NALocation.parsed")
+        self.GeneInstance = self.upload_dir.joinpath("geneInstance.parsed")
+        self.Protein = self.upload_dir.joinpath("Protein.parsed")
 
     @staticmethod
     def create_directory(directory):

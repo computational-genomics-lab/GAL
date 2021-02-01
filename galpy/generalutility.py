@@ -107,3 +107,23 @@ def get_date():
     i = datetime.datetime.now()
     today = '{}-{}-{}'.format(i.year, i.month, i.day)
     return today
+
+
+class BaseCount:
+    def __init__(self, sequence):
+        self.sequence = sequence
+        self.A_count = len(re.findall("(?i)a", self.sequence))
+        self.T_count = len(re.findall("(?i)t", self.sequence))
+        self.G_count = len(re.findall("(?i)g", self.sequence))
+        self.C_count = len(re.findall("(?i)c", self.sequence))
+
+    def length(self):
+        return len(self.sequence)
+
+    def other_count(self):
+        count = len(self.sequence) - self.A_count - self.T_count - self.G_count - self.C_count
+        return count
+
+    def print_base_count(self):
+        other_count = self.other_count()
+        return '{}\t{}\t{}\t{}\t{}'.format(self.A_count, self.T_count, self.G_count, self.C_count, other_count)

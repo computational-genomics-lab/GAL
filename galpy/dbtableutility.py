@@ -2,44 +2,61 @@ import logging
 import re
 from .dbconnect import DbNames, Database
 from .directoryutility import UploadDirectory
+from .generalutility import BaseCount
 _logger = logging.getLogger("galpy.dbtableutility")
 
 
-def get_table_status(db_dots):
-    sql_1 = "SELECT MAX(NA_SEQUENCE_ID) as LAST_ID FROM NASequenceImp"
-    sql_2 = "SELECT MAX(NA_FEATURE_ID) as LAST_ID FROM NAFeatureImp"
-    sql_3 = "SELECT MAX(NA_LOCATION_ID) as LAST_ID FROM NALocation"
-    sql_4 = "SELECT MAX(GENE_INSTANCE_ID) as LAST_ID FROM GeneInstance"
-    sql_5 = "SELECT MAX(PROTEIN_ID) as LAST_ID FROM Protein"
+class TableStatusID:
+    def __init__(self, db_dots):
+        """ class constructor creates fetches the max values important tables
+        parameters
+        ---------
+        db_dots: db connection for db_dots database
+        """
+        self.db_dots = db_dots
 
-    row_na_sequence = get_max_table_value(db_dots, sql_1)
-    row_na_feature = get_max_table_value(db_dots, sql_2)
-    row_na_location = get_max_table_value(db_dots, sql_3)
-    row_gene_instance = get_max_table_value(db_dots, sql_4)
-    row_protein = get_max_table_value(db_dots, sql_5)
+        sql_1 = "SELECT MAX(NA_SEQUENCE_ID) as LAST_ID FROM NASequenceImp"
+        sql_2 = "SELECT MAX(NA_FEATURE_ID) as LAST_ID FROM NAFeatureImp"
+        sql_3 = "SELECT MAX(NA_LOCATION_ID) as LAST_ID FROM NALocation"
+        sql_4 = "SELECT MAX(GENE_INSTANCE_ID) as LAST_ID FROM GeneInstance"
+        sql_5 = "SELECT MAX(PROTEIN_ID) as LAST_ID FROM Protein"
 
-    print_str = """Getting Max IDs of each table..
-        NASequenceImp ID: {}
-        NAFeatureImp ID: {}
-        NALocation ID: {}
-        GeneInstance ID: {}
-        Protein ID: {}
-        """.format(row_na_sequence, row_na_feature, row_na_location, row_gene_instance, row_protein)
+        self.NaSequenceId = self.get_max_table_value( sql_1)
+        self.NaFeatureId = self.get_max_table_value(sql_2)
+        self.na_location_Id = self.get_max_table_value(sql_3)
+        self.GeneInstanceId = self.get_max_table_value(sql_4)
+        self.ProteinId = self.get_max_table_value(sql_5)
 
-    _logger.info(print_str)
+        log_str = """Getting Max IDs of each table..
+                NASequenceImp ID: {}
+                NAFeatureImp ID: {}
+                NALocation ID: {}
+                GeneInstance ID: {}
+                Protein ID: {}
+                """.format(self.NaSequenceId, self.NaFeatureId, self.na_location_Id, self.GeneInstanceId, self.ProteinId)
+        _logger.info(log_str)
 
-    row_list = [row_na_sequence, row_na_feature, row_na_feature, row_na_feature, row_na_feature]
-    return row_list
+    def get_max_table_value(self, query):
+        data = self.db_dots.query_one(query)
+        count = data['LAST_ID']
+        if count is None:
+            max_id = 0
+        else:
+            max_id = count
+        return max_id
 
-
-def get_max_table_value(db, query):
-    data = db.query_one(query)
-    count = data['LAST_ID']
-    if count is None:
-        max_id = 0
-    else:
-        max_id = count
-    return max_id
+    def increase_by_value(self, value):
+        """
+        It increase the value for each id by the value
+        parameters
+        ----------
+        value: int
+        """
+        self.NaSequenceId += value
+        self.NaFeatureId += value
+        self.na_location_Id += value
+        self.GeneInstanceId += value
+        self.ProteinId += value
 
 
 def na_sequence_imp_scaffold(gal_fh, na_sequence_id, scaffold, sequence, org_info, present_day):
@@ -202,26 +219,6 @@ class DefaultVariables:
     def data_source_id(self):
         return '{}\t{}\t{}\t{}'.format(self.externalDatabaseID, self.source_na_sequence_ID, self.sequence_piece_ID,
                                        self.sequencing_center_contact_ID)
-
-
-class BaseCount:
-    def __init__(self, sequence):
-        self.sequence = sequence
-        self.A_count = len(re.findall("(?i)a", self.sequence))
-        self.T_count = len(re.findall("(?i)t", self.sequence))
-        self.G_count = len(re.findall("(?i)g", self.sequence))
-        self.C_count = len(re.findall("(?i)c", self.sequence))
-
-    def length(self):
-        return len(self.sequence)
-
-    def other_count(self):
-        count = len(self.sequence) - self.A_count - self.T_count - self.G_count - self.C_count
-        return count
-
-    def print_base_count(self):
-        other_count = self.other_count()
-        return '{}\t{}\t{}\t{}\t{}'.format(self.A_count, self.T_count, self.G_count, self.C_count, other_count)
 
 
 def upload_gal_table_data(db_config, upload_dir):

@@ -7,7 +7,7 @@ from .BioFile import genbank_parser
 from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
 from .taxomony import Taxonomy, OrganismInfo
 from .generalutility import get_date
-from .dbtableutility import get_table_status, na_sequence_imp_scaffold, upload_gal_table_data
+from .dbtableutility import TableStatusID, na_sequence_imp_scaffold, upload_gal_table_data
 from .directoryutility import GALFileHandler
 from .process_tables import process_gff_gene_data, process_repeat_data
 _logger = logging.getLogger("galpy.app")
@@ -89,20 +89,19 @@ class CentralDogmaAnnotator(AnnotationCategory):
             feature_dct = fix_multiple_splicing_bugs(feature_dct)
             model_gff_dct = create_gal_model_dct(sequence_dct, feature_dct)
 
-            id_list = get_table_status(self.db_dots)
             # (sequence_dct, feature_dct) = process_type1_data(org_config)
-            self.minimal_annotation_data(sequence_dct, feature_dct, id_list)
+            self.minimal_annotation_data(sequence_dct, feature_dct)
             upload_gal_table_data(self.db_config, self.path_config.upload_dir)
         else:
             _logger.error("File not found: {}".format(self.org_config.GenBank))
 
-    def minimal_annotation_data(self, sequence_dct, feature_dct, id_list):
+    def minimal_annotation_data(self, sequence_dct, feature_dct):
         taxonomy_1 = Taxonomy(self.org_config.organism, self.org_config.version)
         taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
         _logger.info("taxonomy_id: {}".format(taxonomy_id))
         # taxonomy_id = organism_function.get_taxonomy_id(db_config, org_config.organism)
         org_info = OrganismInfo(self.org_config.organism, taxonomy_id, self.org_config.version)
-        gal_id = DatabaseID(id_list)
+        gal_id = TableStatusID(self.db_dots)
         gal_fh = GALFileHandler(self.path_config.upload_dir)
         gal_id.increase_by_value(1)
         present_day = get_date()
@@ -123,17 +122,3 @@ class CentralDogmaAnnotator(AnnotationCategory):
                         process_repeat_data(gal_id, gal_fh, feature, feature_dct, scaffold_na_sequence_id)
 
 
-class DatabaseID:
-    def __init__(self, id_list):
-        self.NaSequenceId = id_list[0]
-        self.NaFeatureId = id_list[1]
-        self.na_location_Id = id_list[2]
-        self.GeneInstanceId = id_list[3]
-        self.ProteinId = id_list[4]
-
-    def increase_by_value(self, value):
-        self.NaSequenceId += value
-        self.NaFeatureId += value
-        self.na_location_Id += value
-        self.GeneInstanceId += value
-        self.ProteinId += value

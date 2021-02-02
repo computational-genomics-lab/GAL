@@ -26,8 +26,8 @@ class Taxonomy:
         super_kingdom = taxonomy_dct['superkingdom']
 
         query = '''INSERT INTO Organism(TAXON_ID, SPECIES, STRAIN, PHYLUM, FAMILY, GENUS, ORDERS, CLASS, SUPERKINGDOM,
-             VERSION) VALUES (%s, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')'''.format(taxonomy_id,
-             self.species, self.strain, phylum, family, genus, order, class_name, super_kingdom, self.org_version)
+             VERSION) VALUES ({}, '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')'''.format(taxonomy_id,
+        self.species, self.strain, phylum, family, genus, order, class_name, super_kingdom, self.org_version)
         db_dots.insert(query)
         _logger.info(" Organism Table update complete")
         return taxonomy_dct

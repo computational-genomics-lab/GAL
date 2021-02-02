@@ -362,10 +362,68 @@ def get_sequence_string(sequence):
     return sequence_string
 
 
+class UploadTableData(UploadDirectory):
+    def __init__(self, db_dots, upload_dir):
+        UploadDirectory.__init__(self, upload_dir)
+        self.db_dots = db_dots
 
+    def upload_central_dogma_data(self):
+        _logger.info("Uploading central dogma data: start")
+        # For NASequenceImp table
+        sql_1 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE NASequenceImp FIELDS TERMINATED BY '\t' OPTIONALLY
+            ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.NaSequenceImp)
+        _logger.debug(sql_1)
+        self.db_dots.insert(sql_1)
 
+        # For NAFeatureImp table
+        sql_2 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE NAFeatureImp FIELDS TERMINATED BY '\t' 
+            OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.NaFeatureImp)
+        _logger.debug(sql_2)
+        self.db_dots.insert(sql_2)
 
+        # For NALocation table
+        sql_3 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE NALocation FIELDS TERMINATED BY '\t' 
+            OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.NaLocation)
+        _logger.debug(sql_3)
+        self.db_dots.insert(sql_3)
 
+        # For GeneInstance table
+        sql_4 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GeneInstance FIELDS TERMINATED BY '\t' OPTIONALLY
+            ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.GeneInstance)
+        _logger.debug(sql_4)
+        self.db_dots.insert(sql_4)
+
+        # For Protein Table
+        sql_5 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Protein FIELDS TERMINATED BY '\t' OPTIONALLY
+             ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.Protein)
+        _logger.debug(sql_5)
+        self.db_dots.insert(sql_5)
+
+    def protein_feature_data(self, upload_dir_names):
+        pfam_upload_file = upload_dir_names.PFam
+        signalp_upload_file = upload_dir_names.SignalP
+        tmhmm_upload_file = upload_dir_names.TmHmm
+
+        # For HmmPfam table
+        sql_1 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE HmmPfam FIELDS TERMINATED BY '\t' OPTIONALLY
+           ENCLOSED BY '"' LINES TERMINATED BY '\n'
+           (`PFAM_ID`, `GENE_INSTANCE_ID`, `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)
+           """.format(pfam_upload_file)
+        self.db_dots.insert(sql_1)
+
+        # signalp table
+        sql_2 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE SignalP FIELDS TERMINATED BY '\t' OPTIONALLY
+               ENCLOSED BY '"' LINES TERMINATED BY '\n'""".format(signalp_upload_file)
+        self.db_dots.insert(sql_2)
+
+        # For Tmhmm table
+        sql_3 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
+               ENCLOSED BY '"' LINES TERMINATED BY '\n'
+               (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)""".format(tmhmm_upload_file)
+        self.db_dots.insert(sql_3)
+        _logger.info("Uploading central dogma data: complete")
+
+'''
 def upload_gal_table_data(db_config, upload_dir):
 
     db_name = DbNames(db_config.db_prefix)
@@ -428,3 +486,4 @@ def upload_protein_feature_table_data(db_config, upload_dir_names):
            ENCLOSED BY '"' LINES TERMINATED BY '\n'
            (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)""" % tmhmm_upload_file
     db_dots.insert(sql_3)
+'''

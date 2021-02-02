@@ -7,7 +7,7 @@ from .BioFile import genbank_parser
 from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
 from .taxomony import Taxonomy, OrganismInfo
 from .generalutility import get_date
-from .dbtableutility import TableStatusID, upload_gal_table_data
+from .dbtableutility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
 _logger = logging.getLogger("galpy.app")
 
@@ -31,6 +31,7 @@ class App(ConfigFileHandler):
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         print(app1.annotation_type)
         app1.process_genbank_annotation()
+        app1.update_organism_table(app1.db_dots, app1.db_sres)
 
 
 class AnnotationCategory:
@@ -65,15 +66,17 @@ class AnnotationCategory:
                 return None
 
 
-class CentralDogmaAnnotator(AnnotationCategory):
+class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
     def __init__(self, db_config, path_config, org_config):
         AnnotationCategory.__init__(self, org_config, path_config)
+        Taxonomy.__init__(org_config.organism, org_config.version)
         self.db_config = db_config
         self.org_config = org_config
         self.path_config = path_config
         db_name = DbNames(db_config.db_prefix)
-        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 0)
+        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 1)
         self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0)
+        self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data...')
@@ -90,7 +93,9 @@ class CentralDogmaAnnotator(AnnotationCategory):
 
             # (sequence_dct, feature_dct) = process_type1_data(org_config)
             self.minimal_annotation_data(sequence_dct, feature_dct)
-            upload_gal_table_data(self.db_config, self.path_config.upload_dir)
+            # upload_gal_table_data(self.db_config, self.path_config.upload_dir)
+            self.file_upload.upload_central_dogma_data()
+
         else:
             _logger.error("File not found: {}".format(self.org_config.GenBank))
 
@@ -98,14 +103,10 @@ class CentralDogmaAnnotator(AnnotationCategory):
         taxonomy_1 = Taxonomy(self.org_config.organism, self.org_config.version)
         taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
         _logger.info("taxonomy_id: {}".format(taxonomy_id))
-        # taxonomy_id = organism_function.get_taxonomy_id(db_config, org_config.organism)
 
         gal_table = TableProcessUtility(self.db_dots, self.path_config.upload_dir, self.org_config.organism,
                                         taxonomy_id, self.org_config.version)
-        #org_info = OrganismInfo(self.org_config.organism, taxonomy_id, self.org_config.version)
-        #gal_table = TableStatusID(self.db_dots, self.path_config.upload_dir)
         gal_table.increase_by_value(1)
-        # present_day = get_date()
 
         for scaffold, scaffold_dct in feature_dct.items():
             if scaffold in sequence_dct:

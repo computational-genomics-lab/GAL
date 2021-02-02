@@ -6,7 +6,6 @@ from .dbschema import database_schema
 from .BioFile import genbank_parser
 from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
 from .taxomony import Taxonomy, OrganismInfo
-from .generalutility import get_date
 from .dbtableutility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
 _logger = logging.getLogger("galpy.app")
@@ -14,6 +13,17 @@ _logger = logging.getLogger("galpy.app")
 
 class App(ConfigFileHandler):
     def __init__(self, db_config_file, path_config_file, org_config_file):
+        """ class constructor reads three configuration files
+        parameters
+        ---------
+        db_config_file: string
+            path for database configuration file
+        path_config_file: basestring
+            path for path related configuration file
+        org_config_file: basestring
+            path for organism configuration file
+
+        """
         ConfigFileHandler.__init__(self, db_config_file, path_config_file, org_config_file)
 
     @property
@@ -42,11 +52,20 @@ class AnnotationCategory:
     annotation_type_4 = annotation_type_list[3]
 
     def __init__(self, org_config, path_config):
+        """ class constructor for Annotation Category
+        parameters
+        ---------
+        org_config: basestring
+            path for organism configuration file
+        path_config: basestring
+            path for path related configuration file
+        """
         self.org_config = org_config
         self.path_config = path_config
 
     @property
     def annotation_type(self):
+        """ return the annotation type"""
 
         if self.org_config.GenBank != '':
             return self.annotation_type_1
@@ -69,7 +88,7 @@ class AnnotationCategory:
 class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
     def __init__(self, db_config, path_config, org_config):
         AnnotationCategory.__init__(self, org_config, path_config)
-        Taxonomy.__init__(org_config.organism, org_config.version)
+        Taxonomy.__init__(self, org_config.organism, org_config.version)
         self.db_config = db_config
         self.org_config = org_config
         self.path_config = path_config

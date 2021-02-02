@@ -14,6 +14,8 @@ class Taxonomy:
             self.strain = " ".join(org_arr[2:])
 
     def update_organism_table(self, db_dots, db_sres):
+        _logger.info("Updating the orgaism table. \nOrganism name: {}\nversion: {}".format(self.org_name,
+                                                                                           self.org_version))
         taxonomy_dct = self.taxonomy_hierarchy(db_sres)
         _logger.info(taxonomy_dct)
         taxonomy_dct = NoneDict(taxonomy_dct)
@@ -76,7 +78,7 @@ class Taxonomy:
                 "TAXON_NAME = '{}'".format(self.org_name)
         result = db_sres.query(query)
         for i, value in enumerate(result):
-            if value['RANK'] == "species" or value['RANK'] == "subspecies":
+            if value['RANK'] in ["species", "subspecies", "strain"]:
                 taxonomy_dct['TAXON_ID'] = value['NCBI_TAXON_ID']
                 taxonomy_id, parent_id, name, rank = self.extract_lower_taxonomy(db_sres, value['PARENT_ID'])
                 taxonomy_dct[rank] = name

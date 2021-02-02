@@ -7,9 +7,8 @@ from .BioFile import genbank_parser
 from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
 from .taxomony import Taxonomy, OrganismInfo
 from .generalutility import get_date
-from .dbtableutility import TableStatusID, na_sequence_imp_scaffold, upload_gal_table_data
-from .directoryutility import GALFileHandler
-from .process_tables import process_gff_gene_data, process_repeat_data
+from .dbtableutility import TableStatusID, upload_gal_table_data
+from .process_tables import TableProcessUtility
 _logger = logging.getLogger("galpy.app")
 
 
@@ -100,25 +99,26 @@ class CentralDogmaAnnotator(AnnotationCategory):
         taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
         _logger.info("taxonomy_id: {}".format(taxonomy_id))
         # taxonomy_id = organism_function.get_taxonomy_id(db_config, org_config.organism)
-        org_info = OrganismInfo(self.org_config.organism, taxonomy_id, self.org_config.version)
-        gal_id = TableStatusID(self.db_dots)
-        gal_fh = GALFileHandler(self.path_config.upload_dir)
-        gal_id.increase_by_value(1)
-        present_day = get_date()
+
+        gal_table = TableProcessUtility(self.db_dots, self.path_config.upload_dir, self.org_config.organism,
+                                        taxonomy_id, self.org_config.version)
+        #org_info = OrganismInfo(self.org_config.organism, taxonomy_id, self.org_config.version)
+        #gal_table = TableStatusID(self.db_dots, self.path_config.upload_dir)
+        gal_table.increase_by_value(1)
+        # present_day = get_date()
 
         for scaffold, scaffold_dct in feature_dct.items():
             if scaffold in sequence_dct:
                 sequence = sequence_dct[scaffold]
-                na_sequence_imp_scaffold(gal_fh, gal_id.NaSequenceId, scaffold, sequence, org_info, present_day)
-                scaffold_na_sequence_id = gal_id.NaSequenceId
-                gal_id.NaSequenceId += 1
+                gal_table.na_sequenceimp_scaffold( gal_table.NaSequenceId, scaffold, sequence)
+                scaffold_na_sequence_id = gal_table.NaSequenceId
+                gal_table.NaSequenceId += 1
                 for feature, feature_dct in scaffold_dct.items():
                     if feature == 'gene':
                         for gene_id, gene_dct in feature_dct.items():
-                            process_gff_gene_data(gal_id, gal_fh, org_info, scaffold, gene_id, gene_dct,
-                                                      scaffold_na_sequence_id)
-                            gal_id.NaSequenceId += 1
+                            gal_table.process_gff_gene_data(scaffold, gene_id, gene_dct, scaffold_na_sequence_id)
+                            gal_table.NaSequenceId += 1
                     elif feature == 'repeat_region':
-                        process_repeat_data(gal_id, gal_fh, feature, feature_dct, scaffold_na_sequence_id)
+                        gal_table.process_repeat_data(feature, feature_dct, scaffold_na_sequence_id)
 
 

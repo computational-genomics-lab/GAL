@@ -15,6 +15,7 @@ class Taxonomy:
 
     def update_organism_table(self, db_dots, db_sres):
         taxonomy_dct = self.taxonomy_hierarchy(db_sres)
+        _logger.info(taxonomy_dct)
         taxonomy_dct = NoneDict(taxonomy_dct)
         taxonomy_id = taxonomy_dct['TAXON_ID']
         genus = taxonomy_dct['genus']
@@ -49,10 +50,11 @@ class Taxonomy:
             _logger.info('Organism: {} version: {}'.format(self.org_name, self.org_version))
             taxonomy_id = self.get_taxonomy_id(db_sres)
             if taxonomy_id:
-                sql_query = "select * from Organism where TAXON_ID = %s and VERSION = %s" % (taxonomy_id, self.org_version)
+                sql_query = "select * from Organism where TAXON_ID = {} and VERSION = {}".format(taxonomy_id,
+                                                                                                  self.org_version)
                 row_count = db_dots.rowcount(sql_query)
                 if row_count == 1:
-                    _logger.info("Error: Organism Name and same version already exists \n")
+                    _logger.info("Error: Organism Name and same version already exists")
                     return True
                 else:
                     _logger.info("New Organism")

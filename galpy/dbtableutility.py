@@ -126,7 +126,7 @@ class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
         """
         subclass_view = "ExternalNASequence"
         sequence_type_id = 1
-        gi_number = "GI:" + scaffold
+        gi_number = "GI:{}".format(scaffold)
 
         sequence_string = get_sequence_string(sequence)
         string1 = '{}\t{}\t{}\t{}\t{}\t{}'.format(na_sequence_id, self.version, subclass_view, sequence_type_id,
@@ -144,7 +144,7 @@ class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
         subclass_view = "ExternalNASequence"
         sequence_type_id = 6
         sequence_string = get_sequence_string(gene_data.gene_sequence)
-        gi_number = "GI:" + scaffold
+        gi_number = "GI:{}".format(scaffold)
         description = "Unknown"
 
         string1 = '{}\t{}\t{}\t{}\t{}\t{}'.format(na_sequence_id, self.version, subclass_view, sequence_type_id,
@@ -352,8 +352,6 @@ def protein(gal_fh, protein_id, name, description, gene_instance_id, protein_seq
     gal_fh.Protein_fh.write(string1)
     return string1
 '''
-
-
 
 
 def get_sequence_string(sequence):

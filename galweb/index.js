@@ -11,6 +11,15 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 
+// animate css
+app.use('/css', express.static(path.join(__dirname, 'node_modules/animate.css')))
+// for node-waves 
+app.use('/css/waves.css', express.static(path.join(__dirname, 'node_modules/node-waves/dist/waves.css')))
+app.use('/js/waves.js', express.static(path.join(__dirname, 'node_modules/node-waves/dist/waves.js')))
+// <!-- Slimscroll Plugin Js -->
+app.use('/js/jquery.slimscroll.js', express.static(path.join(__dirname, 'node_modules/jquery-slimscroll/jquery.slimscroll.js')))
+
+
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 

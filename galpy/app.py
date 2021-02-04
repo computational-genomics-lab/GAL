@@ -28,20 +28,31 @@ class App(ConfigFileHandler):
 
     @property
     def check_db_status(self):
-        db_status = check_db_connection(self.db_config.host, self.db_config.db_username, self.db_config.db_password)
+        _logger.debug("Check db connection: start")
+        db_status = check_db_connection(self.db_config.host, self.db_config.db_username, self.db_config.db_password,
+                                        port=self.db_config.db_port)
+        _logger.debug("Check db connection: Complete")
         return db_status
 
     def upload_schema(self):
         if self.check_db_status:
+            _logger.debug("Uploading Schema: start")
             database_schema(self.db_config)
+            _logger.debug("Uploading Schema: Complete")
         else:
             _logger.info("Database schema already exists")
 
     def process_central_dogma_annotation(self):
+        _logger.debug("Process central dogma data: start")
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         print(app1.annotation_type)
-        app1.process_genbank_annotation()
-        app1.update_organism_table(app1.db_dots, app1.db_sres)
+        if app1.organism_existence(app1.db_sres, app1.db_dots) is False:
+            app1.process_genbank_annotation()
+            app1.update_organism_table(app1.db_dots, app1.db_sres)
+            _logger.debug("Process central dogma data: start")
+        else:
+            _logger.debug("Table Max ids")
+            TableStatusID(app1.db_dots, app1.path_config.upload_dir)
 
 
 class AnnotationCategory:
@@ -93,8 +104,10 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         self.org_config = org_config
         self.path_config = path_config
         db_name = DbNames(db_config.db_prefix)
-        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 1)
-        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0)
+        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 1,
+                                port=db_config.db_port)
+        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0,
+                                port=db_config.db_port)
         self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
 
     def process_genbank_annotation(self):

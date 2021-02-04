@@ -37,9 +37,10 @@ def main():
     logger = get_logger(args)
 
     logger.debug("Start logging...")
-    logger.debug("DB Config: {}".format(db_config_file))
-    logger.debug("Path Config: {}".format(path_config_file))
-    logger.debug("Organism Config: {}".format(org_config_file))
+    logger.debug("""Path for configuration files:
+    DB Config: {}
+    Path Config: {}
+    Organism Config: {}""".format(db_config_file, path_config_file, org_config_file))
 
     if args.NewUpload:
         app = App(db_config_file, path_config_file, org_config_file)

@@ -7,15 +7,17 @@ _logger = logging.getLogger("galpy.dbconnect")
 
 
 class DatabaseCreate:
-    def __init__(self, host, user, password):
+    def __init__(self, host, user, password, port=None):
         self.host = host
         self.user = user
         self.password = password
+        self.port = 3306 if port is None else port
         try:
-            self.connection = pymysql.connect(host=self.host, user=self.user, password=self.password)
+            self.connection = pymysql.connect(host=self.host, user=self.user, password=self.password, port=self.port)
             self.cursor = self.connection.cursor()
-        except pymysql.Error:
-            _logger.error("Error in database connection.......")
+        except pymysql.Error as e:
+            _logger.error("Error in database connection.......: {}".format(e))
+
             sys.exit(0)
 
     def create(self, db_name):
@@ -37,8 +39,8 @@ class DatabaseCreate:
             self.connection.rollback()
 
 
-def check_db_connection(host, db_username, db_password):
-    db = pymysql.connect(host=host, user=db_username, password=db_password)
+def check_db_connection(host, db_username, db_password, port=3306):
+    db = pymysql.connect(host=host, user=db_username, password=db_password, port=port)
     cursor = db.cursor()
     try:
         cursor.execute("SELECT VERSION()")
@@ -66,21 +68,21 @@ class DbNames:
 
 
 class Database:
-    def __init__(self, host, user, password, db, infile):
+    def __init__(self, host, user, password, db, infile, port=None):
         self.host = host
         self.user = user
         self.password = password
         self.db = db
         self.infile = infile
         self.db_param = None
-
+        self.port = 3306 if port is None else port
         if self.infile == 1:
             self.db_param = 1
         else:
             self.db_param = 0
         try:
             self.connection = pymysql.connect(host=self.host, user=self.user, passwd=self.password, database=self.db,
-                                              local_infile=self.db_param)
+                                              local_infile=self.db_param, port=self.port)
             self.cursor = self.connection.cursor()
         except pymysql.Error as e:
             _logger.error("MySQL::Error in database connection. %s" % str(e))

@@ -2,7 +2,17 @@ const express = require('express');
 const path = require('path');
 const logger = require('./middleware/logger');
 const exphbs = require('express-handlebars');
-const connect = require('./connection')
+
+
+// Database
+const db = require('./config/database');
+
+// Test DB
+
+db.authenticate()
+  .then(() => console.log('Database connected...'))
+  .catch(err => console.log('Error: ' + err));
+
 
 const app = express();
 
@@ -27,7 +37,14 @@ app.set('view engine', 'handlebars');
 // Homepage Route
 app.get('/', (req, res) =>
   res.render('index', {
-    taxon: '12345',
+    page: 'index',
+  })
+);
+
+// organism page Route
+app.get('/organism', (req, res) =>
+  res.render('index', {
+    page: 'organism',
   })
 );
 

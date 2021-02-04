@@ -56,13 +56,14 @@ def database_config_reader(filename):
     db_username = config_section_map("dbconnection")['db_username']
     db_password = config_section_map("dbconnection")['db_password']
     db_prefix = config_section_map("dbconnection")['database_prefix']
+    db_port = config_section_map("dbconnection")['port']
 
-    return host, db_username, db_password, db_prefix
+    return host, db_username, db_password, db_prefix, int(db_port)
 
 
 class DatabaseConf:
     def __init__(self, filename):
-        (self.host, self.db_username, self.db_password, self.db_prefix) = database_config_reader(filename)
+        (self.host, self.db_username, self.db_password, self.db_prefix, self.db_port) = database_config_reader(filename)
 
 
 def organism_config_reader(filename):

@@ -46,15 +46,17 @@ class UploadSchema(DefaultSchemaPath):
     def __init__(self, db_config):
         DefaultSchemaPath.__init__(self)
 
-        self.db = DatabaseCreate(db_config.host, db_config.db_username, db_config.db_password)
+        self.db = DatabaseCreate(db_config.host, db_config.db_username, db_config.db_password, port=db_config.db_port)
         self.db_name = DbNames(db_config.db_prefix)
 
         # self.core = self.db.create(self.db_name.core)
         self.dots = self.db.create(self.db_name.dots)
         self.shared_resource = self.db.create(self.db_name.sres)
 
-        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.dots, 0)
-        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.sres, 1)
+        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.dots, 0,
+                                port=db_config.db_port)
+        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.sres, 1,
+                                port=db_config.db_port)
 
     def check_schema_existence(self):
         sql_tax = "SELECT * FROM {}.GeneticCode;".format(self.db_name.sres)
@@ -65,13 +67,14 @@ class UploadSchema(DefaultSchemaPath):
             return True
 
     def upload_sres_schema(self):
+        _logger.debug("Uploading SRES schema")
         if self.sres_schema_path:
             upload_schema_based_on_line(self.sres_schema_path, self.db_sres)
         else:
             _logger.error("File not found: {}".format(self.sres_schema_path))
 
     def upload_dots_schema(self):
-
+        _logger.debug("Uploading DOTS schema")
         if self.dots_schema_path.exists():
             upload_schema_based_on_line(self.dots_schema_path, self.db_dots)
         else:

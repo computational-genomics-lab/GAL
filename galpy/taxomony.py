@@ -43,16 +43,16 @@ class Taxonomy:
                 _logger.error("Error :Organism Name has issue:")
             return taxonomy_id
 
-    def check_organism_existence(self, db_sres, db_dots):
+    def organism_existence(self, db_sres, db_dots):
         if not self.org_name:
-            _logger.info("Error: Organism Name does not exist \n")
+            _logger.info("Error: Organism Name does not exist")
             return True
         else:
             _logger.info('Organism: {} version: {}'.format(self.org_name, self.org_version))
             taxonomy_id = self.get_taxonomy_id(db_sres)
             if taxonomy_id:
                 sql_query = "select * from Organism where TAXON_ID = {} and VERSION = {}".format(taxonomy_id,
-                                                                                                  self.org_version)
+                                                                                                 self.org_version)
                 row_count = db_dots.rowcount(sql_query)
                 if row_count == 1:
                     _logger.info("Error: Organism Name and same version already exists")

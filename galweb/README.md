@@ -11,3 +11,7 @@ npm run dev
 
 ##  Web design
 Reference design: https://github.com/gurayyarar/AdminBSBMaterialDesign
+
+# view is maintained using
+
+https://github.com/ericf/express-handlebars

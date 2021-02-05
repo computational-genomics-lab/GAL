@@ -49,7 +49,7 @@ class App(ConfigFileHandler):
         if app1.organism_existence(app1.db_sres, app1.db_dots) is False:
             app1.process_genbank_annotation()
             app1.update_organism_table(app1.db_dots, app1.db_sres)
-            _logger.debug("Process central dogma data: start")
+            # _logger.debug("Process central dogma data: start")
         else:
             _logger.debug("Table Max ids")
             TableStatusID(app1.db_dots, app1.path_config.upload_dir)
@@ -111,7 +111,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
 
     def process_genbank_annotation(self):
-        _logger.info('Processing  GenBank type Data...')
+        _logger.info('Processing  GenBank type Data: start')
         file_path = Path(self.org_config.GenBank)
         if not file_path.exists():
             file_path = self.org_config.config_file_path.parent.joinpath(file_path)
@@ -125,7 +125,6 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
 
             # (sequence_dct, feature_dct) = process_type1_data(org_config)
             self.minimal_annotation_data(sequence_dct, feature_dct)
-            # upload_gal_table_data(self.db_config, self.path_config.upload_dir)
             self.file_upload.upload_central_dogma_data()
 
         else:
@@ -153,5 +152,3 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
                             gal_table.NaSequenceId += 1
                     elif feature == 'repeat_region':
                         gal_table.process_repeat_data(feature, feature_dct, scaffold_na_sequence_id)
-
-

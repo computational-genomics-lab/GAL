@@ -50,7 +50,7 @@ class UploadDirectory:
 class GALFileHandler(UploadDirectory):
     def __init__(self, upload_dir):
         UploadDirectory.__init__(self, upload_dir)
-
+        _logger.info('Reset the temporary files')
         self.NaSequenceImp_fh = open(self.NaSequenceImp, "w")
         self.NaFeatureImp_fh = open(self.NaFeatureImp, 'w')
         self.NALocation_fh = open(self.NaLocation, 'w')

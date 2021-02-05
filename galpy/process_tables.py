@@ -1,7 +1,4 @@
 import logging
-from .generalutility import get_date
-# from .dbtableutility import na_sequence_imp_gene, na_feature_imp, na_location, gene_instance, na_feature_imp_rna
-#from .dbtableutility import protein
 from .dbtableutility import TableUtility
 _logger = logging.getLogger("galpy.process_tables")
 

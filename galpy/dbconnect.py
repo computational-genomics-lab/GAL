@@ -22,10 +22,13 @@ class DatabaseCreate:
 
     def create(self, db_name):
         try:
-            query = 'CREATE DATABASE  ' + db_name
+            query = "CREATE DATABASE {}".format(db_name)
+            _logger.debug(query)
             self.cursor.execute(query)
             self.connection.commit()
-        except pymysql.Error:
+            _logger.debug("{} create database: successful".format(db_name))
+        except pymysql.Error as e:
+            _logger.error("DB creation error: {}".format(e))
             self.connection.rollback()
             return 1
 
@@ -37,6 +40,9 @@ class DatabaseCreate:
 
         except pymysql.Error:
             self.connection.rollback()
+
+    def __del__(self):
+        self.connection.close()
 
 
 def check_db_connection(host, db_username, db_password, port=3306):
@@ -93,7 +99,8 @@ class Database:
             self.cursor.execute(query)
             self.connection.commit()
         except pymysql.Error as e:
-            _logger.error("Error Test {}".format(e))
+            _logger.error("Error {}".format(e))
+            # _logger.debug("Query: {}".format(query))
             self.connection.rollback()
 
     def query(self, query):

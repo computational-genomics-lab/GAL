@@ -68,15 +68,18 @@ class UploadSchema(DefaultSchemaPath):
 
     def upload_sres_schema(self):
         _logger.debug("Uploading SRES schema")
-        if self.sres_schema_path:
-            upload_schema_based_on_line(self.sres_schema_path, self.db_sres)
+
+        if self.sres_schema_path.exists():
+            _logger.debug("Schema path: {}".format(self.sres_schema_path))
+            self.upload_schema_lines(self.sres_schema_path, self.db_sres)
         else:
             _logger.error("File not found: {}".format(self.sres_schema_path))
 
     def upload_dots_schema(self):
         _logger.debug("Uploading DOTS schema")
         if self.dots_schema_path.exists():
-            upload_schema_based_on_line(self.dots_schema_path, self.db_dots)
+            _logger.debug("Schema path: {}".format(self.dots_schema_path))
+            self.upload_schema_lines(self.dots_schema_path, self.db_dots)
         else:
             _logger.error("File not found: {}".format(self.dots_schema_path))
 
@@ -102,17 +105,19 @@ class UploadSchema(DefaultSchemaPath):
         shared_data.upload_go_term()
         shared_data.upload_gram_strain()
 
+    @staticmethod
+    def upload_schema_lines(filename, db):
+        _logger.debug('Processing schema line by line')
+        try:
+            with open(filename, 'r') as FH:
+                query = " ".join(FH.readlines())
+                query_array = query.split(';')
+                for line, each_query in enumerate(query_array[:-1]):
+                    if each_query:
+                        db.insert(each_query)
 
-def upload_schema_based_on_line(filename, db):
-    try:
-        with open(filename, 'r') as FH:
-            query = " ".join(FH.readlines())
-            query_array = query.split(';')
-            for line, each_query in enumerate(query_array[:-1]):
-                if each_query:
-                    db.insert(each_query)
+        except (OSError, ValueError, TypeError) as e:
+            _logger.error("Schema upload has issue: {}".format(filename))
+            _logger.error("Error: {}".format(e))
 
-    except (OSError, ValueError, TypeError) as e:
-        _logger.error("Schema upload has issue: {}".format(filename))
-        _logger.error("Error: {}".format(e))
 

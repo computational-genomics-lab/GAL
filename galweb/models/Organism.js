@@ -2,6 +2,12 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Organism = db.define('Organism', {
+    ID:{
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    }, 
     TAXON_ID: {
       type: Sequelize.INTEGER
     },
@@ -36,8 +42,12 @@ const Organism = db.define('Organism', {
         type: Sequelize.FLOAT
       },
     COMMENT: {
-    type: Sequelize.STRING
+        type: Sequelize.FLOAT
+      }
+    },
+    {
+        tableName: 'Organism'
     }
-  });
+    );
 
-  module.exports = Organism;
+module.exports = Organism;

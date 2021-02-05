@@ -1,1 +1,16 @@
-<h1> {{page}}</h1>
+<!-- <h1> {{page}}</h1> -->
+
+
+<section id="taxon">
+    <h2>All Organism</h2>
+    <ul>
+        {{#each org}}
+            <li>{{ dataValues.SPECIES }}
+                {{ dataValues.STRAIN }}</li>
+        {{ else }}
+            <p>
+                No Organism present in the database</p>
+        {{/each}}
+    </ul>
+
+</section>

@@ -1,0 +1,10 @@
+<section id="taxon_fetch">
+    <h2> Fetch Organism</h2>
+    <ul>
+    {{#each org}}
+        <li>{{dataValues.SPECIES}} {{dataValues.STRAIN}}</li>    
+    {{else}}
+        <p> No Organism present in the database</p>
+    {{/each}}
+    </ul>
+</section>

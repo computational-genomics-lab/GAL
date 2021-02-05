@@ -2,13 +2,13 @@ const express = require('express');
 const path = require('path');
 const logger = require('./middleware/logger');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 
 // Database
 const db = require('./config/database');
 
 // Test DB
-
 db.authenticate()
   .then(() => console.log('Database connected...'))
   .catch(err => console.log('Error: ' + err));
@@ -19,13 +19,9 @@ const app = express();
 // Init middleware
 app.use(logger);
 
-/*
 
-app.get('/', (req, res) => {
-    res.send('<h1> GAL Visualization</h1>');
-});
+// app.get('/', (req, res) => { res.send('index') });
 
-*/
 // Body Parser Middleware
 //app.use(express.json());
 //app.use(express.urlencoded({ extended: false }));
@@ -34,19 +30,24 @@ app.get('/', (req, res) => {
 app.engine('handlebars', exphbs({defaultlayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+// Body Parser
+app.use(express.urlencoded({ extended: false }));
+
+/*
 // Homepage Route
 app.get('/', (req, res) =>
   res.render('index', {
     page: 'index',
   })
 );
+*/
 
-// organism page Route
-app.get('/organism', (req, res) =>
-  res.render('index', {
-    page: 'organism',
-  })
-);
+// Organism page Route
+app.use('/', require('./routes/organism'));
+
+// Organism information page Route
+app.use('/orginfo', require('./routes/organisminfo'));
+
 
 // use static path to set the path for the npm modules
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))

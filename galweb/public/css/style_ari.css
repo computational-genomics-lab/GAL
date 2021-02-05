@@ -1,0 +1,178 @@
+
+
+section.content {
+    margin: 100px 15px 0 315px;
+    transition: all 0.5s ease 0s;
+}
+
+.sidebar .legal {
+    border-top: 1px solid #eee;
+    bottom: 0;
+    overflow: hidden;
+    padding: 15px;
+    position: absolute;
+    width: 100%;
+}
+.sidebar .legal .copyright {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sidebar .legal .copyright a {
+    font-weight: bold;
+    text-decoration: none;
+}
+.sidebar .legal .version {
+    font-size: 13px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sidebar .user-info {
+    background: rgba(0, 0, 0, 0) url("../images/user-img-background.jpg") no-repeatno-repeat scroll 0 0;
+    border-bottom: 1px solid #e9e9e9;
+    height: 135px;
+    padding: 13px 15px 12px;
+    position: relative;
+    white-space: nowrap;
+}
+.sidebar .user-info .image {
+    display: inline-block;
+    margin-right: 12px;
+}
+.sidebar .user-info .image img {
+    border-radius: 50%;
+    vertical-align: bottom !important;
+}
+.sidebar .user-info .info-container {
+    cursor: default;
+    display: block;
+    position: relative;
+    top: 25px;
+}
+.sidebar .user-info .info-container .name {
+    color: #fff;
+    font-size: 14px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sidebar .user-info .info-container .email {
+    color: #fff;
+    font-size: 12px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sidebar .user-info .info-container .user-helper-dropdown {
+    bottom: -12px;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: -3px;
+}
+.sidebar .menu {
+    height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+.sidebar .menu .list {
+    list-style: outside none none;
+    padding-left: 0;
+}
+.sidebar .menu .list li.active > *:first-child span {
+    font-weight: bold;
+}
+.sidebar .menu .list .header {
+    background: #eee none repeat scroll 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 16px;
+}
+.sidebar .menu .list i.material-icons {
+    margin-top: 4px;
+}
+.sidebar .menu .list .menu-toggle::after, .sidebar .menu .list .menu-toggle::before {
+    font-size: 19px;
+    position: absolute;
+    right: 17px;
+    top: calc(50% - 14px);
+    transform: scale(0);
+    transition: all 0.3s ease 0s;
+}
+.sidebar .menu .list .menu-toggle::before {
+    content: "+";
+    transform: scale(1);
+}
+.sidebar .menu .list .menu-toggle::after {
+    content: "–";
+    transform: scale(0);
+}
+.sidebar .menu .list .menu-toggle.toggled::before {
+    transform: scale(0);
+}
+.sidebar .menu .list .menu-toggle.toggled::after {
+    transform: scale(1);
+}
+.sidebar .menu .list a {
+    color: #747474;
+    display: inline-flex;
+    padding: 10px 13px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+}
+.sidebar .menu .list a:hover, .sidebar .menu .list a:active, .sidebar .menu .list a:focus {
+    text-decoration: none !important;
+}
+.sidebar .menu .list a small {
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 7.5px);
+}
+.sidebar .menu .list a span {
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 7px 0 7px 12px;
+    overflow: hidden;
+}
+.sidebar .menu .list .ml-menu {
+    display: none;
+    list-style: outside none none;
+    padding-left: 0;
+}
+.sidebar .menu .list .ml-menu span {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 3px 0 1px 6px;
+}
+.sidebar .menu .list .ml-menu li a {
+    padding-bottom: 7px;
+    padding-left: 55px;
+    padding-top: 7px;
+}
+.sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle) {
+    font-weight: 600;
+    margin-left: 5px;
+}
+.sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle)::before {
+    content: "?";
+    font-family: "Material Icons";
+    font-size: 21px;
+    height: 20px;
+    position: relative;
+    right: 0;
+    top: -5px;
+}
+.sidebar .menu .list .ml-menu li .ml-menu li a {
+    padding-left: 80px;
+}
+.sidebar .menu .list .ml-menu li .ml-menu .ml-menu li a {
+    padding-left: 95px;
+}

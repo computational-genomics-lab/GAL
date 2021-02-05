@@ -1,0 +1,1113 @@
+g555.t1	sp|Q8KHE4|REBG_NOCAE 4'-demethylrebeccamycin synthase OS=Lechevalieria  aerocolonigenes GN=rebG PE=1 SV=1
+g805.t1	sp|P18311|IF2_ENTFC Translation initiation factor IF-2 OS=Enterococcus  faecium GN=infB PE=3 SV=1
+g266.t1	sp|P54458|YQEM_BACSU Putative methyltransferase YqeM OS=Bacillus  subtilis (strain 168) GN=yqeM PE=3 SV=1
+g838.t1	sp|P43130|NPRA_GEOSE Transcriptional activator NprA OS=Geobacillus  stearothermophilus GN=nprA PE=2 SV=1
+g533.t1	sp|P16055|TA15_TREPA 15 kDa lipoprotein OS=Treponema pallidum  (strain Nichols) GN=tpp15 PE=4 SV=1
+g196.t1	sp|P77721|YDJF_ECOLI Uncharacterized HTH-type transcriptional  regulator YdjF OS=Escherichia coli (strain K12) GN=ydjF PE=3  SV=1
+g195.t1	sp|O67610|FABG_AQUAE 3-oxoacyl-[acyl-carrier-protein] reductase  FabG OS=Aquifex aeolicus (strain VF5) GN=fabG PE=1 SV=1
+g660.t1	sp|O59858|GPX1_SCHPO Glutathione peroxidase OS=Schizosaccharomyces  pombe (strain 972 / ATCC 24843) GN=gpx1 PE=2 SV=1
+g173.t1	sp|Q8P2M5|Y273_STRP8 Probable ABC transporter ATP-binding protein  spyM18_0273 OS=Streptococcus pyogenes serotype M18 (strain  MGAS8232) GN=spyM18_0273 PE=3 SV=1
+g1063.t1	sp|Q8NYD0|PSUG_STAAW Pseudouridine-5'-phosphate glycosidase OS=Staphylococcus  aureus (strain MW2) GN=psuG PE=3 SV=1
+g925.t1	sp|P00221|FER1_SPIOL Ferredoxin-1, chloroplastic OS=Spinacia  oleracea GN=PETF PE=1 SV=2
+g88.t1	sp|A0A0H2ZLQ1|MLTG_STRP2 Endolytic murein transglycosylase OS=Streptococcus  pneumoniae serotype 2 (strain D39 / NCTC 7466)  GN=mltG PE=1 SV=1
+g123.t1	sp|W7N6P0|FUS2_GIBM7 20-hydroxy-prefusarin hydrolase FUS2 OS=Gibberella  moniliformis (strain M3125 / FGSC 7600) GN=FUS2 PE=3  SV=1
+g937.t1	sp|D2S6C9|MSHC_GEOOG L-cysteine:1D-myo-inositol 2-amino-2-deoxy-alpha-D-glucopyranoside  ligase OS=Geodermatophilus obscurus  (strain ATCC 25078 / DSM 43160 / JCM 3152 / G-20) GN=mshC  PE=3 SV=1
+g185.t1	Hypothetical Protein
+g1086.t1	sp|P37469|DNAC_BACSU Replicative DNA helicase OS=Bacillus subtilis  (strain 168) GN=dnaC PE=1 SV=2
+g761.t1	sp|Q6GIB3|OTRF1_STAAR Putative O-acetyltransferase SAR0937 OS=Staphylococcus  aureus (strain MRSA252) GN=SAR0937 PE=3 SV=1
+g824.t1	sp|P07752|ALF_TRYBB Fructose-bisphosphate aldolase, glycosomal  OS=Trypanosoma brucei brucei GN=ALD PE=1 SV=2
+g224.t1	sp|Q9FD71|HMGCS_ENTFL Hydroxymethylglutaryl-CoA synthase OS=Enterococcus  faecalis GN=mvaS PE=1 SV=1
+g916.t1	sp|Q928P3|FENR2_LISIN Ferredoxin--NADP reductase 2 OS=Listeria  innocua serovar 6a (strain ATCC BAA-680 / CLIP 11262) GN=lin2489  PE=3 SV=1
+g998.t1	sp|O05507|PTEC_BACSU PTS system oligo-beta-mannoside-specific  EIIC component OS=Bacillus subtilis (strain 168) GN=gmuC PE=1  SV=1
+g913.t1	sp|P80870|GS13_BACSU General stress protein 13 OS=Bacillus subtilis  (strain 168) GN=yugI PE=1 SV=3
+g500.t1	sp|Q58628|PYCB_METJA Pyruvate carboxylase subunit B OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661 / JAL-1  / JCM 10045 / NBRC 100440) GN=pycB PE=1 SV=1
+g211.t1	sp|Q1WSY8|SSRP_LACS1 SsrA-binding protein OS=Lactobacillus salivarius  (strain UCC118) GN=smpB PE=3 SV=1
+g1089.t1	sp|P39796|TRER_BACSU HTH-type transcriptional regulator TreR  OS=Bacillus subtilis (strain 168) GN=treR PE=1 SV=2
+g685.t1	sp|O07513|HIT_BACSU Protein hit OS=Bacillus subtilis (strain  168) GN=hit PE=1 SV=1
+g772.t1	sp|Q70XJ9|LEVS_LACSN Levansucrase OS=Lactobacillus sanfranciscensis  GN=levS PE=1 SV=1
+g244.t1	sp|Q831F6|RF1_ENTFA Peptide chain release factor 1 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=prfA PE=3 SV=1
+g234.t1	sp|Q88SK7|UPPP_LACPL Undecaprenyl-diphosphatase OS=Lactobacillus  plantarum (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=uppP  PE=3 SV=1
+g860.t1	sp|Q834K4|HSLU_ENTFA ATP-dependent protease ATPase subunit HslU  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=hslU  PE=3 SV=1
+g620.t1	sp|Q9KD72|DNAK_BACHD Chaperone protein DnaK OS=Bacillus halodurans  (strain ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM 9153  / C-125) GN=dnaK PE=3 SV=3
+g830.t1	sp|Q6QGD8|CAPSD_BPT5 Major capsid protein OS=Escherichia phage  T5 GN=D20 PE=1 SV=1
+g564.t1	sp|O05525|YDIL_BACSU Putative membrane peptidase YdiL OS=Bacillus  subtilis (strain 168) GN=ydiL PE=3 SV=1
+g654.t1	sp|Q48TA2|GLS24_STRPM Stress response regulator gls24 homolog  OS=Streptococcus pyogenes serotype M28 (strain MGAS6180) GN=M28_Spy0945  PE=3 SV=1
+g790.t1	sp|Q831Y7|CLPB_ENTFA Chaperone protein ClpB OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=clpB PE=3 SV=1
+g861.t1	sp|Q1WTI9|HSLV_LACS1 ATP-dependent protease subunit HslV OS=Lactobacillus  salivarius (strain UCC118) GN=hslV PE=3 SV=1
+g92.t1	sp|Q5XD45|Y533_STRP6 Putative phosphatase M6_Spy0533 OS=Streptococcus  pyogenes serotype M6 (strain ATCC BAA-946 / MGAS10394)  GN=M6_Spy0533 PE=1 SV=1
+g532.t1	sp|P31114|HEPS2_BACSU Heptaprenyl diphosphate synthase component  2 OS=Bacillus subtilis (strain 168) GN=hepT PE=1 SV=1
+g89.t1	Hypothetical Protein
+g807.t1	sp|Q3K1U6|CAPP_STRA1 Phosphoenolpyruvate carboxylase OS=Streptococcus  agalactiae serotype Ia (strain ATCC 27591 / A909 /  CDC SS700) GN=ppc PE=3 SV=1
+g707.t1	sp|P37467|XPAC_BACSU Protein XpaC OS=Bacillus subtilis (strain  168) GN=xpaC PE=4 SV=1
+g873.t1	sp|P56153|IPYR_HELPY Inorganic pyrophosphatase OS=Helicobacter  pylori (strain ATCC 700392 / 26695) GN=ppa PE=1 SV=1
+g221.t1	sp|P83223|FRDA_SHEON Fumarate reductase flavoprotein subunit  OS=Shewanella oneidensis (strain MR-1) GN=SO_0970 PE=1 SV=2
+g302.t1	sp|P74089|CYSE_SYNY3 Serine acetyltransferase OS=Synechocystis  sp. (strain PCC 6803 / Kazusa) GN=cysE PE=3 SV=1
+g223.t1	sp|P0A3Q0|MALQ_STRPN 4-alpha-glucanotransferase OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4) GN=malQ  PE=3 SV=1
+g499.t1	sp|Q99R97|PTU3C_STAAM PTS system glucoside-specific EIICBA component  OS=Staphylococcus aureus (strain Mu50 / ATCC 700699)  GN=glcB PE=3 SV=1
+g577.t1	sp|Q91QZ3|RDRP_CLBVS RNA replication polyprotein OS=Citrus leaf  blotch virus (isolate Nagami kumquat/France/SRA-153/1984)  GN=ORF1 PE=3 SV=1
+g60.t1	sp|Q02VA9|OPPA_LACLS Oligopeptide-binding protein OppA OS=Lactococcus  lactis subsp. cremoris (strain SK11) GN=oppA PE=3 SV=1
+g394.t1	sp|P34001|Y988_STRMU Uncharacterized protein SMU_988 OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=SMU_988  PE=3 SV=2
+g550.t1	sp|Q5SII2|RSMF_THET8 Ribosomal RNA small subunit methyltransferase  F OS=Thermus thermophilus (strain HB8 / ATCC 27634 / DSM  579) GN=rsmF PE=1 SV=1
+g59.t1	sp|Q9CEK0|OPPA_LACLA Oligopeptide-binding protein OppA OS=Lactococcus  lactis subsp. lactis (strain IL1403) GN=oppA PE=3 SV=1
+g259.t1	sp|Q1GSD9|SYA_SPHAL Alanine--tRNA ligase OS=Sphingopyxis alaskensis  (strain DSM 13593 / LMG 18877 / RB2256) GN=alaS PE=3  SV=1
+g820.t1	sp|P75093|Y020_MYCPN Uncharacterized ATP-dependent helicase MPN_020  OS=Mycoplasma pneumoniae (strain ATCC 29342 / M129) GN=MPN_020  PE=3 SV=1
+g969.t1	sp|Q838Z5|EFP_ENTFA Elongation factor P OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=efp PE=3 SV=1
+g130.t1	sp|Q6G9A8|SYN_STAAS Asparagine--tRNA ligase OS=Staphylococcus  aureus (strain MSSA476) GN=asnS PE=3 SV=1
+g817.t1	sp|O85264|RSTR_VIBCL Cryptic phage CTXphi transcriptional repressor  RstR OS=Vibrio cholerae GN=rstR PE=3 SV=1
+g503.t1	sp|P44462|CITC_HAEIN [Citrate [pro-3S]-lyase] ligase OS=Haemophilus  influenzae (strain ATCC 51907 / DSM 11121 / KW20 / Rd)  GN=citC PE=3 SV=1
+g1053.t1	sp|O07604|YHFF_BACSU Uncharacterized protein YhfF OS=Bacillus  subtilis (strain 168) GN=yhfF PE=4 SV=1
+g191.t1	sp|P94587|YWPE_BACSU Putative cysteine protease YwpE OS=Bacillus  subtilis (strain 168) GN=ywpE PE=3 SV=1
+g525.t1	sp|Q791N7|RPA12_MOUSE DNA-directed RNA polymerase I subunit RPA12  OS=Mus musculus GN=Znrd1 PE=1 SV=1
+g810.t1	sp|P54304|YQER_BACSU Oxygen-independent coproporphyrinogen-III  oxidase-like protein YqeR OS=Bacillus subtilis (strain 168)  GN=hemN PE=2 SV=3
+g490.t1	sp|P0ABB9|ATMA_ECO57 Magnesium-transporting ATPase, P-type 1  OS=Escherichia coli O157:H7 GN=mgtA PE=3 SV=1
+g915.t1	sp|O32107|YUID_BACSU Uncharacterized membrane protein YuiD OS=Bacillus  subtilis (strain 168) GN=yuiD PE=4 SV=1
+g1000.t1	Hypothetical Protein
+g1108.t1	sp|P37518|YCHF_BACSU Ribosome-binding ATPase YchF OS=Bacillus  subtilis (strain 168) GN=ychF PE=2 SV=1
+g763.t1	sp|P54554|YQJQ_BACSU Uncharacterized oxidoreductase YqjQ OS=Bacillus  subtilis (strain 168) GN=yqjQ PE=3 SV=1
+g575.t1	sp|O07550|YHEI_BACSU Probable multidrug resistance ABC transporter  ATP-binding/permease protein YheI OS=Bacillus subtilis  (strain 168) GN=yheI PE=1 SV=1
+g395.t1	sp|A0A0I9QGZ2|TKT_GEOSE Transketolase OS=Geobacillus stearothermophilus  GN=tkt PE=1 SV=1
+g369.t1	sp|Q47827|DDL_ENTHA D-alanine--D-alanine ligase OS=Enterococcus  hirae (strain ATCC 9790 / DSM 20160 / JCM 8729 / LMG 6399  / NBRC 3181 / NCIMB 6459 / NCDO 1258) GN=ddl PE=3 SV=2
+g237.t1	sp|O58035|SYA_PYRHO Alanine--tRNA ligase OS=Pyrococcus horikoshii  (strain ATCC 700860 / DSM 12428 / JCM 9974 / NBRC 100139  / OT-3) GN=alaS PE=1 SV=1
+g1077.t1	sp|P36264|NUSG_STACT Transcription termination/antitermination  protein NusG OS=Staphylococcus carnosus (strain TM300) GN=nusG  PE=3 SV=1
+g270.t1	sp|A7GR71|MIAA_BACCN tRNA dimethylallyltransferase OS=Bacillus  cytotoxicus (strain DSM 22905 / CIP 110041 / 391-98 / NVH  391-98) GN=miaA PE=3 SV=1
+g581.t1	sp|P47208|TCPD_CAEEL T-complex protein 1 subunit delta OS=Caenorhabditis  elegans GN=cct-4 PE=2 SV=1
+g900.t1	sp|Q5HM38|LACD_STAEQ Tagatose 1,6-diphosphate aldolase OS=Staphylococcus  epidermidis (strain ATCC 35984 / RP62A) GN=lacD  PE=3 SV=1
+g850.t1	sp|Q9ZDG2|Y367_RICPR Uncharacterized protein RP367 OS=Rickettsia  prowazekii (strain Madrid E) GN=RP367 PE=4 SV=1
+g752.t1	sp|Q837W3|TIG_ENTFA Trigger factor OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=tig PE=3 SV=1
+g719.t1	sp|Q831A5|ATPB_ENTFA ATP synthase subunit beta OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=atpD PE=3 SV=1
+g79.t1	sp|O31766|YMFH_BACSU Uncharacterized zinc protease YmfH OS=Bacillus  subtilis (strain 168) GN=ymfH PE=3 SV=2
+g137.t1	sp|Q836J0|MURI_ENTFA Glutamate racemase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=murI PE=1 SV=1
+g424.t1	Hypothetical Protein
+g858.t1	sp|O34748|RECQ_BACSU Probable ATP-dependent DNA helicase RecQ  OS=Bacillus subtilis (strain 168) GN=recQ PE=3 SV=1
+g964.t1	sp|Q50KB1|SEP2_EMIHU Protein disulfide-isomerase-like protein  EhSep2 OS=Emiliania huxleyi GN=SEP2 PE=1 SV=2
+g119.t1	sp|Q836J8|ADDA_ENTFA ATP-dependent helicase/nuclease subunit  A OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=addA  PE=3 SV=1
+g670.t1	sp|A7GLX6|YHAM_BACCN 3'-5' exoribonuclease YhaM OS=Bacillus cytotoxicus  (strain DSM 22905 / CIP 110041 / 391-98 / NVH 391-98)  GN=yhaM PE=3 SV=1
+g604.t1	sp|P71036|YWNA_BACSU Putative HTH-type transcriptional regulator  YwnA OS=Bacillus subtilis (strain 168) GN=ywnA PE=1 SV=1
+g977.t1	sp|P77788|NUDG_ECOLI CTP pyrophosphohydrolase OS=Escherichia  coli (strain K12) GN=nudG PE=1 SV=1
+g748.t1	sp|Q02499|KPYK_GEOSE Pyruvate kinase OS=Geobacillus stearothermophilus  GN=pyk PE=1 SV=2
+g626.t1	sp|Q06862|ACCC_NOSS1 Biotin carboxylase OS=Nostoc sp. (strain  PCC 7120 / SAG 25.82 / UTEX 2576) GN=accC PE=3 SV=1
+g672.t1	sp|Q8DIL8|RIMO_THEEB Ribosomal protein S12 methylthiotransferase  RimO OS=Thermosynechococcus elongatus (strain BP-1) GN=rimO  PE=3 SV=1
+g449.t1	sp|P24141|OPPA_BACSU Oligopeptide-binding protein OppA OS=Bacillus  subtilis (strain 168) GN=oppA PE=1 SV=1
+g409.t1	sp|P0AF43|YJBB_ECOLI Uncharacterized protein YjbB OS=Escherichia  coli (strain K12) GN=yjbB PE=4 SV=1
+g1018.t1	sp|Q04944|ADHA_CLOAB NADH-dependent butanol dehydrogenase A OS=Clostridium  acetobutylicum (strain ATCC 824 / DSM 792 / JCM  1419 / LMG 5710 / VKM B-1787) GN=bdhA PE=1 SV=2
+g887.t1	sp|Q57772|Y326_METJA Putative permease MJ0326 OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661 / JAL-1 / JCM  10045 / NBRC 100440) GN=MJ0326 PE=3 SV=1
+g658.t1	sp|Q838Z5|EFP_ENTFA Elongation factor P OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=efp PE=3 SV=1
+g192.t1	sp|P0CG99|RIR1A_MYCS2 Ribonucleoside-diphosphate reductase subunit  alpha 1 OS=Mycobacterium smegmatis (strain ATCC 700084  / mc(2)155) GN=nrdE1 PE=1 SV=1
+g1069.t1	sp|O05402|YRHL_BACSU Putative peptidoglycan O-acetyltransferase  YrhL OS=Bacillus subtilis (strain 168) GN=yrhL PE=3 SV=1
+g479.t1	sp|Q38YB0|LGT_LACSS Prolipoprotein diacylglyceryl transferase  OS=Lactobacillus sakei subsp. sakei (strain 23K) GN=lgt PE=3  SV=1
+g152.t1	sp|O34921|YTOI_BACSU Uncharacterized protein YtoI OS=Bacillus  subtilis (strain 168) GN=ytoI PE=3 SV=1
+g163.t1	sp|Q1GAT4|DIVIB_LACDA Cell division protein DivIB OS=Lactobacillus  delbrueckii subsp. bulgaricus (strain ATCC 11842 / DSM  20081 / JCM 1002 / NBRC 13953 / NCIMB 11778) GN=divIB PE=3  SV=1
+g647.t1	sp|P32399|YHGE_BACSU Uncharacterized protein YhgE OS=Bacillus  subtilis (strain 168) GN=yhgE PE=4 SV=2
+g387.t1	sp|Q5MQD0|SPIKE_CVHN1 Spike glycoprotein OS=Human coronavirus  HKU1 (isolate N1) GN=S PE=3 SV=1
+g194.t1	sp|P32816|GLDA_GEOSE Glycerol dehydrogenase OS=Geobacillus stearothermophilus  GN=gldA PE=1 SV=1
+g145.t1	sp|P54488|YQGFA_BACSU Uncharacterized protein YqgF OS=Bacillus  subtilis (strain 168) GN=yqgF PE=3 SV=1
+g968.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g349.t1	sp|Q04664|CPSE_STRA3 Galactosyl transferase CpsE OS=Streptococcus  agalactiae serotype III (strain NEM316) GN=cpsE PE=3 SV=3
+g375.t1	sp|P83857|KNG_ANAMI Kininogen (Fragments) OS=Anarhichas minor  PE=1 SV=1
+g381.t1	sp|P42332|BCRA_BACLI Bacitracin transport ATP-binding protein  BcrA OS=Bacillus licheniformis GN=bcrA PE=3 SV=1
+g526.t1	sp|Q07744|PEPO_LACLA Neutral endopeptidase OS=Lactococcus lactis  subsp. lactis (strain IL1403) GN=pepO PE=1 SV=3
+g99.t1	sp|P39604|RODA_BACSU Rod shape-determining protein RodA OS=Bacillus  subtilis (strain 168) GN=rodA PE=1 SV=1
+g458.t1	sp|Q1WS97|RL16_LACS1 50S ribosomal protein L16 OS=Lactobacillus  salivarius (strain UCC118) GN=rplP PE=3 SV=1
+g193.t1	sp|Q9CBQ2|RIR2_MYCLE Ribonucleoside-diphosphate reductase subunit  beta OS=Mycobacterium leprae (strain TN) GN=nrdF PE=3 SV=1
+g515.t1	sp|P9WK87|NLHH_MYCTU Carboxylesterase NlhH OS=Mycobacterium tuberculosis  (strain ATCC 25618 / H37Rv) GN=nlhH PE=1 SV=1
+g248.t1	sp|P43467|AGAL1_PEDPE Alpha-galactosidase 1 OS=Pediococcus pentosaceus  GN=agaR PE=3 SV=1
+g269.t1	sp|P94478|HFLX_BACSU GTPase HflX OS=Bacillus subtilis (strain  168) GN=hflX PE=3 SV=2
+g701.t1	sp|Q833H0|ACKA_ENTFA Acetate kinase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=ackA PE=3 SV=1
+g623.t1	sp|Q5HPW0|FABG_STAEQ 3-oxoacyl-[acyl-carrier-protein] reductase  FabG OS=Staphylococcus epidermidis (strain ATCC 35984 / RP62A)  GN=fabG PE=3 SV=1
+g383.t1	sp|Q836E5|MURA1_ENTFA UDP-N-acetylglucosamine 1-carboxyvinyltransferase  1 OS=Enterococcus faecalis (strain ATCC 700802 /  V583) GN=murA1 PE=3 SV=1
+g885.t1	sp|P71059|EPSJ_BACSU Uncharacterized glycosyltransferase EpsJ  OS=Bacillus subtilis (strain 168) GN=epsJ PE=2 SV=1
+g655.t1	sp|O67422|METF_AQUAE 5,10-methylenetetrahydrofolate reductase  OS=Aquifex aeolicus (strain VF5) GN=metF PE=3 SV=1
+g1024.t1	sp|Q96495|ORM1_SACMO Protein ORM1 OS=Saccharomyces pastorianus  (strain ATCC 76670 / Carlsberg bottom yeast no.2 / CBS 1503  / CLIB 180 / NBRC 10610 / NRRL Y-1525) GN=ORM1 PE=4 SV=1
+g5.t1	sp|Q4L8N2|EFEMO_STAHJ Efem/EfeO family lipoprotein OS=Staphylococcus  haemolyticus (strain JCSC1435) GN=SH0684 PE=3 SV=1
+g1041.t1	sp|Q839B2|HPRT_ENTFA Hypoxanthine-guanine phosphoribosyltransferase  OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=hpt PE=3 SV=1
+g899.t1	sp|P39668|YYXA_BACSU Uncharacterized serine protease YyxA OS=Bacillus  subtilis (strain 168) GN=yyxA PE=3 SV=2
+g954.t1	sp|P28903|NRDD_ECOLI Anaerobic ribonucleoside-triphosphate reductase  OS=Escherichia coli (strain K12) GN=nrdD PE=1 SV=2
+g1052.t1	sp|P39274|YJDJ_ECOLI Uncharacterized protein YjdJ OS=Escherichia  coli (strain K12) GN=yjdJ PE=1 SV=1
+g491.t1	sp|G9EZR6|FLDH_CLOS3 Phenyllactate dehydrogenase OS=Clostridium  sporogenes (strain ATCC 7955 / DSM 767 / NBRC 16411 / NCIMB  8053 / NCTC 8594 / PA 3679) GN=fldH PE=1 SV=1
+g294.t1	sp|Q05523|DACA_GEOSE D-alanyl-D-alanine carboxypeptidase DacA  OS=Geobacillus stearothermophilus GN=dacA PE=1 SV=1
+g834.t1	sp|P14940|ADH_CUPNE Alcohol dehydrogenase OS=Cupriavidus necator  GN=adh PE=3 SV=1
+g217.t1	sp|Q59309|G3P_CLOPA Glyceraldehyde-3-phosphate dehydrogenase  OS=Clostridium pasteurianum GN=gap PE=1 SV=1
+g501.t1	sp|O53079|CILA_LEUMC Citrate lyase alpha chain OS=Leuconostoc  mesenteroides subsp. cremoris GN=citF PE=3 SV=1
+g570.t1	sp|P94521|YSDC_BACSU Putative aminopeptidase YsdC OS=Bacillus  subtilis (strain 168) GN=ysdC PE=1 SV=1
+g477.t1	sp|O32823|TRXB_LISMO Thioredoxin reductase OS=Listeria monocytogenes  serovar 1/2a (strain ATCC BAA-679 / EGD-e) GN=trxB PE=3  SV=1
+g190.t1	sp|O06987|YVDE_BACSU Uncharacterized HTH-type transcriptional  regulator YvdE OS=Bacillus subtilis (strain 168) GN=yvdE PE=3  SV=1
+g833.t1	sp|Q831Z0|LEPA_ENTFA Elongation factor 4 OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=lepA PE=3 SV=1
+g705.t1	sp|C0QPF6|RL32_PERMH 50S ribosomal protein L32 OS=Persephonella  marina (strain DSM 14350 / EX-H1) GN=rpmF PE=3 SV=1
+g1104.t1	sp|P0AE39|YPDB_ECOLI Transcriptional regulatory protein YpdB  OS=Escherichia coli (strain K12) GN=ypdB PE=1 SV=1
+g183.t1	sp|C0SPA0|PULA_BACSU Pullulanase OS=Bacillus subtilis (strain  168) GN=amyX PE=1 SV=1
+g314.t1	sp|O13657|YBCC_SCHPO Putative metal ion transporter C27B12.12c  OS=Schizosaccharomyces pombe (strain 972 / ATCC 24843) GN=pi066  PE=1 SV=1
+g930.t1	sp|C1CRD1|HEMH_STRZT Ferrochelatase OS=Streptococcus pneumoniae  (strain Taiwan19F-14) GN=hemH PE=3 SV=1
+g337.t1	sp|Q6LVF1|GPH_PHOPR Phosphoglycolate phosphatase OS=Photobacterium  profundum (strain SS9) GN=PBPRA0285 PE=3 SV=1
+g243.t1	sp|C0M7M9|UPP_STRE4 Uracil phosphoribosyltransferase OS=Streptococcus  equi subsp. equi (strain 4047) GN=upp PE=3 SV=1
+g924.t1	sp|Q45133|GRPB_BACPE Glutamate-rich protein GrpB OS=Bacillus  pseudofirmus (strain OF4) GN=grpB PE=3 SV=2
+g425.t1	sp|Q91FR3|VF259_IIV6 Uncharacterized protein 259R OS=Invertebrate  iridescent virus 6 GN=IIV6-259R PE=3 SV=1
+g140.t1	sp|P43456|NTPC_ENTHA V-type sodium ATPase subunit C OS=Enterococcus  hirae (strain ATCC 9790 / DSM 20160 / JCM 8729 / LMG  6399 / NBRC 3181 / NCIMB 6459 / NCDO 1258) GN=ntpC PE=1 SV=1
+g19.t1	sp|Q8RG89|PYRB_FUSNN Aspartate carbamoyltransferase OS=Fusobacterium  nucleatum subsp. nucleatum (strain ATCC 25586 / CIP  101130 / JCM 8532 / LMG 13131) GN=pyrB PE=3 SV=1
+g595.t1	sp|P42246|YCBN_BACSU Uncharacterized ABC transporter ATP-binding  protein YcbN OS=Bacillus subtilis (strain 168) GN=ycbN PE=3  SV=4
+g724.t1	sp|Q01465|MREB_BACSU Rod shape-determining protein MreB OS=Bacillus  subtilis (strain 168) GN=mreB PE=3 SV=3
+g897.t1	sp|Q9CIQ6|PHNC_LACLA Phosphonates import ATP-binding protein  PhnC OS=Lactococcus lactis subsp. lactis (strain IL1403) GN=phnC  PE=3 SV=1
+g725.t1	sp|O34992|OPUCA_BACSU Glycine betaine/carnitine/choline transport  ATP-binding protein OpuCA OS=Bacillus subtilis (strain  168) GN=opuCA PE=1 SV=1
+g877.t1	sp|Q97UL5|DMD_SULSO Diphosphomevalonate decarboxylase OS=Sulfolobus  solfataricus (strain ATCC 35092 / DSM 1617 / JCM 11322  / P2) GN=SSO2989 PE=1 SV=1
+g1103.t1	sp|Q8DPM2|GYRA_STRR6 DNA gyrase subunit A OS=Streptococcus pneumoniae  (strain ATCC BAA-255 / R6) GN=gyrA PE=3 SV=1
+g695.t1	sp|C0MH77|GLGA_STRS7 Glycogen synthase OS=Streptococcus equi  subsp. zooepidemicus (strain H70) GN=glgA PE=3 SV=1
+g1047.t1	sp|Q5AR49|ASQF_EMENI FAD-linked oxidoreductase asqF OS=Emericella  nidulans (strain FGSC A4 / ATCC 38163 / CBS 112.46 / NRRL  194 / M139) GN=asqH PE=3 SV=1
+g1054.t1	sp|P55452|Y4FN_SINFN Probable ABC transporter permease protein  y4fN OS=Sinorhizobium fredii (strain NBRC 101917 / NGR234)  GN=NGR_a03680 PE=3 SV=1
+g507.t1	sp|O34458|YJFC_BACSU Uncharacterized protein YjfC OS=Bacillus  subtilis (strain 168) GN=yjfC PE=4 SV=2
+g96.t1	sp|Q5M6B7|PRMA_STRT2 Ribosomal protein L11 methyltransferase  OS=Streptococcus thermophilus (strain ATCC BAA-250 / LMG 18311)  GN=prmA PE=3 SV=1
+g1012.t1	sp|P29822|LACE_RHIRD Lactose-binding protein OS=Rhizobium radiobacter  GN=lacE PE=1 SV=1
+g889.t1	sp|P44764|CPDB_HAEIN 2',3'-cyclic-nucleotide 2'-phosphodiesterase/3'-nucleotidase  OS=Haemophilus influenzae (strain ATCC  51907 / DSM 11121 / KW20 / Rd) GN=cpdB PE=3 SV=1
+g153.t1	sp|Q5M2Y5|DPO4_STRT2 DNA polymerase IV OS=Streptococcus thermophilus  (strain ATCC BAA-250 / LMG 18311) GN=dinB PE=3 SV=1
+g516.t1	sp|E0U174|BIRA_BACPZ Bifunctional ligase/repressor BirA OS=Bacillus  subtilis subsp. spizizenii (strain ATCC 23059 / NRRL  B-14472 / W23) GN=birA PE=3 SV=1
+g377.t1	sp|P65833|PURR_STRR6 Pur operon repressor OS=Streptococcus pneumoniae  (strain ATCC BAA-255 / R6) GN=purR PE=3 SV=1
+g926.t1	sp|O31020|Y3137_VIBCH Putative carboxypeptidase VC_A0337 OS=Vibrio  cholerae serotype O1 (strain ATCC 39315 / El Tor Inaba  N16961) GN=VC_A0337 PE=3 SV=2
+g1106.t1	sp|A0A0H3GCG4|PDEA_LISM4 Cyclic-di-AMP phosphodiesterase PdeA  OS=Listeria monocytogenes serotype 1/2a (strain 10403S) GN=pdeA  PE=3 SV=1
+g371.t1	sp|P49851|YKHA_BACSU Uncharacterized acyl-CoA thioester hydrolase  YkhA OS=Bacillus subtilis (strain 168) GN=ykhA PE=3 SV=2
+g582.t1	sp|P23364|CAT4_AGRFC Chloramphenicol acetyltransferase OS=Agrobacterium  fabrum (strain C58 / ATCC 33970) GN=cat PE=3 SV=1
+g136.t1	sp|O34897|YKUT_BACSU Uncharacterized MscS family protein YkuT  OS=Bacillus subtilis (strain 168) GN=ykuT PE=2 SV=2
+g447.t1	sp|P0AEQ3|GLNH_ECOLI Glutamine-binding periplasmic protein OS=Escherichia  coli (strain K12) GN=glnH PE=1 SV=1
+g155.t1	sp|O34481|RECDL_BACSU ATP-dependent RecD-like DNA helicase OS=Bacillus  subtilis (strain 168) GN=yrrC PE=3 SV=1
+g189.t1	sp|P06567|DNAI_BACSU Primosomal protein DnaI OS=Bacillus subtilis  (strain 168) GN=dnaI PE=1 SV=1
+g339.t1	sp|P94482|YNAD_BACSU Uncharacterized N-acetyltransferase YnaD  OS=Bacillus subtilis (strain 168) GN=ynaD PE=3 SV=1
+g67.t1	sp|Q5HGK6|RECG_STAAC ATP-dependent DNA helicase RecG OS=Staphylococcus  aureus (strain COL) GN=recG PE=3 SV=1
+g268.t1	sp|Q8GW72|FUCO1_ARATH Alpha-L-fucosidase 1 OS=Arabidopsis thaliana  GN=FUC1 PE=1 SV=2
+g114.t1	sp|O34474|YOEA_BACSU Probable multidrug resistance protein YoeA  OS=Bacillus subtilis (strain 168) GN=yoeA PE=3 SV=2
+g1095.t1	sp|Q82YV0|RNPA_ENTFA Ribonuclease P protein component OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rnpA PE=3 SV=1
+g487.t1	sp|Q38YT6|KTHY_LACSS Thymidylate kinase OS=Lactobacillus sakei  subsp. sakei (strain 23K) GN=tmk PE=3 SV=1
+g235.t1	sp|Q82YY9|SYS2_ENTFA Serine--tRNA ligase 2 OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=serS2 PE=3 SV=1
+g484.t1	sp|Q9A186|RSMI_STRP1 Ribosomal RNA small subunit methyltransferase  I OS=Streptococcus pyogenes serotype M1 GN=rsmI PE=3 SV=1
+g746.t1	sp|O34623|DPO3A_BACSU DNA polymerase III subunit alpha OS=Bacillus  subtilis (strain 168) GN=dnaE PE=3 SV=1
+g27.t1	sp|P24138|OPPB_BACSU Oligopeptide transport system permease protein  OppB OS=Bacillus subtilis (strain 168) GN=oppB PE=2 SV=2
+g41.t1	sp|Q1WU92|TRMD_LACS1 tRNA (guanine-N(1)-)-methyltransferase OS=Lactobacillus  salivarius (strain UCC118) GN=trmD PE=3 SV=1
+g728.t1	sp|O31775|YMDB_BACSU Uncharacterized protein ymdB OS=Bacillus  subtilis (strain 168) GN=ymdB PE=1 SV=2
+g150.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g345.t1	sp|Q38VN8|NADK_LACSS NAD kinase OS=Lactobacillus sakei subsp.  sakei (strain 23K) GN=nadK PE=3 SV=1
+g181.t1	sp|Q02540|COPR_PSEUB Transcriptional activator protein CopR OS=Pseudomonas  syringae pv. tomato GN=copR PE=1 SV=1
+g328.t1	sp|P46317|PTJC_BACSU Lichenan permease IIC component OS=Bacillus  subtilis (strain 168) GN=licC PE=2 SV=1
+g945.t1	sp|Q10449|MU157_SCHPO Meiotically up-regulated gene 157 protein  OS=Schizosaccharomyces pombe (strain 972 / ATCC 24843) GN=mug157  PE=1 SV=1
+g413.t1	sp|Q2YTD2|Y1567_STAAB Uncharacterized peptidase SAB1567 OS=Staphylococcus  aureus (strain bovine RF122 / ET3-1) GN=SAB1567  PE=3 SV=2
+g66.t1	sp|B8ZJM1|PLSX_STRPJ Phosphate acyltransferase OS=Streptococcus  pneumoniae (strain ATCC 700669 / Spain 23F-1) GN=plsX PE=3  SV=1
+g1044.t1	sp|Q839C1|LDH1_ENTFA L-lactate dehydrogenase 1 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=ldh1 PE=3 SV=1
+g445.t1	sp|Q98R01|TIG_MYCPU Trigger factor OS=Mycoplasma pulmonis (strain  UAB CTIP) GN=tig PE=3 SV=1
+g592.t1	sp|G4SLH0|TTN1_CAEEL Titin homolog OS=Caenorhabditis elegans  GN=ttn-1 PE=1 SV=2
+g911.t1	Hypothetical Protein
+g605.t1	Hypothetical Protein
+g261.t1	sp|A3CNN8|Y1395_STRSV UPF0246 protein SSA_1395 OS=Streptococcus  sanguinis (strain SK36) GN=SSA_1395 PE=3 SV=1
+g929.t1	sp|O34780|YOBF_BACSU Uncharacterized protein YobF OS=Bacillus  subtilis (strain 168) GN=yobF PE=4 SV=1
+g1059.t1	sp|Q89UZ9|YACG_BRADU DNA gyrase inhibitor YacG OS=Bradyrhizobium  diazoefficiens (strain JCM 10833 / IAM 13628 / NBRC 14792  / USDA 110) GN=yacG PE=3 SV=1
+g709.t1	sp|A5UCP4|MTNN_HAEIE 5'-methylthioadenosine/S-adenosylhomocysteine  nucleosidase OS=Haemophilus influenzae (strain PittEE)  GN=mtnN PE=3 SV=1
+g682.t1	sp|P37679|SGBU_ECOLI Putative L-ribulose-5-phosphate 3-epimerase  SgbU OS=Escherichia coli (strain K12) GN=sgbU PE=3 SV=2
+g273.t1	sp|Q836W6|EX7L_ENTFA Exodeoxyribonuclease 7 large subunit OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=xseA PE=3  SV=1
+g543.t1	sp|C1CFR8|ACPS_STRZJ Holo-[acyl-carrier-protein] synthase OS=Streptococcus  pneumoniae (strain JJA) GN=acpS PE=3 SV=1
+g732.t1	sp|Q93K57|MALR_FUSMR Putative regulatory protein MalR OS=Fusobacterium  mortiferum GN=malR PE=3 SV=1
+g286.t1	sp|Q99YH7|Y1698_STRP1 DegV domain-containing protein SPy_1698/M5005_Spy1391  OS=Streptococcus pyogenes serotype M1 GN=SPy_1698  PE=3 SV=1
+g546.t1	sp|Q9ZUF1|FB99_ARATH F-box protein At2g05970 OS=Arabidopsis thaliana  GN=At2g05970 PE=2 SV=1
+g156.t1	sp|Q1WTT7|MNMA_LACS1 tRNA-specific 2-thiouridylase MnmA OS=Lactobacillus  salivarius (strain UCC118) GN=mnmA PE=3 SV=1
+g464.t1	sp|Q837A7|RSMA_ENTFA Ribosomal RNA small subunit methyltransferase  A OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=rsmA PE=3 SV=1
+g963.t1	sp|O05083|Y1698_HAEIN Uncharacterized glycosyltransferase HI_1698  OS=Haemophilus influenzae (strain ATCC 51907 / DSM 11121  / KW20 / Rd) GN=HI_1698 PE=3 SV=1
+g174.t1	sp|B7MY71|PDXK_ECO81 Pyridoxine/pyridoxal/pyridoxamine kinase  OS=Escherichia coli O81 (strain ED1a) GN=pdxK PE=3 SV=1
+g427.t1	sp|Q8FSH0|GPMA_COREF 2,3-bisphosphoglycerate-dependent phosphoglycerate  mutase OS=Corynebacterium efficiens (strain DSM 44549  / YS-314 / AJ 12310 / JCM 11189 / NBRC 100395) GN=gpmA  PE=3 SV=1
+g361.t1	sp|B6EKK3|META_ALISL Homoserine O-succinyltransferase OS=Aliivibrio  salmonicida (strain LFI1238) GN=metA PE=3 SV=1
+g329.t1	sp|P16557|XYLR_BACPZ Xylose repressor OS=Bacillus subtilis subsp.  spizizenii (strain ATCC 23059 / NRRL B-14472 / W23) GN=xylR  PE=3 SV=1
+g731.t1	sp|Q839T5|RUVB_ENTFA Holliday junction ATP-dependent DNA helicase  RuvB OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=ruvB PE=3 SV=1
+g540.t1	sp|P24862|CCNB_PATVU G2/mitotic-specific cyclin-B OS=Patella  vulgata PE=2 SV=1
+g460.t1	sp|Q034Y8|RL22_LACC3 50S ribosomal protein L22 OS=Lactobacillus  casei (strain ATCC 334) GN=rplV PE=3 SV=1
+g789.t1	sp|P70949|YITW_BACSU MIP18 family protein YitW OS=Bacillus subtilis  (strain 168) GN=yitW PE=3 SV=2
+g317.t1	sp|O07587|AAT3_BACSU Putative aspartate aminotransferase YhdR  OS=Bacillus subtilis (strain 168) GN=yhdR PE=3 SV=1
+g1011.t1	sp|O33815|BGAL_STAXY Beta-galactosidase OS=Staphylococcus xylosus  GN=lacZ PE=3 SV=1
+g31.t1	sp|Q07792|ESTE_VIBMI Arylesterase OS=Vibrio mimicus PE=1 SV=1
+g663.t1	sp|P0ADD5|YJJP_ECOLI Inner membrane protein YjjP OS=Escherichia  coli (strain K12) GN=yjjP PE=1 SV=1
+g643.t1	sp|P39046|MUR2_ENTHA Muramidase-2 OS=Enterococcus hirae (strain  ATCC 9790 / DSM 20160 / JCM 8729 / LMG 6399 / NBRC 3181 /  NCIMB 6459 / NCDO 1258) GN=EHR_05900 PE=1 SV=1
+g352.t1	sp|P39853|CAPD_STAAU Capsular polysaccharide biosynthesis protein  CapD OS=Staphylococcus aureus GN=capD PE=3 SV=1
+g280.t1	sp|Q7LYW7|MALE_THELN Trehalose/maltose-binding protein MalE OS=Thermococcus  litoralis (strain ATCC 51850 / DSM 5473 / JCM  8560 / NS-C) GN=malE PE=1 SV=2
+g958.t1	sp|B7JGI9|LYAT_BACC0 Transcriptional regulator LytR OS=Bacillus  cereus (strain AH820) GN=lytR PE=3 SV=1
+g961.t1	sp|Q5N8Q4|ORC4_ORYSJ Origin of replication complex subunit 4  OS=Oryza sativa subsp. japonica GN=ORC4 PE=2 SV=1
+g408.t1	sp|P39145|COMFA_BACSU ComF operon protein 1 OS=Bacillus subtilis  (strain 168) GN=comFA PE=2 SV=1
+g844.t1	sp|P19579|CAPA_BACAN Capsule biosynthesis protein CapA OS=Bacillus  anthracis GN=capA PE=2 SV=2
+g662.t1	sp|Q66ER4|Y627_YERPS UPF0442 protein YPTB0627 OS=Yersinia pseudotuberculosis  serotype I (strain IP32953) GN=YPTB0627 PE=3  SV=2
+g179.t1	sp|Q00531|JI60_HORVU 60 kDa jasmonate-induced protein OS=Hordeum  vulgare PE=2 SV=1
+g382.t1	sp|P49988|RP54_PSEAE RNA polymerase sigma-54 factor OS=Pseudomonas  aeruginosa (strain ATCC 15692 / DSM 22644 / CIP 104116  / JCM 14847 / LMG 12228 / 1C / PRS 101 / PAO1) GN=rpoN PE=3  SV=2
+g448.t1	sp|Q8FJL0|GSIA_ECOL6 Glutathione import ATP-binding protein GsiA  OS=Escherichia coli O6:H1 (strain CFT073 / ATCC 700928 /  UPEC) GN=gsiA PE=3 SV=2
+g1029.t1	sp|O07608|LPLJ_BACSU Lipoate-protein ligase LplJ OS=Bacillus  subtilis (strain 168) GN=lplJ PE=1 SV=1
+g433.t1	sp|P0A194|LIVG_SALTI High-affinity branched-chain amino acid  transport ATP-binding protein LivG OS=Salmonella typhi GN=livG  PE=3 SV=1
+g521.t1	sp|P16524|PATA_BACSU Putative N-acetyl-LL-diaminopimelate aminotransferase  OS=Bacillus subtilis (strain 168) GN=patA PE=1  SV=3
+g38.t1	sp|Q8CWR6|AMGDS_STRR6 Alpha-monoglucosyldiacylglycerol synthase  OS=Streptococcus pneumoniae (strain ATCC BAA-255 / R6) GN=spr0982  PE=1 SV=1
+g554.t1	sp|Q88YF4|MURB_LACPL UDP-N-acetylenolpyruvoylglucosamine reductase  OS=Lactobacillus plantarum (strain ATCC BAA-793 / NCIMB  8826 / WCFS1) GN=murB PE=3 SV=2
+g669.t1	sp|O08455|YHAN_BACSU Uncharacterized protein YhaN OS=Bacillus  subtilis (strain 168) GN=yhaN PE=2 SV=1
+g905.t1	sp|A9KQ75|GAHP1_CLOPH 1,3-beta-galactosyl-N-acetylhexosamine  phosphorylase Cphy3030 OS=Clostridium phytofermentans (strain  ATCC 700394 / DSM 18823 / ISDg) GN=Cphy_3030 PE=1 SV=1
+g1038.t1	sp|P37567|DUS1_BACSU Probable tRNA-dihydrouridine synthase 1  OS=Bacillus subtilis (strain 168) GN=dus1 PE=3 SV=1
+g727.t1	sp|O34331|YLBH_BACSU Putative rRNA methyltransferase YlbH OS=Bacillus  subtilis (strain 168) GN=ylbH PE=3 SV=2
+g618.t1	sp|P23530|PT1_ENTFA Phosphoenolpyruvate-protein phosphotransferase  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=ptsI  PE=1 SV=2
+g584.t1	sp|Q7CCJ4|PTG3C_STAES PTS system glucose-specific EIICBA component  OS=Staphylococcus epidermidis (strain ATCC 12228) GN=ptsG  PE=3 SV=1
+g849.t1	sp|Q9ZDG1|Y368_RICPR Uncharacterized protein RP368 OS=Rickettsia  prowazekii (strain Madrid E) GN=RP368 PE=4 SV=1
+g263.t1	sp|O31995|YOKL_BACSU SPBc2 prophage-derived uncharacterized N-acetyltransferase  YokL OS=Bacillus subtilis (strain 168) GN=yokL  PE=3 SV=1
+g1098.t1	sp|P49330|RGG_STRGC HTH-type transcriptional regulator rgg OS=Streptococcus  gordonii (strain Challis / ATCC 35105 / BCRC  15272 / CH1 / DL1 / V288) GN=rgg PE=3 SV=1
+g659.t1	sp|O06480|YFNB_BACSU Putative HAD-hydrolase YfnB OS=Bacillus  subtilis (strain 168) GN=yfnB PE=1 SV=1
+g661.t1	sp|P29336|GTFS_STRDO Glucosyltransferase-S OS=Streptococcus downei  GN=gtfS PE=3 SV=1
+g814.t1	sp|Q835R5|DNAJ_ENTFA Chaperone protein DnaJ OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=dnaJ PE=3 SV=1
+g388.t1	sp|Q795R8|YTFP_BACSU Uncharacterized protein YtfP OS=Bacillus  subtilis (strain 168) GN=ytfP PE=4 SV=2
+g1097.t1	sp|Q31FG2|MSBA_THICR Lipid A export ATP-binding/permease protein  MsbA OS=Thiomicrospira crunogena (strain XCL-2) GN=msbA  PE=3 SV=1
+g78.t1	sp|O31771|YMFM_BACSU Uncharacterized membrane protein YmfM OS=Bacillus  subtilis (strain 168) GN=ymfM PE=4 SV=3
+g306.t1	sp|Q8NFI3|ENASE_HUMAN Cytosolic endo-beta-N-acetylglucosaminidase  OS=Homo sapiens GN=ENGASE PE=1 SV=1
+g571.t1	sp|Q47898|ASPG_ELIMR N(4)-(Beta-N-acetylglucosaminyl)-L-asparaginase  OS=Elizabethkingia miricola PE=1 SV=1
+g296.t1	sp|Q837V2|GATB_ENTFA Aspartyl/glutamyl-tRNA(Asn/Gln) amidotransferase  subunit B OS=Enterococcus faecalis (strain ATCC 700802  / V583) GN=gatB PE=3 SV=1
+g715.t1	sp|Q835H3|MUTS2_ENTFA Endonuclease MutS2 OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=mutS2 PE=3 SV=1
+g1049.t1	sp|A7GK17|EFG_BACCN Elongation factor G OS=Bacillus cytotoxicus  (strain DSM 22905 / CIP 110041 / 391-98 / NVH 391-98) GN=fusA  PE=3 SV=1
+g801.t1	sp|Q835V2|RIMP_ENTFA Ribosome maturation factor RimP OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rimP PE=3 SV=1
+g423.t1	sp|Q91XA2|GOLM1_MOUSE Golgi membrane protein 1 OS=Mus musculus  GN=Golm1 PE=1 SV=2
+g98.t1	sp|P54459|YQEN_BACSU Uncharacterized protein YqeN OS=Bacillus  subtilis (strain 168) GN=yqeN PE=1 SV=1
+g650.t1	sp|P19385|LYS_BPCP7 Lysozyme OS=Streptococcus phage Cp-7 GN=CPL7  PE=1 SV=2
+g636.t1	sp|M9MSG8|PIEZO_DROME Piezo-type mechanosensitive ion channel  component OS=Drosophila melanogaster GN=Piezo PE=2 SV=1
+g780.t1	sp|Q8EPY0|ERA_OCEIH GTPase Era OS=Oceanobacillus iheyensis (strain  DSM 14371 / CIP 107618 / JCM 11309 / KCTC 3954 / HTE831)  GN=era PE=3 SV=1
+g355.t1	sp|P37966|LIPO_BACSU Lipoprotein LipO OS=Bacillus subtilis (strain  168) GN=lipO PE=1 SV=1
+g589.t1	sp|P49776|APH1_SCHPO Bis(5'-nucleosyl)-tetraphosphatase [asymmetrical]  OS=Schizosaccharomyces pombe (strain 972 / ATCC 24843)  GN=aph1 PE=1 SV=2
+g134.t1	sp|Q6NS46|RRP5_MOUSE Protein RRP5 homolog OS=Mus musculus GN=Pdcd11  PE=1 SV=2
+g632.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g348.t1	sp|O34659|CDAR_BACSU CdaA regulatory protein CdaR OS=Bacillus  subtilis (strain 168) GN=cdaR PE=1 SV=2
+g14.t1	sp|P39787|DNAD_BACSU DNA replication protein DnaD OS=Bacillus  subtilis (strain 168) GN=dnaD PE=1 SV=1
+g1055.t1	sp|A0LUE6|POTA_ACIC1 Spermidine/putrescine import ATP-binding  protein PotA OS=Acidothermus cellulolyticus (strain ATCC 43068  / 11B) GN=potA PE=3 SV=1
+g65.t1	sp|P9WQJ4|Y1281_MYCTO Uncharacterized ABC transporter ATP-binding  protein MT1318 OS=Mycobacterium tuberculosis (strain CDC  1551 / Oshkosh) GN=MT1318 PE=3 SV=1
+g821.t1	Hypothetical Protein
+g745.t1	sp|O07329|CCPA_STRMU Catabolite control protein A OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=ccpA  PE=3 SV=2
+g796.t1	sp|Q831U9|RS2_ENTFA 30S ribosomal protein S2 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rpsB PE=3 SV=1
+g847.t1	sp|Q00753|MSMR_STRMU Msm operon regulatory protein OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=msmR  PE=3 SV=2
+g894.t1	sp|P39760|KTRC_BACSU Ktr system potassium uptake protein C OS=Bacillus  subtilis (strain 168) GN=ktrC PE=3 SV=1
+g984.t1	sp|Q5HR28|SAER_STAEQ Response regulator SaeR OS=Staphylococcus  epidermidis (strain ATCC 35984 / RP62A) GN=saeR PE=3 SV=1
+g17.t1	sp|Q8RG87|CARA_FUSNN Carbamoyl-phosphate synthase small chain  OS=Fusobacterium nucleatum subsp. nucleatum (strain ATCC 25586  / CIP 101130 / JCM 8532 / LMG 13131) GN=carA PE=3 SV=1
+g710.t1	sp|Q1WT66|RS4_LACS1 30S ribosomal protein S4 OS=Lactobacillus  salivarius (strain UCC118) GN=rpsD PE=3 SV=1
+g26.t1	sp|P24139|OPPC_BACSU Oligopeptide transport system permease protein  OppC OS=Bacillus subtilis (strain 168) GN=oppC PE=2 SV=1
+g3.t1	sp|P42400|YCKB_BACSU Probable ABC transporter extracellular-binding  protein YckB OS=Bacillus subtilis (strain 168) GN=yckB  PE=1 SV=2
+g734.t1	sp|Q831N1|SYR_ENTFA Arginine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=argS PE=3 SV=1
+g800.t1	sp|P65666|PANE_STRP1 Putative 2-dehydropantoate 2-reductase OS=Streptococcus  pyogenes serotype M1 GN=apbA PE=3 SV=1
+g880.t1	sp|P32437|YVYE_BACSU IMPACT family member YvyE OS=Bacillus subtilis  (strain 168) GN=yvyE PE=3 SV=2
+g344.t1	sp|O31613|YJBO_BACSU Uncharacterized RNA pseudouridine synthase  YjbO OS=Bacillus subtilis (strain 168) GN=yjbO PE=3 SV=1
+g95.t1	sp|C4L415|DEOC_EXISA Deoxyribose-phosphate aldolase OS=Exiguobacterium  sp. (strain ATCC BAA-1283 / AT1b) GN=deoC PE=3 SV=1
+g1111.t1	sp|Q06240|VANS_ENTFC Sensor protein VanS OS=Enterococcus faecium  GN=vanS PE=3 SV=1
+g534.t1	sp|O83774|APBE_TREPA FAD:protein FMN transferase OS=Treponema  pallidum (strain Nichols) GN=apbE PE=1 SV=1
+g33.t1	sp|Q84WV9|QPCT_ARATH Glutaminyl-peptide cyclotransferase OS=Arabidopsis  thaliana GN=QCT PE=1 SV=1
+g49.t1	sp|A0A0H3JX98|LPLA2_STAAM Lipoate--protein ligase 2 OS=Staphylococcus  aureus (strain Mu50 / ATCC 700699) GN=SAV0327 PE=1  SV=1
+g974.t1	sp|P37478|WALR_BACSU Transcriptional regulatory protein WalR  OS=Bacillus subtilis (strain 168) GN=walR PE=1 SV=1
+g1101.t1	sp|Q65PL9|RECF_BACLD DNA replication and repair protein RecF  OS=Bacillus licheniformis (strain ATCC 14580 / DSM 13 / JCM  2505 / NBRC 12200 / NCIMB 9375 / NRRL NRS-1264 / Gibson 46)  GN=recF PE=3 SV=1
+g94.t1	sp|O54408|RELA_BACSU GTP pyrophosphokinase OS=Bacillus subtilis  (strain 168) GN=relA PE=1 SV=3
+g919.t1	sp|Q9QY93|DCTP1_MOUSE dCTP pyrophosphatase 1 OS=Mus musculus  GN=Dctpp1 PE=1 SV=1
+g378.t1	sp|O34610|ZNUB_BACSU High-affinity zinc uptake system membrane  protein ZnuB OS=Bacillus subtilis (strain 168) GN=znuB PE=1  SV=1
+g251.t1	sp|O32083|LYTG_BACSU Exo-glucosaminidase LytG OS=Bacillus subtilis  (strain 168) GN=lytG PE=1 SV=1
+g866.t1	sp|P78810|VTC4_SCHPO Vacuolar transporter chaperone 4 OS=Schizosaccharomyces  pombe (strain 972 / ATCC 24843) GN=vtc4 PE=1  SV=2
+g538.t1	sp|Q3IIA6|RSMJ_PSEHT Ribosomal RNA small subunit methyltransferase  J OS=Pseudoalteromonas haloplanktis (strain TAC 125) GN=rsmJ  PE=3 SV=1
+g829.t1	sp|Q28NI7|CLPP_JANSC ATP-dependent Clp protease proteolytic subunit  OS=Jannaschia sp. (strain CCS1) GN=clpP PE=3 SV=1
+g346.t1	sp|O31611|YJBM_BACSU GTP pyrophosphokinase YjbM OS=Bacillus subtilis  (strain 168) GN=yjbM PE=1 SV=1
+g611.t1	sp|O07592|YHDW_BACSU Putative glycerophosphoryl diester phosphodiesterase  YhdW OS=Bacillus subtilis (strain 168) GN=yhdW  PE=3 SV=1
+g107.t1	sp|O67716|DHAS_AQUAE Aspartate-semialdehyde dehydrogenase OS=Aquifex  aeolicus (strain VF5) GN=asd PE=3 SV=1
+g544.t1	sp|Q1WV14|ALR_LACS1 Alanine racemase OS=Lactobacillus salivarius  (strain UCC118) GN=alr PE=3 SV=1
+g818.t1	sp|P10484|T1M1_ECOLX Type I restriction enzyme EcoR124II M protein  OS=Escherichia coli GN=hsdM PE=3 SV=1
+g702.t1	sp|P35595|PTG3C_STRPN PTS system glucose-specific EIICBA component  OS=Streptococcus pneumoniae serotype 4 (strain ATCC BAA-334  / TIGR4) GN=exp5 PE=3 SV=2
+g737.t1	sp|Q4QXU5|MRGX2_MACMU Mas-related G-protein coupled receptor  member X2 OS=Macaca mulatta GN=MRGPRX2 PE=3 SV=1
+g966.t1	sp|Q9AHD4|CPSB_STRPN Tyrosine-protein phosphatase CpsB OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4)  GN=cpsB PE=1 SV=1
+g416.t1	sp|P47183|THI11_YEAST 4-amino-5-hydroxymethyl-2-methylpyrimidine  phosphate synthase THI11 OS=Saccharomyces cerevisiae (strain  ATCC 204508 / S288c) GN=THI11 PE=1 SV=1
+g612.t1	sp|A4XFR8|QUEC_CALS8 7-cyano-7-deazaguanine synthase OS=Caldicellulosiruptor  saccharolyticus (strain ATCC 43494 / DSM 8903  / Tp8T 6331) GN=queC PE=3 SV=1
+g489.t1	sp|P09122|DPO3X_BACSU DNA polymerase III subunit gamma/tau OS=Bacillus  subtilis (strain 168) GN=dnaX PE=3 SV=3
+g876.t1	sp|Q9KWG3|PMK_STRC1 Phosphomevalonate kinase OS=Streptomyces  sp. (strain CL190) PE=1 SV=1
+g757.t1	sp|P52329|SIGA_ENTFA RNA polymerase sigma factor SigA OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=sigA PE=3 SV=2
+g994.t1	sp|P43472|SCRR_PEDPE Sucrose operon repressor OS=Pediococcus  pentosaceus GN=scrR PE=3 SV=1
+g754.t1	sp|Q38WS0|ENGB_LACSS Probable GTP-binding protein EngB OS=Lactobacillus  sakei subsp. sakei (strain 23K) GN=engB PE=3 SV=1
+g965.t1	sp|Q04663|CPSD_STRA3 Tyrosine-protein kinase CpsD OS=Streptococcus  agalactiae serotype III (strain NEM316) GN=cpsD PE=3 SV=3
+g452.t1	sp|Q6G796|RS11_STAAS 30S ribosomal protein S11 OS=Staphylococcus  aureus (strain MSSA476) GN=rpsK PE=3 SV=1
+g218.t1	sp|O32253|CGGR_BACSU Central glycolytic genes regulator OS=Bacillus  subtilis (strain 168) GN=cggR PE=1 SV=1
+g225.t1	sp|P13702|MVAA_PSEMV 3-hydroxy-3-methylglutaryl-coenzyme A reductase  OS=Pseudomonas mevalonii GN=mvaA PE=1 SV=1
+g443.t1	sp|O31716|YKPA_BACSU Uncharacterized ABC transporter ATP-binding  protein YkpA OS=Bacillus subtilis (strain 168) GN=ykpA PE=3  SV=1
+g492.t1	sp|O27435|Y1382_METTH Uncharacterized transporter MTH_1382 OS=Methanothermobacter  thermautotrophicus (strain ATCC 29096 /  DSM 1053 / JCM 10044 / NBRC 100330 / Delta H) GN=MTH_1382 PE=3  SV=1
+g952.t1	sp|Q812P6|IF3_BACCR Translation initiation factor IF-3 OS=Bacillus  cereus (strain ATCC 14579 / DSM 31 / JCM 2152 / NBRC 15305  / NCIMB 9373 / NRRL B-3711) GN=infC PE=3 SV=1
+g716.t1	sp|Q831A1|ATPF_ENTFA ATP synthase subunit b OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=atpF PE=3 SV=1
+g467.t1	sp|P94530|ARAQ_BACSU L-arabinose transport system permease protein  AraQ OS=Bacillus subtilis (strain 168) GN=araQ PE=2 SV=2
+g93.t1	sp|Q54I89|RENT1_DICDI Regulator of nonsense transcripts 1 OS=Dictyostelium  discoideum GN=upf1 PE=3 SV=1
+g157.t1	sp|O34528|YRVN_BACSU Uncharacterized AAA domain-containing protein  YrvN OS=Bacillus subtilis (strain 168) GN=yrvN PE=3 SV=1
+g48.t1	sp|Q9L5X1|MTSA_STRAP Manganese ABC transporter substrate-binding  lipoprotein OS=Streptococcus anginosus GN=psaA PE=3 SV=1
+g624.t1	sp|O34340|FABF_BACSU 3-oxoacyl-[acyl-carrier-protein] synthase  2 OS=Bacillus subtilis (strain 168) GN=fabF PE=1 SV=1
+g512.t1	sp|P60890|GLNA_STAAM Glutamine synthetase OS=Staphylococcus aureus  (strain Mu50 / ATCC 700699) GN=glnA PE=3 SV=1
+g1031.t1	sp|Q8E3C7|DLTS_STRA3 Sensor protein DltS OS=Streptococcus agalactiae  serotype III (strain NEM316) GN=dltS PE=3 SV=1
+g169.t1	sp|P31847|YPUA_BACSU Uncharacterized protein YpuA OS=Bacillus  subtilis (strain 168) GN=ypuA PE=2 SV=2
+g404.t1	sp|P55339|ECSA_BACSU ABC-type transporter ATP-binding protein  EcsA OS=Bacillus subtilis (strain 168) GN=ecsA PE=1 SV=1
+g469.t1	sp|P54933|SMOK_RHOSH ATP-binding transport protein SmoK OS=Rhodobacter  sphaeroides GN=smoK PE=3 SV=2
+g642.t1	sp|P13692|P54_ENTFC Protein P54 OS=Enterococcus faecium PE=3  SV=2
+g616.t1	sp|P75067|Y047_MYCPN Uncharacterized protein MG037 homolog OS=Mycoplasma  pneumoniae (strain ATCC 29342 / M129) GN=MPN_047  PE=3 SV=1
+g22.t1	sp|Q6GHZ1|ODPB_STAAR Pyruvate dehydrogenase E1 component subunit  beta OS=Staphylococcus aureus (strain MRSA252) GN=pdhB PE=3  SV=1
+g779.t1	sp|P46343|PHOL_BACSU PhoH-like protein OS=Bacillus subtilis (strain  168) GN=phoH PE=3 SV=3
+g826.t1	sp|O02365|IFA2_CAEEL Intermediate filament protein ifa-2 OS=Caenorhabditis  elegans GN=ifa-2 PE=1 SV=1
+g940.t1	sp|Q03EW2|MECA_PEDPA Adapter protein MecA OS=Pediococcus pentosaceus  (strain ATCC 25745 / CCUG 21536 / LMG 10740 / 183-1w)  GN=mecA PE=3 SV=1
+g97.t1	sp|Q5KVB5|UVRB_GEOKA UvrABC system protein B OS=Geobacillus kaustophilus  (strain HTA426) GN=uvrB PE=3 SV=1
+g488.t1	sp|Q1WSU5|RECR_LACS1 Recombination protein RecR OS=Lactobacillus  salivarius (strain UCC118) GN=recR PE=3 SV=1
+g175.t1	sp|P94426|GABR_BACSU HTH-type transcriptional regulatory protein  GabR OS=Bacillus subtilis (strain 168) GN=gabR PE=1 SV=1
+g347.t1	sp|Q03SJ3|GLMM_LACBA Phosphoglucosamine mutase OS=Lactobacillus  brevis (strain ATCC 367 / JCM 1170) GN=glmM PE=3 SV=1
+g988.t1	sp|P0DH04|Y740_STRP3 UPF0324 membrane protein SpyM3_0740 OS=Streptococcus  pyogenes serotype M3 (strain ATCC BAA-595 / MGAS315)  GN=SpyM3_0740 PE=3 SV=1
+g872.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g9.t1	sp|P45861|YWJA_BACSU Uncharacterized ABC transporter ATP-binding  protein YwjA OS=Bacillus subtilis (strain 168) GN=ywjA PE=3  SV=1
+g1088.t1	sp|Q82YX0|MNMG_ENTFA tRNA uridine 5-carboxymethylaminomethyl  modification enzyme MnmG OS=Enterococcus faecalis (strain ATCC  700802 / V583) GN=mnmG PE=3 SV=1
+g229.t1	sp|Q837X8|Y697_ENTFA UPF0374 protein EF_0697 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=EF_0697 PE=3 SV=1
+g633.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g282.t1	sp|P00644|NUC_STAAU Thermonuclease OS=Staphylococcus aureus GN=nuc  PE=1 SV=1
+g853.t1	sp|Q5FK05|PPAC_LACAC Probable manganese-dependent inorganic pyrophosphatase  OS=Lactobacillus acidophilus (strain ATCC 700396  / NCK56 / N2 / NCFM) GN=ppaC PE=3 SV=1
+g841.t1	sp|O14169|PGC1_SCHPO Phosphatidylglycerol phospholipase C OS=Schizosaccharomyces  pombe (strain 972 / ATCC 24843) GN=SPAC4D7.02c  PE=3 SV=2
+g64.t1	sp|P0A4N7|OPPB_LACLA Oligopeptide transport system permease protein  OppB OS=Lactococcus lactis subsp. lactis (strain IL1403)  GN=oppB PE=3 SV=1
+g121.t1	sp|P58794|PEPT_FUSNN Peptidase T OS=Fusobacterium nucleatum subsp.  nucleatum (strain ATCC 25586 / CIP 101130 / JCM 8532 /  LMG 13131) GN=pepT PE=3 SV=1
+g342.t1	sp|P74409|Y260_SYNY3 UPF0053 protein sll0260 OS=Synechocystis  sp. (strain PCC 6803 / Kazusa) GN=sll0260 PE=3 SV=1
+g947.t1	sp|B3W9X7|TSAD_LACCB tRNA N6-adenosine threonylcarbamoyltransferase  OS=Lactobacillus casei (strain BL23) GN=tsaD PE=3 SV=1
+g356.t1	sp|P53561|YTCP_BACSU Probable ABC transporter permease protein  YtcP OS=Bacillus subtilis (strain 168) GN=ytcP PE=3 SV=2
+g1075.t1	sp|C1CD03|RL1_STRZJ 50S ribosomal protein L1 OS=Streptococcus  pneumoniae (strain JJA) GN=rplA PE=3 SV=1
+g530.t1	sp|O32068|YTZG_BACSU Uncharacterized RNA pseudouridine synthase  YtzG OS=Bacillus subtilis (strain 168) GN=ytzG PE=3 SV=2
+g228.t1	sp|Q8E5P8|GLMS_STRA3 Glutamine--fructose-6-phosphate aminotransferase  [isomerizing] OS=Streptococcus agalactiae serotype  III (strain NEM316) GN=glmS PE=3 SV=3
+g923.t1	Hypothetical Protein
+g986.t1	sp|Q8R0W5|EST4A_MOUSE Carboxylesterase 4A OS=Mus musculus GN=Ces4a  PE=2 SV=2
+g513.t1	sp|A4FXV0|DAPF_METM5 Diaminopimelate epimerase OS=Methanococcus  maripaludis (strain C5 / ATCC BAA-1333) GN=dapF PE=1 SV=1
+g214.t1	Hypothetical Protein
+g1028.t1	sp|P54718|YFIB_BACSU Uncharacterized ABC transporter ATP-binding  protein YfiB OS=Bacillus subtilis (strain 168) GN=yfiB PE=3  SV=1
+g331.t1	sp|Q8RD36|Y211_CALS4 Uncharacterized HTH-type transcriptional  regulator TTE0211 OS=Caldanaerobacter subterraneus subsp. tengcongensis  (strain DSM 15242 / JCM 11007 / NBRC 100824 / MB4)  GN=TTE0211 PE=3 SV=1
+g154.t1	sp|Q818I1|SODM1_BACCR Superoxide dismutase [Mn] 1 OS=Bacillus  cereus (strain ATCC 14579 / DSM 31 / JCM 2152 / NBRC 15305  / NCIMB 9373 / NRRL B-3711) GN=sodA1 PE=3 SV=1
+g1051.t1	sp|P37507|YYAQ_BACSU Uncharacterized protein YyaQ OS=Bacillus  subtilis (strain 168) GN=yyaQ PE=4 SV=1
+g619.t1	sp|O34593|YJQA_BACSU Uncharacterized protein YjqA OS=Bacillus  subtilis (strain 168) GN=yjqA PE=4 SV=1
+g920.t1	sp|P96695|YDFQ_BACSU Thioredoxin-like protein YdfQ OS=Bacillus  subtilis (strain 168) GN=ydfQ PE=4 SV=1
+g693.t1	sp|Q1WSM8|GLGB_LACS1 1,4-alpha-glucan branching enzyme GlgB OS=Lactobacillus  salivarius (strain UCC118) GN=glgB PE=3 SV=1
+g75.t1	sp|Q49XM6|ARLS_STAS1 Signal transduction histidine-protein kinase  ArlS OS=Staphylococcus saprophyticus subsp. saprophyticus  (strain ATCC 15305 / DSM 20229) GN=arlS PE=3 SV=1
+g459.t1	sp|Q839F8|RS3_ENTFA 30S ribosomal protein S3 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rpsC PE=3 SV=1
+g1032.t1	sp|Q9CYI4|LUC7L_MOUSE Putative RNA-binding protein Luc7-like  1 OS=Mus musculus GN=Luc7l PE=1 SV=2
+g1046.t1	sp|P42246|YCBN_BACSU Uncharacterized ABC transporter ATP-binding  protein YcbN OS=Bacillus subtilis (strain 168) GN=ycbN PE=3  SV=4
+g547.t1	sp|P30336|CADA_BACPE Probable cadmium-transporting ATPase OS=Bacillus  pseudofirmus (strain OF4) GN=cadA PE=3 SV=2
+g671.t1	sp|Q6GGX3|EBH_STAAR Extracellular matrix-binding protein ebh  OS=Staphylococcus aureus (strain MRSA252) GN=ebh PE=3 SV=1
+g704.t1	sp|Q4L4X8|G6PI_STAHJ Glucose-6-phosphate isomerase OS=Staphylococcus  haemolyticus (strain JCSC1435) GN=pgi PE=3 SV=1
+g777.t1	sp|Q08432|CBL_BACSU Cystathionine beta-lyase PatB OS=Bacillus  subtilis (strain 168) GN=patB PE=1 SV=1
+g845.t1	sp|P94492|YNCB_BACSU Endonuclease YncB OS=Bacillus subtilis (strain  168) GN=yncB PE=1 SV=1
+g1056.t1	sp|P55454|Y4FP_SINFN Probable ABC transporter periplasmic-binding  protein y4fP OS=Sinorhizobium fredii (strain NBRC 101917  / NGR234) GN=NGR_a03660 PE=3 SV=1
+g384.t1	sp|P96662|YDEE_BACSU Uncharacterized HTH-type transcriptional  regulator YdeE OS=Bacillus subtilis (strain 168) GN=ydeE PE=3  SV=1
+g524.t1	sp|Q1BWI2|NODI_BURCA Nod factor export ATP-binding protein I  OS=Burkholderia cenocepacia (strain AU 1054) GN=nodI PE=3 SV=1
+g1035.t1	sp|Q72Y10|SYY2_BACC1 Tyrosine--tRNA ligase 2 OS=Bacillus cereus  (strain ATCC 10987 / NRS 248) GN=tyrS2 PE=3 SV=1
+g1016.t1	sp|P19241|BINR_STAAU Transposon Tn552 DNA-invertase BinR OS=Staphylococcus  aureus GN=resR PE=3 SV=1
+g825.t1	sp|Q1I0V0|RDRP_MPRVN RNA-directed RNA polymerase VP2 OS=Micromonas  pusilla reovirus (isolate Netherlands/2005) GN=S2 PE=3  SV=1
+g1110.t1	sp|Q06239|VANR_ENTFC Regulatory protein VanR OS=Enterococcus  faecium GN=vanR PE=3 SV=1
+g631.t1	sp|O26824|PAN_METTH Proteasome-activating nucleotidase OS=Methanothermobacter  thermautotrophicus (strain ATCC 29096 / DSM  1053 / JCM 10044 / NBRC 100330 / Delta H) GN=pan PE=3 SV=1
+g398.t1	sp|Q5XBB2|MEFA_STRP6 Macrolide efflux protein A OS=Streptococcus  pyogenes serotype M6 (strain ATCC BAA-946 / MGAS10394) GN=mefA  PE=3 SV=1
+g653.t1	sp|Q8SVY9|Y3G1_ENCCU Uncharacterized protein ECU03_1610 OS=Encephalitozoon  cuniculi (strain GB-M1) GN=ECU03_1610 PE=1 SV=1
+g1081.t1	sp|Q9A1K1|RADA_STRP1 DNA repair protein RadA OS=Streptococcus  pyogenes serotype M1 GN=radA PE=3 SV=1
+g664.t1	sp|O34635|SDHAB_BACSU Probable L-serine dehydratase, beta chain  OS=Bacillus subtilis (strain 168) GN=sdaAB PE=3 SV=1
+g848.t1	sp|Q5UW69|PHNC2_HALMA Phosphonates import ATP-binding protein  PhnC 2 OS=Haloarcula marismortui (strain ATCC 43049 / DSM 3752  / JCM 8966 / VKM B-1809) GN=phnC2 PE=3 SV=1
+g341.t1	sp|P59696|T200_SALTY Transposase for insertion sequence element  IS200 OS=Salmonella typhimurium (strain LT2 / SGSC1412 /  ATCC 700720) GN=tnpA1 PE=3 SV=1
+g617.t1	sp|P09405|NUCL_MOUSE Nucleolin OS=Mus musculus GN=Ncl PE=1 SV=2
+g931.t1	sp|Q06715|ADPR_LACLL ATP-dependent protease OS=Lactococcus lactis  subsp. lactis PE=3 SV=1
+g315.t1	sp|Q58439|CORA_METJA Cobalt/magnesium transport protein CorA  OS=Methanocaldococcus jannaschii (strain ATCC 43067 / DSM 2661  / JAL-1 / JCM 10045 / NBRC 100440) GN=corA PE=1 SV=1
+g541.t1	sp|P96613|MURF_BACSU UDP-N-acetylmuramoyl-tripeptide--D-alanyl-D-alanine  ligase OS=Bacillus subtilis (strain 168) GN=murF  PE=3 SV=1
+g629.t1	sp|P26906|DPPE_BACSU Dipeptide-binding protein DppE OS=Bacillus  subtilis (strain 168) GN=dppE PE=2 SV=4
+g927.t1	sp|Q8HZK2|DUOX2_PIG Dual oxidase 2 OS=Sus scrofa GN=DUOX2 PE=1  SV=2
+g902.t1	sp|O50523|AGAS_STRCO Putative tagatose-6-phosphate ketose/aldose  isomerase OS=Streptomyces coelicolor (strain ATCC BAA-471  / A3(2) / M145) GN=agaS PE=3 SV=1
+g933.t1	sp|Q88XP4|Y1151_LACPL Uncharacterized RNA methyltransferase lp_1151  OS=Lactobacillus plantarum (strain ATCC BAA-793 / NCIMB  8826 / WCFS1) GN=lp_1151 PE=3 SV=1
+g864.t1	sp|Q8DPI7|DPRA_STRR6 DNA processing protein DprA OS=Streptococcus  pneumoniae (strain ATCC BAA-255 / R6) GN=dprA PE=1 SV=2
+g649.t1	sp|O95810|SDPR_HUMAN Serum deprivation-response protein OS=Homo  sapiens GN=SDPR PE=1 SV=3
+g962.t1	sp|P71057|EPSH_BACSU Putative glycosyltransferase EpsH OS=Bacillus  subtilis (strain 168) GN=epsH PE=2 SV=1
+g867.t1	sp|P12287|BLAR_BACLI Regulatory protein BlaR1 OS=Bacillus licheniformis  GN=blaR1 PE=1 SV=1
+g614.t1	sp|Q313V6|ATPF_DESAG ATP synthase subunit b OS=Desulfovibrio  alaskensis (strain G20) GN=atpF PE=3 SV=1
+g625.t1	sp|Q820V3|FABZ1_ENTFA 3-hydroxyacyl-[acyl-carrier-protein] dehydratase  FabZ OS=Enterococcus faecalis (strain ATCC 700802  / V583) GN=fabZ1 PE=3 SV=1
+g351.t1	sp|Q836A6|LYAT_ENTFA Transcriptional regulator LytR OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=lytR PE=3 SV=1
+g101.t1	sp|Q834T4|DER_ENTFA GTPase Der OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=der PE=3 SV=1
+g120.t1	sp|Q836J9|ADDB_ENTFA ATP-dependent helicase/deoxyribonuclease  subunit B OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=rexB PE=3 SV=1
+g593.t1	sp|P42244|YCBL_BACSU Uncharacterized transcriptional regulatory  protein YcbL OS=Bacillus subtilis (strain 168) GN=ycbL PE=3  SV=3
+g893.t1	sp|B8DEV0|RLMH_LISMH Ribosomal RNA large subunit methyltransferase  H OS=Listeria monocytogenes serotype 4a (strain HCC23)  GN=rlmH PE=3 SV=1
+g167.t1	sp|Q831A8|MURA2_ENTFA UDP-N-acetylglucosamine 1-carboxyvinyltransferase  2 OS=Enterococcus faecalis (strain ATCC 700802 /  V583) GN=murA2 PE=3 SV=1
+g141.t1	sp|P43439|NTPI_ENTHA V-type sodium ATPase subunit I OS=Enterococcus  hirae (strain ATCC 9790 / DSM 20160 / JCM 8729 / LMG  6399 / NBRC 3181 / NCIMB 6459 / NCDO 1258) GN=ntpI PE=3 SV=2
+g766.t1	sp|Q834R0|LEXA_ENTFA LexA repressor OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=lexA PE=3 SV=1
+g588.t1	sp|Q47745|VANS_ENTFA Sensor protein VanSB OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=vanSB PE=3 SV=1
+g463.t1	sp|Q839G4|RL3_ENTFA 50S ribosomal protein L3 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rplC PE=3 SV=1
+g330.t1	sp|P49442|INPP_MOUSE Inositol polyphosphate 1-phosphatase OS=Mus  musculus GN=Inpp1 PE=1 SV=2
+g135.t1	sp|Q49YH0|Y1024_STAS1 UPF0478 protein SSP1024 OS=Staphylococcus  saprophyticus subsp. saprophyticus (strain ATCC 15305 / DSM  20229) GN=SSP1024 PE=3 SV=1
+g364.t1	sp|P33696|EXON_RHIME UTP--glucose-1-phosphate uridylyltransferase  OS=Rhizobium meliloti (strain 1021) GN=exoN PE=3 SV=2
+g362.t1	sp|D2TV88|Y1121_CITRI Probable autotransporter ROD_p1121 OS=Citrobacter  rodentium (strain ICC168) GN=ROD_p1121 PE=1 SV=1
+g53.t1	sp|P37105|SRP54_BACSU Signal recognition particle protein OS=Bacillus  subtilis (strain 168) GN=ffh PE=1 SV=1
+g1017.t1	sp|Q12179|YP245_YEAST Uncharacterized protein YPL245W OS=Saccharomyces  cerevisiae (strain ATCC 204508 / S288c) GN=YPL245W  PE=1 SV=1
+g1091.t1	sp|P39795|TREC_BACSU Trehalose-6-phosphate hydrolase OS=Bacillus  subtilis (strain 168) GN=treA PE=1 SV=2
+g906.t1	sp|O32154|YURM_BACSU Probable ABC transporter permease protein  YurM OS=Bacillus subtilis (strain 168) GN=yurM PE=3 SV=1
+g1023.t1	sp|B5XRA9|APBE2_KLEP3 FAD:protein FMN transferase OS=Klebsiella  pneumoniae (strain 342) GN=apbE2 PE=3 SV=1
+g760.t1	sp|Q5M3C8|OBG_STRT2 GTPase Obg OS=Streptococcus thermophilus  (strain ATCC BAA-250 / LMG 18311) GN=obg PE=3 SV=1
+g438.t1	sp|P74892|SCRR_STAXY Sucrose operon repressor OS=Staphylococcus  xylosus GN=scrR PE=3 SV=1
+g839.t1	sp|Q47746|VANY_ENTFA D-alanyl-D-alanine carboxypeptidase OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=vanYB PE=1  SV=1
+g311.t1	sp|P69831|PTKC_ECOLI PTS system galactitol-specific EIIC component  OS=Escherichia coli (strain K12) GN=gatC PE=1 SV=1
+g585.t1	sp|Q927I2|DGTL2_LISIN Deoxyguanosinetriphosphate triphosphohydrolase-like  protein OS=Listeria innocua serovar 6a (strain  ATCC BAA-680 / CLIP 11262) GN=lin2806 PE=3 SV=1
+g742.t1	sp|Q9Z9J4|MAP1_BACHD Methionine aminopeptidase OS=Bacillus halodurans  (strain ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM  9153 / C-125) GN=map PE=3 SV=1
+g783.t1	sp|Q6GEW9|ATPD_STAAR ATP synthase subunit delta OS=Staphylococcus  aureus (strain MRSA252) GN=atpH PE=3 SV=1
+g410.t1	sp|Q53654|CNA_STAAU Collagen adhesin OS=Staphylococcus aureus  GN=cna PE=1 SV=1
+g904.t1	sp|Q9KCZ4|GLK_BACHD Glucokinase OS=Bacillus halodurans (strain  ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM 9153 / C-125) GN=glcK  PE=3 SV=1
+g353.t1	sp|O31517|YESN_BACSU Uncharacterized transcriptional regulatory  protein YesN OS=Bacillus subtilis (strain 168) GN=yesN PE=3  SV=1
+g703.t1	sp|E6ENP9|MAPP_ENTFT Maltose 6'-phosphate phosphatase OS=Enterococcus  faecalis (strain TX4000 / JH2-2) GN=mapP PE=1 SV=1
+g332.t1	sp|P43467|AGAL1_PEDPE Alpha-galactosidase 1 OS=Pediococcus pentosaceus  GN=agaR PE=3 SV=1
+g596.t1	sp|P9WQJ0|Y1273_MYCTO Uncharacterized ABC transporter ATP-binding  protein MT1311 OS=Mycobacterium tuberculosis (strain CDC  1551 / Oshkosh) GN=MT1311 PE=3 SV=1
+g640.t1	sp|Q5HMY2|AGRA_STAEQ Accessory gene regulator protein A OS=Staphylococcus  epidermidis (strain ATCC 35984 / RP62A) GN=agrA  PE=3 SV=2
+g283.t1	sp|P45494|PEPV_LACDL Beta-Ala-Xaa dipeptidase OS=Lactobacillus  delbrueckii subsp. lactis GN=pepV PE=1 SV=1
+g1092.t1	sp|P36672|PTTBC_ECOLI PTS system trehalose-specific EIIBC component  OS=Escherichia coli (strain K12) GN=treB PE=1 SV=4
+g852.t1	sp|Q5WGY8|RESA_BACSK Probable thiol-disulfide oxidoreductase  ResA OS=Bacillus clausii (strain KSM-K16) GN=resA PE=3 SV=1
+g907.t1	sp|O32155|YURN_BACSU Probable ABC transporter permease protein  YurN OS=Bacillus subtilis (strain 168) GN=yurN PE=3 SV=1
+g786.t1	sp|Q8E177|SYI_STRA5 Isoleucine--tRNA ligase OS=Streptococcus  agalactiae serotype V (strain ATCC BAA-611 / 2603 V/R) GN=ileS  PE=3 SV=1
+g557.t1	sp|P39646|PTAS_BACSU Phosphate acetyltransferase OS=Bacillus  subtilis (strain 168) GN=pta PE=1 SV=3
+g1042.t1	sp|P37474|MFD_BACSU Transcription-repair-coupling factor OS=Bacillus  subtilis (strain 168) GN=mfd PE=3 SV=1
+g740.t1	sp|Q60151|GSHR_STRTR Glutathione reductase OS=Streptococcus thermophilus  GN=gor PE=3 SV=1
+g468.t1	sp|Q9KEF0|ARAP_BACHD L-arabinose transport system permease protein  AraP OS=Bacillus halodurans (strain ATCC BAA-125 / DSM  18197 / FERM 7344 / JCM 9153 / C-125) GN=araP PE=3 SV=1
+g37.t1	sp|Q9PL64|FUMC_CHLMU Fumarate hydratase class II OS=Chlamydia  muridarum (strain MoPn / Nigg) GN=fumC PE=3 SV=1
+g52.t1	sp|P0DN73|OYE_STRPG Uncharacterized oxidoreductase SpyM50865  OS=Streptococcus pyogenes serotype M5 (strain Manfredo) GN=SpyM50865  PE=1 SV=1
+g437.t1	sp|P27219|PTSBC_KLEPN PTS system sucrose-specific EIIBC component  OS=Klebsiella pneumoniae GN=scrA PE=3 SV=1
+g365.t1	sp|Q55487|Y501_SYNY3 Uncharacterized glycosyltransferase sll0501  OS=Synechocystis sp. (strain PCC 6803 / Kazusa) GN=sll0501  PE=1 SV=1
+g680.t1	sp|Q8FAJ3|ULAA_ECOL6 Ascorbate-specific PTS system EIIC component  OS=Escherichia coli O6:H1 (strain CFT073 / ATCC 700928  / UPEC) GN=ulaA PE=3 SV=1
+g288.t1	sp|A9M1A6|RSMJ_NEIM0 Ribosomal RNA small subunit methyltransferase  J OS=Neisseria meningitidis serogroup C (strain 053442)  GN=rsmJ PE=3 SV=1
+g898.t1	sp|A0QQ71|PHND_MYCS2 Phosphate-import protein PhnD OS=Mycobacterium  smegmatis (strain ATCC 700084 / mc(2)155) GN=phnD PE=1  SV=1
+g474.t1	sp|P0DG78|GNGF_STRP3 Putative gluconeogenesis factor OS=Streptococcus  pyogenes serotype M3 (strain ATCC BAA-595 / MGAS315)  GN=SpyM3_0463 PE=3 SV=1
+g209.t1	sp|P24518|NADR_SALTY Trifunctional NAD biosynthesis/regulator  protein NadR OS=Salmonella typhimurium (strain LT2 / SGSC1412  / ATCC 700720) GN=nadR PE=1 SV=2
+g36.t1	sp|A5UKB2|VATA_METS3 V-type ATP synthase alpha chain OS=Methanobrevibacter  smithii (strain ATCC 35061 / DSM 861 / OCM 144  / PS) GN=atpA PE=3 SV=1
+g868.t1	sp|Q9Z9S0|RNH2_BACHD Ribonuclease HII OS=Bacillus halodurans  (strain ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM 9153 / C-125)  GN=rnhB PE=3 SV=2
+g743.t1	sp|Q88V72|FTSK_LACPL DNA translocase FtsK OS=Lactobacillus plantarum  (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=ftsK PE=3  SV=2
+g454.t1	sp|Q839F2|RL5_ENTFA 50S ribosomal protein L5 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rplE PE=3 SV=1
+g1080.t1	sp|Q839V7|SYE_ENTFA Glutamate--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=gltX PE=3 SV=1
+g50.t1	sp|P0DN71|SIRTM_STRPG Protein ADP-ribosyltransferase OS=Streptococcus  pyogenes serotype M5 (strain Manfredo) GN=SpyM50869  PE=1 SV=1
+g1025.t1	sp|P0A4H9|DLTR_STRA3 Transcriptional regulatory protein DltR  OS=Streptococcus agalactiae serotype III (strain NEM316) GN=dltR  PE=3 SV=1
+g1039.t1	sp|Q839B0|HSLO_ENTFA 33 kDa chaperonin OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=hslO PE=3 SV=1
+g883.t1	sp|O34723|DESR_BACSU Transcriptional regulatory protein DesR  OS=Bacillus subtilis (strain 168) GN=desR PE=1 SV=1
+g794.t1	sp|Q5HFY8|EBH_STAAC Extracellular matrix-binding protein ebh  OS=Staphylococcus aureus (strain COL) GN=ebh PE=3 SV=1
+g608.t1	sp|P39044|YX_LYSSH Uncharacterized protein X OS=Lysinibacillus  sphaericus GN=X PE=4 SV=1
+g485.t1	sp|P37543|YABB_BACSU Uncharacterized protein YabB OS=Bacillus  subtilis (strain 168) GN=yabB PE=4 SV=1
+g784.t1	sp|Q45480|YLYB_BACSU Uncharacterized RNA pseudouridine synthase  YlyB OS=Bacillus subtilis (strain 168) GN=ylyB PE=3 SV=3
+g517.t1	sp|Q8ZH40|METQ_YERPE D-methionine-binding lipoprotein MetQ OS=Yersinia  pestis GN=metQ PE=3 SV=1
+g366.t1	sp|A4VUH1|PCP_STRSY Pyrrolidone-carboxylate peptidase OS=Streptococcus  suis (strain 05ZYH33) GN=pcp PE=3 SV=1
+g1065.t1	sp|Q9L7Q2|ZMPB_STRPN Zinc metalloprotease ZmpB OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4) GN=zmpB  PE=3 SV=2
+g771.t1	sp|Q88VK2|DPO3_LACPL DNA polymerase III PolC-type OS=Lactobacillus  plantarum (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=polC  PE=3 SV=1
+g439.t1	sp|O35033|COABC_BACSU Probable coenzyme A biosynthesis bifunctional  protein CoaBC OS=Bacillus subtilis (strain 168) GN=coaBC  PE=3 SV=1
+g1076.t1	sp|P41006|PYRP_BACCL Uracil permease OS=Bacillus caldolyticus  GN=pyrP PE=3 SV=1
+g324.t1	sp|P44731|POTD2_HAEIN Spermidine/putrescine-binding periplasmic  protein 2 OS=Haemophilus influenzae (strain ATCC 51907 /  DSM 11121 / KW20 / Rd) GN=potD-A PE=3 SV=2
+g91.t1	sp|Q835J8|SYA_ENTFA Alanine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=alaS PE=3 SV=1
+g495.t1	sp|Q7A797|CLPC_STAAN ATP-dependent Clp protease ATP-binding subunit  ClpC OS=Staphylococcus aureus (strain N315) GN=clpC PE=1  SV=1
+g475.t1	sp|Q837R5|Y766_ENTFA Nucleotide-binding protein EF_0766 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=EF_0766 PE=3  SV=1
+g279.t1	sp|O32155|YURN_BACSU Probable ABC transporter permease protein  YurN OS=Bacillus subtilis (strain 168) GN=yurN PE=3 SV=1
+g788.t1	sp|P70947|YITU_BACSU 5-amino-6-(5-phospho-D-ribitylamino)uracil  phosphatase YitU OS=Bacillus subtilis (strain 168) GN=yitU  PE=1 SV=1
+g178.t1	sp|Q45493|RNJ1_BACSU Ribonuclease J1 OS=Bacillus subtilis (strain  168) GN=rnjA PE=1 SV=1
+g116.t1	sp|P38050|PBPF_BACSU Penicillin-binding protein 1F OS=Bacillus  subtilis (strain 168) GN=pbpF PE=2 SV=2
+g397.t1	sp|C0SPC1|YTMP_BACSU Putative phosphotransferase YtmP OS=Bacillus  subtilis (strain 168) GN=ytmP PE=3 SV=1
+g104.t1	sp|P35159|RLUB_BACSU Ribosomal large subunit pseudouridine synthase  B OS=Bacillus subtilis (strain 168) GN=rluB PE=1 SV=2
+g260.t1	sp|A4G4K6|DER_HERAR GTPase Der OS=Herminiimonas arsenicoxydans  GN=der PE=3 SV=1
+g132.t1	Hypothetical Protein
+g1064.t1	sp|P30235|PSUK_ECOLI Pseudouridine kinase OS=Escherichia coli  (strain K12) GN=psuK PE=1 SV=2
+g434.t1	sp|Q57B99|LIVB1_BRUAB Leu/Ile/Val-binding protein homolog 1 OS=Brucella  abortus biovar 1 (strain 9-941) GN=BruAb1_1767 PE=3  SV=1
+g813.t1	sp|Q835R7|DNAK_ENTFA Chaperone protein DnaK OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=dnaK PE=3 SV=1
+g43.t1	sp|C5CPX0|SYC_VARPS Cysteine--tRNA ligase OS=Variovorax paradoxus  (strain S110) GN=cysS PE=3 SV=1
+g971.t1	sp|Q58972|Y1577_METJA Uncharacterized protein MJ1577 OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661 / JAL-1  / JCM 10045 / NBRC 100440) GN=MJ1577 PE=4 SV=1
+g138.t1	sp|A3CK50|VATD_STRSV V-type ATP synthase subunit D OS=Streptococcus  sanguinis (strain SK36) GN=atpD PE=3 SV=1
+g208.t1	sp|P39407|YJJU_ECOLI Uncharacterized protein YjjU OS=Escherichia  coli (strain K12) GN=yjjU PE=3 SV=1
+g1099.t1	sp|O34475|YFKO_BACSU Putative NAD(P)H nitroreductase YfkO OS=Bacillus  subtilis (strain 168) GN=yfkO PE=1 SV=1
+g549.t1	sp|Q7V5W0|CY550_PROMM Cytochrome c-550 OS=Prochlorococcus marinus  (strain MIT 9313) GN=psbV PE=3 SV=1
+g1022.t1	sp|Q74HL8|NFR2_LACJO NADH-dependent flavin reductase subunit  2 OS=Lactobacillus johnsonii (strain CNCM I-12250 / La1 / NCC  533) GN=nfr2 PE=1 SV=1
+g110.t1	sp|P36921|EBSB_ENTFA Cell wall enzyme EbsB OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=ebsB PE=3 SV=2
+g886.t1	sp|O31489|YDCI_BACSU Uncharacterized protein YdcI OS=Bacillus  subtilis (strain 168) GN=ydcI PE=3 SV=2
+g473.t1	sp|Q837R3|WHIA_ENTFA Putative sporulation transcription regulator  WhiA OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=whiA PE=3 SV=1
+g791.t1	sp|O32095|YUEF_BACSU UPF0118 membrane protein YueF OS=Bacillus  subtilis (strain 168) GN=yueF PE=3 SV=1
+g854.t1	sp|O68575|PFLA_STRMU Pyruvate formate-lyase-activating enzyme  OS=Streptococcus mutans serotype c (strain ATCC 700610 / UA159)  GN=act PE=3 SV=1
+g199.t1	sp|Q13FD9|RGMG_BURXL Putative ribose/galactose/methyl galactoside  import ATP-binding protein OS=Burkholderia xenovorans (strain  LB400) GN=Bxeno_C1272 PE=3 SV=1
+g687.t1	sp|Q9K919|COMGA_BACHD ComG operon protein 1 homolog OS=Bacillus  halodurans (strain ATCC BAA-125 / DSM 18197 / FERM 7344 /  JCM 9153 / C-125) GN=comGA PE=3 SV=1
+g1043.t1	sp|Q5WAD6|PTH_BACSK Peptidyl-tRNA hydrolase OS=Bacillus clausii  (strain KSM-K16) GN=pth PE=3 SV=1
+g415.t1	sp|Q9K9G7|THIZ_BACHD Formylaminopyrimidine import ATP-binding  protein ThiZ OS=Bacillus halodurans (strain ATCC BAA-125 /  DSM 18197 / FERM 7344 / JCM 9153 / C-125) GN=thiZ PE=3 SV=1
+g246.t1	sp|A5N643|COBQ_CLOK5 Cobyric acid synthase OS=Clostridium kluyveri  (strain ATCC 8527 / DSM 555 / NCIMB 10680) GN=cobQ PE=3  SV=1
+g646.t1	sp|Q58903|Y1508_METJA Uncharacterized ABC transporter ATP-binding  protein MJ1508 OS=Methanocaldococcus jannaschii (strain  ATCC 43067 / DSM 2661 / JAL-1 / JCM 10045 / NBRC 100440) GN=MJ1508  PE=3 SV=1
+g831.t1	sp|E7DNB6|TMP_BPDP1 Tape measure protein OS=Pneumococcus phage  Dp-1 GN=TMP PE=4 SV=1
+g357.t1	sp|P26832|Y188_CLOPE Uncharacterized protein CPE0188 OS=Clostridium  perfringens (strain 13 / Type A) GN=CPE0188 PE=3 SV=2
+g198.t1	sp|C1CB02|FUCI_STRP7 L-fucose isomerase OS=Streptococcus pneumoniae  (strain 70585) GN=fucI PE=3 SV=1
+g262.t1	sp|A8AVK0|LEMA_STRGC Protein LemA OS=Streptococcus gordonii (strain  Challis / ATCC 35105 / BCRC 15272 / CH1 / DL1 / V288)  GN=lemA PE=2 SV=1
+g301.t1	sp|P71128|CYSM_CAMJE Cysteine synthase B OS=Campylobacter jejuni  subsp. jejuni serotype O:2 (strain ATCC 700819 / NCTC 11168)  GN=cysM PE=3 SV=2
+g430.t1	sp|A5CPC1|XYLA_CLAM3 Xylose isomerase OS=Clavibacter michiganensis  subsp. michiganensis (strain NCPPB 382) GN=xylA PE=3 SV=1
+g360.t1	sp|O31672|MHQR_BACSU HTH-type transcriptional regulator MhqR  OS=Bacillus subtilis (strain 168) GN=mhqR PE=2 SV=1
+g675.t1	sp|O06990|MDXF_BACSU Maltodextrin transport system permease protein  MdxF OS=Bacillus subtilis (strain 168) GN=mdxF PE=3 SV=1
+g511.t1	sp|P37582|GLNR_BACSU HTH-type transcriptional regulator GlnR  OS=Bacillus subtilis (strain 168) GN=glnR PE=1 SV=1
+g440.t1	sp|P45245|Y1544_HAEIN Uncharacterized NAD(P)H oxidoreductase  HI_1544 OS=Haemophilus influenzae (strain ATCC 51907 / DSM 11121  / KW20 / Rd) GN=HI_1544 PE=3 SV=1
+g539.t1	sp|Q4UYG1|LEU1_XANC8 2-isopropylmalate synthase OS=Xanthomonas  campestris pv. campestris (strain 8004) GN=leuA PE=3 SV=1
+g955.t1	sp|P70976|YBAJ_BACSU Uncharacterized methyltransferase YbaJ OS=Bacillus  subtilis (strain 168) GN=ybaJ PE=3 SV=2
+g1109.t1	sp|Q5X9A3|IMDH_STRP6 Inosine-5'-monophosphate dehydrogenase OS=Streptococcus  pyogenes serotype M6 (strain ATCC BAA-946 /  MGAS10394) GN=guaB PE=1 SV=3
+g146.t1	sp|O31582|YFHO_BACSU Uncharacterized protein YfhO OS=Bacillus  subtilis (strain 168) GN=yfhO PE=4 SV=2
+g733.t1	sp|P80859|6PGD_BACSU 6-phosphogluconate dehydrogenase, NADP(+)-dependent,  decarboxylating OS=Bacillus subtilis (strain 168)  GN=gndA PE=1 SV=4
+g411.t1	sp|Q8P1F1|PANE_STRP8 Putative 2-dehydropantoate 2-reductase OS=Streptococcus  pyogenes serotype M18 (strain MGAS8232) GN=apbA  PE=3 SV=1
+g72.t1	sp|P94464|RSMB_BACSU Ribosomal RNA small subunit methyltransferase  B OS=Bacillus subtilis (strain 168) GN=rsmB PE=3 SV=2
+g276.t1	sp|P13398|NYLA_FLASK 6-aminohexanoate-cyclic-dimer hydrolase  OS=Flavobacterium sp. (strain K172) GN=nylA PE=1 SV=2
+g176.t1	sp|Q88WM9|NUSB_LACPL N utilization substance protein B homolog  OS=Lactobacillus plantarum (strain ATCC BAA-793 / NCIMB 8826  / WCFS1) GN=nusB PE=3 SV=1
+g482.t1	sp|P72481|UVRA_STRMU UvrABC system protein A OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=uvrA PE=3  SV=2
+g210.t1	sp|Q58549|ADPP_METJA ADP-ribose pyrophosphatase OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661 / JAL-1 /  JCM 10045 / NBRC 100440) GN=nudF PE=1 SV=1
+g109.t1	sp|Q88W95|GPSB_LACPL Cell cycle protein GpsB OS=Lactobacillus  plantarum (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=gpsB  PE=3 SV=1
+g25.t1	sp|P24136|OPPD_BACSU Oligopeptide transport ATP-binding protein  OppD OS=Bacillus subtilis (strain 168) GN=oppD PE=2 SV=2
+g426.t1	sp|Q9X525|UREE_LACFE Urease accessory protein UreE OS=Lactobacillus  fermentum GN=ureE PE=3 SV=1
+g560.t1	sp|O07942|AZLC_BACSU Branched-chain amino acid transport protein  AzlC OS=Bacillus subtilis (strain 168) GN=azlC PE=3 SV=1
+g587.t1	sp|P94411|YCLH_BACSU Uncharacterized ABC transporter ATP-binding  protein YclH OS=Bacillus subtilis (strain 168) GN=yclH PE=3  SV=1
+g523.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g609.t1	sp|O32220|COPA_BACSU Copper-exporting P-type ATPase A OS=Bacillus  subtilis (strain 168) GN=copA PE=1 SV=2
+g776.t1	sp|Q831T1|PDRP2_ENTFA Putative pyruvate, phosphate dikinase regulatory  protein 2 OS=Enterococcus faecalis (strain ATCC 700802  / V583) GN=EF_2419 PE=3 SV=1
+g147.t1	sp|Q6KCJ5|RECA_ENTHA Protein RecA OS=Enterococcus hirae (strain  ATCC 9790 / DSM 20160 / JCM 8729 / LMG 6399 / NBRC 3181 /  NCIMB 6459 / NCDO 1258) GN=recA PE=3 SV=1
+g1021.t1	sp|Q74HL7|NFR1_LACJO NADH-dependent flavin reductase subunit  1 OS=Lactobacillus johnsonii (strain CNCM I-12250 / La1 / NCC  533) GN=nfr1 PE=1 SV=1
+g386.t1	sp|P0AFQ0|YBHR_ECO57 Inner membrane transport permease YbhR OS=Escherichia  coli O157:H7 GN=ybhR PE=3 SV=1
+g980.t1	sp|Q797S1|PTXBC_BACSU Putative PTS system EIIBC component YbbF  OS=Bacillus subtilis (strain 168) GN=ybbF PE=3 SV=2
+g770.t1	sp|Q92C39|ISPT_LISIN Isoprenyl transferase OS=Listeria innocua  serovar 6a (strain ATCC BAA-680 / CLIP 11262) GN=uppS PE=3  SV=1
+g1060.t1	sp|Q82Z41|RPOC_ENTFA DNA-directed RNA polymerase subunit beta'  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=rpoC  PE=3 SV=1
+g1079.t1	sp|Q839V5|SYC_ENTFA Cysteine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=cysS PE=3 SV=1
+g151.t1	sp|Q8DTN6|NRNA_STRMU Probable bifunctional oligoribonuclease  and PAP phosphatase NrnA OS=Streptococcus mutans serotype c  (strain ATCC 700610 / UA159) GN=nrnA PE=1 SV=1
+g545.t1	sp|P54501|YQGX_BACSU Probable metallo-hydrolase YqgX OS=Bacillus  subtilis (strain 168) GN=yqgX PE=3 SV=1
+g162.t1	sp|O07672|FTSA_ENTHR Cell division protein FtsA OS=Enterococcus  hirae GN=ftsA PE=3 SV=1
+g583.t1	sp|O07603|YHFE_BACSU Putative aminopeptidase YhfE OS=Bacillus  subtilis (strain 168) GN=yhfE PE=3 SV=1
+g949.t1	sp|O34521|PTWCB_BACSU PTS system N-acetylglucosamine-specific  EIICB component OS=Bacillus subtilis (strain 168) GN=nagP PE=3  SV=1
+g510.t1	sp|Q8DUC9|CITG_STRMU Probable 2-(5''-triphosphoribosyl)-3'-dephosphocoenzyme-A  synthase OS=Streptococcus mutans serotype  c (strain ATCC 700610 / UA159) GN=citG PE=3 SV=1
+g698.t1	sp|O34697|BCEA_BACSU Bacitracin export ATP-binding protein BceA  OS=Bacillus subtilis (strain 168) GN=bceA PE=2 SV=1
+g896.t1	sp|O69053|PTXC_PSEST Phosphite transport system permease protein  PtxC OS=Pseudomonas stutzeri GN=ptxC PE=3 SV=1
+g928.t1	sp|B3VA58|AGLK_METVO UDP-N-acetylglucosamine--dolichyl-phosphate  N-acetylglucosaminyltransferase OS=Methanococcus voltae  GN=aglK PE=1 SV=1
+g102.t1	sp|P38494|RS1H_BACSU 30S ribosomal protein S1 homolog OS=Bacillus  subtilis (strain 168) GN=ypfD PE=1 SV=1
+g450.t1	sp|Q839D4|ECFA2_ENTFA Energy-coupling factor transporter ATP-binding  protein EcfA2 OS=Enterococcus faecalis (strain ATCC  700802 / V583) GN=ecfA2 PE=3 SV=2
+g219.t1	sp|P05332|YP20_BACLI Uncharacterized N-acetyltransferase p20  OS=Bacillus licheniformis GN=p20 PE=3 SV=1
+g58.t1	sp|Q82ZG1|RNC_ENTFA Ribonuclease 3 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=rnc PE=3 SV=1
+g989.t1	sp|Q0A9T9|Y1045_ALKEH UPF0061 protein Mlg_1045 OS=Alkalilimnicola  ehrlichii (strain ATCC BAA-1101 / DSM 17681 / MLHE-1) GN=Mlg_1045  PE=3 SV=1
+g34.t1	sp|Q8DNY1|PLSC_STRR6 1-acyl-sn-glycerol-3-phosphate acyltransferase  OS=Streptococcus pneumoniae (strain ATCC BAA-255 / R6)  GN=plsC PE=1 SV=1
+g792.t1	sp|P0AFF5|NUPG_SHIFL Nucleoside permease NupG OS=Shigella flexneri  GN=nupG PE=3 SV=1
+g1070.t1	sp|Q9KAH3|IOLJ_BACHD 6-phospho-5-dehydro-2-deoxy-D-gluconate  aldolase OS=Bacillus halodurans (strain ATCC BAA-125 / DSM 18197  / FERM 7344 / JCM 9153 / C-125) GN=iolJ PE=3 SV=1
+g73.t1	sp|P94461|PRIA_BACSU Primosomal protein N' OS=Bacillus subtilis  (strain 168) GN=priA PE=3 SV=2
+g1073.t1	sp|P39651|YWFO_BACSU Uncharacterized protein YwfO OS=Bacillus  subtilis (strain 168) GN=ywfO PE=4 SV=2
+g300.t1	sp|Q9S3Q0|PCRA_LEUCI ATP-dependent DNA helicase PcrA OS=Leuconostoc  citreum GN=pcrA PE=3 SV=1
+g4.t1	sp|P39597|EFEN_BACSU Probable deferrochelatase/peroxidase EfeN  OS=Bacillus subtilis (strain 168) GN=efeN PE=1 SV=1
+g918.t1	sp|P45579|YBDH_ECOLI Uncharacterized oxidoreductase YbdH OS=Escherichia  coli (strain K12) GN=ybdH PE=1 SV=2
+g39.t1	sp|Q9ST62|NDB1_SOLTU External alternative NAD(P)H-ubiquinone  oxidoreductase B1, mitochondrial OS=Solanum tuberosum GN=NDB1  PE=1 SV=1
+g895.t1	sp|C7G046|Y6969_DICDI von Willebrand factor A domain-containing  protein DDB_G0286969 OS=Dictyostelium discoideum GN=DDB_G0286969  PE=3 SV=1
+g105.t1	sp|Q839I2|DEOB_ENTFA Phosphopentomutase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=deoB PE=3 SV=1
+g991.t1	sp|P19582|DHOM_BACSU Homoserine dehydrogenase OS=Bacillus subtilis  (strain 168) GN=hom PE=1 SV=2
+g505.t1	sp|Q9YMJ7|ENV_NPVLD Envelope fusion protein OS=Lymantria dispar  multicapsid nuclear polyhedrosis virus GN=LdOrf-130 PE=3  SV=1
+g645.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g778.t1	sp|P54464|YQEY_BACSU Uncharacterized protein YqeY OS=Bacillus  subtilis (strain 168) GN=yqeY PE=1 SV=1
+g603.t1	sp|A2RGS2|FTHS2_STRPG Formate--tetrahydrofolate ligase 2 OS=Streptococcus  pyogenes serotype M5 (strain Manfredo) GN=fhs2  PE=3 SV=1
+g275.t1	sp|Q836J6|SYFA_ENTFA Phenylalanine--tRNA ligase alpha subunit  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=pheS  PE=3 SV=1
+g529.t1	sp|P55192|YBBA_BACSU Uncharacterized protein YbbA OS=Bacillus  subtilis (strain 168) GN=ybbA PE=2 SV=3
+g932.t1	sp|O64810|SCP10_ARATH Serine carboxypeptidase-like 10 OS=Arabidopsis  thaliana GN=SCPL10 PE=2 SV=1
+g914.t1	sp|Q8CT84|PPI1_STAES Putative peptidyl-prolyl cis-trans isomerase  OS=Staphylococcus epidermidis (strain ATCC 12228) GN=SE_0648  PE=3 SV=1
+g51.t1	sp|O34504|YCEB_BACSU Uncharacterized protein YceB OS=Bacillus  subtilis (strain 168) GN=yceB PE=4 SV=2
+g741.t1	sp|Q42712|FATA_CORSA Oleoyl-acyl carrier protein thioesterase,  chloroplastic (Fragment) OS=Coriandrum sativum GN=FATA PE=2  SV=1
+g13.t1	sp|P14181|LICA2_HAEIF Protein LicA OS=Haemophilus influenzae  GN=licA PE=3 SV=1
+g180.t1	sp|Q6MH01|TIG_BDEBA Trigger factor OS=Bdellovibrio bacteriovorus  (strain ATCC 15356 / DSM 50701 / NCIB 9529 / HD100) GN=tig  PE=3 SV=1
+g166.t1	sp|P39751|MBL_BACSU MreB-like protein OS=Bacillus subtilis (strain  168) GN=mbl PE=3 SV=1
+g956.t1	sp|P52090|PHA1_PAULE Poly(3-hydroxyalkanoate) depolymerase C  OS=Paucimonas lemoignei GN=phaZ1 PE=3 SV=1
+g644.t1	Hypothetical Protein
+g204.t1	sp|P37686|ADH2_ECOLI Probable alcohol dehydrogenase OS=Escherichia  coli (strain K12) GN=yiaY PE=3 SV=4
+g367.t1	sp|Q5ND28|SREC_MOUSE Scavenger receptor class F member 1 OS=Mus  musculus GN=Scarf1 PE=1 SV=1
+g323.t1	sp|P39805|LICT_BACSU Transcription antiterminator LicT OS=Bacillus  subtilis (strain 168) GN=licT PE=1 SV=1
+g627.t1	sp|A3CQ51|ACCD_STRSV Acetyl-coenzyme A carboxylase carboxyl transferase  subunit beta OS=Streptococcus sanguinis (strain SK36)  GN=accD PE=3 SV=1
+g111.t1	sp|Q7XRH8|PT113_ORYSJ Putative inorganic phosphate transporter  1-13 OS=Oryza sativa subsp. japonica GN=PHT1-13 PE=3 SV=2
+g635.t1	sp|A7IY64|ISAA_STAXY Probable transglycosylase IsaA OS=Staphylococcus  xylosus GN=isaA PE=1 SV=1
+g972.t1	sp|Q45612|YYCI_BACSU Two-component system WalR/WalK regulatory  protein YycI OS=Bacillus subtilis (strain 168) GN=yycI PE=1  SV=1
+g143.t1	sp|Q9X4A7|PEPS_STRTR Aminopeptidase PepS OS=Streptococcus thermophilus  GN=pepS PE=1 SV=1
+g992.t1	sp|P94417|AK3_BACSU Aspartokinase 3 OS=Bacillus subtilis (strain  168) GN=yclM PE=1 SV=1
+g681.t1	sp|B7NGD0|ULAD_ECOLU 3-keto-L-gulonate-6-phosphate decarboxylase  UlaD OS=Escherichia coli O17:K52:H18 (strain UMN026 / ExPEC)  GN=ulaD PE=3 SV=1
+g227.t1	sp|Q1ZXI7|C513F_DICDI Probable cytochrome P450 513F1 OS=Dictyostelium  discoideum GN=cyp513F1 PE=3 SV=1
+g859.t1	sp|P42096|LACXC_LACLL Protein LacX, chromosomal OS=Lactococcus  lactis subsp. lactis GN=lacX PE=4 SV=1
+g242.t1	sp|B5UAT8|RIZA_BACIU L-arginine-specific L-amino acid ligase  OS=Bacillus subtilis GN=rizA PE=1 SV=1
+g159.t1	sp|P71021|DIV4A_BACSU Septum site-determining protein DivIVA  OS=Bacillus subtilis (strain 168) GN=divIVA PE=1 SV=1
+g846.t1	sp|P42904|PTPB2_ECOLI N-acetylgalactosamine-specific phosphotransferase  enzyme IIB component 2 OS=Escherichia coli (strain  K12) GN=agaV PE=3 SV=1
+g389.t1	sp|P0C2M5|PSTS2_STRPN Phosphate-binding protein PstS 2 OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4)  GN=pstS2 PE=1 SV=1
+g29.t1	sp|P77212|RCLA_ECOLI Probable pyridine nucleotide-disulfide oxidoreductase  RclA OS=Escherichia coli (strain K12) GN=rclA  PE=2 SV=2
+g10.t1	sp|Q8DPI3|TARJ_STRR6 Ribulose-5-phosphate reductase OS=Streptococcus  pneumoniae (strain ATCC BAA-255 / R6) GN=tarJ PE=1 SV=1
+g753.t1	sp|Q833M7|CLPX_ENTFA ATP-dependent Clp protease ATP-binding subunit  ClpX OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=clpX PE=3 SV=1
+g368.t1	sp|O31631|METI_BACSU Cystathionine gamma-synthase/O-acetylhomoserine  (thiol)-lyase OS=Bacillus subtilis (strain 168) GN=metI  PE=1 SV=1
+g996.t1	sp|O32155|YURN_BACSU Probable ABC transporter permease protein  YurN OS=Bacillus subtilis (strain 168) GN=yurN PE=3 SV=1
+g131.t1	sp|Q5ZMI4|MVP_CHICK Major vault protein OS=Gallus gallus GN=MVP  PE=2 SV=1
+g231.t1	sp|P83847|MUTY_GEOSE Adenine DNA glycosylase OS=Geobacillus stearothermophilus  GN=mutY PE=1 SV=2
+g90.t1	sp|P67493|YQGF_STRA5 Putative pre-16S rRNA nuclease OS=Streptococcus  agalactiae serotype V (strain ATCC BAA-611 / 2603 V/R)  GN=SAG2090 PE=3 SV=1
+g62.t1	sp|Q02VA9|OPPA_LACLS Oligopeptide-binding protein OppA OS=Lactococcus  lactis subsp. cremoris (strain SK11) GN=oppA PE=3 SV=1
+g247.t1	sp|P38050|PBPF_BACSU Penicillin-binding protein 1F OS=Bacillus  subtilis (strain 168) GN=pbpF PE=2 SV=2
+g1093.t1	sp|Q01620|JAG_BACSU Protein jag OS=Bacillus subtilis (strain  168) GN=jag PE=3 SV=1
+g1036.t1	sp|Q0TFU2|MGLA_ECOL5 Galactose/methyl galactoside import ATP-binding  protein MglA OS=Escherichia coli O6:K15:H31 (strain  536 / UPEC) GN=mglA PE=3 SV=1
+g637.t1	sp|Q5UPS3|YL782_MIMIV Uncharacterized protein L782 OS=Acanthamoeba  polyphaga mimivirus GN=MIMI_L782 PE=3 SV=1
+g1045.t1	sp|P71012|PTF3A_BACSU PTS system fructose-specific EIIABC component  OS=Bacillus subtilis (strain 168) GN=fruA PE=1 SV=2
+g322.t1	sp|A0AFI3|RHAD_LISW6 Rhamnulose-1-phosphate aldolase OS=Listeria  welshimeri serovar 6b (strain ATCC 35897 / DSM 20650 / SLCC5334)  GN=rhaD PE=3 SV=1
+g938.t1	sp|P75809|YBJI_ECOLI 5-amino-6-(5-phospho-D-ribitylamino)uracil  phosphatase YbjI OS=Escherichia coli (strain K12) GN=ybjI  PE=1 SV=3
+g1084.t1	sp|Q00752|MSMK_STRMU Multiple sugar-binding transport ATP-binding  protein MsmK OS=Streptococcus mutans serotype c (strain  ATCC 700610 / UA159) GN=msmK PE=3 SV=1
+g942.t1	sp|Q99T18|PERR_STAAM Peroxide-responsive repressor PerR OS=Staphylococcus  aureus (strain Mu50 / ATCC 700699) GN=perR PE=3  SV=1
+g115.t1	sp|A3CLI1|Y593_STRSV UPF0176 protein SSA_0593 OS=Streptococcus  sanguinis (strain SK36) GN=SSA_0593 PE=3 SV=1
+g1078.t1	sp|Q06753|YACO_BACSU Putative TrmH family tRNA/rRNA methyltransferase  YacO OS=Bacillus subtilis (strain 168) GN=yacO PE=3  SV=2
+g948.t1	sp|O05516|TSAB_BACSU tRNA threonylcarbamoyladenosine biosynthesis  protein TsaB OS=Bacillus subtilis (strain 168) GN=tsaB  PE=1 SV=1
+g45.t1	sp|P56365|RR3_CHLVU 30S ribosomal protein S3, chloroplastic OS=Chlorella  vulgaris GN=rps3 PE=3 SV=1
+g113.t1	sp|P17642|PRS2_SOLTU Pathogenesis-related protein STH-2 OS=Solanum  tuberosum GN=STH-2 PE=2 SV=1
+g976.t1	sp|Q73E41|BACA1_BACC1 Calcium-transporting ATPase 1 OS=Bacillus  cereus (strain ATCC 10987 / NRS 248) GN=BCE_0519 PE=1 SV=1
+g959.t1	sp|P19579|CAPA_BACAN Capsule biosynthesis protein CapA OS=Bacillus  anthracis GN=capA PE=2 SV=2
+g815.t1	sp|P20709|VINT_BPL54 Integrase OS=Staphylococcus phage L54a GN=int  PE=3 SV=1
+g827.t1	sp|D3WAC2|ENDON_BPLP2 Probable HNH endonuclease OS=Lactococcus  phage p2 PE=3 SV=1
+g435.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g148.t1	sp|Q03AQ1|CINA_LACC3 Putative competence-damage inducible protein  OS=Lactobacillus casei (strain ATCC 334) GN=cinA PE=3 SV=1
+g579.t1	sp|Q8ZKE6|PHNO_SALTY Aminoalkylphosphonate N-acetyltransferase  OS=Salmonella typhimurium (strain LT2 / SGSC1412 / ATCC 700720)  GN=phnO PE=1 SV=1
+g187.t1	sp|O34996|DPO1_BACSU DNA polymerase I OS=Bacillus subtilis (strain  168) GN=polA PE=3 SV=1
+g981.t1	sp|C5DAG6|MURQ_GEOSW N-acetylmuramic acid 6-phosphate etherase  OS=Geobacillus sp. (strain WCH70) GN=murQ PE=3 SV=1
+g171.t1	sp|Q5HHG8|Y918_STAAC UPF0051 protein SACOL0918 OS=Staphylococcus  aureus (strain COL) GN=SACOL0918 PE=3 SV=1
+g44.t1	sp|Q6NUJ5|PWP2B_HUMAN PWWP domain-containing protein 2B OS=Homo  sapiens GN=PWWP2B PE=1 SV=3
+g188.t1	sp|Q9A131|FPG_STRP1 Formamidopyrimidine-DNA glycosylase OS=Streptococcus  pyogenes serotype M1 GN=mutM PE=3 SV=3
+g451.t1	sp|A4IJL4|RPOA_GEOTN DNA-directed RNA polymerase subunit alpha  OS=Geobacillus thermodenitrificans (strain NG80-2) GN=rpoA  PE=3 SV=1
+g333.t1	sp|Q7LYW7|MALE_THELN Trehalose/maltose-binding protein MalE OS=Thermococcus  litoralis (strain ATCC 51850 / DSM 5473 / JCM  8560 / NS-C) GN=malE PE=1 SV=2
+g202.t1	sp|Q8A1A3|RHAB_BACTN Rhamnulokinase OS=Bacteroides thetaiotaomicron  (strain ATCC 29148 / DSM 2079 / NCTC 10582 / E50 / VPI-5482)  GN=rhaB PE=3 SV=1
+g1072.t1	sp|A4VT63|RPOE_STRSY Probable DNA-directed RNA polymerase subunit  delta OS=Streptococcus suis (strain 05ZYH33) GN=rpoE PE=3  SV=1
+g480.t1	sp|Q88YK3|HPRK_LACPL HPr kinase/phosphorylase OS=Lactobacillus  plantarum (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=hprK  PE=3 SV=1
+g822.t1	sp|Q9FHA2|ALC_ARATH Transcription factor ALC OS=Arabidopsis thaliana  GN=ALC PE=2 SV=1
+g1019.t1	sp|P05149|GALM_ACICA Aldose 1-epimerase OS=Acinetobacter calcoaceticus  GN=mro PE=1 SV=1
+g812.t1	sp|Q88VL9|GRPE_LACPL Protein GrpE OS=Lactobacillus plantarum  (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=grpE PE=3 SV=1
+g285.t1	sp|Q837P9|METK_ENTFA S-adenosylmethionine synthase OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=metK PE=3 SV=1
+g855.t1	sp|Q5HKH9|PFLB_STAEQ Formate acetyltransferase OS=Staphylococcus  epidermidis (strain ATCC 35984 / RP62A) GN=pflB PE=3 SV=1
+g1006.t1	sp|P43420|MTB6_BACSF Modification methylase Bsp6I OS=Bacillus  sp. (strain RFL6) GN=bsp6IM PE=3 SV=1
+g882.t1	sp|O07016|YVFR_BACSU Uncharacterized ABC transporter ATP-binding  protein YvfR OS=Bacillus subtilis (strain 168) GN=yvfR PE=3  SV=1
+g921.t1	sp|O50584|LTAE_PSEUN Low specificity L-threonine aldolase OS=Pseudomonas  sp. (strain NCIMB 10558) GN=ltaE PE=1 SV=1
+g372.t1	sp|Q67PA6|SYP_SYMTH Proline--tRNA ligase OS=Symbiobacterium thermophilum  (strain T / IAM 14863) GN=proS PE=3 SV=1
+g236.t1	sp|A2RKW7|TRML_LACLM Putative tRNA (cytidine(34)-2'-O)-methyltransferase  OS=Lactococcus lactis subsp. cremoris (strain MG1363)  GN=llmg_1343 PE=3 SV=2
+g358.t1	sp|O05508|GMUD_BACSU 6-phospho-beta-glucosidase GmuD OS=Bacillus  subtilis (strain 168) GN=gmuD PE=1 SV=1
+g943.t1	sp|A6QNR0|HEXDC_BOVIN Hexosaminidase D OS=Bos taurus GN=HEXDC  PE=2 SV=2
+g239.t1	sp|Q97Q95|NANE1_STRPN Putative N-acetylmannosamine-6-phosphate  2-epimerase 1 OS=Streptococcus pneumoniae serotype 4 (strain  ATCC BAA-334 / TIGR4) GN=nanE1 PE=3 SV=1
+g686.t1	sp|C5D6L9|PRSA_GEOSW Foldase protein PrsA OS=Geobacillus sp.  (strain WCH70) GN=prsA PE=3 SV=1
+g1067.t1	sp|Q59935|MANA_STRMU Mannose-6-phosphate isomerase OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=pmi  PE=3 SV=2
+g125.t1	sp|B7H4U0|PUR9_BACC4 Bifunctional purine biosynthesis protein  PurH OS=Bacillus cereus (strain B4264) GN=purH PE=3 SV=1
+g518.t1	sp|Q08870|PLPC_MANHA Outer membrane lipoprotein 3 OS=Mannheimia  haemolytica GN=plpC PE=3 SV=1
+g308.t1	sp|Q99KR8|FUCO2_MOUSE Plasma alpha-L-fucosidase OS=Mus musculus  GN=Fuca2 PE=1 SV=1
+g290.t1	sp|Q93EU6|CH60_ENTFA 60 kDa chaperonin OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=groL PE=3 SV=2
+g299.t1	sp|Q837V6|DNLJ_ENTFA DNA ligase OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=ligA PE=1 SV=1
+g1050.t1	sp|A7GK16|RS7_BACCN 30S ribosomal protein S7 OS=Bacillus cytotoxicus  (strain DSM 22905 / CIP 110041 / 391-98 / NVH 391-98)  GN=rpsG PE=3 SV=1
+g86.t1	sp|A0AIU5|GREA_LISW6 Transcription elongation factor GreA OS=Listeria  welshimeri serovar 6b (strain ATCC 35897 / DSM 20650  / SLCC5334) GN=greA PE=3 SV=1
+g768.t1	sp|Q43270|PLDA1_MAIZE Phospholipase D alpha 1 OS=Zea mays GN=PLD1  PE=2 SV=1
+g182.t1	sp|Q57962|PPSA_METJA Probable phosphoenolpyruvate synthase OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661  / JAL-1 / JCM 10045 / NBRC 100440) GN=ppsA PE=3 SV=1
+g519.t1	sp|O32168|METP_BACSU Methionine import system permease protein  MetP OS=Bacillus subtilis (strain 168) GN=metP PE=1 SV=1
+g54.t1	sp|Q9CFN3|YOFM_LACLA UPF0122 protein YofM OS=Lactococcus lactis  subsp. lactis (strain IL1403) GN=yofM PE=3 SV=1
+g558.t1	sp|Q8NXX6|SDRD_STAAW Serine-aspartate repeat-containing protein  D OS=Staphylococcus aureus (strain MW2) GN=sdrD PE=3 SV=1
+g226.t1	sp|O31727|YLME_BACSU UPF0001 protein YlmE OS=Bacillus subtilis  (strain 168) GN=ylmE PE=3 SV=1
+g336.t1	sp|O34739|STET_BACSU Serine/threonine exchanger SteT OS=Bacillus  subtilis (strain 168) GN=steT PE=1 SV=1
+g565.t1	sp|P46321|LICR_BACSU Probable licABCH operon regulator OS=Bacillus  subtilis (strain 168) GN=licR PE=1 SV=1
+g203.t1	sp|A2VDF0|FUCM_HUMAN Fucose mutarotase OS=Homo sapiens GN=FUOM  PE=1 SV=2
+g568.t1	sp|O86186|GRDF_EUBAC Sarcosine reductase complex component B  subunit beta OS=Eubacterium acidaminophilum GN=grdF PE=3 SV=3
+g572.t1	sp|Q9A9M1|HUTU_CAUCR Urocanate hydratase OS=Caulobacter crescentus  (strain ATCC 19089 / CB15) GN=hutU PE=3 SV=1
+g106.t1	sp|Q82Z99|RNY_ENTFA Ribonuclease Y OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=rny PE=3 SV=1
+g428.t1	sp|Q99XB2|Y100_STAAM Uncharacterized lipoprotein SAV0100 OS=Staphylococcus  aureus (strain Mu50 / ATCC 700699) GN=SAV0100  PE=3 SV=1
+g292.t1	sp|Q830D0|SYT_ENTFA Threonine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=thrS PE=3 SV=1
+g668.t1	sp|O07522|YHAO_BACSU Uncharacterized metallophosphoesterase YhaO  OS=Bacillus subtilis (strain 168) GN=yhaO PE=2 SV=1
+g651.t1	sp|P31032|T2M4_NEIGO Type-2 restriction enzyme NgoMIV OS=Neisseria  gonorrhoeae GN=ngoMIVR PE=1 SV=1
+g128.t1	sp|Q82ZJ2|PNP_ENTFA Polyribonucleotide nucleotidyltransferase  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=pnp  PE=3 SV=1
+g1007.t1	sp|P19385|LYS_BPCP7 Lysozyme OS=Streptococcus phage Cp-7 GN=CPL7  PE=1 SV=2
+g960.t1	sp|Q03583|RFBX_SHIDY Putative O-antigen transporter OS=Shigella  dysenteriae GN=rfbX PE=3 SV=1
+g8.t1	sp|O06476|YFMR_BACSU Uncharacterized ABC transporter ATP-binding  protein YfmR OS=Bacillus subtilis (strain 168) GN=yfmR PE=3  SV=1
+g802.t1	sp|Q9KA74|NUSA_BACHD Transcription termination/antitermination  protein NusA OS=Bacillus halodurans (strain ATCC BAA-125 /  DSM 18197 / FERM 7344 / JCM 9153 / C-125) GN=nusA PE=3 SV=1
+g765.t1	sp|O32044|RECJ_BACSU Single-stranded-DNA-specific exonuclease  RecJ OS=Bacillus subtilis (strain 168) GN=recJ PE=3 SV=1
+g934.t1	sp|Q8CVD0|URDA_SHEON Urocanate reductase OS=Shewanella oneidensis  (strain MR-1) GN=urdA PE=1 SV=1
+g599.t1	sp|Q89A24|PIT_BUCBP Low-affinity inorganic phosphate transporter  OS=Buchnera aphidicola subsp. Baizongia pistaciae (strain  Bp) GN=pit PE=3 SV=1
+g569.t1	sp|P77585|YPDE_ECOLI Aminopeptidase YpdE OS=Escherichia coli  (strain K12) GN=ypdE PE=1 SV=1
+g1074.t1	sp|Q830Q7|RL10_ENTFA 50S ribosomal protein L10 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rplJ PE=3 SV=1
+g881.t1	sp|Q73KN7|MNME_TREDE tRNA modification GTPase MnmE OS=Treponema  denticola (strain ATCC 35405 / CIP 103919 / DSM 14222) GN=mnmE  PE=3 SV=1
+g1096.t1	sp|P76344|ZINT_ECOLI Metal-binding protein ZinT OS=Escherichia  coli (strain K12) GN=zinT PE=1 SV=1
+g606.t1	sp|O32200|LIAG_BACSU Protein LiaG OS=Bacillus subtilis (strain  168) GN=liaG PE=2 SV=2
+g220.t1	sp|P37061|NAOX_ENTFA NADH oxidase OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=nox PE=1 SV=1
+g1071.t1	sp|Q836G5|PYRG_ENTFA CTP synthase OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=pyrG PE=3 SV=1
+g574.t1	sp|P37664|YIAC_ECOLI Uncharacterized N-acetyltransferase YiaC  OS=Escherichia coli (strain K12) GN=yiaC PE=3 SV=1
+g990.t1	sp|Q5HPL2|KHSE_STAEQ Homoserine kinase OS=Staphylococcus epidermidis  (strain ATCC 35984 / RP62A) GN=thrB PE=3 SV=1
+g466.t1	sp|Q8CQD9|PLS_STAES Accumulation-associated protein OS=Staphylococcus  epidermidis (strain ATCC 12228) GN=SE_0175 PE=3 SV=1
+g456.t1	sp|Q65P97|RL14_BACLD 50S ribosomal protein L14 OS=Bacillus licheniformis  (strain ATCC 14580 / DSM 13 / JCM 2505 / NBRC 12200  / NCIMB 9375 / NRRL NRS-1264 / Gibson 46) GN=rplN PE=3 SV=1
+g170.t1	sp|Q9UKZ9|PCOC2_HUMAN Procollagen C-endopeptidase enhancer 2  OS=Homo sapiens GN=PCOLCE2 PE=1 SV=1
+g403.t1	sp|Q9CJ67|YBDI_LACLA UPF0177 protein YbdI OS=Lactococcus lactis  subsp. lactis (strain IL1403) GN=ybdI PE=3 SV=1
+g69.t1	sp|O34557|RPE_BACSU Ribulose-phosphate 3-epimerase OS=Bacillus  subtilis (strain 168) GN=rpe PE=3 SV=1
+g552.t1	Hypothetical Protein
+g414.t1	sp|P13398|NYLA_FLASK 6-aminohexanoate-cyclic-dimer hydrolase  OS=Flavobacterium sp. (strain K172) GN=nylA PE=1 SV=2
+g514.t1	sp|P65885|PURA_STRA3 Adenylosuccinate synthetase OS=Streptococcus  agalactiae serotype III (strain NEM316) GN=purA PE=3 SV=1
+g1083.t1	sp|Q00752|MSMK_STRMU Multiple sugar-binding transport ATP-binding  protein MsmK OS=Streptococcus mutans serotype c (strain  ATCC 700610 / UA159) GN=msmK PE=3 SV=1
+g652.t1	sp|Q6GIU7|NORA_STAAR Quinolone resistance protein NorA OS=Staphylococcus  aureus (strain MRSA252) GN=norA PE=3 SV=1
+g759.t1	sp|Q03SC5|SYGB_LACBA Glycine--tRNA ligase beta subunit OS=Lactobacillus  brevis (strain ATCC 367 / JCM 1170) GN=glyS PE=3  SV=1
+g782.t1	sp|P55213|CASP3_RAT Caspase-3 OS=Rattus norvegicus GN=Casp3 PE=2  SV=2
+g656.t1	sp|A8AV19|METE_STRGC 5-methyltetrahydropteroyltriglutamate--homocysteine  methyltransferase OS=Streptococcus gordonii (strain  Challis / ATCC 35105 / BCRC 15272 / CH1 / DL1 / V288) GN=metE  PE=3 SV=1
+g769.t1	sp|P39803|YITT_BACSU UPF0750 membrane protein YitT OS=Bacillus  subtilis (strain 168) GN=yitT PE=3 SV=2
+g522.t1	sp|O32159|YURR_BACSU Uncharacterized oxidoreductase YurR OS=Bacillus  subtilis (strain 168) GN=yurR PE=3 SV=1
+g548.t1	sp|P33116|SPAT_BACIU Subtilin transport ATP-binding protein SpaT  OS=Bacillus subtilis GN=spaT PE=3 SV=1
+g837.t1	sp|P0A3R0|MSAB1_STRR6 Peptide methionine sulfoxide reductase  MsrA/MsrB 1 OS=Streptococcus pneumoniae (strain ATCC BAA-255  / R6) GN=msrAB1 PE=1 SV=1
+g688.t1	sp|Q8VQ71|COMGC_BACLD ComG operon protein 3 homolog OS=Bacillus  licheniformis (strain ATCC 14580 / DSM 13 / JCM 2505 / NBRC  12200 / NCIMB 9375 / NRRL NRS-1264 / Gibson 46) GN=comGC  PE=3 SV=1
+g793.t1	sp|B0S1F0|Y772_FINM2 UPF0365 protein FMG_0772 OS=Finegoldia magna  (strain ATCC 29328) GN=FMG_0772 PE=3 SV=1
+g100.t1	sp|Q8ZIP0|GPMB_YERPE Probable phosphoglycerate mutase GpmB OS=Yersinia  pestis GN=gpmB PE=3 SV=1
+g453.t1	sp|B2G8V7|KAD_LACRJ Adenylate kinase OS=Lactobacillus reuteri  (strain JCM 1112) GN=adk PE=3 SV=1
+g287.t1	sp|Q5HIU0|THLA_STAAC Probable acetyl-CoA acyltransferase OS=Staphylococcus  aureus (strain COL) GN=SACOL0426 PE=3 SV=1
+g112.t1	sp|O74763|YBE8_SCHPO Uncharacterized WD repeat-containing protein  C17D11.08 OS=Schizosaccharomyces pombe (strain 972 / ATCC  24843) GN=SPBC17D11.08 PE=1 SV=1
+g717.t1	sp|Q831A3|ATPA_ENTFA ATP synthase subunit alpha OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=atpA PE=3 SV=1
+g856.t1	sp|Q9L7Q4|PARC_STRP1 DNA topoisomerase 4 subunit A OS=Streptococcus  pyogenes serotype M1 GN=parC PE=3 SV=1
+g32.t1	sp|Q9KCZ4|GLK_BACHD Glucokinase OS=Bacillus halodurans (strain  ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM 9153 / C-125) GN=glcK  PE=3 SV=1
+g795.t1	sp|P86831|CBCL1_ARTSP 4-chlorobenzoate--CoA ligase OS=Arthrobacter  sp. GN=fcbA1 PE=1 SV=1
+g455.t1	sp|Q6G782|RL24_STAAS 50S ribosomal protein L24 OS=Staphylococcus  aureus (strain MSSA476) GN=rplX PE=3 SV=1
+g773.t1	sp|C0MAT4|TILS_STRE4 tRNA(Ile)-lysidine synthase OS=Streptococcus  equi subsp. equi (strain 4047) GN=tilS PE=3 SV=1
+g57.t1	sp|P51834|SMC_BACSU Chromosome partition protein Smc OS=Bacillus  subtilis (strain 168) GN=smc PE=1 SV=3
+g983.t1	sp|Q0TUK6|SULF_CLOP1 Arylsulfatase OS=Clostridium perfringens  (strain ATCC 13124 / DSM 756 / JCM 1290 / NCIMB 6125 / NCTC  8237 / Type A) GN=CPF_0221 PE=1 SV=1
+g901.t1	sp|P96166|NAGA_VIBFU N-acetylglucosamine-6-phosphate deacetylase  OS=Vibrio furnissii GN=manD PE=3 SV=1
+g1014.t1	sp|P75452|Y110_MYCPN Uncharacterized protein MPN_110 OS=Mycoplasma  pneumoniae (strain ATCC 29342 / M129) GN=MPN_110 PE=4  SV=1
+g241.t1	sp|P26832|Y188_CLOPE Uncharacterized protein CPE0188 OS=Clostridium  perfringens (strain 13 / Type A) GN=CPE0188 PE=3 SV=2
+g871.t1	sp|B3W8N4|DEOD_LACCB Purine nucleoside phosphorylase DeoD-type  OS=Lactobacillus casei (strain BL23) GN=deoD PE=3 SV=1
+g461.t1	sp|Q65PA4|RL2_BACLD 50S ribosomal protein L2 OS=Bacillus licheniformis  (strain ATCC 14580 / DSM 13 / JCM 2505 / NBRC 12200  / NCIMB 9375 / NRRL NRS-1264 / Gibson 46) GN=rplB PE=3 SV=1
+g76.t1	sp|Q49XM7|ARLR_STAS1 Response regulator ArlR OS=Staphylococcus  saprophyticus subsp. saprophyticus (strain ATCC 15305 / DSM  20229) GN=arlR PE=3 SV=1
+g987.t1	sp|Q57431|Y1278_HAEIN Putative NAD(P)H nitroreductase OS=Haemophilus  influenzae (strain ATCC 51907 / DSM 11121 / KW20 / Rd)  GN=HI_1278 PE=1 SV=1
+g950.t1	sp|O31853|YOJK_BACSU Uncharacterized UDP-glucosyltransferase  YojK OS=Bacillus subtilis (strain 168) GN=yojK PE=3 SV=2
+g806.t1	sp|Q03QT6|RBFA_LACBA Ribosome-binding factor A OS=Lactobacillus  brevis (strain ATCC 367 / JCM 1170) GN=rbfA PE=3 SV=1
+g216.t1	sp|D5DNA8|GPMI_BACMD 2,3-bisphosphoglycerate-independent phosphoglycerate  mutase OS=Bacillus megaterium (strain DSM 319)  GN=gpmI PE=3 SV=1
+g1105.t1	sp|P9WQL6|FLQE1_MYCTO Fluoroquinolones export ATP-binding protein  MT2762 OS=Mycobacterium tuberculosis (strain CDC 1551 /  Oshkosh) GN=MT2762 PE=3 SV=1
+g20.t1	sp|A8MH75|PYRR_ALKOO Bifunctional protein PyrR OS=Alkaliphilus  oremlandii (strain OhILAs) GN=pyrR PE=3 SV=1
+g85.t1	sp|O32197|LIAR_BACSU Transcriptional regulatory protein LiaR  OS=Bacillus subtilis (strain 168) GN=liaR PE=2 SV=1
+g201.t1	sp|P39265|ALSB_ECOLI D-allose-binding periplasmic protein OS=Escherichia  coli (strain K12) GN=alsB PE=1 SV=1
+g509.t1	sp|O05494|YDHC_BACSU Uncharacterized HTH-type transcriptional  regulator YdhC OS=Bacillus subtilis (strain 168) GN=ydhC PE=3  SV=1
+g207.t1	sp|O35016|YFKJ_BACSU Low molecular weight protein-tyrosine-phosphatase  YfkJ OS=Bacillus subtilis (strain 168) GN=yfkJ PE=1  SV=1
+g494.t1	sp|Q54087|LRPR_STREQ Leucine-rich protein OS=Streptococcus dysgalactiae  subsp. equisimilis GN=lrp PE=1 SV=1
+g83.t1	sp|Q92BW7|TCSA_LISIN CD4+ T-cell-stimulating antigen OS=Listeria  innocua serovar 6a (strain ATCC BAA-680 / CLIP 11262) GN=tcsA  PE=3 SV=1
+g149.t1	sp|O54537|G6PD_STRPN Glucose-6-phosphate 1-dehydrogenase OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4)  GN=zwf PE=3 SV=2
+g354.t1	sp|O86365|Y584_MYCTU Uncharacterized glycosidase Rv0584 OS=Mycobacterium  tuberculosis (strain ATCC 25618 / H37Rv) GN=Rv0584  PE=3 SV=1
+g40.t1	sp|O34886|YTCB_BACSU Uncharacterized UDP-glucose epimerase YtcB  OS=Bacillus subtilis (strain 168) GN=ytcB PE=3 SV=1
+g257.t1	sp|A9MML1|FLIE_SALAR Flagellar hook-basal body complex protein  FliE OS=Salmonella arizonae (strain ATCC BAA-731 / CDC346-86  / RSK2980) GN=fliE PE=3 SV=1
+g862.t1	sp|Q92C75|XERC_LISIN Tyrosine recombinase XerC OS=Listeria innocua  serovar 6a (strain ATCC BAA-680 / CLIP 11262) GN=xerC  PE=3 SV=1
+g775.t1	sp|Q833I2|SYD_ENTFA Aspartate--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=aspS PE=3 SV=1
+g240.t1	sp|P94530|ARAQ_BACSU L-arabinose transport system permease protein  AraQ OS=Bacillus subtilis (strain 168) GN=araQ PE=2 SV=2
+g267.t1	sp|P54453|YQEH_BACSU Uncharacterized protein YqeH OS=Bacillus  subtilis (strain 168) GN=yqeH PE=1 SV=1
+g108.t1	sp|P50840|YPSC_BACSU Putative RNA methyltransferase YpsC OS=Bacillus  subtilis (strain 168) GN=ypsC PE=3 SV=1
+g380.t1	sp|Q8P1N2|ADCA_STRP8 Zinc-binding protein AdcA OS=Streptococcus  pyogenes serotype M18 (strain MGAS8232) GN=adcA PE=3 SV=1
+g912.t1	sp|Q835G1|G6PI_ENTFA Glucose-6-phosphate isomerase OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=pgi PE=3 SV=1
+g811.t1	sp|Q835R9|HRCA_ENTFA Heat-inducible transcription repressor HrcA  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=hrcA  PE=3 SV=1
+g470.t1	sp|B9XZG7|RNJ_HELP8 Ribonuclease J OS=Helicobacter pylori (strain  B128) GN=rnaJ PE=1 SV=1
+g215.t1	sp|Q49W03|ENO_STAS1 Enolase OS=Staphylococcus saprophyticus subsp.  saprophyticus (strain ATCC 15305 / DSM 20229) GN=eno PE=3  SV=1
+g320.t1	sp|O32274|TUAA_BACSU Putative undecaprenyl-phosphate N-acetylgalactosaminyl  1-phosphate transferase OS=Bacillus subtilis  (strain 168) GN=tuaA PE=2 SV=1
+g865.t1	sp|Q0SWW4|ADDA_CLOPS ATP-dependent helicase/nuclease subunit  A OS=Clostridium perfringens (strain SM101 / Type A) GN=addA  PE=3 SV=1
+g903.t1	sp|Q1G817|NAGB_LACDA Glucosamine-6-phosphate deaminase OS=Lactobacillus  delbrueckii subsp. bulgaricus (strain ATCC 11842  / DSM 20081 / JCM 1002 / NBRC 13953 / NCIMB 11778) GN=nagB PE=3  SV=1
+g809.t1	sp|P54575|RIBC_BACSU Riboflavin biosynthesis protein RibC OS=Bacillus  subtilis (strain 168) GN=ribC PE=3 SV=2
+g1002.t1	sp|Q92547|TOPB1_HUMAN DNA topoisomerase 2-binding protein 1 OS=Homo  sapiens GN=TOPBP1 PE=1 SV=3
+g597.t1	sp|Q9WYC4|Y288_THEMA Uncharacterized ABC transporter ATP-binding  protein TM_0288 OS=Thermotoga maritima (strain ATCC 43589  / MSB8 / DSM 3109 / JCM 10099) GN=TM_0288 PE=1 SV=1
+g304.t1	sp|Q8BZK4|S35F4_MOUSE Solute carrier family 35 member F4 OS=Mus  musculus GN=Slc35f4 PE=2 SV=1
+g161.t1	sp|O08439|FTSZ_ENTFA Cell division protein FtsZ OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=ftsZ PE=3 SV=2
+g1037.t1	sp|P23905|DGAL_SALTY D-galactose-binding periplasmic protein  OS=Salmonella typhimurium (strain LT2 / SGSC1412 / ATCC 700720)  GN=mglB PE=1 SV=2
+g756.t1	sp|P52308|DNAG_ENTFA DNA primase OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=dnaG PE=3 SV=2
+g755.t1	sp|P42306|YXIO_BACSU Uncharacterized MFS-type transporter YxiO  OS=Bacillus subtilis (strain 168) GN=yxiO PE=3 SV=1
+g723.t1	sp|Q82ZX1|Y2926_ENTFA UPF0758 protein EF_2926 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=EF_2926 PE=3 SV=1
+g103.t1	sp|Q74JL8|KCY_LACJO Cytidylate kinase OS=Lactobacillus johnsonii  (strain CNCM I-12250 / La1 / NCC 533) GN=cmk PE=3 SV=1
+g379.t1	sp|P0A2U6|ADCC_STRPN Zinc transport system ATP-binding protein  AdcC OS=Streptococcus pneumoniae serotype 4 (strain ATCC BAA-334  / TIGR4) GN=adcC PE=3 SV=1
+g718.t1	sp|Q03A19|ATPG_LACC3 ATP synthase gamma chain OS=Lactobacillus  casei (strain ATCC 334) GN=atpG PE=3 SV=1
+g1061.t1	sp|Q8GCR4|RPOB2_ENTFC DNA-directed RNA polymerase subunit beta  OS=Enterococcus faecium GN=rpoB PE=3 SV=1
+g870.t1	sp|O34666|CTPA_BACSU Carboxy-terminal processing protease CtpA  OS=Bacillus subtilis (strain 168) GN=ctpA PE=2 SV=1
+g692.t1	sp|P22413|ENPP1_HUMAN Ectonucleotide pyrophosphatase/phosphodiesterase  family member 1 OS=Homo sapiens GN=ENPP1 PE=1 SV=2
+g576.t1	sp|P35598|EXP8_STRPN Putative ABC transporter ATP-binding protein  exp8 OS=Streptococcus pneumoniae serotype 4 (strain ATCC  BAA-334 / TIGR4) GN=exp8 PE=3 SV=3
+g842.t1	sp|Q02419|PHNA_STRMU Protein PhnA OS=Streptococcus mutans serotype  c (strain ATCC 700610 / UA159) GN=phnA PE=4 SV=2
+g787.t1	sp|Q53654|CNA_STAAU Collagen adhesin OS=Staphylococcus aureus  GN=cna PE=1 SV=1
+g892.t1	sp|P94352|YXJI_BACSU Uncharacterized protein YxjI OS=Bacillus  subtilis (strain 168) GN=yxjI PE=3 SV=1
+g374.t1	sp|Q6L2G8|HEM3_PICTO Probable porphobilinogen deaminase OS=Picrophilus  torridus (strain ATCC 700027 / DSM 9790 / JCM 10055  / NBRC 100828) GN=hemC PE=3 SV=1
+g935.t1	sp|P27675|GLNQ_GEOSE Glutamine transport ATP-binding protein  GlnQ OS=Geobacillus stearothermophilus GN=glnQ PE=2 SV=1
+g420.t1	sp|Q6GK24|ESSC_STAAR ESAT-6 secretion machinery protein EssC  OS=Staphylococcus aureus (strain MRSA252) GN=essC PE=3 SV=1
+g567.t1	sp|P46317|PTJC_BACSU Lichenan permease IIC component OS=Bacillus  subtilis (strain 168) GN=licC PE=2 SV=1
+g1087.t1	sp|Q820T0|MNME_ENTFA tRNA modification GTPase MnmE OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=mnmE PE=3 SV=1
+g691.t1	sp|Q9KD53|CDD_BACHD Cytidine deaminase OS=Bacillus halodurans  (strain ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM 9153 / C-125)  GN=cdd PE=3 SV=1
+g785.t1	sp|Q7CZN9|CTAA_AGRFC Heme A synthase OS=Agrobacterium fabrum  (strain C58 / ATCC 33970) GN=ctaA PE=3 SV=2
+g908.t1	sp|Q00749|MSME_STRMU Multiple sugar-binding protein OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=msmE  PE=2 SV=2
+g498.t1	sp|P26833|Y189_CLOPE Uncharacterized HTH-type transcriptional  regulator CPE0189 OS=Clostridium perfringens (strain 13 / Type  A) GN=CPE0189 PE=3 SV=1
+g230.t1	sp|P9WQJ3|Y1272_MYCTU Uncharacterized ABC transporter ATP-binding  protein Rv1272c OS=Mycobacterium tuberculosis (strain ATCC  25618 / H37Rv) GN=Rv1272c PE=1 SV=1
+g312.t1	sp|O31644|MANR_BACSU Transcriptional regulator ManR OS=Bacillus  subtilis (strain 168) GN=manR PE=1 SV=2
+g245.t1	sp|P54689|ILVE_HAEIN Branched-chain-amino-acid aminotransferase  OS=Haemophilus influenzae (strain ATCC 51907 / DSM 11121  / KW20 / Rd) GN=ilvE PE=3 SV=1
+g319.t1	sp|Q58466|Y1066_METJA Uncharacterized protein MJ1066 OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661 / JAL-1  / JCM 10045 / NBRC 100440) GN=MJ1066 PE=3 SV=1
+g478.t1	sp|Q1WV00|GPDA_LACS1 Glycerol-3-phosphate dehydrogenase [NAD(P)+]  OS=Lactobacillus salivarius (strain UCC118) GN=gpsA PE=3  SV=1
+g613.t1	sp|P30363|ASPG_BACLI L-asparaginase OS=Bacillus licheniformis  GN=ansA PE=3 SV=1
+g1062.t1	sp|O31688|ZOSA_BACSU Zinc-transporting ATPase OS=Bacillus subtilis  (strain 168) GN=zosA PE=1 SV=1
+g205.t1	sp|P54594|YHCJ_BACSU Uncharacterized lipoprotein YhcJ OS=Bacillus  subtilis (strain 168) GN=yhcJ PE=3 SV=2
+g2.t1	sp|Q73M14|GPMA_TREDE 2,3-bisphosphoglycerate-dependent phosphoglycerate  mutase OS=Treponema denticola (strain ATCC 35405  / CIP 103919 / DSM 14222) GN=gpmA PE=3 SV=1
+g117.t1	sp|P37082|PTRC_KLEPN PTS system sorbose-specific EIIC component  OS=Klebsiella pneumoniae GN=sorA PE=2 SV=1
+g978.t1	sp|A0AKH9|REX_LISW6 Redox-sensing transcriptional repressor Rex  OS=Listeria welshimeri serovar 6b (strain ATCC 35897 / DSM  20650 / SLCC5334) GN=rex PE=3 SV=1
+g142.t1	sp|P55180|GALE_BACSU UDP-glucose 4-epimerase OS=Bacillus subtilis  (strain 168) GN=galE PE=3 SV=1
+g875.t1	sp|Q8DR60|GH101_STRR6 Endo-alpha-N-acetylgalactosaminidase OS=Streptococcus  pneumoniae (strain ATCC BAA-255 / R6) GN=spr0328  PE=1 SV=1
+g68.t1	sp|Q49X07|Y1546_STAS1 Uncharacterized protein SSP1546 OS=Staphylococcus  saprophyticus subsp. saprophyticus (strain ATCC 15305  / DSM 20229) GN=SSP1546 PE=3 SV=1
+g77.t1	sp|Q57762|Y314_METJA Uncharacterized protein MJ0314 OS=Methanocaldococcus  jannaschii (strain ATCC 43067 / DSM 2661 / JAL-1  / JCM 10045 / NBRC 100440) GN=MJ0314 PE=3 SV=1
+g206.t1	sp|Q53654|CNA_STAAU Collagen adhesin OS=Staphylococcus aureus  GN=cna PE=1 SV=1
+g164.t1	sp|Q1WTA0|MURG_LACS1 UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide)  pyrophosphoryl-undecaprenol N-acetylglucosamine  transferase OS=Lactobacillus salivarius (strain UCC118)  GN=murG PE=3 SV=1
+g1112.t1	sp|Q05523|DACA_GEOSE D-alanyl-D-alanine carboxypeptidase DacA  OS=Geobacillus stearothermophilus GN=dacA PE=1 SV=1
+g953.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g506.t1	sp|P42308|CITN_BACSU Citrate transporter OS=Bacillus subtilis  (strain 168) GN=citN PE=1 SV=2
+g832.t1	sp|P02469|LAMB1_MOUSE Laminin subunit beta-1 OS=Mus musculus  GN=Lamb1 PE=1 SV=3
+g697.t1	sp|Q8RGH8|TRPB_FUSNN Tryptophan synthase beta chain OS=Fusobacterium  nucleatum subsp. nucleatum (strain ATCC 25586 / CIP  101130 / JCM 8532 / LMG 13131) GN=trpB PE=3 SV=1
+g309.t1	sp|Q65JZ6|Y1723_BACLD UPF0348 protein BLi01723/BL03002 OS=Bacillus  licheniformis (strain ATCC 14580 / DSM 13 / JCM 2505 /  NBRC 12200 / NCIMB 9375 / NRRL NRS-1264 / Gibson 46) GN=BLi01723  PE=3 SV=1
+g277.t1	sp|Q9CCL1|CTPC_MYCLE Probable cation-transporting P-type ATPase  C OS=Mycobacterium leprae (strain TN) GN=ctpC PE=3 SV=1
+g168.t1	sp|Q838R5|EZRA_ENTFA Septation ring formation regulator EzrA  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=ezrA  PE=3 SV=1
+g696.t1	sp|P39123|PHSG_BACSU Glycogen phosphorylase OS=Bacillus subtilis  (strain 168) GN=glgP PE=2 SV=1
+g486.t1	sp|P37540|HOLB_BACSU DNA polymerase III subunit delta' OS=Bacillus  subtilis (strain 168) GN=holB PE=3 SV=1
+g160.t1	sp|P71020|YLMH_BACSU Putative RNA-binding protein YlmH OS=Bacillus  subtilis (strain 168) GN=ylmH PE=3 SV=1
+g21.t1	sp|P21880|DLDH1_BACSU Dihydrolipoyl dehydrogenase OS=Bacillus  subtilis (strain 168) GN=pdhD PE=3 SV=1
+g749.t1	sp|P39694|COMEA_BACSU ComE operon protein 1 OS=Bacillus subtilis  (strain 168) GN=comEA PE=1 SV=1
+g863.t1	sp|Q9CG80|TOP1_LACLA DNA topoisomerase 1 OS=Lactococcus lactis  subsp. lactis (strain IL1403) GN=topA PE=3 SV=1
+g47.t1	sp|B7GGE3|RS16_ANOFW 30S ribosomal protein S16 OS=Anoxybacillus  flavithermus (strain DSM 21510 / WK1) GN=rpsP PE=3 SV=1
+g1001.t1	sp|P34878|MTSB_LACLC Modification methylase ScrFIB OS=Lactococcus  lactis subsp. cremoris GN=scrFIBM PE=3 SV=1
+g442.t1	sp|Q9Y7P9|YQ65_SCHPO Uncharacterized protein C191.05c OS=Schizosaccharomyces  pombe (strain 972 / ATCC 24843) GN=SPCC191.05c  PE=3 SV=1
+g1010.t1	sp|Q8NNC6|SYG_CORGL Glycine--tRNA ligase OS=Corynebacterium glutamicum  (strain ATCC 13032 / DSM 20300 / JCM 1318 / LMG 3730  / NCIMB 10025) GN=glyQS PE=3 SV=1
+g714.t1	sp|P94543|YSHB_BACSU Uncharacterized transmembrane protein YshB  OS=Bacillus subtilis (strain 168) GN=yshB PE=4 SV=1
+g666.t1	sp|B2G8N1|RECX_LACRJ Regulatory protein RecX OS=Lactobacillus  reuteri (strain JCM 1112) GN=recX PE=3 SV=1
+g995.t1	sp|Q9KEE9|ARAQ_BACHD L-arabinose transport system permease protein  AraQ OS=Bacillus halodurans (strain ATCC BAA-125 / DSM  18197 / FERM 7344 / JCM 9153 / C-125) GN=araQ PE=3 SV=1
+g313.t1	sp|Q8Y8E0|Y964_LISMO UPF0413 protein lmo0964 OS=Listeria monocytogenes  serovar 1/2a (strain ATCC BAA-679 / EGD-e) GN=lmo0964  PE=3 SV=1
+g1066.t1	sp|Q9L7Q2|ZMPB_STRPN Zinc metalloprotease ZmpB OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4) GN=zmpB  PE=3 SV=2
+g808.t1	sp|A8FDD4|TRUB_BACP2 tRNA pseudouridine synthase B OS=Bacillus  pumilus (strain SAFR-032) GN=truB PE=3 SV=1
+g721.t1	sp|Q82ZW6|SYV_ENTFA Valine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=valS PE=3 SV=1
+g615.t1	sp|Q38VL2|RF3_LACSS Peptide chain release factor 3 OS=Lactobacillus  sakei subsp. sakei (strain 23K) GN=prfC PE=3 SV=1
+g405.t1	sp|Q9W3Y0|ZN593_DROME Zinc finger protein 593 homolog OS=Drosophila  melanogaster GN=CG3224 PE=2 SV=1
+g1005.t1	sp|B4KBH3|MOC2B_DROMO Molybdopterin synthase catalytic subunit  OS=Drosophila mojavensis GN=Mocs2 PE=3 SV=1
+g1107.t1	sp|P37522|SOJ_BACSU Sporulation initiation inhibitor protein  Soj OS=Bacillus subtilis (strain 168) GN=soj PE=1 SV=1
+g804.t1	sp|P32729|YLXQ_BACSU Probable ribosomal protein YlxQ OS=Bacillus  subtilis (strain 168) GN=rplGA PE=1 SV=1
+g446.t1	sp|P27675|GLNQ_GEOSE Glutamine transport ATP-binding protein  GlnQ OS=Geobacillus stearothermophilus GN=glnQ PE=2 SV=1
+g56.t1	sp|P0A8Y7|YIDA_SHIFL Sugar phosphatase YidA OS=Shigella flexneri  GN=yidA PE=3 SV=1
+g628.t1	sp|Q830B5|ACCA_ENTFA Acetyl-coenzyme A carboxylase carboxyl transferase  subunit alpha OS=Enterococcus faecalis (strain ATCC  700802 / V583) GN=accA PE=3 SV=1
+g481.t1	sp|O34628|YVLB_BACSU Uncharacterized protein YvlB OS=Bacillus  subtilis (strain 168) GN=yvlB PE=4 SV=1
+g373.t1	sp|P41027|LEP_BACCL Signal peptidase I OS=Bacillus caldolyticus  GN=lepB PE=3 SV=1
+g284.t1	sp|B7GK53|SYL_ANOFW Leucine--tRNA ligase OS=Anoxybacillus flavithermus  (strain DSM 21510 / WK1) GN=leuS PE=3 SV=1
+g200.t1	sp|P44736|RBSC_HAEIN Ribose import permease protein RbsC OS=Haemophilus  influenzae (strain ATCC 51907 / DSM 11121 / KW20  / Rd) GN=rbsC PE=3 SV=1
+g462.t1	sp|Q1WS91|RL4_LACS1 50S ribosomal protein L4 OS=Lactobacillus  salivarius (strain UCC118) GN=rplD PE=3 SV=1
+g573.t1	sp|P58794|PEPT_FUSNN Peptidase T OS=Fusobacterium nucleatum subsp.  nucleatum (strain ATCC 25586 / CIP 101130 / JCM 8532 /  LMG 13131) GN=pepT PE=3 SV=1
+g884.t1	sp|Q8Y9Z8|Y369_LISMO Probable transcriptional regulatory protein  lmo0369 OS=Listeria monocytogenes serovar 1/2a (strain ATCC  BAA-679 / EGD-e) GN=lmo0369 PE=3 SV=1
+g1026.t1	sp|P39583|YWAC_BACSU GTP pyrophosphokinase YwaC OS=Bacillus subtilis  (strain 168) GN=ywaC PE=1 SV=1
+g559.t1	sp|Q8DP63|PGDA_STRR6 Peptidoglycan-N-acetylglucosamine deacetylase  OS=Streptococcus pneumoniae (strain ATCC BAA-255 / R6)  GN=pgdA PE=1 SV=1
+g295.t1	sp|Q8NMT9|LPPS_CORGL Putative L,D-transpeptidase LppS OS=Corynebacterium  glutamicum (strain ATCC 13032 / DSM 20300 / JCM  1318 / LMG 3730 / NCIMB 10025) GN=lppS PE=1 SV=1
+g254.t1	sp|Q59514|BLA1_MORCA Beta-lactamase BRO-1 OS=Moraxella catarrhalis  GN=bla PE=3 SV=1
+g457.t1	sp|Q839F5|RS17_ENTFA 30S ribosomal protein S17 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=rpsQ PE=3 SV=1
+g610.t1	sp|P80725|DPS_LISIN DNA protection during starvation protein  OS=Listeria innocua serovar 6a (strain ATCC BAA-680 / CLIP 11262)  GN=dps PE=1 SV=1
+g165.t1	sp|A0AKE1|RSMH_LISW6 Ribosomal RNA small subunit methyltransferase  H OS=Listeria welshimeri serovar 6b (strain ATCC 35897  / DSM 20650 / SLCC5334) GN=rsmH PE=3 SV=1
+g18.t1	sp|Q8RG88|PYRC_FUSNN Dihydroorotase OS=Fusobacterium nucleatum  subsp. nucleatum (strain ATCC 25586 / CIP 101130 / JCM 8532  / LMG 13131) GN=pyrC PE=3 SV=1
+g24.t1	sp|P24137|OPPF_BACSU Oligopeptide transport ATP-binding protein  OppF OS=Bacillus subtilis (strain 168) GN=oppF PE=2 SV=3
+g1090.t1	sp|Q0A8K7|SYA_ALKEH Alanine--tRNA ligase OS=Alkalilimnicola ehrlichii  (strain ATCC BAA-1101 / DSM 17681 / MLHE-1) GN=alaS  PE=3 SV=1
+g407.t1	sp|A0A0H3GEZ8|HPF_LISM4 Ribosome hibernation promotion factor  OS=Listeria monocytogenes serotype 1/2a (strain 10403S) GN=hpf  PE=1 SV=1
+g797.t1	sp|Q831V0|EFTS_ENTFA Elongation factor Ts OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=tsf PE=3 SV=1
+g836.t1	sp|Q24803|ADH2_ENTHI Aldehyde-alcohol dehydrogenase 2 OS=Entamoeba  histolytica GN=ADH2 PE=1 SV=1
+g891.t1	sp|Q15075|EEA1_HUMAN Early endosome antigen 1 OS=Homo sapiens  GN=EEA1 PE=1 SV=2
+g305.t1	sp|O33815|BGAL_STAXY Beta-galactosidase OS=Staphylococcus xylosus  GN=lacZ PE=3 SV=1
+g993.t1	sp|Q9P999|XYLS_SULSO Alpha-xylosidase OS=Sulfolobus solfataricus  (strain ATCC 35092 / DSM 1617 / JCM 11322 / P2) GN=xylS  PE=1 SV=1
+g70.t1	sp|Q82ZE1|RSGA_ENTFA Putative ribosome biogenesis GTPase RsgA  OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=rsgA  PE=3 SV=1
+g421.t1	sp|Q6GK25|ESSB_STAAR ESAT-6 secretion machinery protein EssB  OS=Staphylococcus aureus (strain MRSA252) GN=essB PE=3 SV=1
+g722.t1	sp|Q05865|FOLC_BACSU Folylpolyglutamate synthase OS=Bacillus  subtilis (strain 168) GN=folC PE=3 SV=2
+g274.t1	sp|Q97S34|SYFB_STRPN Phenylalanine--tRNA ligase beta subunit  OS=Streptococcus pneumoniae serotype 4 (strain ATCC BAA-334  / TIGR4) GN=pheT PE=3 SV=1
+g1057.t1	sp|O14169|PGC1_SCHPO Phosphatidylglycerol phospholipase C OS=Schizosaccharomyces  pombe (strain 972 / ATCC 24843) GN=SPAC4D7.02c  PE=3 SV=2
+g1040.t1	sp|O69076|FTSH_STRPN ATP-dependent zinc metalloprotease FtsH  OS=Streptococcus pneumoniae serotype 4 (strain ATCC BAA-334  / TIGR4) GN=ftsH PE=3 SV=3
+g580.t1	sp|O31688|ZOSA_BACSU Zinc-transporting ATPase OS=Bacillus subtilis  (strain 168) GN=zosA PE=1 SV=1
+g335.t1	sp|A2QEJ9|AGALB_ASPNC Probable alpha-galactosidase B OS=Aspergillus  niger (strain CBS 513.88 / FGSC A1513) GN=aglB PE=3 SV=1
+g857.t1	sp|B8GPT8|PLSY_THISH Glycerol-3-phosphate acyltransferase OS=Thioalkalivibrio  sulfidiphilus (strain HL-EbGR7) GN=plsY PE=3  SV=1
+g711.t1	sp|Q835V5|RNH3_ENTFA Ribonuclease HIII OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=rnhC PE=3 SV=1
+g706.t1	sp|Q8Y5T8|Y1967_LISMO Uncharacterized protein Lmo1967 OS=Listeria  monocytogenes serovar 1/2a (strain ATCC BAA-679 / EGD-e)  GN=lmo1967 PE=3 SV=1
+g340.t1	sp|P44068|Y882_HAEIN Uncharacterized protein HI_0882 OS=Haemophilus  influenzae (strain ATCC 51907 / DSM 11121 / KW20 / Rd)  GN=HI_0882 PE=1 SV=1
+g493.t1	sp|P21335|TADA_BACSU tRNA-specific adenosine deaminase OS=Bacillus  subtilis (strain 168) GN=tadA PE=1 SV=1
+g1068.t1	sp|P42962|YCSE_BACSU 5-amino-6-(5-phospho-D-ribitylamino)uracil  phosphatase YcsE OS=Bacillus subtilis (strain 168) GN=ycsE  PE=1 SV=2
+g951.t1	sp|P9WQJ3|Y1272_MYCTU Uncharacterized ABC transporter ATP-binding  protein Rv1272c OS=Mycobacterium tuberculosis (strain ATCC  25618 / H37Rv) GN=Rv1272c PE=1 SV=1
+g1009.t1	sp|Q328K2|ULAC_SHIDS Ascorbate-specific PTS system EIIA component  OS=Shigella dysenteriae serotype 1 (strain Sd197) GN=ulaC  PE=3 SV=1
+g1.t1	sp|Q5UPF2|YL076_MIMIV Putative BTB/POZ domain-containing protein  L76 OS=Acanthamoeba polyphaga mimivirus GN=MIMI_L76 PE=3  SV=1
+g28.t1	sp|Q837E7|TGT_ENTFA Queuine tRNA-ribosyltransferase OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=tgt PE=3 SV=1
+g30.t1	sp|O31990|UVRX_BACSU Putative UV-damage repair protein UvrX OS=Bacillus  subtilis (strain 168) GN=uvrX PE=3 SV=2
+g638.t1	Hypothetical Protein
+g55.t1	sp|P51835|FTSY_BACSU Signal recognition particle receptor FtsY  OS=Bacillus subtilis (strain 168) GN=ftsY PE=1 SV=2
+g739.t1	sp|O07549|YHEH_BACSU Probable multidrug resistance ABC transporter  ATP-binding/permease protein YheH OS=Bacillus subtilis  (strain 168) GN=yheH PE=1 SV=1
+g598.t1	sp|P94357|YXKD_BACSU UPF0750 membrane protein YxkD OS=Bacillus  subtilis (strain 168) GN=yxkD PE=3 SV=1
+g298.t1	sp|Q837V4|GATC_ENTFA Aspartyl/glutamyl-tRNA(Asn/Gln) amidotransferase  subunit C OS=Enterococcus faecalis (strain ATCC 700802  / V583) GN=gatC PE=3 SV=1
+g747.t1	sp|Q1WTT3|PFKA_LACS1 ATP-dependent 6-phosphofructokinase OS=Lactobacillus  salivarius (strain UCC118) GN=pfkA PE=3 SV=1
+g979.t1	sp|Q9ZJH5|PPIA_HELPJ Peptidyl-prolyl cis-trans isomerase OS=Helicobacter  pylori (strain J99 / ATCC 700824) GN=ppiA PE=3 SV=1
+g264.t1	sp|P0A2C7|POTD_SALTY Spermidine/putrescine-binding periplasmic  protein OS=Salmonella typhimurium (strain LT2 / SGSC1412 /  ATCC 700720) GN=potD PE=3 SV=1
+g316.t1	sp|Q97NZ7|GALT2_STRPN Galactose-1-phosphate uridylyltransferase  2 OS=Streptococcus pneumoniae serotype 4 (strain ATCC BAA-334  / TIGR4) GN=galT2 PE=3 SV=1
+g531.t1	sp|P80861|YJLD_BACSU NADH dehydrogenase-like protein YjlD OS=Bacillus  subtilis (strain 168) GN=yjlD PE=1 SV=3
+g536.t1	sp|O34920|YOBV_BACSU Uncharacterized HTH-type transcriptional  regulator YobV OS=Bacillus subtilis (strain 168) GN=yobV PE=3  SV=1
+g729.t1	sp|Q82ZA2|MUTS_ENTFA DNA mismatch repair protein MutS OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=mutS PE=3 SV=1
+g255.t1	sp|P39587|YWBD_BACSU Putative ribosomal RNA large subunit methyltransferase  YwbD OS=Bacillus subtilis (strain 168) GN=ywbD  PE=3 SV=1
+g537.t1	sp|B2FT78|LEU1_STRMK 2-isopropylmalate synthase OS=Stenotrophomonas  maltophilia (strain K279a) GN=leuA PE=3 SV=1
+g391.t1	sp|P46340|YQGI_BACSU Probable ABC transporter permease protein  YqgI OS=Bacillus subtilis (strain 168) GN=yqgI PE=3 SV=2
+g249.t1	sp|Q00753|MSMR_STRMU Msm operon regulatory protein OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=msmR  PE=3 SV=2
+g253.t1	sp|Q4L7K3|Y1063_STAHJ UPF0421 protein SH1063 OS=Staphylococcus  haemolyticus (strain JCSC1435) GN=SH1063 PE=3 SV=1
+g957.t1	sp|P37747|GLF_ECOLI UDP-galactopyranose mutase OS=Escherichia  coli (strain K12) GN=glf PE=1 SV=1
+g1102.t1	sp|Q839Z1|GYRB_ENTFA DNA gyrase subunit B OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=gyrB PE=1 SV=1
+g946.t1	sp|O05519|YDIF_BACSU Uncharacterized ABC transporter ATP-binding  protein YdiF OS=Bacillus subtilis (strain 168) GN=ydiF PE=3  SV=2
+g738.t1	sp|O07550|YHEI_BACSU Probable multidrug resistance ABC transporter  ATP-binding/permease protein YheI OS=Bacillus subtilis  (strain 168) GN=yheI PE=1 SV=1
+g271.t1	sp|Q9K974|RECN_BACHD DNA repair protein RecN OS=Bacillus halodurans  (strain ATCC BAA-125 / DSM 18197 / FERM 7344 / JCM 9153  / C-125) GN=recN PE=3 SV=1
+g708.t1	sp|Q8KP10|ACT_BACMT Methanol dehydrogenase activator OS=Bacillus  methanolicus GN=act PE=1 SV=1
+g641.t1	sp|P59340|DCUS_ECOL6 Sensor histidine kinase DcuS OS=Escherichia  coli O6:H1 (strain CFT073 / ATCC 700928 / UPEC) GN=dcuS  PE=3 SV=1
+g71.t1	sp|O34507|PRKC_BACSU Serine/threonine-protein kinase PrkC OS=Bacillus  subtilis (strain 168) GN=prkC PE=1 SV=1
+g799.t1	sp|Q831V2|RRF_ENTFA Ribosome-recycling factor OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=frr PE=3 SV=1
+g496.t1	sp|C3W947|CTSR_GEOSE Transcriptional regulator CtsR OS=Geobacillus  stearothermophilus GN=ctsr PE=1 SV=1
+g657.t1	sp|O32255|YVBU_BACSU Uncharacterized HTH-type transcriptional  regulator YvbU OS=Bacillus subtilis (strain 168) GN=yvbU PE=3  SV=1
+g504.t1	sp|Q9ZAA6|GCDB_ACIFV Glutaconyl-CoA decarboxylase subunit beta  OS=Acidaminococcus fermentans (strain ATCC 25085 / DSM 20731  / VR4) GN=gcdB PE=1 SV=1
+g6.t1	sp|P93732|PIP_ARATH Proline iminopeptidase OS=Arabidopsis thaliana  GN=PIP PE=2 SV=3
+g289.t1	sp|Q1WT45|UVRC_LACS1 UvrABC system protein C OS=Lactobacillus  salivarius (strain UCC118) GN=uvrC PE=3 SV=1
+g878.t1	sp|Q1WRY7|COAA_LACS1 Pantothenate kinase OS=Lactobacillus salivarius  (strain UCC118) GN=coaA PE=3 SV=1
+g303.t1	sp|Q976H2|GSA_SULTO Glutamate-1-semialdehyde 2,1-aminomutase  OS=Sulfolobus tokodaii (strain DSM 16993 / JCM 10545 / NBRC  100140 / 7) GN=hemL PE=3 SV=3
+g869.t1	sp|D5DJL5|RBGA_BACMD Ribosome biogenesis GTPase A OS=Bacillus  megaterium (strain DSM 319) GN=rbgA PE=3 SV=1
+g177.t1	sp|P54518|YQHT_BACSU Uncharacterized peptidase YqhT OS=Bacillus  subtilis (strain 168) GN=yqhT PE=3 SV=1
+g12.t1	sp|P14183|LICC_HAEIN Protein LicC OS=Haemophilus influenzae (strain  ATCC 51907 / DSM 11121 / KW20 / Rd) GN=licC PE=4 SV=2
+g417.t1	sp|Q9K9G6|THIX_BACHD Formylaminopyrimidine transport permease  protein ThiX OS=Bacillus halodurans (strain ATCC BAA-125 /  DSM 18197 / FERM 7344 / JCM 9153 / C-125) GN=thiX PE=3 SV=1
+g327.t1	sp|Q93Z24|BGA17_ARATH Beta-galactosidase 17 OS=Arabidopsis thaliana  GN=BGAL17 PE=2 SV=1
+g909.t1	sp|O34901|YOBQ_BACSU Uncharacterized HTH-type transcriptional  regulator YobQ OS=Bacillus subtilis (strain 168) GN=yobQ PE=3  SV=1
+g999.t1	sp|Q45399|PTEB_GEOSE PTS system cellobiose-specific EIIB component  OS=Geobacillus stearothermophilus GN=celA PE=1 SV=1
+g667.t1	sp|Q2FFQ0|Y1795_STAA3 UPF0342 protein SAUSA300_1795 OS=Staphylococcus  aureus (strain USA300) GN=SAUSA300_1795 PE=3 SV=1
+g665.t1	sp|O34607|SDHAA_BACSU Probable L-serine dehydratase, alpha chain  OS=Bacillus subtilis (strain 168) GN=sdaAA PE=3 SV=1
+g936.t1	sp|Q8KQL6|PADGT_ACHLA Processive diacylglycerol alpha-glucosyltransferase  OS=Acholeplasma laidlawii GN=dgs PE=1 SV=1
+g762.t1	sp|A8YV16|RNZ_LACH4 Ribonuclease Z OS=Lactobacillus helveticus  (strain DPC 4571) GN=rnz PE=3 SV=1
+g399.t1	sp|Q81X30|FTSX_BACAN Cell division protein FtsX OS=Bacillus anthracis  GN=ftsX PE=1 SV=1
+g939.t1	sp|P39342|YJGR_ECOLI Uncharacterized protein YjgR OS=Escherichia  coli (strain K12) GN=yjgR PE=4 SV=1
+g334.t1	sp|Q00753|MSMR_STRMU Msm operon regulatory protein OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=msmR  PE=3 SV=2
+g803.t1	sp|P32728|YLXR_BACSU Uncharacterized protein YlxR OS=Bacillus  subtilis (strain 168) GN=ylxR PE=4 SV=1
+g338.t1	sp|P46853|YHHX_ECOLI Uncharacterized oxidoreductase YhhX OS=Escherichia  coli (strain K12) GN=yhhX PE=1 SV=1
+g1008.t1	sp|Q8FAJ3|ULAA_ECOL6 Ascorbate-specific PTS system EIIC component  OS=Escherichia coli O6:H1 (strain CFT073 / ATCC 700928  / UPEC) GN=ulaA PE=3 SV=1
+g429.t1	sp|Q19187|GCY12_CAEEL Receptor-type guanylate cyclase gcy-12  OS=Caenorhabditis elegans GN=gcy-12 PE=1 SV=3
+g321.t1	sp|Q8E0C9|PEPB_STRA5 Group B oligopeptidase PepB OS=Streptococcus  agalactiae serotype V (strain ATCC BAA-611 / 2603 V/R)  GN=pepB PE=3 SV=1
+g556.t1	sp|P39608|YWCJ_BACSU Uncharacterized transporter YwcJ OS=Bacillus  subtilis (strain 168) GN=ywcJ PE=3 SV=1
+g436.t1	sp|P07819|SCRB_BACSU Sucrose-6-phosphate hydrolase OS=Bacillus  subtilis (strain 168) GN=sacA PE=3 SV=2
+g586.t1	sp|Q70XJ9|LEVS_LACSN Levansucrase OS=Lactobacillus sanfranciscensis  GN=levS PE=1 SV=1
+g1015.t1	sp|P75562|Y107_MYCPN Uncharacterized protein MPN_107 OS=Mycoplasma  pneumoniae (strain ATCC 29342 / M129) GN=MPN_107 PE=4  SV=1
+g172.t1	sp|O32164|SUFS_BACSU Cysteine desulfurase SufS OS=Bacillus subtilis  (strain 168) GN=sufS PE=1 SV=1
+g16.t1	sp|Q8RG86|CARB_FUSNN Carbamoyl-phosphate synthase large chain  OS=Fusobacterium nucleatum subsp. nucleatum (strain ATCC 25586  / CIP 101130 / JCM 8532 / LMG 13131) GN=carB PE=3 SV=2
+g87.t1	sp|B7GIU0|URK_ANOFW Uridine kinase OS=Anoxybacillus flavithermus  (strain DSM 21510 / WK1) GN=udk PE=3 SV=1
+g385.t1	sp|P42332|BCRA_BACLI Bacitracin transport ATP-binding protein  BcrA OS=Bacillus licheniformis GN=bcrA PE=3 SV=1
+g1027.t1	sp|Q9WYC4|Y288_THEMA Uncharacterized ABC transporter ATP-binding  protein TM_0288 OS=Thermotoga maritima (strain ATCC 43589  / MSB8 / DSM 3109 / JCM 10099) GN=TM_0288 PE=1 SV=1
+g774.t1	sp|Q9F663|BLKPC_KLEPN Carbapenem-hydrolyzing beta-lactamase KPC  OS=Klebsiella pneumoniae GN=bla PE=1 SV=2
+g35.t1	sp|P39788|END3_BACSU Endonuclease III OS=Bacillus subtilis (strain  168) GN=nth PE=3 SV=1
+g46.t1	sp|Q23761|GLBZ_CHITH Globin CTT-Z OS=Chironomus thummi thummi  GN=CTT-Z PE=3 SV=1
+g590.t1	sp|P47394|Y148_MYCGE Uncharacterized protein MG148 OS=Mycoplasma  genitalium (strain ATCC 33530 / G-37 / NCTC 10195) GN=MG148  PE=4 SV=1
+g1013.t1	sp|O33813|LACR_STAXY Lactose operon transcription activator OS=Staphylococcus  xylosus GN=lacR PE=3 SV=1
+g997.t1	sp|Q8FVS7|Y3748_BRUSU Putative binding protein BRA0748/BS1330_II0741  OS=Brucella suis biovar 1 (strain 1330) GN=BRA0748 PE=3  SV=1
+g910.t1	sp|Q7A1W9|PFLB_STAAW Formate acetyltransferase OS=Staphylococcus  aureus (strain MW2) GN=pflB PE=3 SV=1
+g84.t1	sp|Q45063|YNER_BACSU Uncharacterized protein YneR OS=Bacillus  subtilis (strain 168) GN=yneR PE=3 SV=1
+g212.t1	sp|O32231|RNR_BACSU Ribonuclease R OS=Bacillus subtilis (strain  168) GN=rnr PE=2 SV=1
+g401.t1	sp|Q927Y4|RF2_LISIN Peptide chain release factor 2 OS=Listeria  innocua serovar 6a (strain ATCC BAA-680 / CLIP 11262) GN=prfB  PE=3 SV=2
+g1113.t1	sp|P02981|TCR3_ECOLX Tetracycline resistance protein, class C  OS=Escherichia coli GN=tetA PE=1 SV=1
+g23.t1	sp|P60089|ODPA_STAAM Pyruvate dehydrogenase E1 component subunit  alpha OS=Staphylococcus aureus (strain Mu50 / ATCC 700699)  GN=pdhA PE=3 SV=1
+g622.t1	sp|Q9I4V0|2NPD_PSEAE Nitronate monooxygenase OS=Pseudomonas aeruginosa  (strain ATCC 15692 / DSM 22644 / CIP 104116 / JCM  14847 / LMG 12228 / 1C / PRS 101 / PAO1) GN=PA1024 PE=1 SV=1
+g376.t1	sp|Q839U1|GLMU_ENTFA Bifunctional protein GlmU OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=glmU PE=3 SV=1
+g735.t1	sp|O51264|PEPF_BORBU Oligoendopeptidase F homolog OS=Borrelia  burgdorferi (strain ATCC 35210 / B31 / CIP 102532 / DSM 4680)  GN=pepF PE=3 SV=1
+g1100.t1	sp|Q839Z5|DNAA_ENTFA Chromosomal replication initiator protein  DnaA OS=Enterococcus faecalis (strain ATCC 700802 / V583)  GN=dnaA PE=3 SV=1
+g42.t1	sp|C5D8U4|RIMM_GEOSW Ribosome maturation factor RimM OS=Geobacillus  sp. (strain WCH70) GN=rimM PE=3 SV=1
+g888.t1	sp|P59696|T200_SALTY Transposase for insertion sequence element  IS200 OS=Salmonella typhimurium (strain LT2 / SGSC1412 /  ATCC 700720) GN=tnpA1 PE=3 SV=1
+g129.t1	sp|P16053|NFM_CHICK Neurofilament medium polypeptide OS=Gallus  gallus GN=NEFM PE=2 SV=2
+g74.t1	sp|Q9CEE3|KGUA_LACLA Guanylate kinase OS=Lactococcus lactis subsp.  lactis (strain IL1403) GN=gmk PE=3 SV=1
+g222.t1	sp|P29849|PHSM_STRPN Maltodextrin phosphorylase OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4) GN=malP  PE=3 SV=2
+g350.t1	sp|P0C0I8|HASC_STRPY UTP--glucose-1-phosphate uridylyltransferase  OS=Streptococcus pyogenes GN=hasC PE=3 SV=1
+g1004.t1	sp|Q6NU95|RPAP3_XENLA RNA polymerase II-associated protein 3  OS=Xenopus laevis GN=rpap3 PE=2 SV=1
+g390.t1	sp|P0A2V8|PSTB3_STRPN Phosphate import ATP-binding protein PstB  3 OS=Streptococcus pneumoniae serotype 4 (strain ATCC BAA-334  / TIGR4) GN=pstB3 PE=3 SV=1
+g758.t1	sp|Q03F65|SYGA_PEDPA Glycine--tRNA ligase alpha subunit OS=Pediococcus  pentosaceus (strain ATCC 25745 / CCUG 21536 / LMG  10740 / 183-1w) GN=glyQ PE=3 SV=1
+g258.t1	sp|Q4L818|PDP_STAHJ Pyrimidine-nucleoside phosphorylase OS=Staphylococcus  haemolyticus (strain JCSC1435) GN=pdp PE=3 SV=1
+g639.t1	sp|Q2FXF2|SIGS_STAA8 RNA polymerase sigma factor SigS OS=Staphylococcus  aureus (strain NCTC 8325) GN=sigS PE=1 SV=1
+g444.t1	sp|P37322|BLC3_PSEAI Beta-lactamase CARB-3 OS=Pseudomonas aeruginosa  GN=carB3 PE=3 SV=1
+g690.t1	sp|P44638|LGUL_HAEIN Lactoylglutathione lyase OS=Haemophilus  influenzae (strain ATCC 51907 / DSM 11121 / KW20 / Rd) GN=gloA  PE=1 SV=1
+g256.t1	sp|Q8CQD9|PLS_STAES Accumulation-associated protein OS=Staphylococcus  epidermidis (strain ATCC 12228) GN=SE_0175 PE=3 SV=1
+g396.t1	sp|P59719|TRMB_ENTFA tRNA (guanine-N(7)-)-methyltransferase OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=trmB  PE=3 SV=1
+g213.t1	sp|Q06174|EST_GEOSE Carboxylesterase OS=Geobacillus stearothermophilus  GN=est PE=1 SV=2
+g1085.t1	sp|P19571|AMT6_BACS7 Glucan 1,4-alpha-maltohexaosidase OS=Bacillus  sp. (strain 707) PE=1 SV=1
+g744.t1	sp|Q8Y755|CSHB_LISMO DEAD-box ATP-dependent RNA helicase CshB  OS=Listeria monocytogenes serovar 1/2a (strain ATCC BAA-679  / EGD-e) GN=cshB PE=2 SV=1
+g144.t1	sp|O34589|FLAW_BACSU Probable flavodoxin-2 OS=Bacillus subtilis  (strain 168) GN=ykuP PE=3 SV=2
+g578.t1	sp|P0A2X3|EXOA_STRPN Exodeoxyribonuclease OS=Streptococcus pneumoniae  serotype 4 (strain ATCC BAA-334 / TIGR4) GN=exoA PE=3  SV=1
+g139.t1	sp|A8AUJ7|VATA_STRGC V-type ATP synthase alpha chain OS=Streptococcus  gordonii (strain Challis / ATCC 35105 / BCRC 15272  / CH1 / DL1 / V288) GN=atpA PE=3 SV=1
+g985.t1	sp|Q7A1J2|SAES_STAAW Histidine protein kinase SaeS OS=Staphylococcus  aureus (strain MW2) GN=saeS PE=3 SV=1
+g798.t1	sp|Q831V1|PYRH_ENTFA Uridylate kinase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=pyrH PE=1 SV=1
+g535.t1	sp|P39582|MENA_BACSU 1,4-dihydroxy-2-naphthoate octaprenyltransferase  OS=Bacillus subtilis (strain 168) GN=menA PE=3 SV=1
+g1082.t1	sp|Q9CJ30|DUT_LACLA Deoxyuridine 5'-triphosphate nucleotidohydrolase  OS=Lactococcus lactis subsp. lactis (strain IL1403)  GN=dut PE=3 SV=1
+g15.t1	sp|O07631|TYPA_BACSU GTP-binding protein TypA/BipA homolog OS=Bacillus  subtilis (strain 168) GN=typA PE=3 SV=1
+g594.t1	sp|P07818|CCNB_ARBPU G2/mitotic-specific cyclin-B OS=Arbacia  punctulata PE=2 SV=1
+g80.t1	sp|O05255|YUFQ_BACSU Uncharacterized ABC transporter permease  protein YufQ OS=Bacillus subtilis (strain 168) GN=yufQ PE=3  SV=1
+g291.t1	sp|Q5RD16|SFXN3_PONAB Sideroflexin-3 OS=Pongo abelii GN=SFXN3  PE=2 SV=1
+g736.t1	sp|O05510|SCRK_BACSU Putative fructokinase OS=Bacillus subtilis  (strain 168) GN=gmuE PE=1 SV=1
+g751.t1	sp|Q04707|PBPA_STRPN Penicillin-binding protein 1A OS=Streptococcus  pneumoniae serotype 4 (strain ATCC BAA-334 / TIGR4) GN=ponA  PE=1 SV=2
+g133.t1	sp|Q03S97|CCA_LACBA CCA-adding enzyme OS=Lactobacillus brevis  (strain ATCC 367 / JCM 1170) GN=cca PE=3 SV=1
+g476.t1	sp|P18159|PGCA_BACSU Phosphoglucomutase OS=Bacillus subtilis  (strain 168) GN=pgcA PE=1 SV=3
+g835.t1	sp|O34512|YFMM_BACSU Uncharacterized ABC transporter ATP-binding  protein YfmM OS=Bacillus subtilis (strain 168) GN=yfmM PE=3  SV=2
+g184.t1	sp|O34924|YTOP_BACSU Putative aminopeptidase YtoP OS=Bacillus  subtilis (strain 168) GN=ytoP PE=3 SV=1
+g250.t1	sp|P12045|PURK_BACSU N5-carboxyaminoimidazole ribonucleotide  synthase OS=Bacillus subtilis (strain 168) GN=purK PE=3 SV=2
+g7.t1	sp|Q88W05|TYSY_LACPL Thymidylate synthase OS=Lactobacillus plantarum  (strain ATCC BAA-793 / NCIMB 8826 / WCFS1) GN=thyA PE=3  SV=1
+g465.t1	sp|Q837B3|SYM_ENTFA Methionine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=metG PE=3 SV=1
+g600.t1	sp|P94487|YNAI_BACSU Uncharacterized protein YnaI OS=Bacillus  subtilis (strain 168) GN=ynaI PE=4 SV=3
+g712.t1	sp|P11000|WAPA_STRMU Wall-associated protein OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=wapA PE=3  SV=2
+g561.t1	sp|Q9BH05|THNS1_MACFA Threonine synthase-like 1 OS=Macaca fascicularis  GN=THNSL1 PE=2 SV=1
+g1094.t1	sp|Q03D58|YIDC_PEDPA Membrane protein insertase YidC OS=Pediococcus  pentosaceus (strain ATCC 25745 / CCUG 21536 / LMG 10740  / 183-1w) GN=yidC PE=3 SV=1
+g1048.t1	sp|Q839G8|EFTU_ENTFA Elongation factor Tu OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=tuf PE=3 SV=1
+g684.t1	Hypothetical Protein
+g781.t1	sp|Q831U0|RECO_ENTFA DNA repair protein RecO OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=recO PE=3 SV=1
+g127.t1	sp|P12045|PURK_BACSU N5-carboxyaminoimidazole ribonucleotide  synthase OS=Bacillus subtilis (strain 168) GN=purK PE=3 SV=2
+g186.t1	sp|Q833N6|MURC_ENTFA UDP-N-acetylmuramate--L-alanine ligase OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=murC  PE=3 SV=1
+g621.t1	sp|A4W3N0|FABH_STRS2 3-oxoacyl-[acyl-carrier-protein] synthase  3 OS=Streptococcus suis (strain 98HAH33) GN=fabH PE=3 SV=1
+g750.t1	sp|O07523|YHAP_BACSU Uncharacterized protein YhaP OS=Bacillus  subtilis (strain 168) GN=yhaP PE=1 SV=2
+g720.t1	sp|Q45514|SAPB_BACSU Protein SapB OS=Bacillus subtilis (strain  168) GN=sapB PE=1 SV=1
+g122.t1	sp|Q8K7S6|RNJ2_STRP3 Ribonuclease J 2 OS=Streptococcus pyogenes  serotype M3 (strain ATCC BAA-595 / MGAS315) GN=rnj2 PE=1  SV=1
+g265.t1	sp|Q830W6|POTA_ENTFA Spermidine/putrescine import ATP-binding  protein PotA OS=Enterococcus faecalis (strain ATCC 700802 /  V583) GN=potA PE=3 SV=1
+g819.t1	sp|B7NRG6|RODZ_ECO7I Cytoskeleton protein RodZ OS=Escherichia  coli O7:K1 (strain IAI39 / ExPEC) GN=rodZ PE=3 SV=1
+g1033.t1	sp|O31517|YESN_BACSU Uncharacterized transcriptional regulatory  protein YesN OS=Bacillus subtilis (strain 168) GN=yesN PE=3  SV=1
+g281.t1	sp|Q54430|SCRR_STRMU Sucrose operon repressor OS=Streptococcus  mutans serotype c (strain ATCC 700610 / UA159) GN=scrR PE=3  SV=2
+g126.t1	sp|Q6GI14|PUR1_STAAR Amidophosphoribosyltransferase OS=Staphylococcus  aureus (strain MRSA252) GN=purF PE=3 SV=1
+g400.t1	sp|O34814|FTSE_BACSU Cell division ATP-binding protein FtsE OS=Bacillus  subtilis (strain 168) GN=ftsE PE=1 SV=1
+g566.t1	sp|Q45402|PTEA_GEOSE PTS system cellobiose-specific EIIA component  OS=Geobacillus stearothermophilus GN=celD PE=1 SV=1
+g601.t1	sp|Q110B3|RS3_TRIEI 30S ribosomal protein S3 OS=Trichodesmium  erythraeum (strain IMS101) GN=rpsC PE=3 SV=1
+g343.t1	sp|C6C5A0|TRMA_DICDC tRNA/tmRNA (uracil-C(5))-methyltransferase  OS=Dickeya dadantii (strain Ech703) GN=trmA PE=3 SV=1
+g483.t1	sp|Q7VG78|GUAA_HELHP Probable GMP synthase [glutamine-hydrolyzing]  OS=Helicobacter hepaticus (strain ATCC 51449 / 3B1) GN=guaA  PE=3 SV=1
+g816.t1	sp|Q6Z382|COPG2_ORYSJ Coatomer subunit gamma-2 OS=Oryza sativa  subsp. japonica GN=Os07g0201100 PE=2 SV=1
+g591.t1	sp|P0A0M7|ATSE_STAAN Putative acetyltransferase SA0906 OS=Staphylococcus  aureus (strain N315) GN=SA0906 PE=3 SV=1
+g630.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g973.t1	sp|Q45614|WALK_BACSU Sensor histidine kinase WalK OS=Bacillus  subtilis (strain 168) GN=walK PE=1 SV=1
+g689.t1	sp|A5VXJ8|LPTD_PSEP1 LPS-assembly protein LptD OS=Pseudomonas  putida (strain ATCC 700007 / DSM 6899 / BCRC 17059 / F1) GN=lptD  PE=3 SV=1
+g563.t1	sp|O05519|YDIF_BACSU Uncharacterized ABC transporter ATP-binding  protein YdiF OS=Bacillus subtilis (strain 168) GN=ydiF PE=3  SV=2
+g683.t1	sp|Q9S469|ARAD_GEOSE L-ribulose-5-phosphate 4-epimerase OS=Geobacillus  stearothermophilus GN=araD PE=3 SV=1
+g843.t1	Hypothetical Protein
+g406.t1	sp|Q834A7|SECA_ENTFA Protein translocase subunit SecA OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=secA PE=3 SV=1
+g370.t1	sp|A8AVK0|LEMA_STRGC Protein LemA OS=Streptococcus gordonii (strain  Challis / ATCC 35105 / BCRC 15272 / CH1 / DL1 / V288)  GN=lemA PE=2 SV=1
+g890.t1	sp|Q795M6|YUGH_BACSU Putative aminotransferase YugH OS=Bacillus  subtilis (strain 168) GN=yugH PE=3 SV=1
+g252.t1	sp|A8LC81|Y6074_FRASN UPF0234 protein Franean1_6074 OS=Frankia  sp. (strain EAN1pec) GN=Franean1_6074 PE=3 SV=1
+g412.t1	sp|B8FAZ7|UPPP_DESAA Undecaprenyl-diphosphatase OS=Desulfatibacillum  alkenivorans (strain AK-01) GN=uppP PE=3 SV=1
+g418.t1	sp|Q059Y8|DCST1_MOUSE DC-STAMP domain-containing protein 1 OS=Mus  musculus GN=Dcst1 PE=2 SV=1
+g840.t1	sp|P0AB01|ELYC_ECOLI Envelope biogenesis factor ElyC OS=Escherichia  coli (strain K12) GN=elyC PE=4 SV=1
+g982.t1	sp|Q8NBK3|SUMF1_HUMAN Sulfatase-modifying factor 1 OS=Homo sapiens  GN=SUMF1 PE=1 SV=3
+g392.t1	sp|Q9CNJ5|PSTC_PASMU Phosphate transport system permease protein  PstC OS=Pasteurella multocida (strain Pm70) GN=pstC PE=3  SV=1
+g419.t1	sp|Q75EN3|ATG15_ASHGO Putative lipase ATG15 OS=Ashbya gossypii  (strain ATCC 10895 / CBS 109.51 / FGSC 9923 / NRRL Y-1056)  GN=ATG15 PE=3 SV=1
+g648.t1	sp|Q54IJ3|GADB_DICDI Glutamate decarboxylase B OS=Dictyostelium  discoideum GN=gadB PE=2 SV=1
+g607.t1	sp|F5ZBR5|FTSW_ALTNA Putative lipid II flippase FtsW OS=Alteromonas  naphthalenivorans GN=ftsW PE=3 SV=1
+g542.t1	sp|Q8Y8N0|CSHA_LISMO ATP-dependent RNA helicase CshA OS=Listeria  monocytogenes serovar 1/2a (strain ATCC BAA-679 / EGD-e)  GN=cshA PE=2 SV=1
+g634.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g293.t1	sp|P54538|YQJA_BACSU Uncharacterized protein YqjA OS=Bacillus  subtilis (strain 168) GN=yqjA PE=4 SV=2
+g1020.t1	sp|O33813|LACR_STAXY Lactose operon transcription activator OS=Staphylococcus  xylosus GN=lacR PE=3 SV=1
+g402.t1	sp|A6H5M5|YCF2_CYCTA Protein Ycf2 OS=Cycas taitungensis GN=ycf2-A  PE=3 SV=1
+g941.t1	sp|Q830U2|SYW_ENTFA Tryptophan--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=trpS PE=3 SV=1
+g81.t1	sp|O05254|YUFP_BACSU Uncharacterized ABC transporter permease  protein YufP OS=Bacillus subtilis (strain 168) GN=yufP PE=3  SV=1
+g238.t1	sp|P62576|NANA_STRR6 Sialidase A OS=Streptococcus pneumoniae  (strain ATCC BAA-255 / R6) GN=nanA PE=1 SV=1
+g197.t1	sp|A6VGC7|FUCA_METM7 L-fuculose phosphate aldolase OS=Methanococcus  maripaludis (strain C7 / ATCC BAA-1331) GN=fucA PE=3  SV=1
+g527.t1	sp|Q5M0M0|AROB_STRT1 3-dehydroquinate synthase OS=Streptococcus  thermophilus (strain CNRZ 1066) GN=aroB PE=3 SV=1
+g63.t1	sp|P24141|OPPA_BACSU Oligopeptide-binding protein OppA OS=Bacillus  subtilis (strain 168) GN=oppA PE=1 SV=1
+g944.t1	sp|Q9KER1|MNGB_BACHD Putative mannosylglycerate hydrolase OS=Bacillus  halodurans (strain ATCC BAA-125 / DSM 18197 / FERM  7344 / JCM 9153 / C-125) GN=mngB PE=3 SV=2
+g61.t1	sp|Q9CEK0|OPPA_LACLA Oligopeptide-binding protein OppA OS=Lactococcus  lactis subsp. lactis (strain IL1403) GN=oppA PE=3 SV=1
+g676.t1	sp|O06991|MDXG_BACSU Maltodextrin transport system permease protein  MdxG OS=Bacillus subtilis (strain 168) GN=mdxG PE=3 SV=1
+g310.t1	sp|Q96YZ9|TPIS_SULTO Triosephosphate isomerase OS=Sulfolobus  tokodaii (strain DSM 16993 / JCM 10545 / NBRC 100140 / 7) GN=tpiA  PE=3 SV=1
+g730.t1	sp|Q1WT16|MUTL_LACS1 DNA mismatch repair protein MutL OS=Lactobacillus  salivarius (strain UCC118) GN=mutL PE=3 SV=1
+g441.t1	sp|A2RM05|QUET_LACLM Queuosine precursor transporter QueT OS=Lactococcus  lactis subsp. cremoris (strain MG1363) GN=queT PE=1  SV=1
+g82.t1	sp|O05253|YUFO_BACSU Uncharacterized ABC transporter ATP-binding  protein YufO OS=Bacillus subtilis (strain 168) GN=yufO PE=3  SV=1
+g694.t1	sp|Q890J0|GLGC_LACPL Glucose-1-phosphate adenylyltransferase  OS=Lactobacillus plantarum (strain ATCC BAA-793 / NCIMB 8826  / WCFS1) GN=glgC PE=3 SV=1
+g713.t1	sp|P31437|YICL_ECOLI Uncharacterized inner membrane transporter  YicL OS=Escherichia coli (strain K12) GN=yicL PE=1 SV=1
+g764.t1	sp|F4I5Q6|MYO7_ARATH Myosin-7 OS=Arabidopsis thaliana GN=XI-A  PE=3 SV=1
+g700.t1	Hypothetical Protein
+g11.t1	sp|Q8DPI2|TARI_STRR6 Ribitol-5-phosphate cytidylyltransferase  OS=Streptococcus pneumoniae (strain ATCC BAA-255 / R6) GN=tarI  PE=1 SV=1
+g363.t1	sp|E8MF12|NAHK_BIFL2 N-acetylhexosamine 1-kinase OS=Bifidobacterium  longum subsp. longum (strain ATCC 15707 / DSM 20219 /  JCM 1217 / NCTC 11818 / E194b) GN=nahK PE=1 SV=1
+g520.t1	sp|Q832Y6|METN1_ENTFA Methionine import ATP-binding protein MetN  1 OS=Enterococcus faecalis (strain ATCC 700802 / V583) GN=metN1  PE=3 SV=1
+g318.t1	sp|B3VA59|AGLC_METVO Dolichyl N-acetyl-alpha-D-glucosaminyl phosphate  3-beta-D-2,3-diacetamido-2,3-dideoxy-beta-D-glucuronosyltransferase  OS=Methanococcus voltae GN=aglC PE=1 SV=1
+g1058.t1	sp|A7GJY9|SYK_BACCN Lysine--tRNA ligase OS=Bacillus cytotoxicus  (strain DSM 22905 / CIP 110041 / 391-98 / NVH 391-98) GN=lysS  PE=3 SV=1
+g431.t1	sp|B9DRV0|ADDA_STRU0 ATP-dependent helicase/nuclease subunit  A OS=Streptococcus uberis (strain ATCC BAA-854 / 0140J) GN=addA  PE=3 SV=1
+g674.t1	sp|O06989|MDXE_BACSU Maltodextrin-binding protein MdxE OS=Bacillus  subtilis (strain 168) GN=mdxE PE=1 SV=1
+g359.t1	sp|P79398|IF4G2_RABIT Eukaryotic translation initiation factor  4 gamma 2 OS=Oryctolagus cuniculus GN=EIF4G2 PE=2 SV=1
+g767.t1	sp|Q5M5H1|Y508_STRT2 UPF0291 protein stu0508 OS=Streptococcus  thermophilus (strain ATCC BAA-250 / LMG 18311) GN=stu0508 PE=3  SV=1
+g699.t1	sp|Q9K621|BCER_BACHD Sensory transduction protein BceR OS=Bacillus  halodurans (strain ATCC BAA-125 / DSM 18197 / FERM 7344  / JCM 9153 / C-125) GN=bceR PE=3 SV=1
+g232.t1	sp|O32086|YUBA_BACSU UPF0118 membrane protein YubA OS=Bacillus  subtilis (strain 168) GN=yubA PE=3 SV=1
+g326.t1	sp|P76187|YDHF_ECOLI Oxidoreductase YdhF OS=Escherichia coli  (strain K12) GN=ydhF PE=1 SV=2
+g823.t1	sp|Q5UQ22|YL207_MIMIV Putative helicase L207/L206 OS=Acanthamoeba  polyphaga mimivirus GN=MIMI_L206 PE=3 SV=2
+g602.t1	sp|P44447|Y003_HAEIN Putative phosphatase HI_0003 OS=Haemophilus  influenzae (strain ATCC 51907 / DSM 11121 / KW20 / Rd) GN=HI_0003  PE=1 SV=1
+g917.t1	sp|O32125|YUTF_BACSU Acid sugar phosphatase OS=Bacillus subtilis  (strain 168) GN=yutF PE=1 SV=1
+g422.t1	sp|Q6GCI9|ESAA_STAAS ESAT-6 secretion accessory factor EsaA OS=Staphylococcus  aureus (strain MSSA476) GN=esaA PE=3 SV=1
+g502.t1	sp|O53078|CITE_LEUMC Citrate lyase subunit beta OS=Leuconostoc  mesenteroides subsp. cremoris GN=citE PE=3 SV=1
+g1034.t1	sp|O31516|YESM_BACSU Sensor histidine kinase YesM OS=Bacillus  subtilis (strain 168) GN=yesM PE=3 SV=1
+g828.t1	sp|P59217|TERL_BPSF5 Putative terminase large subunit OS=Shigella  phage SfV GN=2 PE=3 SV=1
+g851.t1	sp|O34693|YLOA_BACSU Uncharacterized protein YloA OS=Bacillus  subtilis (strain 168) GN=yloA PE=2 SV=1
+g677.t1	sp|Q837J5|Y842_ENTFA UPF0178 protein EF_0842 OS=Enterococcus  faecalis (strain ATCC 700802 / V583) GN=EF_0842 PE=3 SV=1
+g726.t1	sp|P15216|FBP2_STRPU Fibropellin-2 OS=Strongylocentrotus purpuratus  GN=EGF2 PE=2 SV=1
+g508.t1	sp|P71039|MTA_BACSU HTH-type transcriptional activator mta OS=Bacillus  subtilis (strain 168) GN=mta PE=1 SV=1
+g278.t1	sp|Q9KEE9|ARAQ_BACHD L-arabinose transport system permease protein  AraQ OS=Bacillus halodurans (strain ATCC BAA-125 / DSM  18197 / FERM 7344 / JCM 9153 / C-125) GN=araQ PE=3 SV=1
+g297.t1	sp|Q88XP7|GATA_LACPL Glutamyl-tRNA(Gln) amidotransferase subunit  A OS=Lactobacillus plantarum (strain ATCC BAA-793 / NCIMB  8826 / WCFS1) GN=gatA PE=3 SV=1
+g307.t1	sp|C0SP91|YYCJ_BACSU Putative metallo-hydrolase YycJ OS=Bacillus  subtilis (strain 168) GN=yycJ PE=2 SV=1
+g432.t1	sp|P0A192|LIVF_SALTI High-affinity branched-chain amino acid  transport ATP-binding protein LivF OS=Salmonella typhi GN=livF  PE=3 SV=1
+g874.t1	sp|Q9HB40|RISC_HUMAN Retinoid-inducible serine carboxypeptidase  OS=Homo sapiens GN=SCPEP1 PE=1 SV=1
+g325.t1	sp|O31853|YOJK_BACSU Uncharacterized UDP-glucosyltransferase  YojK OS=Bacillus subtilis (strain 168) GN=yojK PE=3 SV=2
+g393.t1	sp|Q8DP63|PGDA_STRR6 Peptidoglycan-N-acetylglucosamine deacetylase  OS=Streptococcus pneumoniae (strain ATCC BAA-255 / R6)  GN=pgdA PE=1 SV=1
+g970.t1	sp|P77559|YNFL_ECOLI Uncharacterized HTH-type transcriptional  regulator YnfL OS=Escherichia coli (strain K12) GN=ynfL PE=3  SV=1
+g975.t1	sp|P0A8Y7|YIDA_SHIFL Sugar phosphatase YidA OS=Shigella flexneri  GN=yidA PE=3 SV=1
+g562.t1	sp|Q55911|YC52L_SYNY3 Uncharacterized N-acetyltransferase ycf52-like  OS=Synechocystis sp. (strain PCC 6803 / Kazusa) GN=sll0286  PE=3 SV=1
+g528.t1	sp|P55641|Y4RH_SINFN Uncharacterized protein y4rH OS=Sinorhizobium  fredii (strain NBRC 101917 / NGR234) GN=NGR_a01790 PE=3  SV=1
+g1030.t1	sp|P94521|YSDC_BACSU Putative aminopeptidase YsdC OS=Bacillus  subtilis (strain 168) GN=ysdC PE=1 SV=1
+g471.t1	sp|P94414|YCLK_BACSU Sensor histidine kinase YclK OS=Bacillus  subtilis (strain 168) GN=yclK PE=3 SV=1
+g497.t1	sp|O34313|NTPES_BACSU Trifunctional nucleotide phosphoesterase  protein YfkN OS=Bacillus subtilis (strain 168) GN=yfkN PE=1  SV=1
+g879.t1	sp|Q927X9|Y2658_LISIN DegV domain-containing protein lin2658  OS=Listeria innocua serovar 6a (strain ATCC BAA-680 / CLIP 11262)  GN=lin2658 PE=3 SV=1
+g967.t1	sp|O33840|PULA_THEMA Pullulanase OS=Thermotoga maritima (strain  ATCC 43589 / MSB8 / DSM 3109 / JCM 10099) GN=pulA PE=1 SV=2
+g472.t1	sp|P94413|YCLJ_BACSU Uncharacterized transcriptional regulatory  protein YclJ OS=Bacillus subtilis (strain 168) GN=yclJ PE=3  SV=1
+g1003.t1	Hypothetical Protein
+g678.t1	sp|D4GYE7|GLPR_HALVD HTH-type transcriptional regulator GlpR  OS=Haloferax volcanii (strain ATCC 29605 / DSM 3757 / JCM 8879  / NBRC 14742 / NCIMB 2012 / VKM B-1768 / DS2) GN=glpR PE=2  SV=1
+g233.t1	sp|O86271|YWCC_LACLA Uncharacterized protein YwcC OS=Lactococcus  lactis subsp. lactis (strain IL1403) GN=ywcC PE=3 SV=1
+g272.t1	sp|P19672|YQXC_BACSU Putative rRNA methyltransferase YqxC OS=Bacillus  subtilis (strain 168) GN=yqxC PE=3 SV=3
+g679.t1	sp|Q57GK0|ULAG_SALCH Probable L-ascorbate-6-phosphate lactonase  UlaG OS=Salmonella choleraesuis (strain SC-B67) GN=ulaG PE=3  SV=2
+g124.t1	sp|P12047|PUR8_BACSU Adenylosuccinate lyase OS=Bacillus subtilis  (strain 168) GN=purB PE=1 SV=1
+g551.t1	sp|P59787|TRA6_ENTFA Transposase for insertion sequence element  IS256 in transposon Tn4001 OS=Enterococcus faecalis (strain  ATCC 700802 / V583) GN=EF_0125 PE=3 SV=1
+g118.t1	sp|Q5XAF5|PTNAB_STRP6 PTS system mannose-specific EIIAB component  OS=Streptococcus pyogenes serotype M6 (strain ATCC BAA-946  / MGAS10394) GN=manX PE=1 SV=1
+g673.t1	sp|Q9R9H8|BBMA_BACIU Intracellular maltogenic amylase OS=Bacillus  subtilis GN=bbmA PE=1 SV=2
+g158.t1	sp|Q836V1|SYI_ENTFA Isoleucine--tRNA ligase OS=Enterococcus faecalis  (strain ATCC 700802 / V583) GN=ileS PE=3 SV=1
+g922.t1	sp|Q8XBT6|DKGA_ECO57 2,5-diketo-D-gluconic acid reductase A OS=Escherichia  coli O157:H7 GN=dkgA PE=3 SV=1
+g553.t1	sp|P46854|YHHY_ECOLI Uncharacterized N-acetyltransferase YhhY  OS=Escherichia coli (strain K12) GN=yhhY PE=3 SV=1

@@ -57,8 +57,9 @@ def database_config_reader(filename):
     db_password = config_section_map("dbconnection")['db_password']
     db_prefix = config_section_map("dbconnection")['database_prefix']
     db_port = config_section_map("dbconnection")['port']
-
-    return host, db_username, db_password, db_prefix, int(db_port)
+    if db_port is not None:
+        db_port = int(db_port)
+    return host, db_username, db_password, db_prefix, db_port
 
 
 class DatabaseConf:

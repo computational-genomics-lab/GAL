@@ -28,7 +28,6 @@ RUN galpy -NU False
 
 # galweb setup
 RUN npm install GAL/galweb/
-RUN npm start --prefix GAL/galweb
 EXPOSE 5000
 CMD ["node", "GAL/galweb/index.js"]
 

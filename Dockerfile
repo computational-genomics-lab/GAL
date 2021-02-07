@@ -22,18 +22,20 @@ RUN apt-get -y install mysql-server
 RUN usermod -d /var/lib/mysql/ mysql
 
 # galpy setup
-RUN git clone https://github.com/computational-genomics-lab/GAL.git
+# RUN git clone https://github.com/computational-genomics-lab/GAL.git
+RUN pip3 install cryptography
+COPY . GAL/
 RUN pip3 install GAL/.
 RUN galpy -NU False
 
 # galweb setup
 RUN npm install GAL/galweb/
 EXPOSE 5000
-CMD ["node", "GAL/galweb/index.js"]
 
 # initiate entrypoint; mysql
 # copy
 COPY .github/workflows/entrypoint.sh /tmp/entrypoint.sh
 RUN chmod 755 /tmp/entrypoint.sh
 # run
-ENTRYPOINT bash "/tmp/entrypoint.sh" && bash
+RUN bash "/tmp/entrypoint.sh" -r TRUE
+ENTRYPOINT bash "/tmp/entrypoint.sh" -e TRUE && bash

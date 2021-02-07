@@ -14,19 +14,21 @@ on:
   pull_request:
 
 env:
-  # TODO: Change variable to your image's name.
-  IMAGE_NAME: image
-  
+  IMAGE_NAME: GAL
 
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   build:
-    runs-on: ubuntu-latest
-
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu:20.04
     steps:
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      -name: Install initial GAL build
+       uses: actions/checkout@v2
+       run: |
+         docker build -t GAL .

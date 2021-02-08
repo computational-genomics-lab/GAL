@@ -11,7 +11,6 @@ on:
 
 env:
   IMAGE_NAME: image
-  REPO: aripanda/GAL
 
 jobs:
   # Run tests.
@@ -31,4 +30,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ env.REPO }}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/gal:latest

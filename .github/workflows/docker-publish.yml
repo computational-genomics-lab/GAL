@@ -11,6 +11,8 @@ on:
 
 env:
   IMAGE_NAME: image
+  repo_1: ${{ secrets.DOCKER_USERNAME }}/gal:latest
+  repo_2: ${{ secrets.DOCKER_USERNAME }}/gal:1.0
 
 jobs:
   # Run tests.
@@ -25,9 +27,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
+      - name: Build and push for latest
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/gal:latest
+          tags: repo_1
+
+      - name: Build and push for specific version
+          id: docker_build
+          uses: docker/build-push-action@v2
+          with:
+            push: true
+            tags: repo_2

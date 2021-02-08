@@ -30,7 +30,7 @@ RUN pip3 install GAL/.
 RUN galpy -NU False
 
 # galweb setup
-RUN npm install GAL/galweb/
+RUN npm install --prefix /GAL/galweb/
 RUN npm i pm2 -g
 RUN pm2 start /GAL/galweb/index.js
 

@@ -34,9 +34,3 @@ jobs:
           push: true
           tags: ${{ env.repo_1 }}
 
-      - name: Build and push for specific version
-          id: docker_build_2
-          uses: docker/build-push-action@v2
-          with:
-            push: true
-            tags: ${{ env.repo_2 }}

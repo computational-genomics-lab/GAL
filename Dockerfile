@@ -20,6 +20,7 @@ RUN echo "mysql-server mysql-server/root_password password $MYSQL_PWD" | debconf
 RUN echo "mysql-server mysql-server/root_password_again password $MYSQL_PWD" | debconf-set-selections
 RUN apt-get -y install mysql-server
 RUN usermod -d /var/lib/mysql/ mysql
+RUN printf "[client]\nlocal_infile=1\n"  >> /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # galpy setup
 # RUN git clone https://github.com/computational-genomics-lab/GAL.git
@@ -30,6 +31,10 @@ RUN galpy -NU False
 
 # galweb setup
 RUN npm install GAL/galweb/
+RUN npm i pm2 -g
+RUN pm2 start /GAL/galweb/index.js
+
+# RUN pm2 startup
 EXPOSE 5000
 
 # initiate entrypoint; mysql

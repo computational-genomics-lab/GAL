@@ -15,11 +15,12 @@ service mysql start
 
 if [ -n "$run" ]; then
   # load a genome from example
+  mysql -uroot -ptest -e 'set global local_infile=true;'
   galpy -org GAL/galpy/data/ExampleFiles/genbank_annotation/organism_config.ini
 
 fi
 
 if [ -n "$entrypoint" ]; then
   # start the node
-  npm start --prefix /GAL/galweb &
+  pm2 start /GAL/galweb/index.js
 fi

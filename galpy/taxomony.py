@@ -65,7 +65,7 @@ class Taxonomy:
                 return True
 
     def extract_lower_taxonomy(self, db_sres, taxonomy_id):
-        child_query = "SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, RANK  FROM Taxon WHERE " \
+        child_query = "SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon WHERE " \
                       "NCBI_TAXON_ID = {}".format(taxonomy_id)
         result = db_sres.query(child_query)
         for i, value in enumerate(result):
@@ -73,7 +73,7 @@ class Taxonomy:
 
     def taxonomy_hierarchy(self, db_sres):
         taxonomy_dct = {}
-        query = "SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, RANK  FROM Taxon where " \
+        query = "SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon where " \
                 "TAXON_NAME = '{}'".format(self.org_name)
         result = db_sres.query(query)
         for i, value in enumerate(result):

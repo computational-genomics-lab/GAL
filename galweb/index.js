@@ -28,6 +28,7 @@ app.use(logger);
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({defaultlayout: 'main'}));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
 // Body Parser

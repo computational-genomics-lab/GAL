@@ -81,7 +81,7 @@ class UploadCommonData(DefaultSharedData):
             _logger.debug("Upload shared taxonomy data data")
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Taxon FIELDS TERMINATED BY '\t' 
                 OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' (NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN,
-                RANK, GENETIC_CODE_ID, MITOCHONDRIAL_GENETIC_CODE_ID);""".format(self.taxonomy_file)
+                `RANK`, GENETIC_CODE_ID, MITOCHONDRIAL_GENETIC_CODE_ID);""".format(self.taxonomy_file)
             self.db_sres.insert(query)
 
     def upload_go_evidence(self):

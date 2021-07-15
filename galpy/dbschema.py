@@ -2,7 +2,7 @@ from pathlib import Path
 import pkg_resources
 import logging
 from .dbconnect import DatabaseCreate, DbNames, Database
-from .commondata import DownloadCommonData, UploadCommonData
+from .commondata import DownloadCommonData, upload_shared_data
 _logger = logging.getLogger("galpy.dbschema")
 
 
@@ -99,17 +99,23 @@ class UploadSchema(DefaultSchemaPath):
         self.db_dots.query(organism_constrain_query)
 
     def download_upload_commondata(self):
+        _logger.debug("Downloading common data")
         default_data_path = pkg_resources.resource_filename('galpy', 'data')
         default_common_data_path = Path(default_data_path).joinpath('CommonData')
         download_1 = DownloadCommonData(default_common_data_path)
         download_1.download_parse_goterm_and_taxon()
 
+        _logger.debug("Uploading common data")
+
+        upload_shared_data(default_common_data_path, self.db_sres)
+        """
         shared_data = UploadCommonData(default_common_data_path, self.db_sres)
         shared_data.upload_genetic_code()
         shared_data.upload_taxonomy_data()
         shared_data.upload_go_evidence()
-        shared_data.upload_go_term()
+        # shared_data.upload_go_term()
         shared_data.upload_gram_strain()
+        """
 
     @staticmethod
     def upload_schema_lines(filename, db):

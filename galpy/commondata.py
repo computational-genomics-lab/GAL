@@ -218,7 +218,8 @@ class DownloadCommonData:
         return id_dct, write_file
 
     def download_parse_goterm_and_taxon(self):
-        self.download_goterm_data()
+        # need to find the go term link
+        # self.download_goterm_data()
         self.download_taxon_data()
         go_term_file, id_dct = self.parse_genetic_code()
         taxon_file = self.make_taxon(go_term_file)

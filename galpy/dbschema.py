@@ -44,6 +44,12 @@ class DefaultSchemaPath:
 
 class UploadSchema(DefaultSchemaPath):
     def __init__(self, db_config):
+        """
+        class constructor for Uploading schema
+        parameters
+        -----------
+        db_config: DatabaseConf object from configutility
+        """
         DefaultSchemaPath.__init__(self)
 
         self.db = DatabaseCreate(db_config.host, db_config.db_username, db_config.db_password, port=db_config.db_port)

@@ -18,7 +18,7 @@ def common_data_basic(db_config, main_path):
     db_prefix = db_config.db_prefix
 
     db_name = DbNames(db_prefix)
-    db_sres = Database(host, db_username, db_password, db_name.sres, 1)
+    db_sres = Database(host, db_username, db_password, db_name.sres, infile=1)
 
     upload_shared_data(db_sres, main_path)
 
@@ -29,7 +29,7 @@ def upload_shared_data(db, main_path):
     shared_data.upload_genetic_code()
     shared_data.upload_taxonomy_data()
     shared_data.upload_go_evidence()
-    shared_data.upload_go_term()
+    # shared_data.upload_go_term()
     shared_data.upload_gram_strain()
 
 
@@ -52,15 +52,25 @@ class DefaultSharedData:
 
 class UploadCommonData(DefaultSharedData):
     def __init__(self, main_path, db_shared_resource):
+        """
+        class constructor for uploading common data
+        parameters
+        -----------
+        main_path: str
+            Path for common data directory
+        db_shared_resource: Database Object
+            Database object for the shared data
+
+        """
+
         DefaultSharedData.__init__(self, main_path)
+        self.db_sres = db_shared_resource
 
         sql_gc = """SELECT * FROM GeneticCode;"""
         sql_tax = """SELECT * FROM Taxon;"""
         sql_go_evidence = """SELECT * FROM GOEvidenceCode;"""
         sql_go_term = """SELECT * FROM GOTerm;"""
         sql_gram_strain = """SELECT * FROM GramStrain;"""
-
-        self.db_sres = db_shared_resource
 
         self.row_genetic_code = self.db_sres.rowcount(sql_gc)
         self.row_taxonomy = self.db_sres.rowcount(sql_tax)

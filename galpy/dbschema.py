@@ -107,7 +107,7 @@ class UploadSchema(DefaultSchemaPath):
 
         _logger.debug("Uploading common data")
 
-        upload_shared_data(default_common_data_path, self.db_sres)
+        upload_shared_data(self.db_sres, default_common_data_path)
         """
         shared_data = UploadCommonData(default_common_data_path, self.db_sres)
         shared_data.upload_genetic_code()

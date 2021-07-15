@@ -35,6 +35,13 @@ def upload_shared_data(db, main_path):
 
 class DefaultSharedData:
     def __init__(self, data_path):
+        """
+        Class constructor for getting common data directories
+        parameters
+        ------------
+        data_path : Path
+        """
+
         self.data_path = Path(data_path)
 
         gram_strain_file = 'GramStrain.txt'
@@ -56,7 +63,7 @@ class UploadCommonData(DefaultSharedData):
         class constructor for uploading common data
         parameters
         -----------
-        main_path: str
+        main_path: path
             Path for common data directory
         db_shared_resource: Database Object
             Database object for the shared data

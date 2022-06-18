@@ -45,7 +45,7 @@ class App(ConfigFileHandler):
     def process_central_dogma_annotation(self):
         _logger.debug("Process central dogma data: start")
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
-        print(app1.annotation_type)
+        _logger.debug(f"annotation type: {app1.annotation_type}")
         if app1.organism_existence(app1.db_sres, app1.db_dots) is False:
             app1.process_genbank_annotation()
             app1.update_organism_table(app1.db_dots, app1.db_sres)

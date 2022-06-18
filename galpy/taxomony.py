@@ -14,8 +14,8 @@ class Taxonomy:
             self.strain = " ".join(org_arr[2:])
 
     def update_organism_table(self, db_dots, db_sres):
-        _logger.info("Updating the organism table. \nOrganism name: {}\nversion: {}".format(self.org_name,
-                                                                                            self.org_version))
+        _logger.info(f"Updating the organism table. \nOrganism name: {self.org_name}\nversion: {self.org_version}")
+                        
         taxonomy_dct = self.taxonomy_hierarchy(db_sres)
         taxonomy_dct = NoneDict(taxonomy_dct)
         taxonomy_id = taxonomy_dct['TAXON_ID']
@@ -35,7 +35,7 @@ class Taxonomy:
         return taxonomy_dct
 
     def get_taxonomy_id(self, db_sres):
-        sql_query = "SELECT NCBI_TAXON_ID FROM Taxon where TAXON_NAME = '{}'".format(self.org_name)
+        sql_query = f"SELECT NCBI_TAXON_ID FROM Taxon where TAXON_NAME = '{org_name}'"
         data = db_sres.query_one(sql_query)
         if data is not None:
             taxonomy_id = data['NCBI_TAXON_ID']
@@ -44,6 +44,7 @@ class Taxonomy:
             return taxonomy_id
 
     def organism_existence(self, db_sres, db_dots):
+        _logger.debug("checking the organism existance in organism table")
         if not self.org_name:
             _logger.info("Error: Organism Name does not exist")
             return True
@@ -51,8 +52,7 @@ class Taxonomy:
             _logger.info('Organism: {} version: {}'.format(self.org_name, self.org_version))
             taxonomy_id = self.get_taxonomy_id(db_sres)
             if taxonomy_id:
-                sql_query = "select * from Organism where TAXON_ID = {} and VERSION = {}".format(taxonomy_id,
-                                                                                                 self.org_version)
+                sql_query = f"select * from Organism where TAXON_ID = {taxonomy_id} and VERSION = { self.org_version}"
                 row_count = db_dots.rowcount(sql_query)
                 if row_count == 1:
                     _logger.info("Error: Organism Name and same version already exists")
@@ -65,16 +65,14 @@ class Taxonomy:
                 return True
 
     def extract_lower_taxonomy(self, db_sres, taxonomy_id):
-        child_query = "SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon WHERE " \
-                      "NCBI_TAXON_ID = {}".format(taxonomy_id)
+        child_query = f"SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon WHERE NCBI_TAXON_ID = {taxonomy_id}"
         result = db_sres.query(child_query)
         for i, value in enumerate(result):
             return value['NCBI_TAXON_ID'], value['PARENT_ID'], value['TAXON_NAME'], value['RANK']
 
     def taxonomy_hierarchy(self, db_sres):
         taxonomy_dct = {}
-        query = "SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon where " \
-                "TAXON_NAME = '{}'".format(self.org_name)
+        query = f"SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon where TAXON_NAME = '{self.org_name}'"
         result = db_sres.query(query)
         for i, value in enumerate(result):
             if value['RANK'] in ["species", "subspecies", "strain"]:

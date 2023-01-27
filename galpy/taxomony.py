@@ -35,7 +35,7 @@ class Taxonomy:
         return taxonomy_dct
 
     def get_taxonomy_id(self, db_sres):
-        sql_query = f"SELECT NCBI_TAXON_ID FROM Taxon where TAXON_NAME = '{org_name}'"
+        sql_query = f"SELECT NCBI_TAXON_ID FROM Taxon where TAXON_NAME = '{self.org_name}'"
         data = db_sres.query_one(sql_query)
         if data is not None:
             taxonomy_id = data['NCBI_TAXON_ID']

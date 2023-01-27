@@ -7,7 +7,7 @@ _logger = logging.getLogger("galpy.dbschema")
 
 
 def database_schema(db_config):
-
+    _logger.debug('Calling UploadSchema function to check the schema')
     schema = UploadSchema(db_config)
     schema_existence = schema.check_schema_existence()
 
@@ -51,7 +51,7 @@ class UploadSchema(DefaultSchemaPath):
         db_config: DatabaseConf object from configutility
         """
         DefaultSchemaPath.__init__(self)
-
+        _logger.debug('Calling UploadSchema class')
         self.db = DatabaseCreate(db_config.host, db_config.db_username, db_config.db_password, port=db_config.db_port)
         self.db_name = DbNames(db_config.db_prefix)
 
@@ -65,6 +65,7 @@ class UploadSchema(DefaultSchemaPath):
                                 port=db_config.db_port)
 
     def check_schema_existence(self):
+        _logger.debug('Checking Schema existence')
         sql_tax = "SELECT * FROM {}.GeneticCode;".format(self.db_name.sres)
         row_tax = self.db.rowcount(sql_tax)
         if row_tax is None:

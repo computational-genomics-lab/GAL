@@ -218,6 +218,7 @@ def process_repeat_data(gal_table, feature, feature_dct, scaffold_na_sequence_id
             gal_table.na_location_Id += 1
 '''
 
+
 class RnaInfo:
     def __init__(self, rna_dct):
         location_list = rna_dct['location'][0]
@@ -235,7 +236,7 @@ class GeneInfo:
                 self.strand = 1
             else:
                 self.strand = 0
-        except:
+        except ValueError:
             print(gene_dct['location'])
             print(gene_name, gene_dct)
 

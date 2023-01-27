@@ -4,10 +4,11 @@ from .configutility import ConfigFileHandler
 from .dbconnect import check_db_connection, DbNames, Database
 from .dbschema import database_schema
 from .BioFile import genbank_parser
-from .processingutility import fix_multiple_splicing_bugs, create_gal_model_dct
+from .processing_utility import fix_multiple_splicing_bugs, create_gal_model_dct
 from .taxomony import Taxonomy, OrganismInfo
 from .dbtableutility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
+from .processing_utility import AnnotationData
 _logger = logging.getLogger("galpy.app")
 
 
@@ -46,10 +47,17 @@ class App(ConfigFileHandler):
         _logger.debug("Process central dogma data: start")
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         _logger.debug(f"annotation type: {app1.annotation_type}")
+
         if app1.organism_existence(app1.db_sres, app1.db_dots) is False:
-            app1.process_genbank_annotation()
-            app1.update_organism_table(app1.db_dots, app1.db_sres)
-            # _logger.debug("Process central dogma data: start")
+            if app1.annotation_type == 'GenBank_Annotation':
+                app1.process_genbank_annotation()
+                app1.update_organism_table(app1.db_dots, app1.db_sres)
+                # _logger.debug("Process central dogma data: start")
+            if app1.annotation_type == 'Partial_Annotation':
+                _logger.debug(f"Detected Datatype: {app1.annotation_type}")
+                app1.process_partial_annotations()
+                app1.update_organism_table(app1.db_dots, app1.db_sres)
+                # app1.minimal_annotation_data()
         else:
             _logger.debug("Table Max ids")
             TableStatusID(app1.db_dots, app1.path_config.upload_dir)
@@ -75,10 +83,17 @@ class AnnotationCategory:
         self.path_config = path_config
 
     @property
+    def is_genbank(self):
+        if self.org_config.GenBank is not None and self.org_config.GenBank != '':
+            return True
+        else:
+            return False
+
+    @property
     def annotation_type(self):
         """ return the annotation type"""
 
-        if self.org_config.GenBank != '':
+        if self.is_genbank:
             return self.annotation_type_1
         else:
             if self.org_config.fasta != "" and self.org_config.gff == "" and self.org_config.product == "":
@@ -130,10 +145,17 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         else:
             _logger.error("File not found: {}".format(self.org_config.GenBank))
 
+    def process_partial_annotations(self):
+        annotation_obj = AnnotationData(self.org_config)
+        feature_dct = annotation_obj.prepare_gal_model()
+
+        self.minimal_annotation_data(annotation_obj.sequence_dct, feature_dct)
+        self.file_upload.upload_central_dogma_data()
+
     def minimal_annotation_data(self, sequence_dct, feature_dct):
         taxonomy_1 = Taxonomy(self.org_config.organism, self.org_config.version)
         taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
-        _logger.info("taxonomy_id: {}".format(taxonomy_id))
+        _logger.info(f"Taxonomy_id: {taxonomy_id}")
 
         gal_table = TableProcessUtility(self.db_dots, self.path_config.upload_dir, self.org_config.organism,
                                         taxonomy_id, self.org_config.version)
@@ -142,7 +164,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         for scaffold, scaffold_dct in feature_dct.items():
             if scaffold in sequence_dct:
                 sequence = sequence_dct[scaffold]
-                gal_table.na_sequenceimp_scaffold( gal_table.NaSequenceId, scaffold, sequence)
+                gal_table.na_sequenceimp_scaffold(gal_table.NaSequenceId, scaffold, sequence)
                 scaffold_na_sequence_id = gal_table.NaSequenceId
                 gal_table.NaSequenceId += 1
                 for feature, feature_dct in scaffold_dct.items():
@@ -152,3 +174,4 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
                             gal_table.NaSequenceId += 1
                     elif feature == 'repeat_region':
                         gal_table.process_repeat_data(feature, feature_dct, scaffold_na_sequence_id)
+

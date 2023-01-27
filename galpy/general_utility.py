@@ -1,6 +1,8 @@
 import re
 import random
 import datetime
+import logging
+_logger = logging.getLogger("galpy.general_utility")
 
 
 def reverse_complement(sequence):

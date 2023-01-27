@@ -16,19 +16,18 @@ class DatabaseCreate:
             self.connection = pymysql.connect(host=self.host, user=self.user, password=self.password, port=self.port)
             self.cursor = self.connection.cursor()
         except pymysql.Error as e:
-            _logger.error("Error in database connection.......: {}".format(e))
+            _logger.error(f"Error in database connection.......: {e}")
 
             sys.exit(0)
 
     def create(self, db_name):
         try:
             query = "CREATE DATABASE {}".format(db_name)
-            _logger.debug(query)
             self.cursor.execute(query)
             self.connection.commit()
-            _logger.debug("{} create database: successful".format(db_name))
+            _logger.debug(f"{db_name} create database: successful")
         except pymysql.Error as e:
-            _logger.error("DB creation error: {}".format(e))
+            _logger.error(f"Failed to create database: {db_name} \n{e}")
             self.connection.rollback()
             return 1
 

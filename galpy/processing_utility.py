@@ -1,5 +1,32 @@
-from .generalutility import translate, reverse_complement
+from .general_utility import translate, reverse_complement, read_fasta_to_dictionary, product_to_dictionary
 import json
+from .BioFile import gff_parser
+import logging
+_logger = logging.getLogger("galpy.processing_utility")
+
+
+class AnnotationData:
+    def __init__(self, org_config):
+        self.org_config = org_config
+
+    @property
+    def sequence_dct(self):
+        sequence_dct = read_fasta_to_dictionary(self.org_config.fasta)
+        return sequence_dct
+
+    @property
+    def gff_dct(self):
+        gff_dct = gff_parser.read_gff3_genbank(self.org_config.gff)
+        return gff_dct
+
+    @property
+    def product_dct(self):
+        blast_dct = product_to_dictionary(self.org_config.product)
+        return blast_dct
+
+    def prepare_gal_model(self):
+        model_gff_dct = create_gal_model_dct(self.sequence_dct, self.gff_dct, self.product_dct)
+        return model_gff_dct
 
 
 def create_gal_model_dct(sequence_dct, gff_dct, blast_dct={}):

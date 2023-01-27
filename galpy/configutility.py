@@ -6,58 +6,124 @@ _logger = logging.getLogger("galpy.configutility")
 
 class ConfigFileHandler:
     def __init__(self, db_config_file, path_config_file, org_config_file):
+        """
+        Reads ini configuration files for GAL
+        parameters
+        -----------
+        db_config_file: str
+            file path for database configuration file
+        path_config_file: str
+            file path for path configuration file
+        org_config_file: str
+            file path for organism configuration file
+        """
+
         self.db_config_file = Path(db_config_file)
         self.path_config_file = Path(path_config_file)
         self.org_config_file = Path(org_config_file)
 
-        _logger.info("DB configuration file: {}".format(self.db_config_file))
-        _logger.info("Path configuration file: {}".format(self.path_config_file))
-        _logger.info("Organism configuration file: {}".format(self.org_config_file))
+        _logger.info(f"DB configuration file: {self.db_config_file}")
+        _logger.info(f"Path configuration file: {self.path_config_file}")
+        _logger.info(f"Organism configuration file: {self.org_config_file}")
 
-        if self.db_config_file.exists():
-            self.db_config = DatabaseConf(self.db_config_file)
+    @property
+    def db_config(self):
+        if self.path_check(self.db_config_file):
+            db_config = DatabaseConf(self.db_config_file)
+            return db_config
+
+    @property
+    def path_config(self):
+        if self.path_check(self.path_config_file):
+            path_config = PathConf(self.path_config_file)
+            return path_config
+
+    @property
+    def org_config(self):
+        if self.path_check(self.org_config_file):
+            org_config = OrganismConf(self.org_config_file)
+            return org_config
+
+    @staticmethod
+    def path_check(file_path):
+        if file_path.exists():
+            return file_path
         else:
-            _logger.error("FileNotFoundError: {}".format(self.db_config_file))
+            _logger.error(f"FileNotFoundError: {file_path}")
             raise FileNotFoundError
 
-        if self.path_config_file.exists():
-            self.path_config = PathConf(self.path_config_file)
-        else:
-            _logger.error("FileNotFoundError: {}".format(self.path_config_file))
-            raise FileNotFoundError
 
-        if self.org_config_file.exists():
-            self.org_config = OrganismConf(self.org_config_file)
-        else:
-            _logger.error("FileNotFoundError: {}".format(org_config_file))
-            raise FileNotFoundError
+class ConfigReader:
+    def __init__(self, filename):
+        """
+        Reads an ini configuration file
+        parameters
+        ------------
+        filename: str
+            path for the ini configuration file
+        """
+        self.config_file = Path(filename)
+
+    @property
+    def config(self):
+        """
+        Returns the configparser object
+
+        Returns
+        --------
+        config: configparser object
+        """
+        config = configparser.ConfigParser()
+        config.read(self.config_file)
+        return config
+
+    def section_map(self, section):
+        """
+        Return a section dict
+        parameters
+        ------------
+        section: str
+            name of section
+
+        returns
+        --------
+        dict1: dict
+            dictionary for the section name
+        """
+        dict1 = {}
+        if self.config.has_section(section):
+            options = self.config.options(section)
+            for option in options:
+                try:
+                    dict1[option] = self.config.get(section, option)
+                    if dict1[option] == -1:
+                        # DebugPrint("skip: %s" % option)
+                        _logger.error("skip: %s" % option)
+                except (RuntimeError, TypeError, NameError, ValueError, AttributeError):
+                    _logger.error("exception on %s!" % option)
+                    dict1[option] = None
+        return dict1
+
+    def check_key(self, section_dct, key):
+        key_entry = section_dct[key] if key in section_dct else None
+        if key_entry == '' or key_entry is None:
+            return None
+        # to solve the path
+        if not Path(key_entry).is_absolute():
+            key_entry = self.config_file.parent.resolve().joinpath(key_entry)
+        return key_entry
 
 
 def database_config_reader(filename):
-    config = configparser.ConfigParser()
-    config.read(filename)
+    config_obj = ConfigReader(filename)
 
-    # config function
-    def config_section_map(section):
-        dict1 = {}
-        options = config.options(section)
-        for option in options:
-            try:
-                dict1[option] = config.get(section, option)
-                if dict1[option] == -1:
-                    # DebugPrint("skip: %s" % option)
-                    _logger.error("skip: %s" % option)
-            except (RuntimeError, TypeError, NameError, ValueError, AttributeError):
-                _logger.error("exception on %s!" % option)
-                dict1[option] = None
-        return dict1
+    section_map = config_obj.section_map("dbconnection")
+    host = section_map['host']
+    db_username = section_map['db_username']
+    db_password = section_map['db_password']
+    db_prefix = section_map['database_prefix']
 
-    host = config_section_map("dbconnection")['host']
-    db_username = config_section_map("dbconnection")['db_username']
-    db_password = config_section_map("dbconnection")['db_password']
-    db_prefix = config_section_map("dbconnection")['database_prefix']
-    db_port = config_section_map("dbconnection")['port']
-
+    db_port = section_map['port'] if 'port' in section_map else None
     if db_port == '':
         db_port = None
     if db_port is not None:
@@ -71,52 +137,41 @@ class DatabaseConf:
 
 
 def organism_config_reader(filename):
-    config = configparser.ConfigParser()
-    config.read(filename)
-
-    # config function
-    def config_section_map(section):
-        dict1 = {}
-        options = config.options(section)
-        for option in options:
-            try:
-                dict1[option] = config.get(section, option)
-                if dict1[option] == -1:
-                    # DebugPrint("skip: %s" % option)
-                    _logger.error("skip: %s" % option)
-            except (RuntimeError, TypeError, NameError, ValueError, AttributeError):
-                _logger.error("exception on %s!" % option)
-                dict1[option] = None
-        return dict1
+    config_obj = ConfigReader(filename)
 
     # header : OrganismDetails
-    organism = config_section_map('OrganismDetails')['organism']
-    version = config_section_map('OrganismDetails')['version']
-    source_url = config_section_map('OrganismDetails')['source_url']
+    config_org_details = config_obj.section_map('OrganismDetails')
+    organism = config_org_details['organism']
+    version = config_org_details['version']
+    source_url = config_org_details['source_url']
 
     # header : SequenceType
-    sequence_type = config_section_map('SequenceType')['sequencetype']
+    sequence_type = config_obj.section_map('SequenceType')['sequencetype']
 
     # header :AnnotationInfo
-    if_blastp = config_section_map('AnnotationInfo')['blastp']
-    if_signalp = config_section_map('AnnotationInfo')['signalp']
-    if_pfam = config_section_map('AnnotationInfo')['pfam']
-    if_tmhmm = config_section_map('AnnotationInfo')['tmhmm']
+    config_org_annotation = config_obj.section_map('AnnotationInfo')
+    if_blastp = config_org_annotation['blastp'] if 'blastp' in config_org_annotation else None
+    if_signalp = config_org_annotation['signalp'] if 'signalp' in config_org_annotation else None
+    if_pfam = config_org_annotation['pfam'] if 'pfam' in config_org_annotation else None
+    if_tmhmm = config_org_annotation['tmhmm'] if 'tmhmm' in config_org_annotation else None
 
     # header : FilePath
-    genbank = config_section_map('filePath')['genbank']
-    fasta = config_section_map('filePath')['fasta']
-    gff = config_section_map('filePath')['gff']
-    product = config_section_map('filePath')['product']
-    lastz = config_section_map('filePath')['lastz']
-    signalp = config_section_map('filePath')['signalp']
-    pfam = config_section_map('filePath')['pfam']
-    tmhmm = config_section_map('filePath')['tmhmm']
-    interproscan = config_section_map('filePath')['interproscan']
+    config_annotation_path = config_obj.section_map('filePath')
+    genbank = config_obj.check_key(config_annotation_path, 'genbank')
+    fasta = config_obj.check_key(config_annotation_path, 'fasta')
+    gff = config_obj.check_key(config_annotation_path, 'gff')
+    product = config_obj.check_key(config_annotation_path, 'product')
+
+    lastz = config_obj.check_key(config_annotation_path, 'lastz')
+    signalp = config_obj.check_key(config_annotation_path, 'signalp')
+    pfam = config_obj.check_key(config_annotation_path, 'pfam')
+    tmhmm = config_obj.check_key(config_annotation_path, 'tmhmm')
+    interproscan = config_obj.check_key(config_annotation_path, 'interproscan')
 
     # header : Other
-    program = config_section_map('other')['program']
-    ref_org = config_section_map('other')['referencegenome']
+    config_other = config_obj.section_map('other')
+    program = config_obj.check_key(config_other, 'program')
+    ref_org = config_obj.check_key(config_other, 'referencegenome')
 
     organism_config_dct = {
         'organism': organism,
@@ -146,7 +201,7 @@ def organism_config_reader(filename):
 class OrganismConf:
     def __init__(self, filename):
         organism_config_dct = organism_config_reader(filename)
-        self.config_file_path = Path(filename)
+        self.org_config_file = Path(filename)
         self.organism = organism_config_dct['organism']
         self.version = organism_config_dct['orgVersion']
 
@@ -170,41 +225,29 @@ class OrganismConf:
 
 
 def path_config_reader(filename):
-    config = configparser.ConfigParser()
-    config.read(filename)
-
-    # config function
-    def config_section_map(section):
-        dict1 = {}
-        options = config.options(section)
-        for option in options:
-            try:
-                dict1[option] = config.get(section, option)
-                if dict1[option] == -1:
-                    # DebugPrint("skip: %s" % option)
-                    _logger.error("skip: %s" % option)
-            except (RuntimeError, TypeError, NameError, ValueError, AttributeError):
-                _logger.error("exception on %s!" % option)
-                dict1[option] = None
-        return dict1
+    config_obj = ConfigReader(filename)
 
     # header : general
-    upload_path = config_section_map('general')['upload_path']
+    general_section = config_obj.section_map("general")
+    upload_path = general_section['upload_path'] if 'upload_path' in general_section else None
 
     # header : External_Program
-    lastz = config_section_map('External_Program')['lastz']
-    db_creator = config_section_map('External_Program')['db_creator']
-    augustus = config_section_map('External_Program')['augustus']
-    genmark = config_section_map('External_Program')['genmark']
-    signalp = config_section_map('External_Program')['signalp']
-    tmhmm = config_section_map('External_Program')['tmhmm']
-    hmmscan = config_section_map('External_Program')['hmmscan']
-    blastp = config_section_map('External_Program')['blastp']
+    external_program_section = config_obj.section_map("External_Program")
+
+    lastz = external_program_section['lastz'] if 'lastz' in external_program_section else None
+    db_creator = external_program_section['db_creator'] if 'db_creator' in external_program_section else None
+    augustus = external_program_section['augustus'] if 'augustus' in external_program_section else None
+    genmark = external_program_section['genmark'] if 'genmark' in external_program_section else None
+    signalp = external_program_section['signalp'] if 'signalp' in external_program_section else None
+    tmhmm = external_program_section['tmhmm'] if 'tmhmm' in external_program_section else None
+    hmmscan = external_program_section['hmmscan'] if 'hmmscan' in external_program_section else None
+    blastp = external_program_section['blastp'] if 'blastp' in external_program_section else None
 
     # header : Associated_External_Program_Path
-    blast_path = config_section_map('Associated_External_Program_Path')['blast']
-    hmm_db = config_section_map('Associated_External_Program_Path')['hmm_db']
-    genmark_model = config_section_map('Associated_External_Program_Path')['genmark_model']
+    associated_ext_program_section = config_obj.section_map("Associated_External_Program_Path")
+    blast_path = associated_ext_program_section['blast'] if 'blast' in associated_ext_program_section else None
+    hmm_db = associated_ext_program_section['hmm_db'] if 'hmm_db' in associated_ext_program_section else None
+    genmark_model = associated_ext_program_section['genmark_model'] if 'genmark_model' in associated_ext_program_section else None
     # header:
 
     path_config_dct = {

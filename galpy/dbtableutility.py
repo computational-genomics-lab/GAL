@@ -1,8 +1,8 @@
 import logging
-from .directoryutility import UploadDirectory,GALFileHandler
-from .generalutility import BaseCount
+from .directoryutility import UploadDirectory, GALFileHandler
+from .general_utility import BaseCount
 from .taxomony import OrganismInfo
-from .generalutility import get_date
+from .general_utility import get_date
 _logger = logging.getLogger("galpy.dbtableutility")
 
 
@@ -142,6 +142,7 @@ class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
         subclass_view = "ExternalNASequence"
         sequence_type_id = 6
         sequence_string = get_sequence_string(gene_data.gene_sequence)
+
         gi_number = "GI:{}".format(scaffold)
         description = "Unknown"
 

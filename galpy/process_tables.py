@@ -1,5 +1,5 @@
 import logging
-from .dbtableutility import TableUtility
+from .dbtable_utility import TableUtility
 _logger = logging.getLogger("galpy.process_tables")
 
 

@@ -1,9 +1,9 @@
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import logging
-_logger = logging.getLogger("galpy.directoryutility")
+_logger = logging.getLogger("galpy.directory_utility")
 
 
-class UploadDirectory:
+class BaseUploadDirectory:
     def __init__(self, upload_dir):
         """ class constructor creates a directory if the upload directory doesn;t exist
         parameters
@@ -18,11 +18,6 @@ class UploadDirectory:
                 self.create_directory(self.upload_dir)
 
         _logger.info("Upload path: {}".format(self.upload_dir))
-        self.NaSequenceImp = self.upload_dir.joinpath("NASequenceImp.parsed")
-        self.NaFeatureImp = self.upload_dir.joinpath("NAFeatureImp.parsed")
-        self.NaLocation = self.upload_dir.joinpath("NALocation.parsed")
-        self.GeneInstance = self.upload_dir.joinpath("geneInstance.parsed")
-        self.Protein = self.upload_dir.joinpath("Protein.parsed")
 
     @staticmethod
     def create_directory(directory):
@@ -30,6 +25,17 @@ class UploadDirectory:
             directory.mkdir(parents=True, exist_ok=True)
         except (FileExistsError, FileNotFoundError) as e:
             raise e
+
+
+class UploadDirectory(BaseUploadDirectory):
+    def __init__(self, upload_dir):
+        BaseUploadDirectory.__init__(self, upload_dir)
+
+        self.NaSequenceImp = self.upload_dir.joinpath("NASequenceImp.parsed")
+        self.NaFeatureImp = self.upload_dir.joinpath("NAFeatureImp.parsed")
+        self.NaLocation = self.upload_dir.joinpath("NALocation.parsed")
+        self.GeneInstance = self.upload_dir.joinpath("geneInstance.parsed")
+        self.Protein = self.upload_dir.joinpath("Protein.parsed")
 
     def protein_feature_directory(self):
         directory_name = "ProteinFeatureData"
@@ -56,3 +62,20 @@ class GALFileHandler(UploadDirectory):
         self.NALocation_fh = open(self.NaLocation, 'w')
         self.GeneInstance_fh = open(self.GeneInstance, 'w')
         self.Protein_fh = open(self.Protein, 'w')
+
+
+class ProteinAnnotationFiles(UploadDirectory):
+    def __init__(self, upload_path, random_string,  default_dir_name='ProteinFeatureData'):
+        UploadDirectory.__init__(self, upload_path)
+
+        self.feature_path = Path(upload_path).joinpath(default_dir_name)
+        self.create_directory(self.feature_path)
+
+        self.PFam = self.feature_path.joinpath("HmmPFam.parsed")
+        self.TmHmm = self.feature_path.joinpath("TmHmm.parsed")
+        self.SignalP = self.feature_path.joinpath("SignalP.parsed")
+
+        self.PFam_out = self.feature_path.joinpath(f"{random_string}.PFam")
+        self.TmHmm_out = self.feature_path.joinpath(f"{random_string}.TmHmm")
+        self.SignalP_out = self.feature_path.joinpath(f"{random_string}.SignalP")
+

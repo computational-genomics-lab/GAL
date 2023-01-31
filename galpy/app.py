@@ -1,14 +1,15 @@
 import logging
 from pathlib import Path
-from .configutility import ConfigFileHandler
+from .config_utility import ConfigFileHandler
 from .dbconnect import check_db_connection, DbNames, Database
 from .dbschema import database_schema
 from .BioFile import genbank_parser
-from .processing_utility import fix_multiple_splicing_bugs, create_gal_model_dct
-from .taxomony import Taxonomy, OrganismInfo
-from .dbtableutility import TableStatusID, UploadTableData
+from .processing_utility import fix_multiple_splicing_bugs, create_gal_model_dct, AnnotationData
+from .taxomony import OrganismName, DotsOrganism, Taxonomy
+from .dbtable_utility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
-from .processing_utility import AnnotationData
+from .protein_annotation_utility import ProteinAnnotations
+from . import general_utility
 _logger = logging.getLogger("galpy.app")
 
 
@@ -45,22 +46,72 @@ class App(ConfigFileHandler):
 
     def process_central_dogma_annotation(self):
         _logger.debug("Process central dogma data: start")
+
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         _logger.debug(f"annotation type: {app1.annotation_type}")
 
-        if app1.organism_existence(app1.db_sres, app1.db_dots) is False:
+        if app1.organism_existence is False:
             if app1.annotation_type == 'GenBank_Annotation':
                 app1.process_genbank_annotation()
-                app1.update_organism_table(app1.db_dots, app1.db_sres)
-                # _logger.debug("Process central dogma data: start")
+                app1.update_organism_table()
+
             if app1.annotation_type == 'Partial_Annotation':
                 _logger.debug(f"Detected Datatype: {app1.annotation_type}")
+
                 app1.process_partial_annotations()
-                app1.update_organism_table(app1.db_dots, app1.db_sres)
-                # app1.minimal_annotation_data()
+                app1.update_organism_table()
+                app1.import_protein_annotation()
+
         else:
             _logger.debug("Table Max ids")
-            TableStatusID(app1.db_dots, app1.path_config.upload_dir)
+            TableStatusID(app1.db_dots)
+
+    def import_protein_annotation(self):
+        _logger.debug("Processing protein annotation data: start")
+        random_string = general_utility.random_string(20)
+        app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
+
+        if app1.organism_existence:
+            taxonomy_id = app1.taxonomy_id_sres
+            org_version = app1.org_config.version
+            _logger.info("Preparing the protein annotation data")
+            protein_annotation_obj = ProteinAnnotations(app1.db_dots, app1.path_config, app1.org_config, random_string,
+                                                        taxonomy_id, org_version)
+            # protein_annotation_obj.create_protein_file(app1.taxonomy_id_sres, app1.org_config.version)
+
+            # upload interproscan data
+            if app1.org_config.interproscan:
+                _logger.info("Introproscan data is provided")
+                if app1.org_config.interproscan.exists():
+                    _logger.info("Processing Introproscan data")
+                    protein_annotation_obj.parse_interproscan_data(app1.org_config.interproscan, app1.taxonomy_id_sres, app1.org_config.version)
+                else:
+                    _logger.error(f"Please check the path for interproscan data\n Path: {app1.org_config.interproscan}")
+            else:
+                _logger.info("Introproscan data is not provided")
+
+            # for signalp
+            if app1.org_config.signalp:
+                _logger.info("signalp data is provided")
+                if app1.org_config.signalp.exists():
+                    _logger.info("Processing signalp data")
+                    protein_annotation_obj.parse_signalp_result(app1.org_config.signalp)
+                    protein_annotation_obj.upload_signalp_data()
+            else:
+                _logger.info("signalp data is not provided")
+
+            # for tmhmm
+            if app1.org_config.tmhmm:
+                _logger.info("tmhmm data is provided")
+                if app1.org_config.tmhmm.exists():
+                    _logger.info("Processing tmhmm data")
+                    protein_annotation_obj.parse_tmhmm_result(app1.org_config.tmhmm)
+                    protein_annotation_obj.upload_tmhmm_data()
+            else:
+                _logger.info("tmhmm data is not provided")
+
+            # show log
+            protein_annotation_obj.get_protein_feature_table_status()
 
 
 class AnnotationCategory:
@@ -114,7 +165,7 @@ class AnnotationCategory:
 class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
     def __init__(self, db_config, path_config, org_config):
         AnnotationCategory.__init__(self, org_config, path_config)
-        Taxonomy.__init__(self, org_config.organism, org_config.version)
+
         self.db_config = db_config
         self.org_config = org_config
         self.path_config = path_config
@@ -124,6 +175,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0,
                                 port=db_config.db_port)
         self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
+        Taxonomy.__init__(self, self.db_sres, self.db_dots, org_config.organism, org_config.version)
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data: start')
@@ -146,19 +198,28 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
             _logger.error("File not found: {}".format(self.org_config.GenBank))
 
     def process_partial_annotations(self):
+        random_string = general_utility.random_string(20)
+
         annotation_obj = AnnotationData(self.org_config)
         feature_dct = annotation_obj.prepare_gal_model()
 
         self.minimal_annotation_data(annotation_obj.sequence_dct, feature_dct)
         self.file_upload.upload_central_dogma_data()
 
+        # Process protein feature data
+        # protein_annotation_obj = ProteinAnnotations(self.db_dots, self.path_config, self.org_config, random_string)
+        # protein_annotation_obj.create_protein_file(self.taxonomy_id_sres, self.org_config.version)
+
     def minimal_annotation_data(self, sequence_dct, feature_dct):
-        taxonomy_1 = Taxonomy(self.org_config.organism, self.org_config.version)
-        taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
+        # taxonomy_1 = OrganismName(self.org_config.organism, self.org_config.version)
+        # taxonomy_1 = Taxonomy(self.db_sres, self.db_dots, self.org_config.organism, self.org_config.version)
+        # taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
+        taxonomy_id = self.taxonomy_id_sres
         _logger.info(f"Taxonomy_id: {taxonomy_id}")
 
         gal_table = TableProcessUtility(self.db_dots, self.path_config.upload_dir, self.org_config.organism,
                                         taxonomy_id, self.org_config.version)
+        gal_table.show_id_log()
         gal_table.increase_by_value(1)
 
         for scaffold, scaffold_dct in feature_dct.items():
@@ -174,4 +235,50 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
                             gal_table.NaSequenceId += 1
                     elif feature == 'repeat_region':
                         gal_table.process_repeat_data(feature, feature_dct, scaffold_na_sequence_id)
+
+    def import_protein_annotation(self):
+        _logger.debug("Processing protein annotation data: start")
+        random_string = general_utility.random_string(20)
+
+        if self.organism_existence:
+            taxonomy_id = self.taxonomy_id_sres
+            org_version = self.org_config.version
+            _logger.info("Preparing the protein annotation data")
+            protein_annotation_obj = ProteinAnnotations(self.db_dots, self.path_config, self.org_config, random_string,
+                                                        taxonomy_id, org_version)
+            # upload interproscan data
+            if self.org_config.interproscan:
+                _logger.info("Introproscan data is provided")
+                if self.org_config.interproscan.exists():
+                    _logger.info("Processing Introproscan data")
+                    protein_annotation_obj.parse_interproscan_data(self.org_config.interproscan, self.taxonomy_id_sres,
+                                                                   self.org_config.version)
+                else:
+                    _logger.error(f"Please check the path for interproscan data\n Path: {self.org_config.interproscan}")
+            else:
+                _logger.info("Introproscan data is not provided")
+
+            # for signalp
+            if self.org_config.signalp:
+                _logger.info("signalp data is provided")
+                if self.org_config.signalp.exists():
+                    _logger.info("Processing signalp data")
+                    protein_annotation_obj.parse_signalp_result(self.org_config.signalp)
+                    protein_annotation_obj.upload_signalp_data()
+            else:
+                _logger.info("signalp data is not provided")
+
+            if self.org_config.tmhmm:
+                _logger.info("tmhmm data is provided")
+                if self.org_config.tmhmm.exists():
+                    _logger.info("Processing tmhmm data")
+                    protein_annotation_obj.parse_tmhmm_result(self.org_config.tmhmm)
+                    protein_annotation_obj.upload_tmhmm_data()
+            else:
+                _logger.info("tmhmm data is not provided")
+
+            # show log
+            protein_annotation_obj.show_id_log()
+            protein_annotation_obj.get_protein_feature_table_status()
+
 

@@ -1,19 +1,18 @@
 import logging
-from .directoryutility import UploadDirectory, GALFileHandler
+from .directory_utility import UploadDirectory, GALFileHandler
 from .general_utility import BaseCount
-from .taxomony import OrganismInfo
+from .taxomony import OrganismName
 from .general_utility import get_date
-_logger = logging.getLogger("galpy.dbtableutility")
+_logger = logging.getLogger("galpy.dbtable_utility")
 
 
-class TableStatusID(GALFileHandler):
-    def __init__(self, db_dots, upload_dir):
+class TableStatusID:
+    def __init__(self, db_dots):
         """ class constructor creates fetches the max values important tables
         parameters
         ---------
         db_dots: db connection for db_dots database
         """
-        GALFileHandler.__init__(self, upload_dir)
         self.db_dots = db_dots
 
         sql_1 = "SELECT MAX(NA_SEQUENCE_ID) as LAST_ID FROM NASequenceImp"
@@ -22,19 +21,19 @@ class TableStatusID(GALFileHandler):
         sql_4 = "SELECT MAX(GENE_INSTANCE_ID) as LAST_ID FROM GeneInstance"
         sql_5 = "SELECT MAX(PROTEIN_ID) as LAST_ID FROM Protein"
 
-        self.NaSequenceId = self.get_max_table_value( sql_1)
+        self.NaSequenceId = self.get_max_table_value(sql_1)
         self.NaFeatureId = self.get_max_table_value(sql_2)
         self.na_location_Id = self.get_max_table_value(sql_3)
         self.GeneInstanceId = self.get_max_table_value(sql_4)
         self.ProteinId = self.get_max_table_value(sql_5)
 
-        log_str = """Getting Max IDs of each table..
-                NASequenceImp ID: {}
-                NAFeatureImp ID: {}
-                NALocation ID: {}
-                GeneInstance ID: {}
-                Protein ID: {}
-                """.format(self.NaSequenceId, self.NaFeatureId, self.na_location_Id, self.GeneInstanceId, self.ProteinId)
+    def show_id_log(self):
+        log_str = f"""Getting Max IDs of each table..
+                        NASequenceImp ID: {self.NaSequenceId}
+                        NAFeatureImp ID: {self.NaFeatureId}
+                        NALocation ID: {self.na_location_Id}
+                        GeneInstance ID: {self.GeneInstanceId}
+                        Protein ID: {self.ProteinId}"""
         _logger.info(log_str)
 
     def get_max_table_value(self, query):
@@ -58,6 +57,34 @@ class TableStatusID(GALFileHandler):
         self.na_location_Id += value
         self.GeneInstanceId += value
         self.ProteinId += value
+
+    def get_protein_feature_table_status(self):
+
+        sql_1 = "SELECT MAX(PFAM_ID) as LAST_ID FROM HmmPfam"
+        sql_2 = "SELECT MAX(TMHMM_ID) as LAST_ID FROM Tmhmm"
+        sql_3 = "SELECT MAX(SIGNALP_ID) as LAST_ID FROM SignalP"
+        sql_4 = "SELECT MAX(interpro_scan_ID) AS LAST_ID FROM InterProScan"
+
+        row_hmm_pfam = self.get_max_table_value(sql_1)
+        row_tmhmm = self.get_max_table_value(sql_2)
+        row_signalp = self.get_max_table_value(sql_3)
+        row_protein_instance_feature = self.get_max_table_value(sql_4)
+
+        row_dct = {
+            'pfam': row_hmm_pfam,
+            'tmhmm': row_tmhmm,
+            'signalp': row_signalp,
+            'interproscan': row_protein_instance_feature
+        }
+
+        log_str = f"""Getting Max IDs of each Protein Annotation table..
+                        HmmPfam ID: {row_hmm_pfam}
+                        SignalP ID: {row_signalp}
+                        Tmhmm ID: {row_tmhmm}
+                        InterProScan ID: {row_protein_instance_feature}"""
+        _logger.info(log_str)
+
+        return row_dct
 
 
 class DefaultVariables:
@@ -88,7 +115,7 @@ class DefaultVariables:
                                        self.sequencing_center_contact_ID)
 
 
-class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
+class TableUtility(TableStatusID, OrganismName, DefaultVariables, GALFileHandler):
     def __init__(self, db_dots, upload_dir, organism, taxonomy_id, version):
         """ class constructor process the data for GAL table structure
         paramter
@@ -105,8 +132,10 @@ class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
             assembly version for the organism (i.e; 1, 2)
 
         """
-        OrganismInfo.__init__(self, organism, taxonomy_id, version)
-        TableStatusID.__init__(self, db_dots, upload_dir)
+        OrganismName.__init__(self, organism, version)
+        self.taxonomy_id = taxonomy_id
+        TableStatusID.__init__(self, db_dots)
+        GALFileHandler.__init__(self, upload_dir)
         DefaultVariables.__init__(self)
         self.present_day = get_date()
 
@@ -127,10 +156,10 @@ class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
         gi_number = "GI:{}".format(scaffold)
 
         sequence_string = get_sequence_string(sequence)
-        string1 = '{}\t{}\t{}\t{}\t{}\t{}'.format(na_sequence_id, self.version, subclass_view, sequence_type_id,
+        string1 = '{}\t{}\t{}\t{}\t{}\t{}'.format(na_sequence_id, self.org_version, subclass_view, sequence_type_id,
                                                   self.taxonomy_id, sequence_string)
 
-        string2 = '{}\t{}\t{}\t{}'.format(self.organism, 'NULL', self.sequence_piece_ID,
+        string2 = '{}\t{}\t{}\t{}'.format(self.org_name, 'NULL', self.sequence_piece_ID,
                                           self.sequencing_center_contact_ID)
         string3 = '{}\t{}\t{}\t{}'.format(self.present_day, scaffold, gi_number, scaffold)
         final_string = '{}\t{}\t{}\n'.format(string1, string2, string3)
@@ -146,7 +175,7 @@ class TableUtility(TableStatusID, OrganismInfo, DefaultVariables):
         gi_number = "GI:{}".format(scaffold)
         description = "Unknown"
 
-        string1 = '{}\t{}\t{}\t{}\t{}\t{}'.format(na_sequence_id, self.version, subclass_view, sequence_type_id,
+        string1 = '{}\t{}\t{}\t{}\t{}\t{}'.format(na_sequence_id, self.org_version, subclass_view, sequence_type_id,
                                                   self.taxonomy_id, sequence_string)
         string2 = '{}\t{}\t{}\t{}'.format(description, source_na_sequence_id, self.sequence_piece_ID,
                                           self.sequencing_center_contact_ID)
@@ -235,6 +264,7 @@ def get_sequence_string(sequence):
 
 class UploadTableData(UploadDirectory):
     def __init__(self, db_dots, upload_dir):
+
         UploadDirectory.__init__(self, upload_dir)
         self.db_dots = db_dots
 
@@ -248,35 +278,35 @@ class UploadTableData(UploadDirectory):
 
     def upload_na_sequenceimp(self):
         # For NASequenceImp table
-        sql_1 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE NASequenceImp FIELDS TERMINATED BY '\t' OPTIONALLY
-                    ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.NaSequenceImp)
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{self.NaSequenceImp}' INTO TABLE NASequenceImp 
+        FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_1)
         self.db_dots.insert(sql_1)
 
     def upload_na_featureimp(self):
         # For NAFeatureImp table
-        sql_2 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE NAFeatureImp FIELDS TERMINATED BY '\t' 
-                    OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.NaFeatureImp)
+        sql_2 = f"""LOAD DATA LOCAL INFILE '{self.NaFeatureImp}' INTO TABLE NAFeatureImp FIELDS TERMINATED BY '\t' 
+                    OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_2)
         self.db_dots.insert(sql_2)
 
     def upload_nalocation(self):
         # For NALocation table
-        sql_3 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE NALocation FIELDS TERMINATED BY '\t' 
-                    OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.NaLocation)
+        sql_3 = f"""LOAD DATA LOCAL INFILE '{self.NaLocation}' INTO TABLE NALocation FIELDS TERMINATED BY '\t' 
+                    OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_3)
         self.db_dots.insert(sql_3)
 
     def upload_geneinstance(self):
-        sql_4 = "LOAD DATA LOCAL INFILE '{}' INTO TABLE GeneInstance FIELDS TERMINATED BY '\t' OPTIONALLY " \
-                "ENCLOSED BY '\"' LINES TERMINATED BY '\n';".format(self.GeneInstance)
+        sql_4 = f"""LOAD DATA LOCAL INFILE '{self.GeneInstance}' INTO TABLE GeneInstance 
+        FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_4)
         self.db_dots.insert(sql_4)
 
     def protein(self):
         # For Protein Table
-        sql_5 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Protein FIELDS TERMINATED BY '\t' OPTIONALLY
-                     ENCLOSED BY '"' LINES TERMINATED BY '\n';""".format(self.Protein)
+        sql_5 = f"""LOAD DATA LOCAL INFILE '{self.Protein}' INTO TABLE Protein FIELDS TERMINATED BY '\t' OPTIONALLY
+                     ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_5)
         self.db_dots.insert(sql_5)
 
@@ -286,20 +316,20 @@ class UploadTableData(UploadDirectory):
         tmhmm_upload_file = upload_dir_names.TmHmm
 
         # For HmmPfam table
-        sql_1 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE HmmPfam FIELDS TERMINATED BY '\t' OPTIONALLY
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{pfam_upload_file}' INTO TABLE HmmPfam FIELDS TERMINATED BY '\t' OPTIONALLY
            ENCLOSED BY '"' LINES TERMINATED BY '\n'
-           (`PFAM_ID`, `GENE_INSTANCE_ID`, `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)
-           """.format(pfam_upload_file)
+        (`PFAM_ID`, `GENE_INSTANCE_ID`, `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)
+        """
         self.db_dots.insert(sql_1)
 
         # signalp table
-        sql_2 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE SignalP FIELDS TERMINATED BY '\t' OPTIONALLY
-               ENCLOSED BY '"' LINES TERMINATED BY '\n'""".format(signalp_upload_file)
+        sql_2 = f"""LOAD DATA LOCAL INFILE '{signalp_upload_file}' INTO TABLE SignalP 
+        FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
         self.db_dots.insert(sql_2)
 
         # For Tmhmm table
-        sql_3 = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
+        sql_3 = f"""LOAD DATA LOCAL INFILE '{tmhmm_upload_file}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
                ENCLOSED BY '"' LINES TERMINATED BY '\n'
-               (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)""".format(tmhmm_upload_file)
+               (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)"""
         self.db_dots.insert(sql_3)
         _logger.info("Uploading central dogma data: complete")

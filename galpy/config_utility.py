@@ -1,7 +1,8 @@
 import configparser
 from pathlib import Path
 import logging
-_logger = logging.getLogger("galpy.configutility")
+from .directory_utility import BaseUploadDirectory
+_logger = logging.getLogger("galpy.config_utility")
 
 
 class ConfigFileHandler:
@@ -113,6 +114,17 @@ class ConfigReader:
             key_entry = self.config_file.parent.resolve().joinpath(key_entry)
         return key_entry
 
+    def check_keys(self, section_dct, keys_list):
+        key_entry_value = None
+        for key in keys_list:
+            key_entry = section_dct[key] if key in section_dct else None
+            if not (key_entry == '' or key_entry is None):
+                if not Path(key_entry).is_absolute():
+                    key_entry_value = self.config_file.parent.resolve().joinpath(key_entry)
+                else:
+                    key_entry_value = key_entry
+        return key_entry_value
+
 
 def database_config_reader(filename):
     config_obj = ConfigReader(filename)
@@ -166,7 +178,7 @@ def organism_config_reader(filename):
     signalp = config_obj.check_key(config_annotation_path, 'signalp')
     pfam = config_obj.check_key(config_annotation_path, 'pfam')
     tmhmm = config_obj.check_key(config_annotation_path, 'tmhmm')
-    interproscan = config_obj.check_key(config_annotation_path, 'interproscan')
+    interproscan = config_obj.check_keys(config_annotation_path, ['interproscan', 'interpro'])
 
     # header : Other
     config_other = config_obj.section_map('other')
@@ -272,7 +284,7 @@ class PathConf:
     def __init__(self, filename):
         path_config_dct = path_config_reader(filename)
 
-        self.upload_dir = path_config_dct['upload_path']
+        self.upload_dir = BaseUploadDirectory(path_config_dct['upload_path']).upload_dir
         self.lastz = path_config_dct['lastz']
         self.db_creator = path_config_dct['db_creator']
         self.augustus = path_config_dct['augustus']

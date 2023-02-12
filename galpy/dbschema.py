@@ -3,15 +3,19 @@ import pkg_resources
 import logging
 from .dbconnect import DatabaseCreate, DbNames, Database
 from .commondata import DownloadCommonData, upload_shared_data
+from .config_utility import DatabaseConfig
 _logger = logging.getLogger("galpy.dbschema")
 
 
 def database_schema(db_config):
-    _logger.debug('Calling UploadSchema function to check the schema')
+    _logger.debug('Checking database Schemas')
     schema = UploadSchema(db_config)
     schema_existence = schema.check_schema_existence()
 
-    if not schema_existence:
+    if schema_existence:
+        _logger.debug('Database Schema already exist')
+        return True
+    else:
         _logger.debug('Uploading Database Scheme : Processing')
 
         schema.upload_sres_schema()
@@ -26,8 +30,8 @@ def database_schema(db_config):
         _logger.debug('Uploading Shared data : Processing')
         schema.download_upload_commondata()
         _logger.debug('Uploading Shared data : Complete')
-    else:
-        _logger.debug('Database Schema already exist')
+
+        return True
 
 
 class DefaultSchemaPath:
@@ -42,30 +46,49 @@ class DefaultSchemaPath:
         self.dots_schema_path = schema_path.joinpath(dots_schema)
 
 
-class UploadSchema(DefaultSchemaPath):
+class UploadSchema(DefaultSchemaPath, DatabaseConfig):
     def __init__(self, db_config):
         """
         class constructor for Uploading schema
         parameters
         -----------
-        db_config: DatabaseConf object from configutility
+        db_config: Path
+            Database configuration file
         """
         DefaultSchemaPath.__init__(self)
-        _logger.debug('Calling UploadSchema class')
-        self.db = DatabaseCreate(db_config.host, db_config.db_username, db_config.db_password, port=db_config.db_port)
-        self.db_name = DbNames(db_config.db_prefix)
+        DatabaseConfig.__init__(self, db_config)
 
-        # self.core = self.db.create(self.db_name.core)
-        self.dots = self.db.create(self.db_name.dots)
-        self.shared_resource = self.db.create(self.db_name.sres)
+        # _logger.debug('UploadSchema class initiation')
+        self.db = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
+        self.db_name = DbNames(self.db_prefix)
 
-        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.dots, 0,
-                                port=db_config.db_port)
-        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, self.db_name.sres, 1,
-                                port=db_config.db_port)
+    def create_dots(self):
+        # create dots db
+        dots = self.db.create(self.db_name.dots)
+        _logger.debug(f"Database created: {self.db_name.dots}")
+        return dots
+
+    def create_shared_resource(self):
+        # creates sres database
+        shared_resource = self.db.create(self.db_name.sres)
+        _logger.debug(f"Database created: {self.db_name.sres}")
+        return shared_resource
+
+    @property
+    def db_dots(self):
+        _logger.debug("connect to db_dots database")
+        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name.dots, 0, port=self.db_port)
+        return db_dots
+
+    @property
+    def db_sres(self):
+        _logger.debug("connect to db_sres database")
+        db_sres = Database(self.host, self.db_username, self.db_password, self.db_name.sres, 1, port=self.db_port)
+        return db_sres
 
     def check_schema_existence(self):
-        _logger.debug('Checking Schema existence')
+
+        # _logger.debug('Checking Schema existence')
         sql_tax = "SELECT * FROM {}.GeneticCode;".format(self.db_name.sres)
         row_tax = self.db.rowcount(sql_tax)
         if row_tax is None:
@@ -74,15 +97,23 @@ class UploadSchema(DefaultSchemaPath):
             return True
 
     def upload_sres_schema(self):
+        if self.db.db_existence(self.db_name.sres) is None:
+            _logger.debug(f"Database not exist: {self.db_name.sres}")
+            self.create_shared_resource()
+
         _logger.debug("Uploading SRES schema")
 
         if self.sres_schema_path.exists():
-            _logger.debug("Schema path: {}".format(self.sres_schema_path))
+            _logger.debug(f"Schema path: {self.sres_schema_path}")
             self.upload_schema_lines(self.sres_schema_path, self.db_sres)
         else:
-            _logger.error("File not found: {}".format(self.sres_schema_path))
+            _logger.error(f"File not found: {self.sres_schema_path}")
 
     def upload_dots_schema(self):
+        if self.db.db_existence(self.db_name.dots) is None:
+            _logger.debug(f"Database not exist: {self.db_name.dots}")
+            self.create_dots()
+
         _logger.debug("Uploading DOTS schema")
         if self.dots_schema_path.exists():
             _logger.debug("Schema path: {}".format(self.dots_schema_path))
@@ -94,8 +125,8 @@ class UploadSchema(DefaultSchemaPath):
         organism_table = self.db_name.dots + ".Organism"
         taxonomy_table = self.db_name.sres + ".Taxon"
 
-        organism_constrain_query = """ALTER TABLE {} ADD FOREIGN KEY (TAXON_ID) REFERENCES {}(NCBI_TAXON_ID);""".format(
-            organism_table, taxonomy_table)
+        organism_constrain_query = f"""ALTER TABLE {organism_table} ADD FOREIGN KEY (TAXON_ID) 
+        REFERENCES {taxonomy_table}(NCBI_TAXON_ID);"""
 
         self.db_dots.query(organism_constrain_query)
 

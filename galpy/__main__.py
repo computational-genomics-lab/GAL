@@ -2,8 +2,7 @@ import argparse
 import logging
 import pkg_resources
 from pathlib import Path
-from .app import App
-from .commondata import DownloadCommonData
+from .app import App, BaseApp, OrganismApp
 
 
 def main():
@@ -23,10 +22,22 @@ def main():
     parser.add_argument("-db", "--dbconfig", help='Database configuration file name', default=default_db_config)
     parser.add_argument("-path", "--pathconfig", help='path configuration file name', default=default_path_config)
     parser.add_argument("-org", "--orgconfig", help='Organism configuration file name', default=default_org_config)
-    parser.add_argument("-NU", "--NewUpload", help='NewUpload: True/False', type=str2bool, default=True)
-    parser.add_argument('-v', '--verbose', type=str,
+
+    parser.add_argument('-upload', '--upload', type=str, choices=["All", "CentralDogma", "ProteinAnnotation"],
+                        help="Upload data using different levels")
+
+    parser.add_argument("-info", "--info", type=str2bool, nargs='?', const=True, default=False,
+                        help='Gives information of the table status')
+    parser.add_argument("-org_info", "--org_info", type=str2bool, nargs='?', const=True, default=False,
+                        help="Gives information of an organism's upload status")
+    parser.add_argument("-remove_org", "--remove_org", type=str2bool, nargs='?', const=True, default=False,
+                        help='Removes an organism details from the database')
+    parser.add_argument("-remove_db", "--remove_db", type=str2bool, nargs='?', const=True, default=False,
+                        help='Removes the entire GAL related databases')
+
+    parser.add_argument('-v', '--verbose', type=str, default="info",
                         choices=["none", "debug", "info", "warning", "error", "d", "e", "i", "w"],
-                        help="verbose level: debug, info (default), warning, error", default="info")
+                        help="verbose level: debug, info (default), warning, error" )
     parser.add_argument('-log', '--log_file', type=str, help='log file')
     args = parser.parse_args()
 
@@ -42,13 +53,48 @@ def main():
     Path Config: {path_config_file}
     Organism Config: {org_config_file}""")
 
+    if args.info:
+        base_app_obj = BaseApp(db_config_file)
+        if base_app_obj.db_status:
+            base_app_obj.db_schema()
+
+    elif args.remove_db:
+        base_app_obj = BaseApp(db_config_file)
+        if base_app_obj.db_status:
+            base_app_obj.drop_databases()
+
+    elif args.org_info:
+        org_app_obj = OrganismApp(db_config_file, org_config_file)
+        org_app_obj.db_table_log()
+        org_app_obj.get_organism_record()
+
+    elif args.remove_org:
+        org_app_obj = OrganismApp(db_config_file, org_config_file)
+        org_app_obj.db_table_log()
+        org_app_obj.remove_organism_record()
+
+    if args.upload:
+        if args.upload == 'All':
+            app = App(db_config_file, path_config_file, org_config_file)
+            app.upload_schema()
+            app.process_central_dogma_annotation()
+            app.import_protein_annotation()
+
+        elif args.upload == 'CentralDogma':
+            app = App(db_config_file, path_config_file, org_config_file)
+            app.upload_schema()
+            app.process_central_dogma_annotation()
+
+        elif args.upload == 'ProteinAnnotation':
+            app = App(db_config_file, path_config_file, org_config_file)
+            app.upload_schema()
+            app.import_protein_annotation()
+    """
     if args.NewUpload:
         app = App(db_config_file, path_config_file, org_config_file)
         app.upload_schema()
         app.process_central_dogma_annotation()
-
-    else:
-        print("checking the db connection")
+    """
 
 
 def get_logger(args):

@@ -182,7 +182,7 @@ class ProteinAnnotations(BaseProteinAnnotations):
         # signalp table
         query = f"""LOAD DATA LOCAL INFILE '{self.SignalP}' INTO TABLE SignalP 
                 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
-        _logger.debug(query)
+        # _logger.debug(query)
         self.db_dots.insert(query)
 
     def parse_tmhmm_result(self, parsed_file):
@@ -217,7 +217,7 @@ class ProteinAnnotations(BaseProteinAnnotations):
         query = f"""LOAD DATA LOCAL INFILE '{self.TmHmm}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
                        ENCLOSED BY '"' LINES 
                        TERMINATED BY '\n' (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)"""
-        _logger.debug(query)
+        # _logger.debug(query)
         self.db_dots.insert(query)
 
 

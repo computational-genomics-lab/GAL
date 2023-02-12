@@ -6,12 +6,17 @@ warnings.filterwarnings("ignore", category=pymysql.Warning)
 _logger = logging.getLogger("galpy.dbconnect")
 
 
-class DatabaseCreate:
+class BaseDatabase:
     def __init__(self, host, user, password, port=None):
         self.host = host
         self.user = user
         self.password = password
         self.port = 3306 if port is None else port
+
+
+class DatabaseCreate(BaseDatabase):
+    def __init__(self, host, user, password, port=None):
+        BaseDatabase.__init__(self, host, user, password, port)
         try:
             self.connection = pymysql.connect(host=self.host, user=self.user, password=self.password, port=self.port)
             self.cursor = self.connection.cursor()
@@ -19,6 +24,16 @@ class DatabaseCreate:
             _logger.error(f"Error in database connection.......: {e}")
 
             sys.exit(0)
+
+    def db_existence(self, db_name):
+        try:
+            query = f"SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{db_name}'"
+            cursor = self.connection.cursor(pymysql.cursors.DictCursor)
+            cursor.execute(query)
+            return cursor.fetchone()
+        except pymysql.Error as e:
+            _logger.error("Error {}".format(e))
+            return None
 
     def create(self, db_name):
         try:
@@ -30,6 +45,17 @@ class DatabaseCreate:
             _logger.error(f"Failed to create database: {db_name} \n{e}")
             self.connection.rollback()
             return 1
+
+    def drop_database(self, db_name):
+        try:
+            query = f"DROP DATABASE {db_name}"
+            cursor = self.connection.cursor(pymysql.cursors.DictCursor)
+            cursor.execute(query)
+            _logger.debug(f"{db_name} deletion: successful")
+        except pymysql.Error as e:
+            _logger.error(f"Failed to delete  database: {db_name} \n{e}")
+            self.connection.rollback()
+            return None
 
     def rowcount(self, query):
         try:
@@ -45,8 +71,10 @@ class DatabaseCreate:
 
 
 def check_db_connection(host, db_username, db_password, port=3306):
+    _logger.debug("Checking db connection")
     db = pymysql.connect(host=host, user=db_username, password=db_password, port=port)
     cursor = db.cursor()
+
     try:
         cursor.execute("SELECT VERSION()")
         results = cursor.fetchone()
@@ -55,8 +83,7 @@ def check_db_connection(host, db_username, db_password, port=3306):
         else:
             return False
     except pymysql.Error as e:
-        _logger.error("ERROR %d IN CONNECTION: %s" % (e.args[0], e.args[1]))
-    return False
+        _logger.error(f"ERROR {e.args[0]} IN CONNECTION: {e.args[1]}")
 
 
 def create_db_dots_connection(db_config):
@@ -72,15 +99,12 @@ class DbNames:
         self.sres = db_prefix + "_sres"
 
 
-class Database:
+class Database(BaseDatabase):
     def __init__(self, host, user, password, db, infile, port=None):
-        self.host = host
-        self.user = user
-        self.password = password
+        BaseDatabase.__init__(self, host, user, password, port)
         self.db = db
         self.infile = infile
         self.db_param = None
-        self.port = 3306 if port is None else port
         if self.infile == 1:
             self.db_param = 1
         else:

@@ -1,16 +1,96 @@
+import sys
 import logging
 from pathlib import Path
-from .config_utility import ConfigFileHandler
-from .dbconnect import check_db_connection, DbNames, Database
-from .dbschema import database_schema
+from .config_utility import ConfigFileHandler, DatabaseConfig, OrganismConf
+from .dbconnect import check_db_connection, DbNames, Database, DatabaseCreate
+from .dbschema import database_schema, UploadSchema
 from .BioFile import genbank_parser
 from .processing_utility import fix_multiple_splicing_bugs, create_gal_model_dct, AnnotationData
-from .taxomony import OrganismName, DotsOrganism, Taxonomy
+from .taxomony import Taxonomy, DotsOrganism
 from .dbtable_utility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
 from .protein_annotation_utility import ProteinAnnotations
 from . import general_utility
 _logger = logging.getLogger("galpy.app")
+
+
+class BaseApp(DatabaseConfig):
+    def __init__(self, db_config_file):
+        DatabaseConfig.__init__(self, db_config_file)
+        """
+        Basic entry options.
+        db_config_file : Path
+            database configuration file path
+        """
+        self.db_config_file = db_config_file
+
+    @property
+    def db_status(self):
+        """
+        checks database connection
+        """
+        db_status = check_db_connection(self.host, self.db_username, self.db_password, port=self.db_port)
+
+        if db_status:
+            _logger.debug("The database connection is fine")
+
+            return True
+        else:
+            _logger.debug("There is an issue with the database connection")
+            return False
+
+    def db_schema(self):
+        schema = UploadSchema(self.db_config_file)
+        schema_existence = schema.check_schema_existence()
+
+        if schema_existence:
+            _logger.debug('Database Schemas are already exist')
+            return True
+        else:
+            _logger.debug('Database Schemas are missing')
+            return False
+
+    def db_table_log(self):
+
+        db_name = DbNames(self.db_prefix)
+        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
+        table_stat = TableStatusID(db_dots)
+        table_stat.show_id_log()
+        table_stat.get_protein_feature_table_status()
+
+    def drop_databases(self):
+        query_response = query_yes_no("Would you like to delete the database")
+        if query_response:
+            db_name = DbNames(self.db_prefix)
+            db_obj = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
+            if db_obj.db_existence(db_name.dots) is not None:
+                db_obj.drop_database(db_name.dots)
+            else:
+                _logger.debug(f"Database {db_name.dots} doesn't exist")
+            if db_obj.db_existence(db_name.sres) is not None:
+                db_obj.drop_database(db_name.sres)
+            else:
+                _logger.debug(f"Database {db_name.sres} doesn't exist")
+        else:
+            _logger.debug("Database drop option skipped")
+
+
+class OrganismApp(BaseApp, OrganismConf):
+    def __init__(self, db_config_file, org_config_file):
+        BaseApp.__init__(self, db_config_file)
+        OrganismConf.__init__(self, org_config_file)
+
+    def remove_organism_record(self):
+        db_name = DbNames(self.db_prefix)
+        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
+        organism_obj = DotsOrganism(db_dots, self.organism, self.version)
+        organism_obj.remove_organism_record()
+
+    def get_organism_record(self):
+        db_name = DbNames(self.db_prefix)
+        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
+        organism_obj = DotsOrganism(db_dots, self.organism, self.version)
+        organism_obj.get_organism_record()
 
 
 class App(ConfigFileHandler):
@@ -39,7 +119,7 @@ class App(ConfigFileHandler):
     def upload_schema(self):
         if self.check_db_status:
             _logger.debug("Uploading Schema: start")
-            database_schema(self.db_config)
+            database_schema(self.db_config_file)
             _logger.debug("Uploading Schema: Complete")
         else:
             _logger.info("Database schema already exists")
@@ -51,20 +131,21 @@ class App(ConfigFileHandler):
         _logger.debug(f"annotation type: {app1.annotation_type}")
 
         if app1.organism_existence is False:
+            _logger.debug(f"Detected Datatype: {app1.annotation_type}")
             if app1.annotation_type == 'GenBank_Annotation':
                 app1.process_genbank_annotation()
                 app1.update_organism_table()
 
             if app1.annotation_type == 'Partial_Annotation':
-                _logger.debug(f"Detected Datatype: {app1.annotation_type}")
-
                 app1.process_partial_annotations()
                 app1.update_organism_table()
-                app1.import_protein_annotation()
+                # app1.import_protein_annotation()
 
-        else:
-            _logger.debug("Table Max ids")
-            TableStatusID(app1.db_dots)
+            if app1.annotation_type == 'Minimal_Annotation':
+                app1.process_partial_annotations()
+                app1.update_organism_table()
+            if app1.annotation_type == 'No_Annotation':
+                _logger.error("Under development")
 
     def import_protein_annotation(self):
         _logger.debug("Processing protein annotation data: start")
@@ -79,26 +160,26 @@ class App(ConfigFileHandler):
                                                         taxonomy_id, org_version)
             # protein_annotation_obj.create_protein_file(app1.taxonomy_id_sres, app1.org_config.version)
 
-            # upload interproscan data
+            # upload InterProScan data
             if app1.org_config.interproscan:
-                _logger.info("Introproscan data is provided")
+                _logger.info("IntroProScan data is provided")
                 if app1.org_config.interproscan.exists():
-                    _logger.info("Processing Introproscan data")
+                    _logger.info("Processing IntroProScan data")
                     protein_annotation_obj.parse_interproscan_data(app1.org_config.interproscan, app1.taxonomy_id_sres, app1.org_config.version)
                 else:
-                    _logger.error(f"Please check the path for interproscan data\n Path: {app1.org_config.interproscan}")
+                    _logger.error(f"Please check the path for InterProScan data\n Path: {app1.org_config.interproscan}")
             else:
-                _logger.info("Introproscan data is not provided")
+                _logger.info("IntroProScan data is not provided")
 
-            # for signalp
+            # for SignalP
             if app1.org_config.signalp:
-                _logger.info("signalp data is provided")
+                _logger.info("SignalP data is provided")
                 if app1.org_config.signalp.exists():
-                    _logger.info("Processing signalp data")
+                    _logger.info("Processing SignalP data")
                     protein_annotation_obj.parse_signalp_result(app1.org_config.signalp)
                     protein_annotation_obj.upload_signalp_data()
             else:
-                _logger.info("signalp data is not provided")
+                _logger.info("SignalP data is not provided")
 
             # for tmhmm
             if app1.org_config.tmhmm:
@@ -170,6 +251,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         self.org_config = org_config
         self.path_config = path_config
         db_name = DbNames(db_config.db_prefix)
+
         self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 1,
                                 port=db_config.db_port)
         self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0,
@@ -206,14 +288,8 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
         self.minimal_annotation_data(annotation_obj.sequence_dct, feature_dct)
         self.file_upload.upload_central_dogma_data()
 
-        # Process protein feature data
-        # protein_annotation_obj = ProteinAnnotations(self.db_dots, self.path_config, self.org_config, random_string)
-        # protein_annotation_obj.create_protein_file(self.taxonomy_id_sres, self.org_config.version)
-
     def minimal_annotation_data(self, sequence_dct, feature_dct):
-        # taxonomy_1 = OrganismName(self.org_config.organism, self.org_config.version)
-        # taxonomy_1 = Taxonomy(self.db_sres, self.db_dots, self.org_config.organism, self.org_config.version)
-        # taxonomy_id = taxonomy_1.get_taxonomy_id(self.db_sres)
+
         taxonomy_id = self.taxonomy_id_sres
         _logger.info(f"Taxonomy_id: {taxonomy_id}")
 
@@ -246,27 +322,27 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
             _logger.info("Preparing the protein annotation data")
             protein_annotation_obj = ProteinAnnotations(self.db_dots, self.path_config, self.org_config, random_string,
                                                         taxonomy_id, org_version)
-            # upload interproscan data
+            # upload InterProScan data
             if self.org_config.interproscan:
-                _logger.info("Introproscan data is provided")
+                _logger.info("InterProScan data is provided")
                 if self.org_config.interproscan.exists():
-                    _logger.info("Processing Introproscan data")
+                    _logger.info("Processing InterProScan data")
                     protein_annotation_obj.parse_interproscan_data(self.org_config.interproscan, self.taxonomy_id_sres,
                                                                    self.org_config.version)
                 else:
-                    _logger.error(f"Please check the path for interproscan data\n Path: {self.org_config.interproscan}")
+                    _logger.error(f"Please check the path for InterProScan data\n Path: {self.org_config.interproscan}")
             else:
-                _logger.info("Introproscan data is not provided")
+                _logger.info("IntroProScan data is not provided")
 
-            # for signalp
+            # for SignalP
             if self.org_config.signalp:
-                _logger.info("signalp data is provided")
+                _logger.info("SignalP data is provided")
                 if self.org_config.signalp.exists():
-                    _logger.info("Processing signalp data")
+                    _logger.info("Processing SignalP data")
                     protein_annotation_obj.parse_signalp_result(self.org_config.signalp)
                     protein_annotation_obj.upload_signalp_data()
             else:
-                _logger.info("signalp data is not provided")
+                _logger.info("SignalP data is not provided")
 
             if self.org_config.tmhmm:
                 _logger.info("tmhmm data is provided")
@@ -282,3 +358,32 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
             protein_annotation_obj.get_protein_feature_table_status()
 
 
+def query_yes_no(question, default="no"):
+    """Ask a yes/no question via raw_input() and return their answer.
+
+    "question" is a string that is presented to the user.
+    "default" is the presumed answer if the user just hits <Enter>.
+            It must be "yes" (the default), "no" or None (meaning
+            an answer is required of the user).
+
+    The "answer" return value is True for "yes" or False for "no".
+    """
+    valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
+    if default is None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = input().lower()
+        if default is not None and choice == "":
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")

@@ -51,7 +51,7 @@ optional arguments:
 ### Upload a Genome data
 Usage to upload a genome
 ```commandline
-galpy -db <db_configuration_file> -org <organism_configuration_file> -path <path_configuration_file> -v d -upload all
+galpy -db <db_configuration_file> -org <organism_configuration_file> -path <path_configuration_file> -v d -upload All
 ```
 Both database and organism configuration files are required to upload the genome. Configuration files are in ini format. 
 

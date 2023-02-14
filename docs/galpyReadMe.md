@@ -73,6 +73,10 @@ Organism:
 version: 1
 source_url:
 
+[SequenceType]
+SequenceType: chromosome
+scaffold_prefix:
+
 [filePath]
 GenBank:
 FASTA:

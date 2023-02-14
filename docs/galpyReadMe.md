@@ -8,7 +8,7 @@ pip install git+https://github.com/computational-genomics-lab/GAL.git
 ```
 or
 ```batch
-https://github.com/computational-genomics-lab/GAL.git
+git clone https://github.com/computational-genomics-lab/GAL.git
 cd GAL
 pip install .
 ```

@@ -62,7 +62,7 @@ Both database and organism configuration files are required to upload the genome
 db_username : 
 db_password :
 host : 
-database_prefix: GAL_cgl
+database_prefix: 
 port:
 ```
 #### Format for organism configuration file

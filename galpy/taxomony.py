@@ -347,6 +347,10 @@ class Taxonomy(CommonOrganismInfo, DotsOrganism):
                 _logger.info("Error: Please check the organism name")
                 return True
 
+
+    def organism_name_check(self):
+        sql_query = f"select * from Organism where TAXON_ID = {taxonomy_id} and VERSION = {self.org_version}"
+
     @property
     def organism_type(self):
         organism_type = self.find_organism_type(self.taxonomy_hierarchy_dots)

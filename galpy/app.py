@@ -130,7 +130,10 @@ class App(ConfigFileHandler):
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         _logger.debug(f"annotation type: {app1.annotation_type}")
 
-        if app1.organism_existence is False:
+        if app1.taxonomy_id_sres is None:
+            _logger.error("There is no entry with entered organism name. Please check the organism name")
+
+        elif app1.organism_existence is False:
             _logger.debug(f"Detected Datatype: {app1.annotation_type}")
             if app1.annotation_type == 'GenBank_Annotation':
                 app1.process_genbank_annotation()
@@ -152,7 +155,10 @@ class App(ConfigFileHandler):
         random_string = general_utility.random_string(20)
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
 
-        if app1.organism_existence:
+        if app1.taxonomy_id_sres is None:
+            _logger.error("There is no entry with entered organism name. Please check the organism name")
+
+        elif app1.organism_existence:
             taxonomy_id = app1.taxonomy_id_sres
             org_version = app1.org_config.version
             _logger.info("Preparing the protein annotation data")

@@ -23,7 +23,7 @@ def main():
     parser.add_argument("-path", "--pathconfig", help='path configuration file name', default=default_path_config)
     parser.add_argument("-org", "--orgconfig", help='Organism configuration file name', default=default_org_config)
 
-    parser.add_argument('-upload', '--upload', type=str, choices=["All", "CentralDogma", "ProteinAnnotation"],
+    parser.add_argument('-upload', '--upload', type=str.lower, choices=["All", "CentralDogma", "ProteinAnnotation"],
                         help="Upload data using different levels")
 
     parser.add_argument("-info", "--info", type=str2bool, nargs='?', const=True, default=False,

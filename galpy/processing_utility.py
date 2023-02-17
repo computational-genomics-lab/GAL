@@ -21,8 +21,11 @@ class AnnotationData:
 
     @property
     def product_dct(self):
-        blast_dct = product_to_dictionary(self.org_config.product)
-        return blast_dct
+        if self.org_config.product is not None:
+            blast_dct = product_to_dictionary(self.org_config.product)
+            return blast_dct
+        else:
+            return None
 
     def prepare_gal_model(self):
         model_gff_dct = create_gal_model_dct(self.sequence_dct, self.gff_dct, self.product_dct)

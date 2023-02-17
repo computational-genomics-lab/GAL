@@ -240,7 +240,6 @@ def make_custom_order(dct):
 def make_custom_sort(orders):
     orders = [{k: -i for (i, k) in enumerate(reversed(order), 1)} for order in orders]
 
-
     def process(stuff):
         if isinstance(stuff, dict):
             l = [(k, process(v)) for (k, v) in stuff.items()]

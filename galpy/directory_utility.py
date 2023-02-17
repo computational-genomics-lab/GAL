@@ -1,11 +1,11 @@
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 import logging
 _logger = logging.getLogger("galpy.directory_utility")
 
 
 class BaseUploadDirectory:
     def __init__(self, upload_dir):
-        """ class constructor creates a directory if the upload directory doesn;t exist
+        """ class constructor creates a directory if the upload directory doesn't exist
         parameters
         ---------
         upload_dir: basestring
@@ -17,7 +17,7 @@ class BaseUploadDirectory:
             if not self.upload_dir.exists():
                 self.create_directory(self.upload_dir)
 
-        _logger.info("Upload path: {}".format(self.upload_dir))
+        # _logger.info(f"Upload path: {self.upload_dir}")
 
     @staticmethod
     def create_directory(directory):

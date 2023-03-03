@@ -214,14 +214,21 @@ class GffAttribute:
 
 
 def parse_single_feature_line(attribute_string):
+    # print(attribute_string)
     attributes = dict()
     for key_value_pair in attribute_string.split(';'):
         if not key_value_pair:
             # empty string due to a trailing ";"
             continue
+
         if "=" in key_value_pair:
-            key, val = key_value_pair.strip().split("=")
-            attributes[key.lower()] = val
+            sub_attributes = key_value_pair.strip().split("=")
+            if len(sub_attributes) == 1:
+                attributes[sub_attributes[0].lower()] = None
+            elif len(sub_attributes) == 2:
+                attributes[sub_attributes[0].lower()] = sub_attributes[1]
+            else:
+                attributes[sub_attributes[0].lower()] = " ".join(sub_attributes[1:])
         elif " " in key_value_pair:
             key_value_pair = key_value_pair.strip()
             key, val = key_value_pair.split(" ", maxsplit=1)

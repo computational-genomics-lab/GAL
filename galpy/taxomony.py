@@ -17,11 +17,11 @@ class OrganismName:
         # _logger.info(f"Organism: {org_name}, Version: {org_version}")
         self.org_name = org_name
         self.org_version = org_version
-        org_arr = re.split(r'\s', org_name)
-        self.species = "{} {}".format(org_arr[0], org_arr[1])
+        self.org_arr = re.split(r'\s', org_name)
+        self.species = "{} {}".format(self.org_arr[0], self.org_arr[1])
         self.strain = ''
-        if len(org_arr) > 2:
-            self.strain = " ".join(org_arr[2:])
+        if len(self.org_arr) > 2:
+            self.strain = " ".join(self.org_arr[2:])
 
     @property
     def prefix(self):
@@ -81,6 +81,28 @@ class CommonOrganismInfo(OrganismName):
             if taxonomy_id is None:
                 _logger.error("Error :Organism Name has issue:")
             return taxonomy_id
+
+    def taxon_entries(self):
+        _logger.info(f'Checking similar organism entries with {self.species}')
+        sql_query = f"SELECT NCBI_TAXON_ID, TAXON_NAME FROM Taxon where TAXON_NAME like '{self.species}%'"
+        result = self.db_sres.query(sql_query)
+        if len(result) > 0:
+            result_str = "\n".join(f"{d['NCBI_TAXON_ID']}\t{d['TAXON_NAME']}" for d in result)
+            _logger.info(f'Entries available:\nNCBI_TAXON_ID\tTAXON_NAME\n{result_str}')
+        else:
+            if len(self.org_arr) > 1 and len(self.org_arr[1]) >= 2:
+                short_org_name = f'{self.org_arr[0]} {self.org_arr[1][0:2]}'
+                _logger.info(f'There is no entry with species name. Listing organisms with {short_org_name}')
+
+                sql_query = f"SELECT NCBI_TAXON_ID, TAXON_NAME FROM Taxon where TAXON_NAME like '{short_org_name}%'"
+                result = self.db_sres.query(sql_query)
+                if len(result) > 0:
+                    result_str = "\n".join(f"{d['NCBI_TAXON_ID']}\t{d['TAXON_NAME']}" for d in result)
+                    _logger.info(f'Entries available: \nNCBI_TAXON_ID\tTAXON_NAME\n{result_str}')
+
+                else:
+                    _logger.info(f'No record found with: {short_org_name}%')
+        return False
 
     def taxonomy_hierarchy(self):
         query = f"""SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon 

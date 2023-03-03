@@ -128,10 +128,12 @@ class App(ConfigFileHandler):
         _logger.debug("Process central dogma data: start")
 
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
-        _logger.debug(f"annotation type: {app1.annotation_type}")
+        _logger.debug(f"Annotation type: {app1.annotation_type}")
 
         if app1.taxonomy_id_sres is None:
-            _logger.error("There is no entry with entered organism name. Please check the organism name")
+            _logger.error(f"""There is no entry with entered organism name: Please check the organism name
+            Entered organism name: {app1.org_config.organism}""")
+            app1.taxon_entries()
 
         elif app1.organism_existence is False:
             _logger.debug(f"Detected Datatype: {app1.annotation_type}")
@@ -156,7 +158,8 @@ class App(ConfigFileHandler):
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
 
         if app1.taxonomy_id_sres is None:
-            _logger.error("There is no entry with entered organism name. Please check the organism name")
+            _logger.error(f"""There is no entry with entered organism name: Please check the organism name
+            Entered organism name: {app1.org_config.organism}""")
 
         elif app1.organism_existence:
             taxonomy_id = app1.taxonomy_id_sres

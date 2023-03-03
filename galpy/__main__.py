@@ -23,7 +23,7 @@ def main():
     parser.add_argument("-path", "--pathconfig", help='path configuration file name', default=default_path_config)
     parser.add_argument("-org", "--orgconfig", help='Organism configuration file name', default=default_org_config)
 
-    parser.add_argument('-upload', '--upload', type=str.lower, choices=["All", "CentralDogma", "ProteinAnnotation"],
+    parser.add_argument('-upload', '--upload', type=str.lower, choices=["all", "centraldogma", "proteinannotation"],
                         help="Upload data using different levels")
 
     parser.add_argument("-info", "--info", type=str2bool, nargs='?', const=True, default=False,
@@ -74,18 +74,18 @@ def main():
         org_app_obj.remove_organism_record()
 
     if args.upload:
-        if args.upload == 'All':
+        if args.upload == 'all':
             app = App(db_config_file, path_config_file, org_config_file)
             app.upload_schema()
             app.process_central_dogma_annotation()
             app.import_protein_annotation()
 
-        elif args.upload == 'CentralDogma':
+        elif args.upload == 'centraldogma':
             app = App(db_config_file, path_config_file, org_config_file)
             app.upload_schema()
             app.process_central_dogma_annotation()
 
-        elif args.upload == 'ProteinAnnotation':
+        elif args.upload == 'proteinannotation':
             app = App(db_config_file, path_config_file, org_config_file)
             app.upload_schema()
             app.import_protein_annotation()

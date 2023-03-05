@@ -5,7 +5,7 @@ from .config_utility import ConfigFileHandler, DatabaseConfig, OrganismConf
 from .dbconnect import check_db_connection, DbNames, Database, DatabaseCreate
 from .dbschema import database_schema, UploadSchema
 from .BioFile import genbank_parser
-from .processing_utility import fix_multiple_splicing_bugs, create_gal_model_dct, AnnotationData
+from .processing_utility import fix_multiple_splicing_bugs, ModelGFFDict, AnnotationData
 from .taxomony import Taxonomy, DotsOrganism
 from .dbtable_utility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
@@ -149,6 +149,7 @@ class App(ConfigFileHandler):
             if app1.annotation_type == 'Minimal_Annotation':
                 app1.process_partial_annotations()
                 app1.update_organism_table()
+
             if app1.annotation_type == 'No_Annotation':
                 _logger.error("Under development")
 
@@ -200,8 +201,10 @@ class App(ConfigFileHandler):
             else:
                 _logger.info("tmhmm data is not provided")
 
-            # show log
-            protein_annotation_obj.get_protein_feature_table_status()
+    def db_table_logs(self):
+        app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
+        app1.show_id_log()
+        app1.get_protein_feature_table_status()
 
 
 class AnnotationCategory:
@@ -252,7 +255,7 @@ class AnnotationCategory:
                 return None
 
 
-class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
+class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
     def __init__(self, db_config, path_config, org_config):
         AnnotationCategory.__init__(self, org_config, path_config)
 
@@ -267,6 +270,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
                                 port=db_config.db_port)
         self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
         Taxonomy.__init__(self, self.db_sres, self.db_dots, org_config.organism, org_config.version)
+        TableStatusID.__init__(self, self.db_dots)
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data: start')
@@ -279,7 +283,8 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy):
             (feature_dct, sequence_dct) = genbank_parser.get_data(file_handler)
 
             feature_dct = fix_multiple_splicing_bugs(feature_dct)
-            model_gff_dct = create_gal_model_dct(sequence_dct, feature_dct)
+            model_gff_obj = ModelGFFDict(sequence_dct, feature_dct)
+            model_gff_dct = model_gff_obj.create_model_dct()
 
             # (sequence_dct, feature_dct) = process_type1_data(org_config)
             self.minimal_annotation_data(sequence_dct, feature_dct)

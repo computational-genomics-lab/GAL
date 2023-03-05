@@ -1,13 +1,13 @@
 from setuptools import setup
 
 # exec(open('galpy/version.py').read())
-__version__ = '1.0'
+__version__ = '1.0.1'
 description = "Python module for galpy"
 
 setup(
     name='galpy',
     version=__version__,
-    author='Arijit Panda, CGLAB, CSIR-IICB',
+    author='Arijit Panda, CGLAB',
     author_email='arijpanda@gmail.com',
     packages=['galpy'],
     package_dir={'galpy': 'galpy'},

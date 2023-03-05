@@ -16,7 +16,8 @@ class AnnotationData:
 
     @property
     def gff_dct(self):
-        gff_dct = gff_parser.read_gff3_genbank(self.org_config.gff)
+        gff_obj = gff_parser.ReadGFF3(self.org_config.gff)
+        gff_dct = gff_obj.reader()
         return gff_dct
 
     @property
@@ -28,12 +29,81 @@ class AnnotationData:
             return None
 
     def prepare_gal_model(self):
-        model_gff_dct = create_gal_model_dct(self.sequence_dct, self.gff_dct, self.product_dct)
+        # model_gff_dct = create_gal_model_dct(self.sequence_dct, self.gff_dct, self.product_dct)
+        model_gff_obj = ModelGFFDict(self.sequence_dct, self.gff_dct, self.product_dct)
+        model_gff_dct = model_gff_obj.create_model_dct()
         return model_gff_dct
 
 
-def create_gal_model_dct(sequence_dct, gff_dct, blast_dct={}):
+class ModelGFFDict:
+    def __init__(self, sequence_dct, gff_dct, product_dct={}):
+        self.sequence_dct = sequence_dct
+        self.gff_dct = gff_dct
+        self.product_dct = product_dct
+        self.model_dct = gff_dct
+        self.delete_list = []
 
+    def create_model_dct(self):
+
+        for contig_id, sequence in self.sequence_dct.items():
+            if contig_id in self.gff_dct:
+                if 'gene' in self.gff_dct[contig_id]:
+
+                    for gene_id, gene_dct in self.gff_dct[contig_id]['gene'].items():
+                        if gene_id is None:
+                            self.delete_list.append([contig_id, 'gene', gene_id])
+                            continue
+                        else:
+                            self.process_gene_dict(contig_id, gene_id)
+
+        for del_list in self.delete_list:
+            del self.model_dct[del_list[0]][del_list[1]][del_list[2]]
+
+        return self.model_dct
+
+    def process_gene_dict(self, contig_id, gene_id):
+
+        gene_dct = self.gff_dct[contig_id]['gene'][gene_id]
+
+        gene_sequence, strand = get_gene_sequence(self.sequence_dct[contig_id], gene_dct['location'])
+
+        # Add gene sequence in the feature dictionary
+        self.model_dct[contig_id]['gene'][gene_id]['gene_sequence'] = gene_sequence
+
+        if 'mrna' in gene_dct:
+            # for each mrna id
+            for rna_id, rna_dct in gene_dct['mrna'].items():
+                if self.product_dct:
+                    if 'product' not in rna_dct:
+                        if rna_id in self.product_dct:
+                            product = self.product_dct[rna_id]
+                        else:
+                            product = "Hypothetical Protein"
+
+                        self.model_dct[contig_id]['gene'][gene_id]['mrna'][rna_id]['product'] = product
+
+                if 'cds' in rna_dct:
+                    location_list = rna_dct['cds']['location']
+                    if 'protein_sequence' not in rna_dct:
+                        merged_cds = merge_cds_list(self.sequence_dct[contig_id], location_list, strand)
+                        protein_seq = translate(merged_cds)
+                        self.model_dct[contig_id]['gene'][gene_id]['mrna'][rna_id]['protein_sequence'] = \
+                            protein_seq
+
+                if 'exon' not in rna_dct:
+                    self.model_dct[contig_id]['gene'][gene_id]['mrna'][rna_id]['exon'] = rna_dct['cds']
+
+                if 'location' not in rna_dct:
+                    if 'cds' in rna_dct:
+                        location_list = rna_dct['cds']['location']
+                        location = get_start_end_list(location_list, strand)
+                        self.model_dct[contig_id]['gene'][gene_id]['mrna'][rna_id]['location'] = location
+                    else:
+                        self.model_dct[contig_id]['gene'][gene_id]['mrna'][rna_id]['location'] = gene_dct['location']
+
+
+def create_gal_model_dct(sequence_dct, gff_dct, blast_dct={}):
+    # this code is going to be deleted. Will be replaced by
     model_dct = gff_dct
     delete_list = []
     for seq_id, sequence in sequence_dct.items():

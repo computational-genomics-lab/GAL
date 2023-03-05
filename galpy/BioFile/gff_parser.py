@@ -1,75 +1,87 @@
 import re
 from collections import defaultdict, OrderedDict
+import logging
+_logger = logging.getLogger("galpy.BioFile.gff_parser")
 
 
 def dct_structure():
     return defaultdict(dct_structure)
 
 
-def read_gff3_genbank(gff_file):
-    """
-    This function takes gff file as input and return a dictionary of the gff file
-    """
-    dct = dct_structure()
-    gene_id_dct = dct_structure()
-    pseudo_gene_id_dct = dct_structure()
+class ReadGFF3:
+    def __init__(self, gff_file):
+        self.gff_file = gff_file
 
-    read_fh = open(gff_file, 'r', encoding="utf-8")
-    lookup_list = ['pseudogene', 'gene', 'mRNA', 'cds', 'exon', 'transcript']
-    for i, line in enumerate(read_fh):
-        line = line.rstrip()
-        if re.search(r'^#', line):
-            continue
-        tmp = re.split(r'\t', line)
+    def reader(self):
+        """
+            This function takes gff file as input and return a dictionary of the gff file
+        """
+        dct = dct_structure()
+        gene_id_dct = dct_structure()
+        pseudo_gene_id_dct = dct_structure()
 
-        if len(tmp) > 7:
-            if any(item.lower() == tmp[2].lower() for item in lookup_list):
-                source = tmp[0]
-                match_obj = re.search(r'^(\S+) (.*)', tmp[0])
-                if match_obj:
-                    source = match_obj.group(1)
+        read_fh = open(self.gff_file, 'r', encoding="utf-8")
+        lookup_list = ['pseudogene', 'gene', 'mRNA', 'cds', 'exon', 'transcript']
 
-                if re.search(r'pseudogene', tmp[2], re.I):
-                    dct, pseudo_gene_id_dct = process_gff_pseudogene_gene_line(dct, tmp, pseudo_gene_id_dct)
-                elif re.search(r'gene', tmp[2], re.I):
-                    dct = process_gff_gene_line(dct, tmp)
+        for i, line in enumerate(read_fh):
+            line = line.rstrip()
+            if re.search(r'^#', line):
+                continue
+            cols = re.split(r'\t', line)
 
-                if re.search(r'mrna', tmp[2], re.I):
-                    dct, gene_id_dct = process_gff_mrna_line(dct, tmp, gene_id_dct, pseudo_gene_id_dct)
+            if len(cols) > 7:
+                if any(item.lower() == cols[2].lower() for item in lookup_list):
+                    source = cols[0]
+                    match_obj = re.search(r'^(\S+) (.*)', cols[0])
+                    if match_obj:
+                        source = match_obj.group(1)
 
-                if re.search(r'transcript', tmp[2], re.I):
-                    dct, gene_id_dct = process_augustus_transcript_line(dct, tmp, gene_id_dct, pseudo_gene_id_dct)
+                    if re.search(r'pseudogene', cols[2], re.I):
+                        dct, pseudo_gene_id_dct = process_gff_pseudogene_gene_line(dct, cols, pseudo_gene_id_dct)
+                    elif re.search(r'gene', cols[2], re.I):
+                        dct = process_gff_gene_line(dct, cols)
 
-                if re.search(r'cds', tmp[2], re.I):
-                    super_parent_id, parent_id = get_cds_parent_data(tmp, gene_id_dct, source)
-                    if super_parent_id in dct[source]['pseudogene']:
-                        try:
-                            dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['cds']['location'].append(
-                                [tmp[3], tmp[4]])
-                        except AttributeError:
-                            dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['cds']['location'] = [
-                                [tmp[3], tmp[4]]]
-                    else:
-                        try:
-                            dct[source]['gene'][super_parent_id]['mrna'][parent_id]['cds']['location'].append([tmp[3], tmp[4]])
-                        except AttributeError:
-                            dct[source]['gene'][super_parent_id]['mrna'][parent_id]['cds']['location'] = [[tmp[3], tmp[4]]]
+                    if re.search(r'mrna', cols[2], re.I):
+                        dct, gene_id_dct = process_gff_mrna_line(dct, cols, gene_id_dct, pseudo_gene_id_dct)
 
-                if re.search(r'exon', tmp[2], re.I):
-                    super_parent_id, parent_id = get_exon_parent_data(tmp, gene_id_dct, source)
-                    if super_parent_id is not None and parent_id is not None:
-                        if super_parent_id in pseudo_gene_id_dct:
+                    if re.search(r'transcript', cols[2], re.I):
+                        dct, gene_id_dct = process_augustus_transcript_line(dct, cols, gene_id_dct, pseudo_gene_id_dct)
+
+                    if re.search(r'cds', cols[2], re.I):
+                        super_parent_id, parent_id = get_cds_parent_data(cols, gene_id_dct, source)
+                        location_list = [cols[3], cols[4]]
+                        if super_parent_id in dct[source]['pseudogene']:
                             try:
-                                dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['exon']['location'].append([tmp[3], tmp[4]])
+                                dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['cds']['location'].append(location_list)
                             except AttributeError:
-                                dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['exon']['location'] = [[tmp[3], tmp[4]]]
+                                dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['cds']['location'] = [location_list]
                         else:
                             try:
-                                dct[source]['gene'][super_parent_id]['mrna'][parent_id]['exon']['location'].append([tmp[3], tmp[4]])
+                                dct[source]['gene'][super_parent_id]['mrna'][parent_id]['cds']['location'].append(
+                                    [cols[3], cols[4]])
                             except AttributeError:
-                                dct[source]['gene'][super_parent_id]['mrna'][parent_id]['exon']['location'] = [[tmp[3], tmp[4]]]
+                                dct[source]['gene'][super_parent_id]['mrna'][parent_id]['cds']['location'] = [
+                                    [cols[3], cols[4]]]
 
-    return dct
+                    if re.search(r'exon', cols[2], re.I):
+                        super_parent_id, parent_id = get_exon_parent_data(cols, gene_id_dct, source)
+                        if super_parent_id is not None and parent_id is not None:
+                            if super_parent_id in pseudo_gene_id_dct:
+                                try:
+                                    dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['exon'][
+                                        'location'].append([cols[3], cols[4]])
+                                except AttributeError:
+                                    dct[source]['pseudogene'][super_parent_id]['mrna'][parent_id]['exon'][
+                                        'location'] = [[cols[3], cols[4]]]
+                            else:
+                                try:
+                                    dct[source]['gene'][super_parent_id]['mrna'][parent_id]['exon']['location'].append(
+                                        [cols[3], cols[4]])
+                                except AttributeError:
+                                    dct[source]['gene'][super_parent_id]['mrna'][parent_id]['exon']['location'] = [
+                                        [cols[3], cols[4]]]
+
+        return dct
 
 
 def get_cds_parent_data(cds_line_list, gene_id_dct, source):

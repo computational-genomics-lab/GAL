@@ -86,12 +86,14 @@ def main():
             app = App(db_config_file, path_config_file, org_config_file)
             app.upload_schema()
             app.process_central_dogma_annotation()
+            logger.info("Table max ids after the upload")
             app.db_table_logs()
 
         elif args.upload == 'proteinannotation':
             app = App(db_config_file, path_config_file, org_config_file)
             app.upload_schema()
             app.import_protein_annotation()
+            logger.info("Table max ids after the upload")
             app.db_table_logs()
 
 

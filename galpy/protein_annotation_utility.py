@@ -5,7 +5,7 @@ import re
 from .BioFile.interproscan_parser import ParseInterproResult
 from .directory_utility import ProteinAnnotationFiles
 
-_logger = logging.getLogger("galpy.protein_annotator")
+_logger = logging.getLogger("galpy.protein_annotation_utility")
 
 
 class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
@@ -144,7 +144,7 @@ class ProteinAnnotations(BaseProteinAnnotations):
         self.db_dots.insert(sql_1)
 
     def parse_signalp_result(self, parsed_file):
-        _logger.debug(f"Reading signalp file from {parsed_file}")
+        _logger.debug(f"Reading SignalP file from {parsed_file}")
         fh = open(parsed_file, 'r')
         signalp_write_fh = open(self.SignalP, 'w')
         signalp_row_id = self.table_status_dct['signalp']
@@ -156,7 +156,8 @@ class ProteinAnnotations(BaseProteinAnnotations):
                 list_len = len(line_list)
 
                 # if list_len == 12:
-                if list_len > 10:
+                # print(list_len)
+                if list_len >= 10:
                     gi_id = get_gi_id(line_list[0])
                     gene_name = gi_id
                     if gene_name in self.gene_name_dct:
@@ -169,7 +170,7 @@ class ProteinAnnotations(BaseProteinAnnotations):
                     y_pos = line_list[4]
                     d_score = line_list[8]
                     status = line_list[9]
-                    s_string = '{}\t{}\t{}\t{}\t{}'.format(protein_instance_id, y_score, y_pos, d_score, status)
+                    s_string = f'{protein_instance_id}\t{y_score}\t{y_pos}\t{d_score}\t{status}'
                     signalp_row_id += 1
                     s_string1 = '{}\t{}\n'.format(signalp_row_id, s_string)
                     signalp_write_fh.write(s_string1)
@@ -178,8 +179,8 @@ class ProteinAnnotations(BaseProteinAnnotations):
         fh.close()
 
     def upload_signalp_data(self):
-        _logger.debug(f"Uploading signalp data from {self.SignalP}")
-        # signalp table
+        _logger.debug(f"Uploading SignalP data from {self.SignalP}")
+        # SignalP table
         query = f"""LOAD DATA LOCAL INFILE '{self.SignalP}' INTO TABLE SignalP 
                 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
         # _logger.debug(query)

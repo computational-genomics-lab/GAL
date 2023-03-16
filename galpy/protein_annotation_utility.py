@@ -8,6 +8,58 @@ from .directory_utility import ProteinAnnotationFiles
 _logger = logging.getLogger("galpy.protein_annotation_utility")
 
 
+class TranscriptMap:
+    def __init__(self, db_dots, taxonomy_id, org_version):
+        self.db_dots = db_dots
+        self.taxonomy_id = taxonomy_id
+        self.org_version = org_version
+
+    @property
+    def transcript_map_dct(self):
+        sql_query = f"""select p.name as 'name1',naf.name as 'name2', gi.gene_instance_id from 
+    Protein p, GeneInstance gi, NAFeatureImp naf, NASequenceImp na where 
+    gi.gene_instance_id = p.gene_instance_id and
+    naf.na_feature_id = gi.na_feature_id and
+    naf.feature_type='mRNA' and
+    na.na_sequence_id = naf.na_sequence_id and 
+    na.taxon_id = {self.taxonomy_id} and
+    na.sequence_version = {self.org_version}"""
+
+        transcript_name_dct = {}
+
+        result = self.db_dots.query(sql_query)
+        for i, value in enumerate(result):
+            name1 = value['name1']
+            name2 = value['name2']
+            gene_instance_id = value['gene_instance_id']
+
+            modified_gene_name = self.modify_transcript_name(name1)
+            transcript_name_dct[modified_gene_name] = gene_instance_id
+            transcript_name_dct[name2] = gene_instance_id
+
+        return transcript_name_dct
+
+    @staticmethod
+    def modify_transcript_name(gene_name):
+        modified_transcript_name = ''
+        match_obj = re.search(r'\S+_(\S+)', gene_name, re.M | re.I)
+        if match_obj:
+            modified_transcript_name = match_obj.group(1)
+
+        transcript_prefix = '.t1'
+        modified_transcript_name = f'{modified_transcript_name}{transcript_prefix}'
+
+        return modified_transcript_name
+
+    def find_transcript_entry(self, transcript_name):
+        protein_instance_id = None
+        if transcript_name in self.transcript_map_dct:
+            protein_instance_id = self.transcript_map_dct[transcript_name]
+        else:
+            _logger.error(f'{transcript_name} name is not matching with the database entry')
+        return protein_instance_id
+
+
 class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
     def __init__(self, db_dots, path_config, org_config, random_str):
         ProteinAnnotationFiles.__init__(self, path_config.upload_dir, random_str)
@@ -38,65 +90,30 @@ class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
                 header_text = f">{value['name']};gi='{value['gene_instance_id']}'\n{value['sequence']}\n"
                 fh.write(header_text)
 
-    def get_tables_max_id(self):
+    @property
+    def table_status_dct(self):
         table_info_dct = self.get_protein_feature_table_status()
         return table_info_dct
 
-    def get_gene_name_map(self, taxonomy_id, org_version):
-        sql_query = f"""select p.name as 'name1',naf.name as 'name2', gi.gene_instance_id from 
-    Protein p, GeneInstance gi, NAFeatureImp naf, NASequenceImp na where 
-    gi.gene_instance_id = p.gene_instance_id and
-    naf.na_feature_id = gi.na_feature_id and
-    naf.feature_type='mRNA' and
-    na.na_sequence_id = naf.na_sequence_id and 
-    na.taxon_id = {taxonomy_id} and
-    na.sequence_version = {org_version}"""
 
-        gene_name_dct = {}
-
-        result = self.db_dots.query(sql_query)
-        for i, value in enumerate(result):
-            name1 = value['name1']
-            name2 = value['name2']
-            gene_instance_id = value['gene_instance_id']
-
-            modified_gene_name = self.modify_gene_name(name1)
-            gene_name_dct[modified_gene_name] = gene_instance_id
-            gene_name_dct[name2] = gene_instance_id
-
-        return gene_name_dct
-
-    @staticmethod
-    def modify_gene_name(gene_name):
-        modified_gene_name = ''
-        match_obj = re.search(r'\S+_(\S+)', gene_name, re.M | re.I)
-        if match_obj:
-            modified_gene_name = match_obj.group(1)
-
-        transcript_prefix = '.t1'
-        modified_gene_name = f'{modified_gene_name}{transcript_prefix}'
-
-        return modified_gene_name
-
-
-class ProteinAnnotations(BaseProteinAnnotations):
+class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
     def __init__(self, db_dots, path_config, org_config, random_str, taxonomy_id, org_version):
         BaseProteinAnnotations.__init__(self, db_dots, path_config, org_config, random_str)
-        self.table_status_dct = self.get_tables_max_id()
-        self.gene_name_dct = self.get_gene_name_map(taxonomy_id, org_version)
+        TranscriptMap.__init__(self, db_dots, taxonomy_id, org_version)
+        # self.table_status_dct = self.get_tables_max_id()
 
-    def parse_interproscan_data(self, interpro_file, taxonomy_id, org_version):
+    def parse_interproscan_data(self, interpro_file):
         pif_id = self.table_status_dct['interproscan']
         parsed_file_name = Path(self.path_config.upload_dir).joinpath('parsed_interpro_file')
 
-        interpro_obj = ParseInterproResult(interpro_file, parsed_file_name, self.gene_name_dct)
+        interpro_obj = ParseInterproResult(interpro_file, parsed_file_name, self.transcript_map_dct)
         interpro_obj.create_parsed_output(pif_id)
 
         self.upload_interpro_data(parsed_file_name)
 
     def upload_interpro_data(self, interpro_data):
-        _logger.debug("Uploading interproscan data")
-        # For proteininstancefeature table
+        _logger.debug("Uploading InterProScan data")
+        # For ProteinInstanceFeature table
         sql_1 = f"""LOAD DATA LOCAL INFILE '{interpro_data}' INTO TABLE InterProScan 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         self.db_dots.insert(sql_1)
@@ -160,10 +177,9 @@ class ProteinAnnotations(BaseProteinAnnotations):
                 if list_len >= 10:
                     gi_id = get_gi_id(line_list[0])
                     gene_name = gi_id
-                    if gene_name in self.gene_name_dct:
-                        protein_instance_id = self.gene_name_dct[gene_name]
-                    else:
-                        _logger.error(f'{gene_name} name is not matching with the database entry')
+
+                    protein_instance_id = self.find_transcript_entry(gene_name)
+                    if protein_instance_id is None:
                         continue
 
                     y_score = line_list[3]
@@ -199,10 +215,8 @@ class ProteinAnnotations(BaseProteinAnnotations):
                     if line_list[2] == 'TMhelix':
                         gi_id = get_gi_id(line_list[0])
                         gene_name = gi_id
-                        if gene_name in self.gene_name_dct:
-                            protein_instance_id = self.gene_name_dct[gene_name]
-                        else:
-                            _logger.error(f'{gene_name} name is not matching with the database entry')
+                        protein_instance_id = self.find_transcript_entry(gene_name)
+                        if protein_instance_id is None:
                             continue
 
                         helix_position = '{}-{}'.format(line_list[3], line_list[4])

@@ -175,7 +175,7 @@ class App(ConfigFileHandler):
                 _logger.info("IntroProScan data is provided")
                 if app1.org_config.interproscan.exists():
                     _logger.info("Processing IntroProScan data")
-                    protein_annotation_obj.parse_interproscan_data(app1.org_config.interproscan, app1.taxonomy_id_sres, app1.org_config.version)
+                    protein_annotation_obj.parse_interproscan_data(app1.org_config.interproscan)
                 else:
                     _logger.error(f"Please check the path for InterProScan data\n Path: {app1.org_config.interproscan}")
             else:

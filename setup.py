@@ -8,7 +8,7 @@ setup(
     name='galpy',
     version=__version__,
     author='Arijit Panda, CGLAB',
-    author_email='arijpanda@gmail.com',
+    author_email='arijpanda@csiriicb.res.in',
     packages=['galpy'],
     package_dir={'galpy': 'galpy'},
     package_data={'galpy': ['BioFile/*', 'data/DbSchema/*', 'data/DefaultConfig/*', 'data/CommonData/*']},

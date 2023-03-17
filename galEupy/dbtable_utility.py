@@ -3,7 +3,7 @@ from .directory_utility import UploadDirectory, GALFileHandler
 from .general_utility import BaseCount
 from .taxomony import OrganismName
 from .general_utility import get_date
-_logger = logging.getLogger("galpy.dbtable_utility")
+_logger = logging.getLogger("galEupy.dbtable_utility")
 
 
 class TableStatusID:

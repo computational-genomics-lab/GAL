@@ -6,7 +6,7 @@ import urllib.request
 import urllib.error
 import tarfile
 import re
-_logger = logging.getLogger("galpy.commondata")
+_logger = logging.getLogger("galEupy.commondata")
 
 
 def common_data_basic(db_config, main_path):

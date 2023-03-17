@@ -1,7 +1,7 @@
 import re
 import json
 import sys
-from galpy import db_table_utility as db_table, basic_utility as bu
+from galeupy import db_table_utility as db_table, basic_utility as bu
 
 
 def process_gff_gene_data(gal_id, gal_fh, org_info, scaffold, gene_id, gene_dct, scaffold_na_sequence_id):

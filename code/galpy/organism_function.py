@@ -1,5 +1,5 @@
 import re
-from galpy import db_function, logging_utility
+from galeupy import db_function, logging_utility
 
 
 def create_db_connection(db_config):

@@ -1,6 +1,6 @@
 from pathlib import Path
 import logging
-_logger = logging.getLogger("galpy.directory_utility")
+_logger = logging.getLogger("galEupy.directory_utility")
 
 
 class BaseUploadDirectory:

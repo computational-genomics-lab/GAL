@@ -7,11 +7,11 @@ from .app import App, BaseApp, OrganismApp
 
 def main():
     """
-    galpy main command line
+    galEupy main command line
     """
-    print("Welcome to GAL")
+    print("Welcome to galEupy")
 
-    default_data_path = pkg_resources.resource_filename('galpy', 'data')
+    default_data_path = pkg_resources.resource_filename('galEupy', 'data')
     default_config_path = Path(default_data_path).joinpath('DefaultConfig')
 
     default_db_config = default_config_path.joinpath('database.ini')
@@ -112,7 +112,7 @@ def get_logger(args):
 
     if args.log_file:
         logging.basicConfig(filename=args.log_file, level=logging.DEBUG, format=log_format)
-        logger = logging.getLogger('galpy')
+        logger = logging.getLogger('galEupy')
         ch = logging.StreamHandler()
         formatter = logging.Formatter(log_format)
         ch.setFormatter(formatter)
@@ -120,7 +120,7 @@ def get_logger(args):
         logger.addHandler(ch)
     else:
         logging.basicConfig(level=level, format=log_format)
-        logger = logging.getLogger('galpy')
+        logger = logging.getLogger('galEupy')
 
     return logger
 

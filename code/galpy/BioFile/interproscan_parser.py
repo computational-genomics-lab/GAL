@@ -1,6 +1,6 @@
 import os
 import re
-from galpy import db_function, db_table_utility
+from galeupy import db_function, db_table_utility
 
 
 def process_interpro_data(db_config, upload_path, interpro_file, taxonomy_id, org_version):

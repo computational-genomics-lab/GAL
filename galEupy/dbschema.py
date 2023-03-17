@@ -4,7 +4,7 @@ import logging
 from .dbconnect import DatabaseCreate, DbNames, Database
 from .commondata import DownloadCommonData, upload_shared_data
 from .config_utility import DatabaseConfig
-_logger = logging.getLogger("galpy.dbschema")
+_logger = logging.getLogger("galEupy.dbschema")
 
 
 def database_schema(db_config):
@@ -39,7 +39,7 @@ class DefaultSchemaPath:
         sres_schema = "SRes.sql"
         dots_schema = "DoTS.sql"
 
-        self.default_data_path = pkg_resources.resource_filename('galpy', 'data')
+        self.default_data_path = pkg_resources.resource_filename('galEupy', 'data')
         schema_path = Path(self.default_data_path).joinpath('DbSchema')
 
         self.sres_schema_path = schema_path.joinpath(sres_schema)
@@ -132,7 +132,7 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
 
     def download_upload_commondata(self):
         _logger.debug("Downloading common data")
-        default_data_path = pkg_resources.resource_filename('galpy', 'data')
+        default_data_path = pkg_resources.resource_filename('galEupy', 'data')
         default_common_data_path = Path(default_data_path).joinpath('CommonData')
         download_1 = DownloadCommonData(default_common_data_path)
         download_1.download_parse_goterm_and_taxon()

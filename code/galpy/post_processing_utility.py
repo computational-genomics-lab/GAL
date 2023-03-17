@@ -1,4 +1,4 @@
-from galpy import basic_utility as bu
+from galeupy import basic_utility as bu
 import json
 
 

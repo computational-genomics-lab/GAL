@@ -11,7 +11,7 @@ from .dbtable_utility import TableStatusID, UploadTableData
 from .process_tables import TableProcessUtility
 from .protein_annotation_utility import ProteinAnnotations
 from . import general_utility
-_logger = logging.getLogger("galpy.app")
+_logger = logging.getLogger("galEupy.app")
 
 
 class BaseApp(DatabaseConfig):

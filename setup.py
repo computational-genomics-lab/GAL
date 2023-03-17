@@ -1,17 +1,17 @@
 from setuptools import setup
 
-# exec(open('galpy/version.py').read())
+# exec(open('galEupy/version.py').read())
 __version__ = '1.0.1'
-description = "Python module for galpy"
+description = "Python module for gal"
 
 setup(
-    name='galpy',
+    name='galEupy',
     version=__version__,
     author='Arijit Panda, CGLAB',
     author_email='arijpanda@csiriicb.res.in',
-    packages=['galpy'],
-    package_dir={'galpy': 'galpy'},
-    package_data={'galpy': ['BioFile/*', 'data/DbSchema/*', 'data/DefaultConfig/*', 'data/CommonData/*']},
+    packages=['galEupy'],
+    package_dir={'galEupy': 'galEupy'},
+    package_data={'galEupy': ['BioFile/*', 'data/DbSchema/*', 'data/DefaultConfig/*', 'data/CommonData/*']},
     description=description,
     long_description=description,
     long_description_content_type='text/markdown',
@@ -31,6 +31,6 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'galpy = galpy.__main__:main'
+            'galEupy = galEupy.__main__:main'
         ]
     })

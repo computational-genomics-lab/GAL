@@ -2,11 +2,11 @@ from __future__ import print_function
 import os
 import sys
 from pathlib import Path
-from galpy.BioFile import genbank_parser, gff_parser, blastparser, protein_algorithm_utility, interproscan_parser
-from galpy import external_program, basic_utility as bu, db_table_utility as db_table, organism_function
-from galpy import post_processing_utility as ppf
-from galpy import data_process_utility as gtp, directory_utility, logging_utility
-from galpy import config_utility
+from galeupy.BioFile import genbank_parser, gff_parser, blastparser, protein_algorithm_utility, interproscan_parser
+from galeupy import external_program, basic_utility as bu, db_table_utility as db_table, organism_function
+from galeupy import post_processing_utility as ppf
+from galeupy import data_process_utility as gtp, directory_utility, logging_utility
+from galeupy import config_utility
 import json
 
 

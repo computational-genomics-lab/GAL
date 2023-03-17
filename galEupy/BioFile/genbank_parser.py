@@ -2,7 +2,7 @@ import re
 from collections import defaultdict, OrderedDict
 import sys, json
 import logging
-_logger = logging.getLogger("galpy.BioFile.genbank_parser")
+_logger = logging.getLogger("galEupy.BioFile.genbank_parser")
 
 def default_dct_structure():
     return defaultdict(default_dct_structure)

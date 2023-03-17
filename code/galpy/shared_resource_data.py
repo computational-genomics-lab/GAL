@@ -1,4 +1,4 @@
-from galpy import db_function, logging_utility
+from galeupy import db_function, logging_utility
 import os
 from pathlib import PurePosixPath
 

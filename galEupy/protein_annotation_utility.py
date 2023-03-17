@@ -5,7 +5,7 @@ import re
 from .BioFile.interproscan_parser import ParseInterproResult
 from .directory_utility import ProteinAnnotationFiles
 
-_logger = logging.getLogger("galpy.protein_annotation_utility")
+_logger = logging.getLogger("galEupy.protein_annotation_utility")
 
 
 class TranscriptMap:

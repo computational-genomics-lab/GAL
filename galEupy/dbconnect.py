@@ -3,7 +3,7 @@ import sys
 import logging
 import warnings
 warnings.filterwarnings("ignore", category=pymysql.Warning)
-_logger = logging.getLogger("galpy.dbconnect")
+_logger = logging.getLogger("galEupy.dbconnect")
 
 
 class BaseDatabase:

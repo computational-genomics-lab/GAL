@@ -2,7 +2,7 @@ from .general_utility import translate, reverse_complement, read_fasta_to_dictio
 import json
 from .BioFile import gff_parser
 import logging
-_logger = logging.getLogger("galpy.processing_utility")
+_logger = logging.getLogger("galEupy.processing_utility")
 
 
 class AnnotationData:

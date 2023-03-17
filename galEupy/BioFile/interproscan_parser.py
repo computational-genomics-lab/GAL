@@ -1,6 +1,6 @@
 import re
 import logging
-_logger = logging.getLogger("galpy.BioFile.interproscan_parser")
+_logger = logging.getLogger("galEupy.BioFile.interproscan_parser")
 
 
 class ParseInterproResult:

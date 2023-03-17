@@ -1,6 +1,6 @@
 import re
 import logging
-_logger = logging.getLogger("galpy.taxonomy")
+_logger = logging.getLogger("galEupy.taxonomy")
 
 
 class OrganismName:

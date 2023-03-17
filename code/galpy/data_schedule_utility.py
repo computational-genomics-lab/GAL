@@ -1,4 +1,4 @@
-from galpy import organism_function
+from galeupy import organism_function
 
 
 class StatusLog:

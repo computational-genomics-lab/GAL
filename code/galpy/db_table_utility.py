@@ -1,6 +1,6 @@
 from __future__ import print_function
 import re
-from galpy import db_function, directory_utility, logging_utility
+from galeupy import db_function, directory_utility, logging_utility
 
 # import db_function
 # import gal_function as galf

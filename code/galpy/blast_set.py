@@ -1,7 +1,7 @@
-from galpy import db_function
-from galpy import organism_function
-from galpy import directory_utility
-from galpy import external_program, logging_utility
+from galeupy import db_function
+from galeupy import organism_function
+from galeupy import directory_utility
+from galeupy import external_program, logging_utility
 from pathlib import PurePosixPath
 
 

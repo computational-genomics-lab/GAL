@@ -3,7 +3,7 @@ import errno
 import re
 import collections
 from collections import defaultdict
-from galpy import db_function, external_program, logging_utility
+from galeupy import db_function, external_program, logging_utility
 
 
 def process_sam_alignment(db_config, path_config, sam_id, log_file):

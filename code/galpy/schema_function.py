@@ -1,7 +1,7 @@
 import os
 import subprocess
 from pathlib import Path
-from galpy import db_function, gal_function, logging_utility
+from galeupy import db_function, gal_function, logging_utility
 
 
 def database_schema(db_config, main_path, log_filename):

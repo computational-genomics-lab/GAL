@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict, OrderedDict
 import logging
-_logger = logging.getLogger("galpy.BioFile.gff_parser")
+_logger = logging.getLogger("galEupy.BioFile.gff_parser")
 
 
 def dct_structure():

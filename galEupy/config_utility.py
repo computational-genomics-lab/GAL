@@ -2,7 +2,7 @@ import configparser
 from pathlib import Path
 import logging
 from .directory_utility import BaseUploadDirectory
-_logger = logging.getLogger("galpy.config_utility")
+_logger = logging.getLogger("galEupy.config_utility")
 
 
 class ConfigFileHandler:

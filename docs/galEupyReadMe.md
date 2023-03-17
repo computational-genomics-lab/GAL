@@ -1,8 +1,13 @@
-# galpy
+# galEupy
 Python module for GAL. It does the data processing.
  
 ## Installation
+### For latest pip version
+```commandline
+pip install galEupy
+```
 
+### For latest development version
 ```commandline
 pip install git+https://github.com/computational-genomics-lab/GAL.git
 ```

@@ -4,6 +4,9 @@ from setuptools import setup
 __version__ = '1.0.1'
 description = "Python module for gal"
 
+with open("docs/galEupyReadMe.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name='galEupy',
     version=__version__,
@@ -13,7 +16,7 @@ setup(
     package_dir={'galEupy': 'galEupy'},
     package_data={'galEupy': ['BioFile/*', 'data/DbSchema/*', 'data/DefaultConfig/*', 'data/CommonData/*']},
     description=description,
-    long_description=description,
+    long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/computational-genomics-lab/GAL',
     install_requires=[

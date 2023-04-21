@@ -95,7 +95,6 @@ class InterProScanLines:
             pval_mant = self.line_arr[8]
             pval_exp = 0
         elif self.column_count == 15:
-            # print(self.line_arr[8], self.line_arr[9])
             start = int(self.line_arr[8])
             stop = int(self.line_arr[9])
             length = stop - start
@@ -136,8 +135,8 @@ class InterProScanLines:
                                     domain_name, ipr_value, '')
                 self.pif_id += 1
 
-        elif re.match(r'^IPR', self.line_arr[11]) and re.match(r'^GO', self.line_arr[13]):
-            go = re.split(r'\|', self.line_arr[13].rstrip('\n'))
+        elif re.match(r'^IPR', self.line_arr[11]) and re.match(r'^GO', self.line_arr[11]):
+            go = re.split(r'\|', self.line_arr[11].rstrip('\n'))
             prediction_id = self.line_arr[11]
             for go_value in go:
                 print_parsed_result(parsed_fh, self.pif_id, self.protein_instance_id, go_feature, common_string,

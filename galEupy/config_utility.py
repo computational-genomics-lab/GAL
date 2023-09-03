@@ -152,21 +152,21 @@ class DatabaseConfig(ConfigReader):
     def __init__(self, filename):
         ConfigReader.__init__(self, filename)
         self.db_config_file = filename
-        self.host, self.db_username, self.db_password, self.db_prefix, self.db_port = self.config_reader()
+        self.host, self.db_username, self.db_password, self.db_name, self.db_port = self.config_reader()
 
     def config_reader(self):
         section_map = self.section_map("dbconnection")
         host = section_map['host']
         db_username = section_map['db_username']
         db_password = section_map['db_password']
-        db_prefix = section_map['database_prefix']
+        db_name = section_map['db_name']
 
         db_port = section_map['port'] if 'port' in section_map else None
         if db_port == '':
             db_port = None
         if db_port is not None:
             db_port = int(db_port)
-        return host, db_username, db_password, db_prefix, db_port
+        return host, db_username, db_password, db_name, db_port
 
 
 def organism_config_reader(filename):

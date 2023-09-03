@@ -1,7 +1,7 @@
 from pathlib import Path
 import pkg_resources
 import logging
-from .dbconnect import DatabaseCreate, DbNames, Database
+from .dbconnect import DatabaseCreate, Database
 from .commondata import DownloadCommonData, upload_shared_data
 from .config_utility import DatabaseConfig
 _logger = logging.getLogger("galEupy.dbschema")
@@ -36,14 +36,12 @@ def database_schema(db_config):
 
 class DefaultSchemaPath:
     def __init__(self):
-        sres_schema = "SRes.sql"
-        dots_schema = "DoTS.sql"
+        db_schema = "DbSchema.sql"
 
         self.default_data_path = pkg_resources.resource_filename('galEupy', 'data')
         schema_path = Path(self.default_data_path).joinpath('DbSchema')
 
-        self.sres_schema_path = schema_path.joinpath(sres_schema)
-        self.dots_schema_path = schema_path.joinpath(dots_schema)
+        self.schema_path = schema_path.joinpath(db_schema)
 
 
 class UploadSchema(DefaultSchemaPath, DatabaseConfig):
@@ -60,7 +58,7 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
 
         # _logger.debug('UploadSchema class initiation')
         self.db = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
-        self.db_name = DbNames(self.db_prefix)
+        self.db_name = self.db_name
 
     def create_dots(self):
         # create dots db

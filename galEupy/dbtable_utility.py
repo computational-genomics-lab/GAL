@@ -15,11 +15,11 @@ class TableStatusID:
         """
         self.db_dots = db_dots
 
-        sql_1 = "SELECT MAX(NA_SEQUENCE_ID) as LAST_ID FROM NASequenceImp"
-        sql_2 = "SELECT MAX(NA_FEATURE_ID) as LAST_ID FROM NAFeatureImp"
-        sql_3 = "SELECT MAX(NA_LOCATION_ID) as LAST_ID FROM NALocation"
-        sql_4 = "SELECT MAX(GENE_INSTANCE_ID) as LAST_ID FROM GeneInstance"
-        sql_5 = "SELECT MAX(PROTEIN_ID) as LAST_ID FROM Protein"
+        sql_1 = "SELECT MAX(NA_SEQUENCE_ID) as LAST_ID FROM nasequenceimp"
+        sql_2 = "SELECT MAX(NA_FEATURE_ID) as LAST_ID FROM nafeatureimp"
+        sql_3 = "SELECT MAX(NA_LOCATION_ID) as LAST_ID FROM nalocation"
+        sql_4 = "SELECT MAX(GENE_INSTANCE_ID) as LAST_ID FROM geneinstance"
+        sql_5 = "SELECT MAX(PROTEIN_ID) as LAST_ID FROM protein"
 
         self.NaSequenceId = self.get_max_table_value(sql_1)
         self.NaFeatureId = self.get_max_table_value(sql_2)
@@ -29,11 +29,11 @@ class TableStatusID:
 
     def show_id_log(self):
         log_str = f"""Getting Max IDs of each table..
-                        NASequenceImp ID: {self.NaSequenceId}
-                        NAFeatureImp ID: {self.NaFeatureId}
-                        NALocation ID: {self.na_location_Id}
-                        GeneInstance ID: {self.GeneInstanceId}
-                        Protein ID: {self.ProteinId}"""
+                        nasequenceimp ID: {self.NaSequenceId}
+                        nafeatureimp ID: {self.NaFeatureId}
+                        nalocation ID: {self.na_location_Id}
+                        geneinstance ID: {self.GeneInstanceId}
+                        protein ID: {self.ProteinId}"""
         _logger.info(log_str)
 
     def get_max_table_value(self, query):
@@ -47,7 +47,7 @@ class TableStatusID:
 
     def increase_by_value(self, value):
         """
-        It increase the value for each id by the value
+        It increases the value for each id by the value
         parameters
         ----------
         value: int
@@ -118,7 +118,7 @@ class DefaultVariables:
 class TableUtility(TableStatusID, OrganismName, DefaultVariables, GALFileHandler):
     def __init__(self, db_dots, upload_dir, organism, taxonomy_id, version):
         """ class constructor process the data for GAL table structure
-        paramter
+        parameter
         ---------
         db_dots: db connection object
             db_dots database connection
@@ -145,7 +145,7 @@ class TableUtility(TableStatusID, OrganismName, DefaultVariables, GALFileHandler
         parameters
         --------
         na_sequence_id: int
-            unique key for the sacffold
+            unique key for the scaffold
         scaffold: string
             scaffold name
         sequence: basestring
@@ -278,34 +278,34 @@ class UploadTableData(UploadDirectory):
 
     def upload_na_sequenceimp(self):
         # For NASequenceImp table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{self.NaSequenceImp}' INTO TABLE NASequenceImp 
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{self.NaSequenceImp}' INTO TABLE nasequenceimp 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_1)
         self.db_dots.insert(sql_1)
 
     def upload_na_featureimp(self):
         # For NAFeatureImp table
-        sql_2 = f"""LOAD DATA LOCAL INFILE '{self.NaFeatureImp}' INTO TABLE NAFeatureImp FIELDS TERMINATED BY '\t' 
+        sql_2 = f"""LOAD DATA LOCAL INFILE '{self.NaFeatureImp}' INTO TABLE nafeatureimp FIELDS TERMINATED BY '\t' 
                     OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_2)
         self.db_dots.insert(sql_2)
 
     def upload_nalocation(self):
         # For NALocation table
-        sql_3 = f"""LOAD DATA LOCAL INFILE '{self.NaLocation}' INTO TABLE NALocation FIELDS TERMINATED BY '\t' 
+        sql_3 = f"""LOAD DATA LOCAL INFILE '{self.NaLocation}' INTO TABLE nalocation FIELDS TERMINATED BY '\t' 
                     OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_3)
         self.db_dots.insert(sql_3)
 
     def upload_geneinstance(self):
-        sql_4 = f"""LOAD DATA LOCAL INFILE '{self.GeneInstance}' INTO TABLE GeneInstance 
+        sql_4 = f"""LOAD DATA LOCAL INFILE '{self.GeneInstance}' INTO TABLE geneinstance 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_4)
         self.db_dots.insert(sql_4)
 
     def protein(self):
         # For Protein Table
-        sql_5 = f"""LOAD DATA LOCAL INFILE '{self.Protein}' INTO TABLE Protein FIELDS TERMINATED BY '\t' OPTIONALLY
+        sql_5 = f"""LOAD DATA LOCAL INFILE '{self.Protein}' INTO TABLE protein FIELDS TERMINATED BY '\t' OPTIONALLY
                      ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_5)
         self.db_dots.insert(sql_5)

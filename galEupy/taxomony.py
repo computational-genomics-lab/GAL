@@ -74,7 +74,7 @@ class CommonOrganismInfo(OrganismName):
 
     @property
     def taxonomy_id_sres(self):
-        sql_query = f"SELECT NCBI_TAXON_ID FROM Taxon where TAXON_NAME = '{self.org_name}'"
+        sql_query = f"SELECT NCBI_TAXON_ID FROM taxon where TAXON_NAME = '{self.org_name}'"
         data = self.db_sres.query_one(sql_query)
         if data is not None:
             taxonomy_id = data['NCBI_TAXON_ID']
@@ -84,7 +84,7 @@ class CommonOrganismInfo(OrganismName):
 
     def taxon_entries(self):
         _logger.info(f'Checking similar organism entries with {self.species}')
-        sql_query = f"SELECT NCBI_TAXON_ID, TAXON_NAME FROM Taxon where TAXON_NAME like '{self.species}%'"
+        sql_query = f"SELECT NCBI_TAXON_ID, TAXON_NAME FROM taxon where TAXON_NAME like '{self.species}%'"
         result = self.db_sres.query(sql_query)
         if len(result) > 0:
             result_str = "\n".join(f"{d['NCBI_TAXON_ID']}\t{d['TAXON_NAME']}" for d in result)
@@ -94,7 +94,7 @@ class CommonOrganismInfo(OrganismName):
                 short_org_name = f'{self.org_arr[0]} {self.org_arr[1][0:2]}'
                 _logger.info(f'There is no entry with species name. Listing organisms with {short_org_name}')
 
-                sql_query = f"SELECT NCBI_TAXON_ID, TAXON_NAME FROM Taxon where TAXON_NAME like '{short_org_name}%'"
+                sql_query = f"SELECT NCBI_TAXON_ID, TAXON_NAME FROM taxon where TAXON_NAME like '{short_org_name}%'"
                 result = self.db_sres.query(sql_query)
                 if len(result) > 0:
                     result_str = "\n".join(f"{d['NCBI_TAXON_ID']}\t{d['TAXON_NAME']}" for d in result)
@@ -105,7 +105,7 @@ class CommonOrganismInfo(OrganismName):
         return False
 
     def taxonomy_hierarchy(self):
-        query = f"""SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon 
+        query = f"""SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM taxon 
         where TAXON_NAME = '{self.org_name}'"""
 
         taxonomy_dct = {}
@@ -133,7 +133,7 @@ class CommonOrganismInfo(OrganismName):
         return taxonomy_dct
 
     def fetch_taxonomy_info_by_id(self, taxonomy_id):
-        child_query = f"""SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM Taxon WHERE 
+        child_query = f"""SELECT NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN, `RANK`  FROM taxon WHERE 
         NCBI_TAXON_ID = {taxonomy_id}"""
         result = self.db_sres.query(child_query)
         for i, value in enumerate(result):
@@ -171,7 +171,7 @@ class DotsOrganism(OrganismName):
 
     @property
     def taxonomy_hierarchy_dots(self):
-        sql_query = f"select * from Organism where TAXON_NAME = '{self.org_name}' and VERSION = {self.org_version}"
+        sql_query = f"select * from organism where TAXON_NAME = '{self.org_name}' and VERSION = {self.org_version}"
         taxonomy_dct = {}
 
         result = self.db_dots.query_one(sql_query)
@@ -192,73 +192,73 @@ class DotsOrganism(OrganismName):
             _logger.info(f"Organism details doesn't exist. \nOrganism name; {self.org_name}, version: {self.org_version}")
         else:
             sql_query_1 = F"""DELETE ips FROM InterProScan as ips
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON ips.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             self.db_dots.insert(sql_query_1)
 
             sql_query_2 = F"""DELETE sp FROM SignalP as sp
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON sp.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             self.db_dots.insert(sql_query_2)
 
             sql_query_3 = F"""DELETE tm FROM Tmhmm as tm
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON tm.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             self.db_dots.insert(sql_query_3)
 
             sql_query_4 = F"""DELETE p,gi FROM Protein as p
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON p.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             self.db_dots.insert(sql_query_4)
 
             # NaLocation
-            sql_query_5 = F"""DELETE nl,nf FROM NALocation as nl
-            INNER JOIN NAFeatureImp as nf
+            sql_query_5 = F"""DELETE nl,nf FROM nalocation as nl
+            INNER JOIN nafeatureimp as nf
             ON nl.na_feature_id = nf.na_feature_id
-            INNER JOIN NASequenceImp as ns 
+            INNER JOIN nasequenceimp as ns 
             ON nf.na_sequence_id = ns.na_sequence_id 
             WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and sequence_type_id != 1"""
             self.db_dots.insert(sql_query_5)
 
             # Na feature
-            sql_query_6 = F"""DELETE nf FROM  NAFeatureImp as nf
-            INNER JOIN NASequenceImp as ns 
+            sql_query_6 = F"""DELETE nf FROM  nafeatureimp as nf
+            INNER JOIN naqequenceimp as ns 
             ON nf.na_sequence_id = ns.na_sequence_id 
             WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version}"""
             self.db_dots.insert(sql_query_6)
 
             # delete NasequenceImp
-            sql_query_7 = F"""DELETE ns from NASequenceImp as ns 
+            sql_query_7 = F"""DELETE ns from naqequenceimp as ns 
               WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id != 1"""
             self.db_dots.insert(sql_query_7)
 
             # delete NasequenceImp
-            sql_query_7 = F"""DELETE ns from NASequenceImp as ns 
+            sql_query_7 = F"""DELETE ns from nasequenceimp as ns 
                       WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version}"""
             self.db_dots.insert(sql_query_7)
 
             # Delete Organism table
-            sql_query_9 = F"""DELETE org from Organism as org 
+            sql_query_9 = F"""DELETE org from organism as org 
             WHERE org.taxon_id = {taxonomy_id} and org.version = {self.org_version}"""
             self.db_dots.insert(sql_query_9)
 
@@ -270,44 +270,44 @@ class DotsOrganism(OrganismName):
             _logger.info(f"Organism details doesn't exist. \nOrganism name; {self.org_name}, version: {self.org_version}")
         else:
             sql_query_1 = F"""select count(*) as count FROM InterProScan as ips
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON ips.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             data1 = self.db_dots.query_one(sql_query_1)
             count_dct['InterProScan'] = data1['count']
 
             sql_query_2 = F"""SELECT COUNT(*) AS count FROM SignalP as sp
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON sp.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             data1 = self.db_dots.query_one(sql_query_2)
             count_dct['SignalP'] = data1['count']
 
             sql_query_3 = F"""SELECT COUNT(*) AS count FROM Tmhmm as tm
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON tm.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN naqequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             data1 = self.db_dots.query_one(sql_query_3)
             count_dct['Tmhmm'] = data1['count']
 
             sql_query_4 = F"""SELECT COUNT(*) AS count FROM HmmPfam as hfam
-        INNER JOIN GeneInstance AS gi
+        INNER JOIN geneinstance AS gi
         ON hfam.gene_instance_id = gi.gene_instance_id
         INNER JOIN NAFeatureImp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN NASequenceImp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             data1 = self.db_dots.query_one(sql_query_4)
@@ -322,9 +322,9 @@ class DotsOrganism(OrganismName):
 
 
 class Taxonomy(CommonOrganismInfo, DotsOrganism):
-    def __init__(self, db_sres, db_dots, org_name, org_version=1):
-        CommonOrganismInfo.__init__(self, db_sres, org_name, org_version)
-        DotsOrganism.__init__(self, db_dots, org_name, org_version)
+    def __init__(self, db_connection, org_name, org_version=1):
+        CommonOrganismInfo.__init__(self, db_connection, org_name, org_version)
+        DotsOrganism.__init__(self, db_connection, org_name, org_version)
 
     def update_organism_table(self):
         _logger.info(f"Updating the organism table. \nOrganism name: {self.org_name}\nversion: {self.org_version}")
@@ -340,7 +340,7 @@ class Taxonomy(CommonOrganismInfo, DotsOrganism):
         family = taxonomy_dct['family']
         super_kingdom = taxonomy_dct['superkingdom']
 
-        query = f'''INSERT INTO Organism(TAXON_ID, TAXON_NAME, SPECIES, STRAIN, PHYLUM, FAMILY, GENUS, ORDERS, CLASS, 
+        query = f'''INSERT INTO organism(TAXON_ID, TAXON_NAME, SPECIES, STRAIN, PHYLUM, FAMILY, GENUS, ORDERS, CLASS, 
         SUPERKINGDOM, VERSION) VALUES ({taxonomy_id}, '{self.org_name}', '{self.species}', '{self.strain}', '{phylum}',
         '{family}', '{genus}', '{order}', '{class_name}', '{super_kingdom}', '{self.org_version}')'''
         self.db_dots.insert(query)
@@ -357,7 +357,7 @@ class Taxonomy(CommonOrganismInfo, DotsOrganism):
             _logger.info(f'Organism: {self.org_name} version: {self.org_version}')
             taxonomy_id = self.taxonomy_id_sres
             if taxonomy_id:
-                sql_query = f"select * from Organism where TAXON_ID = {taxonomy_id} and VERSION = {self.org_version}"
+                sql_query = f"select * from organism where TAXON_ID = {taxonomy_id} and VERSION = {self.org_version}"
                 row_count = self.db_dots.rowcount(sql_query)
                 if row_count == 1:
                     _logger.info("Error: Organism Name and same version already exists")
@@ -369,9 +369,8 @@ class Taxonomy(CommonOrganismInfo, DotsOrganism):
                 _logger.info("Error: Please check the organism name")
                 return True
 
-
     def organism_name_check(self):
-        sql_query = f"select * from Organism where TAXON_ID = {taxonomy_id} and VERSION = {self.org_version}"
+        sql_query = f"select * from organism where TAXON_ID = {self.taxonomy_id} and VERSION = {self.org_version}"
 
     @property
     def organism_type(self):

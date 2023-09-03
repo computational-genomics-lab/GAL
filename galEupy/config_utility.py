@@ -133,19 +133,19 @@ def database_config_reader(filename):
     host = section_map['host']
     db_username = section_map['db_username']
     db_password = section_map['db_password']
-    db_prefix = section_map['database_prefix']
+    db_name = section_map['db_name']
 
     db_port = section_map['port'] if 'port' in section_map else None
     if db_port == '':
         db_port = None
     if db_port is not None:
         db_port = int(db_port)
-    return host, db_username, db_password, db_prefix, db_port
+    return host, db_username, db_password, db_name, db_port
 
 
 class DatabaseConf:
     def __init__(self, filename):
-        (self.host, self.db_username, self.db_password, self.db_prefix, self.db_port) = database_config_reader(filename)
+        (self.host, self.db_username, self.db_password, self.db_name, self.db_port) = database_config_reader(filename)
 
 
 class DatabaseConfig(ConfigReader):

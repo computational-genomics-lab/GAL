@@ -17,7 +17,7 @@ class TranscriptMap:
     @property
     def transcript_map_dct(self):
         sql_query = f"""select p.name as 'name1',naf.name as 'name2', gi.gene_instance_id from 
-    Protein p, GeneInstance gi, NAFeatureImp naf, NASequenceImp na where 
+    protein p, geneinstance gi, nafeatureimp naf, nasequenceimp na where 
     gi.gene_instance_id = p.gene_instance_id and
     naf.na_feature_id = gi.na_feature_id and
     naf.feature_type='mRNA' and
@@ -79,7 +79,7 @@ class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
         _logger.debug("Creating protein file to store the protein information")
 
         query = f"""select nf.feature_type, nf.name, p.description, p.gene_instance_id, p.sequence from 
-        NASequenceImp ns, NAFeatureImp nf, GeneInstance gi, Protein p where ns.taxon_id = {taxonomy_id}
+        nasequenceimp ns, nafeatureimp nf, geneinstance gi, protein p where ns.taxon_id = {taxonomy_id}
         and ns.sequence_version = {org_version} and ns.sequence_type_id = 6 and nf.na_sequence_id = ns.na_sequence_id
         and nf.feature_type = 'mRNA' and gi.na_feature_id = nf.na_feature_id  and  
         p.gene_instance_id = gi.gene_instance_id"""

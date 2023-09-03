@@ -2,7 +2,7 @@ import sys
 import logging
 from pathlib import Path
 from .config_utility import ConfigFileHandler, DatabaseConfig, OrganismConf
-from .dbconnect import check_db_connection, DbNames, Database, DatabaseCreate
+from .dbconnect import check_db_connection, Database, DatabaseCreate
 from .dbschema import database_schema, UploadSchema
 from .BioFile import genbank_parser
 from .processing_utility import fix_multiple_splicing_bugs, ModelGFFDict, AnnotationData
@@ -52,8 +52,8 @@ class BaseApp(DatabaseConfig):
 
     def db_table_log(self):
 
-        db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
+        # db_name = DbNames(self.db_prefix)
+        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
         table_stat = TableStatusID(db_dots)
         table_stat.show_id_log()
         table_stat.get_protein_feature_table_status()
@@ -61,16 +61,13 @@ class BaseApp(DatabaseConfig):
     def drop_databases(self):
         query_response = query_yes_no("Would you like to delete the database")
         if query_response:
-            db_name = DbNames(self.db_prefix)
+            # db_name = DbNames(self.db_prefix)
             db_obj = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
-            if db_obj.db_existence(db_name.dots) is not None:
-                db_obj.drop_database(db_name.dots)
+            if db_obj.db_existence(self.db_name) is not None:
+                db_obj.drop_database(self.db_name)
             else:
-                _logger.debug(f"Database {db_name.dots} doesn't exist")
-            if db_obj.db_existence(db_name.sres) is not None:
-                db_obj.drop_database(db_name.sres)
-            else:
-                _logger.debug(f"Database {db_name.sres} doesn't exist")
+                _logger.debug(f"Database {self.db_name} doesn't exist")
+
         else:
             _logger.debug("Database drop option skipped")
 
@@ -81,14 +78,14 @@ class OrganismApp(BaseApp, OrganismConf):
         OrganismConf.__init__(self, org_config_file)
 
     def remove_organism_record(self):
-        db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
+        # db_name = DbNames(self.db_prefix)
+        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
         organism_obj = DotsOrganism(db_dots, self.organism, self.version)
         organism_obj.remove_organism_record()
 
     def get_organism_record(self):
-        db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
+        # db_name = DbNames(self.db_prefix)
+        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
         organism_obj = DotsOrganism(db_dots, self.organism, self.version)
         organism_obj.get_organism_record()
 
@@ -262,14 +259,12 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
         self.db_config = db_config
         self.org_config = org_config
         self.path_config = path_config
-        db_name = DbNames(db_config.db_prefix)
 
-        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 1,
-                                port=db_config.db_port)
-        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0,
-                                port=db_config.db_port)
-        self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
-        Taxonomy.__init__(self, self.db_sres, self.db_dots, org_config.organism, org_config.version)
+        self.db_connection = Database(db_config.host, db_config.db_username, db_config.db_password, db_config.db_name,
+                                      1, port=db_config.db_port)
+
+        self.file_upload = UploadTableData(self.db_connection, self.path_config.upload_dir)
+        Taxonomy.__init__(self, self.db_connection, org_config.organism, org_config.version)
         TableStatusID.__init__(self, self.db_dots)
 
     def process_genbank_annotation(self):

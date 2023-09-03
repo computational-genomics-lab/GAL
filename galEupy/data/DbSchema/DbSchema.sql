@@ -12,8 +12,24 @@ CREATE TABLE `userinfo` (
   `email` varchar(100) NOT NULL,
   `contact_ID` int(11) DEFAULT NULL,
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_ID`),
+  PRIMARY KEY (`user_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `tableinfo`;
+CREATE TABLE `tableinfo` (
+  `table_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `table_type` varchar(50) NOT NULL,
+  `primary_key_column` varchar(50) DEFAULT NULL,
+  `is_versioned` tinyint(1) NOT NULL,
+  `is_view` tinyint(1) NOT NULL,
+  `view_on_table_ID` int(11) DEFAULT NULL,
+  `superclass_table_ID` int(11) DEFAULT NULL,
+  `is_updatable` tinyint(1) NOT NULL,
+  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`table_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `useruploadtrack`;
@@ -26,48 +42,18 @@ CREATE TABLE `useruploadtrack` (
   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_upload_track_ID`),
   FOREIGN KEY(`table_ID`) REFERENCES tableinfo(`table_ID`),
-  FOREIGN KEY(`user_ID`) REFERENCES userinfo(`user_ID`),
+  FOREIGN KEY(`user_ID`) REFERENCES userinfo(`user_ID`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `databaseinfo`;
-CREATE TABLE `databaseinfo` (
-  `database_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `version` varchar(10) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `description` varchar(500) NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`database_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `tableinfo`;
-CREATE TABLE `tableinfo` (
-  `table_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `table_type` varchar(50) NOT NULL,
-  `primary_key_column` varchar(50) DEFAULT NULL,
-  `database_ID` int(11) NOT NULL,
-  `is_versioned` tinyint(1) NOT NULL,
-  `is_view` tinyint(1) NOT NULL,
-  `view_on_table_ID` int(11) DEFAULT NULL,
-  `superclass_table_ID` int(11) DEFAULT NULL,
-  `is_updatable` tinyint(1) NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`table_ID`),
-  FOREIGN KEY (`database_ID`) REFERENCES `databaseinfo` (`database_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 
 
 --
--- SRES Schema; Shared resources
+-- SRES Schema- Shared resources
 --
 
-DROP TABLE IF EXISTS `Organism`;
-CREATE TABLE IF NOT EXISTS `Organism`(
+DROP TABLE IF EXISTS `organism`;
+CREATE TABLE IF NOT EXISTS `organism`(
     ORGANISM_ID INT(11) NOT NULL AUTO_INCREMENT,
     TAXON_ID INT(11) NOT NULL,
     TAXON_NAME VARCHAR(100) NOT NULL,
@@ -130,6 +116,7 @@ CREATE TABLE `goevidencecode` (
   PRIMARY KEY (`go_evidence_code_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48939 DEFAULT CHARSET=utf8;
 
+
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
   `log_ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -168,19 +155,18 @@ CREATE TABLE `log` (
 
 
 DROP TABLE IF EXISTS `taxon`;
-CREATE TABLE `taxon` (
-  `taxon_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ncbi_taxon_ID` int(11) DEFAULT NULL,
-  `parent_ID` int(11) DEFAULT NULL,
-  `taxon_name` varchar(255) NOT NULL,
-  `taxon_strain` varchar(255) NOT NULL,
-  `rank` varchar(255) NOT NULL,
-  `geneticcode_ID` int(11) DEFAULT NULL,
-  `mitochondrial_geneticcode_ID` int(11) DEFAULT NULL,
-  `modification_date` varchar(50) NOT NULL,
-  PRIMARY KEY (`taxon_ID`),
-  FOREIGN KEY (`geneticcode_ID`) REFERENCES geneticcode(`geneticcode_ID`),
-  FOREIGN KEY (`mitochondrial_geneticcode_ID`) REFERENCES geneticcode(`geneticcode_ID`)
+CREATE TABLE IF NOT EXISTS `taxon` (
+	NCBI_TAXON_ID INT(11) NOT NULL,
+	PARENT_ID INT(11) DEFAULT NULL,
+	TAXON_NAME VARCHAR(255) NOT NULL,
+	TAXON_STRAIN VARCHAR(255) NULL,
+	`RANK` VARCHAR(255) NOT NULL,
+	GENETIC_CODE_ID INT(11) NOT NULL,
+	MITOCHONDRIAL_GENETIC_CODE_ID INT(11) NOT NULL,
+	MODIFICATION_DATE DATE,
+	PRIMARY KEY (NCBI_TAXON_ID),
+    FOREIGN KEY (GENETIC_CODE_ID) REFERENCES geneticcode(geneticcode_ID),
+    FOREIGN KEY (MITOCHONDRIAL_GENETIC_CODE_ID) REFERENCES geneticcode(geneticcode_ID)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 DROP TABLE IF EXISTS `reviewstatus`;
@@ -197,13 +183,27 @@ CREATE TABLE `reviewstatus` (
   PRIMARY KEY (`review_status_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS `gramstrain`;
+CREATE TABLE IF NOT EXISTS `gramstrain`(
+    GRAM_STRAIN_ID INT(11) NOT NULL AUTO_INCREMENT,
+    ORGANISM VARCHAR(255) NOT NULL,
+    TAXON_ID INT(11) NOT NULL,
+    STRAIN_TYPE VARCHAR(100) NOT NULL,
+    MEMBRANE_type VARCHAR(100) NULL,
+    MODIFICATION_DATE TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (GRAM_STRAIN_ID)
+)ENGINE=InnoDB AUTO_INCREMENT = 1;
+
+
 --
--- Dots Schema ; It has tables and views
+-- Dots Schema - It has tables and views
 --
 
 --
 -- Tables
 --
+
 
 DROP TABLE IF EXISTS `sequencetype`;
 CREATE TABLE `sequencetype` (
@@ -411,26 +411,19 @@ CREATE TABLE `gene` (
 ) ENGINE=InnoDB AUTO_INCREMENT=510783 DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `geneinstance`;
-CREATE TABLE `geneinstance` (
-  `gene_instance_id` int(11) NOT NULL,
-  `gene_instance_category_id` int(3) NOT NULL,
-  `gene_id` int(10) NOT NULL,
-  `na_feature_ID` int(10) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `reviewer_summary` varchar(4000) DEFAULT NULL,
-  `is_reference` int(1) NOT NULL,
-  `review_status_id` int(10) NOT NULL,
-  `modification_date` date NOT NULL,
-  PRIMARY KEY (`gene_instance_id`),
-  KEY `geneinstance_fk05` (`review_status_id`),
-  KEY `geneinstance_fk06` (`gene_id`),
-  KEY `geneinstance_fk07` (`na_feature_ID`),
-  KEY `geneinstance_fk08` (`gene_instance_category_id`),
-  CONSTRAINT `geneinstance_fk07` FOREIGN KEY (`na_feature_ID`) REFERENCES `nafeatureimp` (`na_feature_ID`),
-  CONSTRAINT `geneinstance_fk06` FOREIGN KEY (`gene_id`) REFERENCES `gene` (`gene_ID`)
 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `geneinstance`;
+CREATE TABLE IF NOT EXISTS `geneinstance`(
+    GENE_INSTANCE_ID INT(11) NOT NULL AUTO_INCREMENT,
+    NA_FEATURE_ID INT(11),
+    DESCRIPTION VARCHAR(255),
+    REVIEWER_SUMMARY VARCHAR(255),
+    IS_REFERENCE INT(11),
+    REVIEW_STATUS_ID INT(11),
+    MODIFICATION_DATE TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (GENE_INSTANCE_ID),
+    FOREIGN KEY(NA_FEATURE_ID) REFERENCES nafeatureimp(NA_FEATURE_ID)
+)ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 DROP TABLE IF EXISTS `rna`;
 CREATE TABLE `rna` (
@@ -587,50 +580,65 @@ CREATE TABLE `proteininstancefeature` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1942002 DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `signalP`;
-CREATE TABLE `signalP` (
-  `signalp_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `gene_ID` varchar(100) NOT NULL,
-  `taxon_ID` int(11) NOT NULL,
-  `Y-score` float DEFAULT NULL,
-  `D-score` float DEFAULT NULL,
-  `Y-pos` int(11) DEFAULT NULL,
-  `C-score` float NOT NULL,
-  `S-score` float NOT NULL,
-  `cleavage_site` varchar(50) NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`signalp_ID`),
-  FOREIGN KEY (`gene_ID`) REFERENCES `gene` (`gene_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `SignalP`;
+CREATE TABLE IF NOT EXISTS `SignalP`(
+SIGNALP_ID INT(11) NOT NULL AUTO_INCREMENT,
+GENE_INSTANCE_ID INT(11) NOT NULL,
+`Y-SCORE` FLOAT NULL,
+`Y-POS` INT(11) NULL,
+`D-SCORE` FLOAT NULL,
+STATUS varchar(20) NULL,
+PRIMARY KEY(SIGNALP_ID),
+FOREIGN KEY(GENE_INSTANCE_ID) REFERENCES geneinstance(GENE_INSTANCE_ID)
+)ENGINE=InnoDB AUTO_INCREMENT = 1;
 
+DROP TABLE IF EXISTS `Tmhmm`;
+CREATE TABLE IF NOT EXISTS `Tmhmm`(
+TMHMM_ID INT(11) NOT NULL AUTO_INCREMENT,
+GENE_INSTANCE_ID INT(11) NOT NULL,
+INSIDE VARCHAR(60),
+OUTSIDE VARCHAR(60),
+TMHELIX VARCHAR(60),
+MODIFICATION_DATE TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(TMHMM_ID),
+FOREIGN KEY(GENE_INSTANCE_ID) REFERENCES geneinstance(GENE_INSTANCE_ID)
+)ENGINE=InnoDB AUTO_INCREMENT = 1;
 
-DROP TABLE IF EXISTS `PSORT`;
-CREATE TABLE `PSORT` (
-  `psort_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `gene_ID` varchar(100) NOT NULL,
-  `taxon_ID` int(11) NOT NULL,
-  `type` varchar(60) DEFAULT NULL,
-  `score` float DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`psort_ID`),
-  FOREIGN KEY (`gene_ID`) REFERENCES `gene` (`gene_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=138156 DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `HmmPfam`;
+CREATE TABLE IF NOT EXISTS `HmmPfam`(
+    PFAM_ID INT(11) NOT NULL AUTO_INCREMENT,
+    GENE_INSTANCE_ID INT(11) NOT NULL,
+    E_VALUE FLOAT,
+    SCORE FLOAT,
+    BIAS FLOAT,
+    ACCESSION_ID VARCHAR(100),
+    DOMAIN_NAME VARCHAR(1000),
+    DOMAIN_DESCRIPTION VARCHAR(1000),
+    MODIFICATION_DATE TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(PFAM_ID),
+    FOREIGN KEY(GENE_INSTANCE_ID) REFERENCES geneinstance(GENE_INSTANCE_ID)
+)ENGINE=InnoDB AUTO_INCREMENT = 1;
 
-
-DROP TABLE IF EXISTS `SECRETOME`;
-CREATE TABLE `SECRETOME` (
-  `secretome_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `gene_ID` varchar(100) NOT NULL,
-  `taxon_ID` int(11) NOT NULL,
-  `NN-score` float NOT NULL,
-  `odds` float NOT NULL,
-  `weighted_score` float NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`secretome_ID`),
-  FOREIGN KEY (`gene_ID`) REFERENCES `gene` (`gene_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=124402 DEFAULT CHARSET=latin1;
-
--- Views
-
-
+DROP TABLE IF EXISTS `InterProScan`;
+CREATE TABLE IF NOT EXISTS `InterProScan`(
+interpro_scan_ID INT(11) NOT NULL AUTO_INCREMENT,
+GENE_INSTANCE_ID INT(11) NOT NULL,
+FEATURE_NAME VARCHAR(255) NOT NULL,
+SUBCLASS_VIEW VARCHAR(255) NULL,
+LOCATION_START INT(10) NULL,
+LOCATION_STOP INT(10) NULL,
+LENGTH INT(10) NULL,
+PREDICTION_ALGORITHM_ID INT(11) NULL,
+PVAL_MANT FLOAT NULL,
+PVAL_EXP INT(10) NULL,
+BIT_SCORE FLOAT(20) NULL,
+DOMAIN_NAME varchar(1000) NULL,
+PREDICTION_ID varchar(100) NULL,
+GO_ID varchar(100) NULL,
+IS_REVIEWED INT(1) NULL,
+ALGORITHM_ID INT(11) NULL,
+MODIFICATION_DATE TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(interpro_scan_ID),
+FOREIGN KEY(GENE_INSTANCE_ID) REFERENCES geneinstance(GENE_INSTANCE_ID)
+)ENGINE=InnoDB AUTO_INCREMENT = 1;
 

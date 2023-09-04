@@ -242,13 +242,13 @@ class DotsOrganism(OrganismName):
 
             # Na feature
             sql_query_6 = F"""DELETE nf FROM  nafeatureimp as nf
-            INNER JOIN naqequenceimp as ns 
+            INNER JOIN nasequenceimp as ns 
             ON nf.na_sequence_id = ns.na_sequence_id 
             WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version}"""
             self.db_dots.insert(sql_query_6)
 
             # delete NasequenceImp
-            sql_query_7 = F"""DELETE ns from naqequenceimp as ns 
+            sql_query_7 = F"""DELETE ns from nasequenceimp as ns 
               WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id != 1"""
             self.db_dots.insert(sql_query_7)
 
@@ -296,7 +296,7 @@ class DotsOrganism(OrganismName):
         ON tm.gene_instance_id = gi.gene_instance_id
         INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
-        INNER JOIN naqequenceimp as ns 
+        INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 
         WHERE ns.taxon_id = {taxonomy_id} and ns.sequence_version = {self.org_version} and ns.sequence_type_id = 6"""
             data1 = self.db_dots.query_one(sql_query_3)
@@ -305,7 +305,7 @@ class DotsOrganism(OrganismName):
             sql_query_4 = F"""SELECT COUNT(*) AS count FROM HmmPfam as hfam
         INNER JOIN geneinstance AS gi
         ON hfam.gene_instance_id = gi.gene_instance_id
-        INNER JOIN NAFeatureImp as nf
+        INNER JOIN nafeatureimp as nf
         ON gi.na_feature_id = nf.na_feature_id
         INNER JOIN nasequenceimp as ns 
         ON nf.na_sequence_id = ns.na_sequence_id 

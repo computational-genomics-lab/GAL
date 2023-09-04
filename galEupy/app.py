@@ -61,7 +61,6 @@ class BaseApp(DatabaseConfig):
     def drop_databases(self):
         query_response = query_yes_no("Would you like to delete the database")
         if query_response:
-            # db_name = DbNames(self.db_prefix)
             db_obj = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
             if db_obj.db_existence(self.db_name) is not None:
                 db_obj.drop_database(self.db_name)

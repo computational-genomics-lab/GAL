@@ -9,6 +9,7 @@ _logger = logging.getLogger("galEupy.dbtable_utility")
 class TableStatusID:
     def __init__(self, db_dots):
         """ class constructor creates fetches the max values important tables
+
         parameters
         ---------
         db_dots: db connection for db_dots database
@@ -263,10 +264,10 @@ def get_sequence_string(sequence):
 
 
 class UploadTableData(UploadDirectory):
-    def __init__(self, db_dots, upload_dir):
+    def __init__(self, db_connection, upload_dir):
 
         UploadDirectory.__init__(self, upload_dir)
-        self.db_dots = db_dots
+        self.db = db_connection
 
     def upload_central_dogma_data(self):
         _logger.info("Uploading central dogma data: start")
@@ -278,37 +279,45 @@ class UploadTableData(UploadDirectory):
 
     def upload_na_sequenceimp(self):
         # For NASequenceImp table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{self.NaSequenceImp}' INTO TABLE nasequenceimp 
-        FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
+        columns = ['NA_SEQUENCE_ID', 'SEQUENCE_VERSION', 'SUBCLASS_VIEW', 'SEQUENCE_TYPE_ID', 'TAXON_ID', 'SEQUENCE',
+                   'LENGTH', 'A_COUNT', 'T_COUNT', 'G_COUNT', 'C_COUNT', 'OTHER_COUNT', 'DESCRIPTION',
+                   'SOURCE_NA_SEQUENCE_ID', 'SEQUENCE_PIECE_ID', 'SEQUENCING_CENTER_CONTACT_ID', 'MODIFICATION_DATE',
+                   'STRING1', 'STRING2', 'STRING3']
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{self.NaSequenceImp}' 
+        INTO TABLE nasequenceimp 
+        FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' 
+        LINES TERMINATED BY '\n' 
+        ({', '.join(columns)});"""
+
         _logger.debug(sql_1)
-        self.db_dots.insert(sql_1)
+        self.db.insert(sql_1)
 
     def upload_na_featureimp(self):
         # For NAFeatureImp table
         sql_2 = f"""LOAD DATA LOCAL INFILE '{self.NaFeatureImp}' INTO TABLE nafeatureimp FIELDS TERMINATED BY '\t' 
                     OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_2)
-        self.db_dots.insert(sql_2)
+        self.db.insert(sql_2)
 
     def upload_nalocation(self):
         # For NALocation table
         sql_3 = f"""LOAD DATA LOCAL INFILE '{self.NaLocation}' INTO TABLE nalocation FIELDS TERMINATED BY '\t' 
                     OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_3)
-        self.db_dots.insert(sql_3)
+        self.db.insert(sql_3)
 
     def upload_geneinstance(self):
         sql_4 = f"""LOAD DATA LOCAL INFILE '{self.GeneInstance}' INTO TABLE geneinstance 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_4)
-        self.db_dots.insert(sql_4)
+        self.db.insert(sql_4)
 
     def protein(self):
         # For Protein Table
         sql_5 = f"""LOAD DATA LOCAL INFILE '{self.Protein}' INTO TABLE protein FIELDS TERMINATED BY '\t' OPTIONALLY
                      ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         _logger.debug(sql_5)
-        self.db_dots.insert(sql_5)
+        self.db.insert(sql_5)
 
     def protein_feature_data(self, upload_dir_names):
         pfam_upload_file = upload_dir_names.PFam
@@ -320,16 +329,16 @@ class UploadTableData(UploadDirectory):
            ENCLOSED BY '"' LINES TERMINATED BY '\n'
         (`PFAM_ID`, `GENE_INSTANCE_ID`, `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)
         """
-        self.db_dots.insert(sql_1)
+        self.db.insert(sql_1)
 
         # signalp table
         sql_2 = f"""LOAD DATA LOCAL INFILE '{signalp_upload_file}' INTO TABLE SignalP 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
-        self.db_dots.insert(sql_2)
+        self.db.insert(sql_2)
 
         # For Tmhmm table
         sql_3 = f"""LOAD DATA LOCAL INFILE '{tmhmm_upload_file}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
                ENCLOSED BY '"' LINES TERMINATED BY '\n'
                (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)"""
-        self.db_dots.insert(sql_3)
+        self.db.insert(sql_3)
         _logger.info("Uploading central dogma data: complete")

@@ -61,10 +61,10 @@ class TableStatusID:
 
     def get_protein_feature_table_status(self):
 
-        sql_1 = "SELECT MAX(PFAM_ID) as LAST_ID FROM HmmPfam"
-        sql_2 = "SELECT MAX(TMHMM_ID) as LAST_ID FROM Tmhmm"
-        sql_3 = "SELECT MAX(SIGNALP_ID) as LAST_ID FROM SignalP"
-        sql_4 = "SELECT MAX(interpro_scan_ID) AS LAST_ID FROM InterProScan"
+        sql_1 = "SELECT MAX(pfam_ID) as LAST_ID FROM hmmpfam"
+        sql_2 = "SELECT MAX(tmhmm_ID) as LAST_ID FROM tmhmm"
+        sql_3 = "SELECT MAX(signalp_ID) as LAST_ID FROM signalp"
+        sql_4 = "SELECT MAX(interpro_scan_ID) AS LAST_ID FROM interproscan"
 
         row_hmm_pfam = self.get_max_table_value(sql_1)
         row_tmhmm = self.get_max_table_value(sql_2)
@@ -79,10 +79,10 @@ class TableStatusID:
         }
 
         log_str = f"""Getting Max IDs of each Protein Annotation table..
-                        HmmPfam ID: {row_hmm_pfam}
-                        SignalP ID: {row_signalp}
-                        Tmhmm ID: {row_tmhmm}
-                        InterProScan ID: {row_protein_instance_feature}"""
+                        hmmpfam ID: {row_hmm_pfam}
+                        signalp ID: {row_signalp}
+                        tmhmm ID: {row_tmhmm}
+                        interproscan ID: {row_protein_instance_feature}"""
         _logger.info(log_str)
 
         return row_dct
@@ -279,10 +279,10 @@ class UploadTableData(UploadDirectory):
 
     def upload_na_sequenceimp(self):
         # For NASequenceImp table
-        columns = ['NA_SEQUENCE_ID', 'SEQUENCE_VERSION', 'SUBCLASS_VIEW', 'SEQUENCE_TYPE_ID', 'TAXON_ID', 'SEQUENCE',
-                   'LENGTH', 'A_COUNT', 'T_COUNT', 'G_COUNT', 'C_COUNT', 'OTHER_COUNT', 'DESCRIPTION',
-                   'SOURCE_NA_SEQUENCE_ID', 'SEQUENCE_PIECE_ID', 'SEQUENCING_CENTER_CONTACT_ID', 'MODIFICATION_DATE',
-                   'STRING1', 'STRING2', 'STRING3']
+        columns = ['na_sequence_ID', 'sequence_version', 'subclass_view', 'sequence_type_ID', 'taxon_ID', 'sequence',
+                   'length', 'a_count', 't_count', 'g_count', 'c_count', 'other_count', 'description',
+                   'source_na_sequence_ID', 'sequence_piece_ID', 'sequencing_center_contact_ID', 'modification_date',
+                   'string1', 'string2', 'string3']
         sql_1 = f"""LOAD DATA LOCAL INFILE '{self.NaSequenceImp}' 
         INTO TABLE nasequenceimp 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' 
@@ -325,20 +325,20 @@ class UploadTableData(UploadDirectory):
         tmhmm_upload_file = upload_dir_names.TmHmm
 
         # For HmmPfam table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{pfam_upload_file}' INTO TABLE HmmPfam FIELDS TERMINATED BY '\t' OPTIONALLY
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{pfam_upload_file}' INTO TABLE hmmpfam FIELDS TERMINATED BY '\t' OPTIONALLY
            ENCLOSED BY '"' LINES TERMINATED BY '\n'
-        (`PFAM_ID`, `GENE_INSTANCE_ID`, `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)
+        (`pfam_ID`, `gene_instance_ID`, `e_value`, `score`, `bias`, `accession_id`, `domain_name`, `domain_description`)
         """
         self.db.insert(sql_1)
 
         # signalp table
-        sql_2 = f"""LOAD DATA LOCAL INFILE '{signalp_upload_file}' INTO TABLE SignalP 
+        sql_2 = f"""LOAD DATA LOCAL INFILE '{signalp_upload_file}' INTO TABLE signalp 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
         self.db.insert(sql_2)
 
         # For Tmhmm table
-        sql_3 = f"""LOAD DATA LOCAL INFILE '{tmhmm_upload_file}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
+        sql_3 = f"""LOAD DATA LOCAL INFILE '{tmhmm_upload_file}' INTO TABLE tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
                ENCLOSED BY '"' LINES TERMINATED BY '\n'
-               (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)"""
+               (`tmhmm_ID`, `gene_instance_ID`, `inside`, `outside`, `tmhelix`)"""
         self.db.insert(sql_3)
         _logger.info("Uploading central dogma data: complete")

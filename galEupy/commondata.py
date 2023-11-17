@@ -97,15 +97,15 @@ class UploadCommonData(DefaultSharedData):
         if self.row_taxonomy == 0:
             _logger.debug("Upload shared taxonomy data data")
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE taxon FIELDS TERMINATED BY '\t' 
-                OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' (NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN,
-                `RANK`, GENETIC_CODE_ID, MITOCHONDRIAL_GENETIC_CODE_ID);""".format(self.taxonomy_file)
+                OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' (ncbi_taxon_ID, parent_ID, taxon_name, taxon_strain,
+                `rank`, genetic_code_ID, mitochondrial_genetic_code_ID);""".format(self.taxonomy_file)
             self.db_sres.insert(query)
 
     def upload_go_evidence(self):
         if self.row_go_evidence_code == 0:
             _logger.debug("Upload shared go evidence data")
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE goevidencecode FIELDS TERMINATED BY '\t' OPTIONALLY
-                ENCLOSED BY '"' LINES TERMINATED BY '\n' (NAME, DESCRIPTION, MODIFICATION_DATE);""".format(
+                ENCLOSED BY '"' LINES TERMINATED BY '\n' (name, description, modification_date);""".format(
                 self.go_evidence_file)
             self.db_sres.insert(query)
 
@@ -120,7 +120,7 @@ class UploadCommonData(DefaultSharedData):
         if self.gram_strain_file == 0:
             _logger.debug("Upload shared gram strain data")
             query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE gramstrain FIELDS TERMINATED BY '\t' OPTIONALLY 
-                ENCLOSED BY '"' LINES TERMINATED BY '\n'(TAXON_ID, STRAIN_TYPE, ORGANISM, MEMBRANE_TYPE);""".format(
+                ENCLOSED BY '"' LINES TERMINATED BY '\n'(taxon_ID, strain_type, organism, membrane_type);""".format(
                 self.gram_strain_file)
             self.db_sres.insert(query)
 

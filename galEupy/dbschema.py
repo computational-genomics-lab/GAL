@@ -92,8 +92,8 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
         organism_table = self.db_name + ".organism"
         taxonomy_table = self.db_name + ".taxon"
 
-        organism_constrain_query = f"""ALTER TABLE {organism_table} ADD FOREIGN KEY (TAXON_ID) 
-        REFERENCES {taxonomy_table}(NCBI_TAXON_ID);"""
+        organism_constrain_query = f"""ALTER TABLE {organism_table} ADD FOREIGN KEY (taxon_ID) 
+        REFERENCES {taxonomy_table}(ncbi_taxon_ID);"""
 
         self.db_connection.query(organism_constrain_query)
 

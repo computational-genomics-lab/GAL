@@ -18,8 +18,8 @@ class TranscriptMap:
     def transcript_map_dct(self):
         sql_query = f"""select p.name as 'name1',naf.name as 'name2', gi.gene_instance_id from 
     protein p, geneinstance gi, nafeatureimp naf, nasequenceimp na where 
-    gi.gene_instance_id = p.gene_instance_id and
-    naf.na_feature_id = gi.na_feature_id and
+    gi.gene_instance_ID = p.gene_instance_ID and
+    naf.na_feature_ID = gi.na_feature_ID and
     naf.feature_type='mRNA' and
     na.na_sequence_id = naf.na_sequence_id and 
     na.taxon_id = {self.taxonomy_id} and
@@ -112,9 +112,9 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
         self.upload_interpro_data(parsed_file_name)
 
     def upload_interpro_data(self, interpro_data):
-        _logger.debug("Uploading InterProScan data")
+        _logger.debug("Uploading interproscan data")
         # For ProteinInstanceFeature table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{interpro_data}' INTO TABLE InterProScan 
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{interpro_data}' INTO TABLE interproscan 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
         self.db_dots.insert(sql_1)
 
@@ -155,9 +155,9 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
 
     def upload_hmmpfam_data(self, hmmpfam_data):
         # For HmmPfam table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{hmmpfam_data}' INTO TABLE HmmPfam FIELDS TERMINATED BY '\t' OPTIONALLY
-                   ENCLOSED BY '"' LINES TERMINATED BY '\n' (`PFAM_ID`, `GENE_INSTANCE_ID`, 
-                   `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)"""
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{hmmpfam_data}' INTO TABLE hmmpfam FIELDS TERMINATED BY '\t' OPTIONALLY
+                   ENCLOSED BY '"' LINES TERMINATED BY '\n' (`pfam_ID`, `gene_instance_ID`, 
+                   `e_value`, `score`, `bias`, `accession_id`, `domain_name`, `domain_description`)"""
         self.db_dots.insert(sql_1)
 
     def parse_signalp_result(self, parsed_file):
@@ -197,7 +197,7 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
     def upload_signalp_data(self):
         _logger.debug(f"Uploading SignalP data from {self.SignalP}")
         # SignalP table
-        query = f"""LOAD DATA LOCAL INFILE '{self.SignalP}' INTO TABLE SignalP 
+        query = f"""LOAD DATA LOCAL INFILE '{self.SignalP}' INTO TABLE signalp 
                 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
         # _logger.debug(query)
         self.db_dots.insert(query)
@@ -229,9 +229,9 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
     def upload_tmhmm_data(self):
         _logger.debug(f"Uploading tmhmm data from {self.TmHmm}")
         # For Tmhmm table
-        query = f"""LOAD DATA LOCAL INFILE '{self.TmHmm}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
+        query = f"""LOAD DATA LOCAL INFILE '{self.TmHmm}' INTO TABLE tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
                        ENCLOSED BY '"' LINES 
-                       TERMINATED BY '\n' (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)"""
+                       TERMINATED BY '\n' (`tmhmm_ID`, `gene_instance_ID`, `inside`, `outside`, `tmhelix`)"""
         # _logger.debug(query)
         self.db_dots.insert(query)
 

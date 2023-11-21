@@ -289,7 +289,7 @@ SELECT
     t_count,
     other_count,
     description,
-    subclass_view,
+    subclass_view
 FROM nasequenceimp;
 
 

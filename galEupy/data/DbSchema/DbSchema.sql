@@ -275,6 +275,24 @@ CREATE TABLE `nasequenceimp` (
   FOREIGN KEY (`source_na_sequence_ID`) REFERENCES `nasequenceimp`(`na_sequence_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+CREATE VIEW externalnasequence AS
+SELECT
+    na_sequence_ID,
+    sequence_version,
+    sequence_type_ID,
+    taxon_ID,
+    sequence,
+    length,
+    a_count,
+    c_count,
+    g_count,
+    t_count,
+    other_count,
+    description,
+    subclass_view,
+FROM nasequenceimp;
+
+
 DROP TABLE IF EXISTS `nafeatureimp`;
 CREATE TABLE IF NOT EXISTS `nafeatureimp`(
     na_feature_ID INT(11) NOT NULL AUTO_INCREMENT,

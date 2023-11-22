@@ -300,17 +300,36 @@ CREATE TABLE IF NOT EXISTS `nafeatureimp`(
     subclass_view VARCHAR(50),
     feature_type VARCHAR(50) NOT NULL,
     name VARCHAR(150) NULL,
+    sequence_ontology_ID int(11) DEFAULT NULL,
     parent_ID INT(11) NULL,
     external_database_id INT(11),
     source_id INT(11),
     prediction_algorithm_id INT(11),
     is_predicted INT(11),
     review_status_id INT(11),
+    nfint1 int(11) DEFAULT NULL,
+    nfint2 int(11) DEFAULT NULL,
+    nfint3 int(11) DEFAULT NULL,
+    int5 int(11) DEFAULT NULL,
+    float1 double DEFAULT NULL,
+    string1 varchar(1000) DEFAULT NULL,
+    string2 varchar(255) DEFAULT NULL,
+    `string3` varchar(255) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (na_feature_ID),
     FOREIGN KEY (na_sequence_ID) REFERENCES nasequenceimp(na_sequence_ID),
     FOREIGN KEY (parent_ID) REFERENCES nafeatureimp(na_feature_ID) ON DELETE CASCADE
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
+create VIEW `nafeature` AS select
+    na_feature_ID,
+    na_sequence_ID,
+    subclass_view,
+    sequence_ontology_ID,
+    name,
+    parent_ID,
+    modification_date
+from nafeatureimp;
 
 DROP TABLE IF EXISTS `nalocation`;
 CREATE TABLE IF NOT EXISTS `nalocation`(

@@ -294,8 +294,17 @@ class UploadTableData(UploadDirectory):
 
     def upload_na_featureimp(self):
         # For NAFeatureImp table
-        sql_2 = f"""LOAD DATA LOCAL INFILE '{self.NaFeatureImp}' INTO TABLE nafeatureimp FIELDS TERMINATED BY '\t' 
-                    OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
+        columns = ["na_feature_ID", "na_sequence_ID", "subclass_view", "feature_type", "name", "parent_ID",
+                   "external_database_id", "source_id", "prediction_algorithm_id", "is_predicted", "review_status_id"]
+
+        # sql_2 = f"""LOAD DATA LOCAL INFILE '{self.NaFeatureImp}' INTO TABLE nafeatureimp FIELDS TERMINATED BY '\t'
+        #            OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
+
+        sql_2 = f""" LOAD DATA LOCAL INFILE '{self.NaFeatureImp}'
+        INTO TABLE nafeatureimp
+        FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"'
+        LINES TERMINATED BY '\n' ({', '.join(columns)});"""
+
         _logger.debug(sql_2)
         self.db.insert(sql_2)
 

@@ -280,6 +280,10 @@ SELECT
     na_sequence_ID,
     sequence_version,
     sequence_type_ID,
+    external_database_ID,
+    string1 as source_ID,
+    string2 as secondary_identifier,
+    string3 as name,
     taxon_ID,
     sequence,
     length,
@@ -289,7 +293,10 @@ SELECT
     t_count,
     other_count,
     description,
-    subclass_view
+    string4 as chromosome,
+    nsint1 as chromosome_order_num,
+    subclass_view,
+    modification_date
 FROM nasequenceimp;
 
 
@@ -359,6 +366,40 @@ CREATE TABLE IF NOT EXISTS `nafeatureimp`(
     FOREIGN KEY (na_sequence_ID) REFERENCES nasequenceimp(na_sequence_ID),
     FOREIGN KEY (parent_ID) REFERENCES nafeatureimp(na_feature_ID) ON DELETE CASCADE
 )ENGINE=InnoDB AUTO_INCREMENT = 1 ROW_FORMAT=DYNAMIC;
+
+create VIEW `transcript` AS
+select
+    na_feature_ID,
+    na_sequence_ID,
+    subclass_view,
+    sequence_ontology_ID,
+    name,
+    parent_ID,
+    string1 as CITATION,
+    string2 as CLONE,
+    string3 as CODON,
+    nfint1 as CODON_START,
+    string4 as CONS_SPLICE,
+    string5 as EC_NUMBER,
+    string6 as EVIDENCE,
+    string7 as transcript_FUNCTION,
+    string8 as GENE,
+    string9 as KO_ID,
+    string10 as MAP,
+    string11 as NUM,
+    string12 as PARTIAL,
+    string13 as PRODUCT,
+    string14 as PROTEIN_ID,
+    string15 as PSEUDO,
+    string16 as STANDARD_NAME,
+    string17 as TRANSLATION,
+    string18 as TRANSL_EXCEPT,
+    nfint2 as TRANSL_TABLE,
+    string18 as USEDIN,
+    tinyint1 as IS_PARTIAL,
+    tinyint2 as IS_PSEUDO
+from nafeatureimp
+where (subclass_view = 'Transcript' or  subclass_view = 'mRNA') ;
 
 create VIEW `nafeature` AS select
     na_feature_ID,

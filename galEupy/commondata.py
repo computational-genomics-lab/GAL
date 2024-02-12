@@ -167,7 +167,8 @@ class DownloadCommonData:
 
     def download_taxon_data(self):
         _logger.info("Starting downloading NCBI taxon data...............")
-        target = "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
+        # target = "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
+        target = "https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz"
         filename = self.download_file(target)
         taxon_data_path = Path(self.download_path).joinpath("taxdump")
         self.unpack_tar(filename, taxon_data_path)

@@ -589,31 +589,6 @@ CREATE TABLE `pathway` (
   PRIMARY KEY (`pathway_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `pathway_data`;
-CREATE TABLE `pathway_data` (
-  `pathway_ID` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `na_sequence_ID` int(11) NOT NULL,
-  `ko_id` varchar(50) NOT NULL,
-  `url` varchar(500) NOT NULL,
-  `taxon_ID` int(11) DEFAULT NULL,
-  `version` float NOT NULL DEFAULT '1',
-  PRIMARY KEY (`pathway_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `pdomain_join`;
-CREATE TABLE `pdomain_join` (
-  `na_sequence_ID` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `domain_name` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
-  `taxon_ID` int(11) DEFAULT NULL,
-  `sequence_version` float NOT NULL DEFAULT '0',
-  `product` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `species` varchar(100) NOT NULL,
-  `strain` varchar(100) DEFAULT NULL,
-  `new_version` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `protein`;
@@ -644,27 +619,91 @@ CREATE TABLE `protein_cluster` (
 
 DROP TABLE IF EXISTS `proteininstancefeature`;
 CREATE TABLE `proteininstancefeature` (
-  `protein_instance_feature_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `protein_instance_ID` int(11) NOT NULL,
-  `feature_name` varchar(255) NOT NULL,
-  `subclass_view` varchar(255) DEFAULT NULL,
-  `location_start` int(10) DEFAULT NULL,
-  `location_stop` int(10) DEFAULT NULL,
-  `length` int(10) DEFAULT NULL,
-  `prediction_algorithm_id` int(11) DEFAULT NULL,
-  `pval_mant` float DEFAULT NULL,
-  `pval_exp` int(10) DEFAULT NULL,
-  `bit_score` float DEFAULT NULL,
-  `domain_name` varchar(1000) DEFAULT NULL,
-  `prediction_id` varchar(100) DEFAULT NULL,
-  `go_id` varchar(100) DEFAULT NULL,
-  `is_reviewed` tinyint(1) DEFAULT NULL,
-  `algorithm_id` int(11) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `protein_instance_feature_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `protein_instance_ID` int(11) NOT NULL,
+    `feature_name` varchar(255) NOT NULL,
+    `subclass_view` varchar(255) DEFAULT NULL,
+    `location_start` int(10) DEFAULT NULL,
+    `location_stop` int(10) DEFAULT NULL,
+    `length` int(10) DEFAULT NULL,
+    `prediction_algorithm_id` int(11) DEFAULT NULL,
+    `pval_mant` float DEFAULT NULL,
+    `pval_exp` int(10) DEFAULT NULL,
+    `bit_score` float DEFAULT NULL,
+    `domain_name` varchar(1000) DEFAULT NULL,
+    `prediction_id` varchar(100) DEFAULT NULL,
+    `go_id` varchar(100) DEFAULT NULL,
+    `is_reviewed` tinyint(1) DEFAULT NULL,
+    `algorithm_id` int(11) DEFAULT NULL,
+    `text1` varchar(500) DEFAULT NULL,
+    `text2` varchar(500) DEFAULT NULL,
+    `text3` varchar(500) DEFAULT NULL,
+    `text4` varchar(500) DEFAULT NULL,
+    `text5` varchar(500) DEFAULT NULL,
+    `text6` varchar(500) DEFAULT NULL,
+    `text7` varchar(500) DEFAULT NULL,
+    `text8` varchar(500) DEFAULT NULL,
+    `text9` varchar(500) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`protein_instance_feature_ID`),
   KEY `proteininstancefeature_FK01` (`protein_instance_ID`),
   KEY `proteininstancefeature_FK02` (`prediction_algorithm_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1942002 DEFAULT CHARSET=utf8;
+
+CREATE TABLE COG_CATEGORIES (
+    cog_id VARCHAR(10) PRIMARY KEY,
+    description VARCHAR(255) NOT NULL
+);
+
+INSERT INTO COG_CATEGORIES (cog_id, description) VALUES
+('A', 'RNA processing and modification'),
+('B', 'Chromatin Structure and dynamics'),
+('C', 'Energy production and conversion'),
+('D', 'Cell cycle control and mitosis'),
+('E', 'Amino Acid metabolism and transport'),
+('F', 'Nucleotide metabolism and transport'),
+('G', 'Carbohydrate metabolism and transport'),
+('H', 'Coenzyme metabolism'),
+('I', 'Lipid metabolism'),
+('J', 'Translation'),
+('K', 'Transcription'),
+('L', 'Replication and repair'),
+('M', 'Cell wall/membrane/envelope biogenesis'),
+('N', 'Cell motility'),
+('O', 'Post-translational modification, protein turnover, chaperone functions'),
+('P', 'Inorganic ion transport and metabolism'),
+('Q', 'Secondary Structure'),
+('T', 'Signal Transduction'),
+('U', 'Intracellular trafficking and secretion'),
+('Y', 'Nuclear structure'),
+('Z', 'Cytoskeleton'),
+('R', 'General Functional Prediction only'),
+('S', 'Function Unknown');
+
+
+DROP TABLE IF EXISTS `KEGG`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `KEGG` AS
+select
+    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
+    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
+    `proteininstancefeature`.`feature_name` AS `feature_name`,
+    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
+    `proteininstancefeature`.`domain_name` AS `domain_name`,
+    `proteininstancefeature`.`text1` AS `EC`,
+    `proteininstancefeature`.`text2` AS `KEGG_ko`,
+    `proteininstancefeature`.`text3` AS `KEGG_Pathway`,
+    `proteininstancefeature`.`text4` AS `KEGG_Module`,
+    `proteininstancefeature`.`text5` AS `KEGG_Reaction`,
+    `proteininstancefeature`.`text6` AS `KEGG_rclass`,
+    `proteininstancefeature`.`text7` AS `BRITE`,
+    `proteininstancefeature`.`text8` AS `KEGG_TC`,
+    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
+    `proteininstancefeature`.`modification_date` AS `modification_date`
+from `proteininstancefeature`
+where (`proteininstancefeature`.`subclass_view` = 'KEGG');
+
+
 
 
 DROP TABLE IF EXISTS `signalp`;
@@ -729,7 +768,6 @@ CREATE TABLE IF NOT EXISTS `interproscan`(
     FOREIGN KEY(gene_instance_ID) REFERENCES geneinstance(gene_instance_ID)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
-
 --
 -- Structure for view `BlastProDom`
 --
@@ -771,34 +809,8 @@ select
 from `nafeatureimp`
 where (`nafeatureimp`.`subclass_view` = 'CDS');
 
-
 -- --------------------------------------------------------
 
---
--- Structure for view `Coil`
---
-DROP TABLE IF EXISTS `Coil`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `Coil` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'Coil');
-
-
--- --------------------------------------------------------
 
 --
 -- Structure for view `externalaasequence`
@@ -855,58 +867,6 @@ select
     `nasequenceimp`.`subclass_view` AS `subclass_view`,
     `nasequenceimp`.`modification_date` AS `modification_date`
 from `nasequenceimp`;
-
-
--- --------------------------------------------------------
-
---
--- Structure for view `FprintScan`
---
-DROP TABLE IF EXISTS `FprintScan`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `FprintScan` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'FprintScan');
-
-
--- --------------------------------------------------------
-
---
--- Structure for view `Gene3D`
---
-DROP TABLE IF EXISTS `Gene3D`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `Gene3D` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'Gene3D');
 
 
 -- --------------------------------------------------------
@@ -982,28 +942,6 @@ where (`proteininstancefeature`.`subclass_view` = 'GO');
 
 -- --------------------------------------------------------
 
---
--- Structure for view `HmmPanther`
---
-DROP TABLE IF EXISTS `HmmPanther`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `HmmPanther` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'HmmPanther');
 
 -- --------------------------------------------------------
 
@@ -1030,80 +968,6 @@ select
 from `proteininstancefeature`
 where (`proteininstancefeature`.`subclass_view` = 'HmmPfam');
 
--- --------------------------------------------------------
-
---
--- Structure for view `HmmSmart`
---
-DROP TABLE IF EXISTS `HmmSmart`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `HmmSmart` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'HmmSmart');
-
--- --------------------------------------------------------
-
---
--- Structure for view `HmmTigr`
---
-DROP TABLE IF EXISTS `HmmTigr`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `HmmTigr` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'HmmTigr');
-
--- --------------------------------------------------------
-
---
--- Structure for view `InterPro`
---
-DROP TABLE IF EXISTS `InterPro`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `InterPro` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'InterPro');
 
 -- --------------------------------------------------------
 

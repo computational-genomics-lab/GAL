@@ -74,8 +74,10 @@ class ProteinAnnotationFiles(UploadDirectory):
         self.PFam = self.feature_path.joinpath("HmmPFam.parsed")
         self.TmHmm = self.feature_path.joinpath("TmHmm.parsed")
         self.SignalP = self.feature_path.joinpath("SignalP.parsed")
+        self.eggnog = self.feature_path.joinpath("eggnog.parsed")
 
         self.PFam_out = self.feature_path.joinpath(f"{random_string}.PFam")
         self.TmHmm_out = self.feature_path.joinpath(f"{random_string}.TmHmm")
         self.SignalP_out = self.feature_path.joinpath(f"{random_string}.SignalP")
+        self.eggnog_out = self.feature_path.joinpath(f"{random_string}.eggnog")
 

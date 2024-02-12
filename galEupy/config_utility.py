@@ -200,6 +200,7 @@ def organism_config_reader(filename):
     pfam = config_obj.check_key(config_annotation_path, 'pfam')
     tmhmm = config_obj.check_key(config_annotation_path, 'tmhmm')
     interproscan = config_obj.check_keys(config_annotation_path, ['interproscan', 'interpro'])
+    eggnog = config_obj.check_key(config_annotation_path, 'eggnog')
 
     # header : Other
     config_other = config_obj.section_map('other')
@@ -224,6 +225,7 @@ def organism_config_reader(filename):
         'pfam': pfam,
         'tmhmm': tmhmm,
         'interproscan': interproscan,
+        "eggnog": eggnog,
         'program': program,
         'RefOrg': ref_org
     }
@@ -252,6 +254,7 @@ class OrganismConf:
         self.pfam = organism_config_dct['pfam']
         self.tmhmm = organism_config_dct['tmhmm']
         self.interproscan = organism_config_dct['interproscan']
+        self.eggnog = organism_config_dct['eggnog']
 
         self.program = organism_config_dct['program']
         self.RefOrg = organism_config_dct['RefOrg']
@@ -349,6 +352,7 @@ pfam:
 TMHMM:
 Product:{}
 interproscan:
+eggnog: 
 
 [other]
 program:

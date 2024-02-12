@@ -10,7 +10,6 @@ def main():
     """
     galEupy main command line
     """
-    # print("Welcome to galEupy")
 
     default_data_path = pkg_resources.resource_filename('galEupy', 'data')
     default_config_path = Path(default_data_path).joinpath('DefaultConfig')

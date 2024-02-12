@@ -53,8 +53,8 @@ class BaseApp(DatabaseConfig):
     def db_table_log(self):
 
         # db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
-        table_stat = TableStatusID(db_dots)
+        db_conn = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
+        table_stat = TableStatusID(db_conn)
         table_stat.show_id_log()
         table_stat.get_protein_feature_table_status()
 
@@ -78,14 +78,14 @@ class OrganismApp(BaseApp, OrganismConf):
 
     def remove_organism_record(self):
         # db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
-        organism_obj = DotsOrganism(db_dots, self.organism, self.version)
+        db_conn = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
+        organism_obj = DotsOrganism(db_conn, self.organism, self.version)
         organism_obj.remove_organism_record()
 
     def get_organism_record(self):
         # db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
-        organism_obj = DotsOrganism(db_dots, self.organism, self.version)
+        db_conn = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
+        organism_obj = DotsOrganism(db_conn, self.organism, self.version)
         organism_obj.get_organism_record()
 
 
@@ -197,6 +197,16 @@ class App(ConfigFileHandler):
             else:
                 _logger.info("tmhmm data is not provided")
 
+            # Eggnog
+            if app1.org_config.eggnog:
+                _logger.info(f"eggnog data is provided: {app1.org_config.eggnog}")
+                if app1.org_config.eggnog.exists():
+                    _logger.info("Processing eggnog data")
+                    protein_annotation_obj.parse_eggnog_result(app1.org_config.eggnog)
+                    protein_annotation_obj.upload_eggnog_data()
+            else:
+                _logger.info("eggnog data is not provided")
+
     def db_table_logs(self):
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         app1.show_id_log()
@@ -264,7 +274,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
 
         self.file_upload = UploadTableData(self.db_connection, self.path_config.upload_dir)
         Taxonomy.__init__(self, self.db_connection, org_config.organism, org_config.version)
-        TableStatusID.__init__(self, self.db_dots)
+        TableStatusID.__init__(self, self.db_connection)
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data: start')
@@ -301,7 +311,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
         taxonomy_id = self.taxonomy_id_sres
         _logger.info(f"Taxonomy_id: {taxonomy_id}")
 
-        gal_table = TableProcessUtility(self.db_dots, self.path_config.upload_dir, self.org_config.organism,
+        gal_table = TableProcessUtility(self.db_connection, self.path_config.upload_dir, self.org_config.organism,
                                         taxonomy_id, self.org_config.version)
         gal_table.show_id_log()
         gal_table.increase_by_value(1)
@@ -328,15 +338,14 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
             taxonomy_id = self.taxonomy_id_sres
             org_version = self.org_config.version
             _logger.info("Preparing the protein annotation data")
-            protein_annotation_obj = ProteinAnnotations(self.db_dots, self.path_config, self.org_config, random_string,
-                                                        taxonomy_id, org_version)
+            protein_annotation_obj = ProteinAnnotations(self.db_connection, self.path_config, self.org_config,
+                                                        random_string, taxonomy_id, org_version)
             # upload InterProScan data
             if self.org_config.interproscan:
                 _logger.info("InterProScan data is provided")
                 if self.org_config.interproscan.exists():
                     _logger.info("Processing InterProScan data")
-                    protein_annotation_obj.parse_interproscan_data(self.org_config.interproscan, self.taxonomy_id_sres,
-                                                                   self.org_config.version)
+                    protein_annotation_obj.parse_interproscan_data(self.org_config.interproscan)
                 else:
                     _logger.error(f"Please check the path for InterProScan data\n Path: {self.org_config.interproscan}")
             else:
@@ -360,6 +369,11 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
                     protein_annotation_obj.upload_tmhmm_data()
             else:
                 _logger.info("tmhmm data is not provided")
+
+            if self.org_config.eggnog:
+                _logger.info(f"eggnog data is provided: {self.org_config.eggnog}")
+            else:
+                _logger.info("eggnog data is not provided")
 
             # show log
             protein_annotation_obj.show_id_log()

@@ -703,6 +703,18 @@ select
 from `proteininstancefeature`
 where (`proteininstancefeature`.`subclass_view` = 'KEGG');
 
+DROP TABLE IF EXISTS `COG`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `COG` AS
+select
+    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
+    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
+    `proteininstancefeature`.`feature_name` AS `feature_name`,
+    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
+        `proteininstancefeature`.`domain_name` AS `COG`,
+       `proteininstancefeature`.`prediction_id` AS `prediction_id`,
+    `proteininstancefeature`.`modification_date` AS `modification_date`
+from `proteininstancefeature`
+where (`proteininstancefeature`.`subclass_view` = 'COG');
 
 
 

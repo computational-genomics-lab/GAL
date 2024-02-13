@@ -261,11 +261,10 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
                     protein_instance_id = self.find_transcript_entry(row[0])
                     # print(protein_instance_id)
                     # eggnog_write_fh.writelines(column['#query'])
-                    eggnog_row_id += 1
                     feature_name = "EGGNOG"
 
-                    field_list = ['EC', 'KEGG_ko', 'KEGG_Pathway', 'KEGG_Module', 'KEGG_Reaction', 'KEGG_rclass',
-                                  'BRITE', 'KEGG_TC']
+                    field_list = ['Description', 'COG_category', 'GOs', 'EC', 'KEGG_ko', 'KEGG_Pathway',
+                                  'KEGG_Module', 'KEGG_Reaction', 'KEGG_rclass', 'BRITE', 'KEGG_TC']
                     field_data = []
                     for field_name in field_list:
                         if field_name in column and column[field_name] != '-':
@@ -273,14 +272,29 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
                         else:
                             field_data.append(None)
 
-                    columns_data = [eggnog_row_id, protein_instance_id, feature_name] + field_data
-
-                    eggnog_write_fh.write("\t".join(map(str, columns_data)) + '\n')
+                    subclass_dct = {
+                        'COG': {
+                                'value': field_data[0],
+                                'data_list': [field_data[0], field_data[1]] + [None] * 9,
+                                },
+                        'GO': {
+                                'value': field_data[2],
+                                'data_list': [None, None, field_data[0]] + [None] * 8
+                            },
+                        'KEGG': {'value': field_data[4], 'data_list': [None, None, None] + field_data[2:]}
+                    }
+                    for subclass_view, info_dct in subclass_dct.items():
+                        if info_dct['value'] is not None:
+                            eggnog_row_id += 1
+                            mapping_list = [eggnog_row_id, protein_instance_id, feature_name, subclass_view]
+                            columns_data = mapping_list + info_dct['data_list']
+                            eggnog_write_fh.write("\t".join(map(str, columns_data)) + '\n')
 
     def upload_eggnog_data(self):
         _logger.debug(f"Uploading EGGNOG data from {self.eggnog}")
-        column_list = ['protein_instance_feature_ID', 'protein_instance_ID', 'feature_name', 'text1', 'text2', 'text3',
-                       'text4', 'text5', 'text6', 'text7', 'text8']
+        column_list = ['protein_instance_feature_ID', 'protein_instance_ID', 'feature_name', 'subclass_view',
+                       'domain_name', 'prediction_id', 'go_id',
+                       'text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8']
 
         query = f"""LOAD DATA LOCAL INFILE '{self.eggnog}' INTO TABLE proteininstancefeature FIELDS 
         TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES 

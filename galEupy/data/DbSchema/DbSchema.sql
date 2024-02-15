@@ -716,6 +716,19 @@ select
 from `proteininstancefeature`
 where (`proteininstancefeature`.`subclass_view` = 'COG');
 
+DROP TABLE IF EXISTS `Pfam`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `Pfam` AS
+select
+    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
+    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
+    `proteininstancefeature`.`feature_name` AS `feature_name`,
+    `proteininstancefeature`.`subclass_view` AS `bit_score`,
+    `proteininstancefeature`.`domain_name` AS `domain_name`,
+    `proteininstancefeature`.`text9` AS `PFAMs`,
+    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
+    `proteininstancefeature`.`modification_date` AS `modification_date`
+from `proteininstancefeature` where (`proteininstancefeature`.`subclass_view` = 'Pfam') ;
 
 
 DROP TABLE IF EXISTS `signalp`;

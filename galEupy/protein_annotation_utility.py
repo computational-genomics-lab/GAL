@@ -237,6 +237,7 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
         self.db_conn.insert(query)
 
     def parse_eggnog_result(self, parsed_file):
+        _logger.info("Parsing EGGNOG data: Initiated")
         eggnog_write_fh = open(self.eggnog, 'w')
         eggnog_row_id = self.table_status_dct['protein_instance_feature_ID']
         with open(parsed_file, 'r') as file:
@@ -290,8 +291,10 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
                             columns_data = mapping_list + info_dct['data_list']
                             eggnog_write_fh.write("\t".join(map(str, columns_data)) + '\n')
 
+        _logger.info("Parsing EGGNOG data: Complete")
+
     def upload_eggnog_data(self):
-        _logger.debug(f"Uploading EGGNOG data from {self.eggnog}")
+        _logger.info(f"Uploading EGGNOG data from {self.eggnog}")
         column_list = ['protein_instance_feature_ID', 'protein_instance_ID', 'feature_name', 'subclass_view',
                        'domain_name', 'prediction_id', 'go_id',
                        'text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8']

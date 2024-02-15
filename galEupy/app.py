@@ -372,6 +372,10 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
 
             if self.org_config.eggnog:
                 _logger.info(f"eggnog data is provided: {self.org_config.eggnog}")
+                if self.org_config.eggnog.exists():
+                    _logger.info("Processing eggnog data")
+                    protein_annotation_obj.parse_eggnog_result(self.org_config.eggnog)
+                    protein_annotation_obj.upload_eggnog_data()
             else:
                 _logger.info("eggnog data is not provided")
 

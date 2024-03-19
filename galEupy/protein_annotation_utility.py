@@ -5,7 +5,7 @@ import re
 import csv
 from .BioFile.interproscan_parser import ParseInterproResult
 from .directory_utility import ProteinAnnotationFiles
-
+import time
 _logger = logging.getLogger("galEupy.protein_annotation_utility")
 
 
@@ -240,56 +240,47 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
         _logger.info("Parsing EGGNOG data: Initiated")
         eggnog_write_fh = open(self.eggnog, 'w')
         eggnog_row_id = self.table_status_dct['protein_instance_feature_ID']
+
+        field_list = ['Description', 'COG_category', 'GOs', 'EC', 'KEGG_ko', 'KEGG_Pathway',
+                      'KEGG_Module', 'KEGG_Reaction', 'KEGG_rclass', 'BRITE', 'KEGG_TC', 'PFAMs']
         with open(parsed_file, 'r') as file:
             # Read lines from the file
-            lines = file.readlines()
-            reader = csv.reader(lines, delimiter='\t')
+            # lines = file.readlines()
+            # reader = csv.reader(lines, delimiter='\t')
 
+            reader = csv.reader(file, delimiter='\t')
             header = None
             for idx, row in enumerate(reader):
                 if row[0].startswith('##'):
                     continue
                 if row[0].startswith('#'):
                     header = row
+                    # checking fields
+                    for field_name in field_list:
+                        if field_name not in header:
+                            _logger.error(f"{field_name} doesn't exits")
                     continue
                 if header:
-                    column = {}
-                    for h, v in zip(header, row):
-                        column[h] = v
-
-                    # print(row)
-
+                    column = dict(zip(header, row))
                     protein_instance_id = self.find_transcript_entry(row[0])
-                    # print(protein_instance_id)
-                    # eggnog_write_fh.writelines(column['#query'])
                     feature_name = "EGGNOG"
 
-                    field_list = ['Description', 'COG_category', 'GOs', 'EC', 'KEGG_ko', 'KEGG_Pathway',
-                                  'KEGG_Module', 'KEGG_Reaction', 'KEGG_rclass', 'BRITE', 'KEGG_TC']
-                    field_data = []
-                    for field_name in field_list:
-                        if field_name in column and column[field_name] != '-':
-                            field_data.append(column[field_name])
-                        else:
-                            field_data.append(None)
+                    subclass_dct = {}
+                    if column['Description'] != '-':
+                        subclass_dct['COG'] = [column['Description'], column['COG_category']] + [None] * 10
+                    if column['GOs'] != '-':
+                        subclass_dct['GO'] = [None, None, column['GOs']] + [None] * 9
+                    if column['KEGG_ko'] != '-':
+                        kegg_values = [column[key] if column[key] != '-' else None for key in field_list[3:]]
+                        subclass_dct['KEGG'] = [None, None, None] + kegg_values
+                    if column['PFAMs'] != '-':
+                        subclass_dct['Pfam'] = [None] * 11 + [column['PFAMs']]
 
-                    subclass_dct = {
-                        'COG': {
-                                'value': field_data[0],
-                                'data_list': [field_data[0], field_data[1]] + [None] * 9,
-                                },
-                        'GO': {
-                                'value': field_data[2],
-                                'data_list': [None, None, field_data[0]] + [None] * 8
-                            },
-                        'KEGG': {'value': field_data[4], 'data_list': [None, None, None] + field_data[2:]}
-                    }
-                    for subclass_view, info_dct in subclass_dct.items():
-                        if info_dct['value'] is not None:
-                            eggnog_row_id += 1
-                            mapping_list = [eggnog_row_id, protein_instance_id, feature_name, subclass_view]
-                            columns_data = mapping_list + info_dct['data_list']
-                            eggnog_write_fh.write("\t".join(map(str, columns_data)) + '\n')
+                    for subclass_view, data_list in subclass_dct.items():
+                        eggnog_row_id += 1
+                        mapping_list = [eggnog_row_id, protein_instance_id, feature_name, subclass_view]
+                        columns_data = mapping_list + data_list
+                        eggnog_write_fh.write("\t".join(map(str, columns_data)) + '\n')
 
         _logger.info("Parsing EGGNOG data: Complete")
 
@@ -297,13 +288,14 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
         _logger.info(f"Uploading EGGNOG data from {self.eggnog}")
         column_list = ['protein_instance_feature_ID', 'protein_instance_ID', 'feature_name', 'subclass_view',
                        'domain_name', 'prediction_id', 'go_id',
-                       'text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8']
+                       'text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9']
 
         query = f"""LOAD DATA LOCAL INFILE '{self.eggnog}' INTO TABLE proteininstancefeature FIELDS 
         TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES 
         TERMINATED BY '\n' ({",".join(column_list) })"""
 
         self.db_conn.insert(query)
+
 
 def get_gi_id(string):
     match_obj = re.search(r"gi='(.*)'", string, re.M | re.I)

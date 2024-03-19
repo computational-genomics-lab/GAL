@@ -78,82 +78,82 @@ CREATE TABLE IF NOT EXISTS `organism`(
 
 DROP TABLE IF EXISTS `geneticcode`;
 CREATE TABLE `geneticcode` (
-  `geneticcode_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ncbi_geneticcode_ID` int(11) NOT NULL,
-  `abbreviation` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `code` varchar(255) NOT NULL,
-  `starts` varchar(255) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`geneticcode_ID`)
+    `geneticcode_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `ncbi_geneticcode_ID` int(11) NOT NULL,
+    `abbreviation` varchar(255) DEFAULT NULL,
+    `name` varchar(255) NOT NULL,
+    `code` varchar(255) NOT NULL,
+    `starts` varchar(255) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`geneticcode_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `go_term`;
 CREATE TABLE `go_term` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `term_type` varchar(55) NOT NULL,
-  `acc` varchar(255) NOT NULL,
-  `is_obsolete` int(11) NOT NULL DEFAULT '0',
-  `is_root` int(11) NOT NULL DEFAULT '0',
-  `is_relation` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `acc` (`acc`),
-  UNIQUE KEY `t0` (`id`),
-  KEY `t1` (`name`),
-  KEY `t2` (`term_type`),
-  KEY `t3` (`acc`),
-  KEY `t4` (`id`,`acc`),
-  KEY `t5` (`id`,`name`),
-  KEY `t6` (`id`,`term_type`),
-  KEY `t7` (`id`,`acc`,`name`,`term_type`)
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL DEFAULT '',
+    `term_type` varchar(55) NOT NULL,
+    `acc` varchar(255) NOT NULL,
+    `is_obsolete` int(11) NOT NULL DEFAULT '0',
+    `is_root` int(11) NOT NULL DEFAULT '0',
+    `is_relation` int(11) NOT NULL DEFAULT '0',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `acc` (`acc`),
+    UNIQUE KEY `t0` (`id`),
+    KEY `t1` (`name`),
+    KEY `t2` (`term_type`),
+    KEY `t3` (`acc`),
+    KEY `t4` (`id`,`acc`),
+    KEY `t5` (`id`,`name`),
+    KEY `t6` (`id`,`term_type`),
+    KEY `t7` (`id`,`acc`,`name`,`term_type`)
 ) ENGINE=MyISAM AUTO_INCREMENT=44087 DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `goevidencecode`;
 CREATE TABLE `goevidencecode` (
-  `go_evidence_code_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  `modification_date` varchar(50) NOT NULL,
-  PRIMARY KEY (`go_evidence_code_ID`)
+    `go_evidence_code_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(50) NOT NULL,
+    `description` varchar(1000) DEFAULT NULL,
+    `modification_date` varchar(50) NOT NULL,
+    PRIMARY KEY (`go_evidence_code_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48939 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
-  `log_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `user_ID` varchar(50) NOT NULL,
-  `organism_ID` varchar(100) NOT NULL,
-  `min_nasequence_id` int(11) NOT NULL,
-  `max_nasequence_id` int(11) NOT NULL,
-  `min_nafeature_id` int(11) NOT NULL,
-  `max_nafeature_id` int(11) NOT NULL,
-  `min_nalocation_id` int(11) NOT NULL,
-  `max_nalocation_id` int(11) NOT NULL,
-  `min_gene_id` int(11) NOT NULL,
-  `max_gene_id` int(11) NOT NULL,
-  `min_rna_id` int(11) NOT NULL,
-  `max_rna_id` int(11) NOT NULL,
-  `min_protein_id` int(11) NOT NULL,
-  `max_protein_id` int(11) NOT NULL,
-  `min_geneinstance_id` int(11) NOT NULL,
-  `max_geneinstance_id` int(11) NOT NULL,
-  `min_proteininstance_id` int(11) NOT NULL,
-  `max_proteininstance_id` int(11) NOT NULL,
-  `min_proteininstancefeature_id` int(11) NOT NULL,
-  `max_proteininstancefeature_id` int(11) NOT NULL,
-  `is_uploaded_nasequenceimp` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_nafeatureimp` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_nalocation` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_gene` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_rna` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_protein` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_geneinstance` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_proteininstance` tinyint(1) NOT NULL DEFAULT '0',
-  `is_uploaded_proteininstancefeature` tinyint(1) NOT NULL DEFAULT '0',
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`log_ID`)
+    `log_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `user_ID` varchar(50) NOT NULL,
+    `organism_ID` varchar(100) NOT NULL,
+    `min_nasequence_id` int(11) NOT NULL,
+    `max_nasequence_id` int(11) NOT NULL,
+    `min_nafeature_id` int(11) NOT NULL,
+    `max_nafeature_id` int(11) NOT NULL,
+    `min_nalocation_id` int(11) NOT NULL,
+    `max_nalocation_id` int(11) NOT NULL,
+    `min_gene_id` int(11) NOT NULL,
+    `max_gene_id` int(11) NOT NULL,
+    `min_rna_id` int(11) NOT NULL,
+    `max_rna_id` int(11) NOT NULL,
+    `min_protein_id` int(11) NOT NULL,
+    `max_protein_id` int(11) NOT NULL,
+    `min_geneinstance_id` int(11) NOT NULL,
+    `max_geneinstance_id` int(11) NOT NULL,
+    `min_proteininstance_id` int(11) NOT NULL,
+    `max_proteininstance_id` int(11) NOT NULL,
+    `min_proteininstancefeature_id` int(11) NOT NULL,
+    `max_proteininstancefeature_id` int(11) NOT NULL,
+    `is_uploaded_nasequenceimp` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_nafeatureimp` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_nalocation` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_gene` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_rna` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_protein` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_geneinstance` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_proteininstance` tinyint(1) NOT NULL DEFAULT '0',
+    `is_uploaded_proteininstancefeature` tinyint(1) NOT NULL DEFAULT '0',
+    `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`log_ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 
@@ -174,16 +174,16 @@ CREATE TABLE IF NOT EXISTS `taxon` (
 
 DROP TABLE IF EXISTS `reviewstatus`;
 CREATE TABLE `reviewstatus` (
-  `review_status_ID` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `row_user_id` int(11) NOT NULL,
-  `row_group_id` int(3) NOT NULL,
-  `row_project_id` int(3) NOT NULL,
-  `row_alg_invocation_id` int(11) NOT NULL,
-  `email_id` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`review_status_ID`)
+    `review_status_ID` int(11) NOT NULL,
+    `name` varchar(255) NOT NULL,
+    `description` varchar(255) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `row_user_id` int(11) NOT NULL,
+    `row_group_id` int(3) NOT NULL,
+    `row_project_id` int(3) NOT NULL,
+    `row_alg_invocation_id` int(11) NOT NULL,
+    `email_id` varchar(50) DEFAULT NULL,
+    PRIMARY KEY (`review_status_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -203,91 +203,6 @@ CREATE TABLE IF NOT EXISTS `gramstrain`(
 -- Dots Schema - It has tables and views
 --
 
-
-DROP TABLE IF EXISTS `aafeatureimp`;
-CREATE TABLE IF NOT EXISTS `aafeatureimp` (
-  `aa_feature_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `aa_sequence_ID` int(11) NOT NULL,
-  `parent_ID` int(11) DEFAULT NULL,
-  `na_feature_ID` int(11) DEFAULT NULL,
-  `subclass_view` varchar(50) DEFAULT NULL,
-  `description` varchar(4000) DEFAULT NULL,
-  `motif_aa_sequence_ID` int(11) DEFAULT NULL,
-  `external_database_ID` int(11) DEFAULT NULL,
-  `source_ID` int(11) DEFAULT NULL,
-  `prediction_algorithm_ID` int(11) DEFAULT NULL,
-  `is_predicted` tinyint(1) NOT NULL,
-  `int1` int(11) DEFAULT NULL,
-  `int2` int(11) DEFAULT NULL,
-  `int3` int(11) DEFAULT NULL,
-  `int4` int(11) DEFAULT NULL,
-  `int5` int(11) DEFAULT NULL,
-  `int6` int(11) DEFAULT NULL,
-  `int7` int(11) DEFAULT NULL,
-  `int8` int(11) DEFAULT NULL,
-  `int9` int(11) DEFAULT NULL,
-  `int10` int(11) DEFAULT NULL,
-  `tinyint1` int(5) DEFAULT NULL,
-  `tinyint2` int(5) DEFAULT NULL,
-  `tinyint3` int(5) DEFAULT NULL,
-  `tinyint4` int(5) DEFAULT NULL,
-  `tinyint5` int(5) DEFAULT NULL,
-  `tinyint6` int(5) DEFAULT NULL,
-  `float1` double DEFAULT NULL,
-  `float2` double DEFAULT NULL,
-  `float3` double DEFAULT NULL,
-  `float4` double DEFAULT NULL,
-  `float5` double DEFAULT NULL,
-  `float6` double DEFAULT NULL,
-  `string1` varchar(255) DEFAULT NULL,
-  `string2` varchar(255) DEFAULT NULL,
-  `string3` varchar(255) DEFAULT NULL,
-  `string4` varchar(255) DEFAULT NULL,
-  `string5` varchar(255) DEFAULT NULL,
-  `string6` varchar(255) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`aa_feature_ID`),
-  KEY `aafeatureimp_FK01` (`aa_sequence_ID`),
-  KEY `aafeatureimp_FK02` (`parent_ID`),
-  KEY `aafeatureimp_FK03` (`na_feature_ID`),
-  KEY `aafeatureimp_FK04` (`motif_aa_sequence_ID`),
-  KEY `aafeatureimp_FK05` (`external_database_ID`),
-  KEY `aafeatureimp_FK06` (`prediction_algorithm_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `aasequenceimp`
---
-
-DROP TABLE IF EXISTS `aasequenceimp`;
-CREATE TABLE IF NOT EXISTS `aasequenceimp` (
-  `aa_sequence_id` int(11) NOT NULL AUTO_INCREMENT,
-  `sequence_version` int(10) DEFAULT '1',
-  `subclass_view` varchar(50) NOT NULL,
-  `molecular_weight` int(20) DEFAULT NULL,
-  `sequence` longtext,
-  `length` int(15) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `external_database_id` int(11) DEFAULT NULL,
-  `source_id` int(11) DEFAULT NULL,
-  `source_aa_sequence_id` int(11) DEFAULT NULL,
-  `tinyint1` int(5) DEFAULT NULL,
-  `string1` varchar(255) DEFAULT NULL,
-  `string2` varchar(255) DEFAULT NULL,
-  `string3` varchar(255) DEFAULT NULL,
-  `string4` varchar(255) DEFAULT NULL,
-  `int1` int(11) DEFAULT NULL,
-  `int2` int(11) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`aa_sequence_id`),
-  KEY `aasequenceimp_FK01` (`external_database_id`),
-  KEY `aasequenceimp_FK02` (`source_aa_sequence_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
-
 --
 -- Tables
 --
@@ -295,17 +210,17 @@ CREATE TABLE IF NOT EXISTS `aasequenceimp` (
 
 DROP TABLE IF EXISTS `sequencetype`;
 CREATE TABLE `sequencetype` (
-  `sequence_type_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `sub_type` int(11) DEFAULT NULL,
-  `strand` varchar(10) DEFAULT NULL,
-  `hierarchy` int(5) NULL,
-  `parent_sequence_type_ID` int(11) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`sequence_type_ID`),
-  KEY `SEQUENCETYPE_FK` (`parent_sequence_type_ID`),
-  CONSTRAINT `SEQUENCETYPE_FK` FOREIGN KEY (`parent_sequence_type_ID`) REFERENCES `sequencetype` (`sequence_type_ID`)
+    `sequence_type_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `sub_type` int(11) DEFAULT NULL,
+    `strand` varchar(10) DEFAULT NULL,
+    `hierarchy` int(5) NULL,
+    `parent_sequence_type_ID` int(11) DEFAULT NULL,
+    `name` varchar(100) NOT NULL,
+    `description` varchar(255) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`sequence_type_ID`),
+    KEY `SEQUENCETYPE_FK` (`parent_sequence_type_ID`),
+    CONSTRAINT `SEQUENCETYPE_FK` FOREIGN KEY (`parent_sequence_type_ID`) REFERENCES `sequencetype` (`sequence_type_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `sequencetype` (sequence_type_ID, name, description, parent_sequence_type_ID) VALUES
@@ -320,47 +235,47 @@ INSERT INTO `sequencetype` (sequence_type_ID, name, description, parent_sequence
 
 DROP TABLE IF EXISTS `nasequenceimp`;
 CREATE TABLE `nasequenceimp` (
-  `na_sequence_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `sequence_version` float NOT NULL DEFAULT '1',
-  `subclass_view` varchar(50) DEFAULT NULL,
-  `sequence_type_ID` int(11) DEFAULT NULL,
-  `taxon_ID` int(11) DEFAULT NULL,
-  `sequence` mediumtext,
-  `length` int(12) DEFAULT NULL,
-  `a_count` int(12) DEFAULT NULL,
-  `t_count` int(12) DEFAULT NULL,
-  `g_count` int(12) DEFAULT NULL,
-  `c_count` int(12) DEFAULT NULL,
-  `other_count` int(12) DEFAULT NULL,
-  `description` varchar(2000) DEFAULT NULL,
-  `external_database_ID` int(11) DEFAULT NULL,
-  `source_na_sequence_ID` int(11) DEFAULT NULL,
-  `sequence_piece_ID` int(111) DEFAULT NULL,
-  `sequencing_center_contact_ID` int(11) DEFAULT NULL,
-  `string1` varchar(255) NOT NULL,
-  `string2` varchar(255) NOT NULL,
-  `string3` varchar(255) NOT NULL,
-  `string4` varchar(255) NOT NULL,
-  `string5` varchar(255) NOT NULL,
-  `tinyint1` int(5) NOT NULL,
-  `nsint1` int(15) NOT NULL,
-  `nsint2` int(15) NOT NULL,
-  `nsint3` int(15) NOT NULL,
-  `nsint4` int(15) NOT NULL,
-  `int5` int(15) NOT NULL,
-  `bit1` tinyint(1) NOT NULL,
-  `clob1` date NOT NULL,
-  `clob2` text NOT NULL,
-  `clob3` text NOT NULL,
-  `clob4` text NOT NULL,
-  `date1` date NOT NULL,
-  `date2` date NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`na_sequence_ID`),
-  KEY `nasequenceimp_FK02` (`taxon_ID`),
-  KEY `nasequenceimp_FK03` (`external_database_ID`),
-  FOREIGN KEY (`sequence_type_ID`) REFERENCES `sequencetype`(`sequence_type_ID`),
-  FOREIGN KEY (`source_na_sequence_ID`) REFERENCES `nasequenceimp`(`na_sequence_ID`)
+    `na_sequence_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `sequence_version` float NOT NULL DEFAULT '1',
+    `subclass_view` varchar(50) DEFAULT NULL,
+    `sequence_type_ID` int(11) DEFAULT NULL,
+    `taxon_ID` int(11) DEFAULT NULL,
+    `sequence` mediumtext,
+    `length` int(12) DEFAULT NULL,
+    `a_count` int(12) DEFAULT NULL,
+    `t_count` int(12) DEFAULT NULL,
+    `g_count` int(12) DEFAULT NULL,
+    `c_count` int(12) DEFAULT NULL,
+    `other_count` int(12) DEFAULT NULL,
+    `description` varchar(2000) DEFAULT NULL,
+    `external_database_ID` int(11) DEFAULT NULL,
+    `source_na_sequence_ID` int(11) DEFAULT NULL,
+    `sequence_piece_ID` int(111) DEFAULT NULL,
+    `sequencing_center_contact_ID` int(11) DEFAULT NULL,
+    `string1` varchar(255) NOT NULL,
+    `string2` varchar(255) NOT NULL,
+    `string3` varchar(255) NOT NULL,
+    `string4` varchar(255) NOT NULL,
+    `string5` varchar(255) NOT NULL,
+    `tinyint1` int(5) NOT NULL,
+    `nsint1` int(15) NOT NULL,
+    `nsint2` int(15) NOT NULL,
+    `nsint3` int(15) NOT NULL,
+    `nsint4` int(15) NOT NULL,
+    `int5` int(15) NOT NULL,
+    `bit1` tinyint(1) NOT NULL,
+    `clob1` date NOT NULL,
+    `clob2` text NOT NULL,
+    `clob3` text NOT NULL,
+    `clob4` text NOT NULL,
+    `date1` date NOT NULL,
+    `date2` date NOT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`na_sequence_ID`),
+    KEY `nasequenceimp_FK02` (`taxon_ID`),
+    KEY `nasequenceimp_FK03` (`external_database_ID`),
+    FOREIGN KEY (`sequence_type_ID`) REFERENCES `sequencetype`(`sequence_type_ID`),
+    FOREIGN KEY (`source_na_sequence_ID`) REFERENCES `nasequenceimp`(`na_sequence_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
@@ -379,75 +294,75 @@ CREATE TABLE IF NOT EXISTS `nafeatureimp`(
     is_predicted INT(11),
     review_status_id INT(11),
     `nfint1` int(11) DEFAULT NULL,
-  `nfint2` int(11) DEFAULT NULL,
-  `nfint3` int(11) DEFAULT NULL,
-  `nfint4` int(11) DEFAULT NULL,
-  `int5` int(11) DEFAULT NULL,
-  `int6` int(11) DEFAULT NULL,
-  `tinyint1` int(5) DEFAULT NULL,
-  `tinyint2` int(5) DEFAULT NULL,
-  `tinyint3` int(5) DEFAULT NULL,
-  `tinyint4` int(5) DEFAULT NULL,
-  `tinyint5` int(5) DEFAULT NULL,
-  `tinyint6` int(5) DEFAULT NULL,
-  `float1` double DEFAULT NULL,
-  `float2` double DEFAULT NULL,
-  `float3` double DEFAULT NULL,
-  `nffloat4` double DEFAULT NULL,
-  `float5` double DEFAULT NULL,
-  `float6` double DEFAULT NULL,
-  `text1` varchar(1000) DEFAULT NULL,
-  `string1` varchar(1000) DEFAULT NULL,
-  `string2` varchar(255) DEFAULT NULL,
-  `string3` varchar(255) DEFAULT NULL,
-  `string4` varchar(255) DEFAULT NULL,
-  `string5` varchar(1000) DEFAULT NULL,
-  `string6` varchar(255) DEFAULT NULL,
-  `string7` varchar(255) DEFAULT NULL,
-  `string8` varchar(255) DEFAULT NULL,
-  `string9` varchar(1000) DEFAULT NULL,
-  `string10` varchar(255) DEFAULT NULL,
-  `string11` varchar(255) DEFAULT NULL,
-  `string12` varchar(255) DEFAULT NULL,
-  `string13` varchar(255) DEFAULT NULL,
-  `string14` varchar(500) DEFAULT NULL,
-  `string15` varchar(255) DEFAULT NULL,
-  `string16` varchar(255) DEFAULT NULL,
-  `string17` varchar(255) DEFAULT NULL,
-  `string18` varchar(255) DEFAULT NULL,
-  `string19` varchar(255) DEFAULT NULL,
-  `string20` varchar(1000) DEFAULT NULL,
-  `string21` varchar(255) DEFAULT NULL,
-  `string22` varchar(255) DEFAULT NULL,
-  `string23` varchar(255) DEFAULT NULL,
-  `string24` varchar(255) DEFAULT NULL,
-  `string25` varchar(255) DEFAULT NULL,
-  `string26` varchar(255) DEFAULT NULL,
-  `string27` varchar(255) DEFAULT NULL,
-  `string28` varchar(255) DEFAULT NULL,
-  `string29` varchar(255) DEFAULT NULL,
-  `string30` varchar(64) DEFAULT NULL,
-  `string31` varchar(64) DEFAULT NULL,
-  `string32` varchar(64) DEFAULT NULL,
-  `string33` varchar(64) DEFAULT NULL,
-  `string34` varchar(64) DEFAULT NULL,
-  `string35` varchar(64) DEFAULT NULL,
-  `string36` varchar(64) DEFAULT NULL,
-  `string37` varchar(64) DEFAULT NULL,
-  `string38` varchar(64) DEFAULT NULL,
-  `string39` varchar(64) DEFAULT NULL,
-  `string40` varchar(64) DEFAULT NULL,
-  `string41` varchar(64) DEFAULT NULL,
-  `string42` varchar(64) DEFAULT NULL,
-  `string43` varchar(64) DEFAULT NULL,
-  `string44` varchar(64) DEFAULT NULL,
-  `string45` varchar(64) DEFAULT NULL,
-  `string46` varchar(64) DEFAULT NULL,
-  `string47` varchar(64) DEFAULT NULL,
-  `string48` varchar(64) DEFAULT NULL,
-  `string49` varchar(64) DEFAULT NULL,
-  `string50` varchar(64) DEFAULT NULL,
-   `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `nfint2` int(11) DEFAULT NULL,
+    `nfint3` int(11) DEFAULT NULL,
+    `nfint4` int(11) DEFAULT NULL,
+    `int5` int(11) DEFAULT NULL,
+    `int6` int(11) DEFAULT NULL,
+    `tinyint1` int(5) DEFAULT NULL,
+    `tinyint2` int(5) DEFAULT NULL,
+    `tinyint3` int(5) DEFAULT NULL,
+    `tinyint4` int(5) DEFAULT NULL,
+    `tinyint5` int(5) DEFAULT NULL,
+    `tinyint6` int(5) DEFAULT NULL,
+    `float1` double DEFAULT NULL,
+    `float2` double DEFAULT NULL,
+    `float3` double DEFAULT NULL,
+    `nffloat4` double DEFAULT NULL,
+    `float5` double DEFAULT NULL,
+    `float6` double DEFAULT NULL,
+    `text1` varchar(1000) DEFAULT NULL,
+    `string1` varchar(1000) DEFAULT NULL,
+    `string2` varchar(255) DEFAULT NULL,
+    `string3` varchar(255) DEFAULT NULL,
+    `string4` varchar(255) DEFAULT NULL,
+    `string5` varchar(1000) DEFAULT NULL,
+    `string6` varchar(255) DEFAULT NULL,
+    `string7` varchar(255) DEFAULT NULL,
+    `string8` varchar(255) DEFAULT NULL,
+    `string9` varchar(1000) DEFAULT NULL,
+    `string10` varchar(255) DEFAULT NULL,
+    `string11` varchar(255) DEFAULT NULL,
+    `string12` varchar(255) DEFAULT NULL,
+    `string13` varchar(255) DEFAULT NULL,
+    `string14` varchar(500) DEFAULT NULL,
+    `string15` varchar(255) DEFAULT NULL,
+    `string16` varchar(255) DEFAULT NULL,
+    `string17` varchar(255) DEFAULT NULL,
+    `string18` varchar(255) DEFAULT NULL,
+    `string19` varchar(255) DEFAULT NULL,
+    `string20` varchar(1000) DEFAULT NULL,
+    `string21` varchar(255) DEFAULT NULL,
+    `string22` varchar(255) DEFAULT NULL,
+    `string23` varchar(255) DEFAULT NULL,
+    `string24` varchar(255) DEFAULT NULL,
+    `string25` varchar(255) DEFAULT NULL,
+    `string26` varchar(255) DEFAULT NULL,
+    `string27` varchar(255) DEFAULT NULL,
+    `string28` varchar(255) DEFAULT NULL,
+    `string29` varchar(255) DEFAULT NULL,
+    `string30` varchar(64) DEFAULT NULL,
+    `string31` varchar(64) DEFAULT NULL,
+    `string32` varchar(64) DEFAULT NULL,
+    `string33` varchar(64) DEFAULT NULL,
+    `string34` varchar(64) DEFAULT NULL,
+    `string35` varchar(64) DEFAULT NULL,
+    `string36` varchar(64) DEFAULT NULL,
+    `string37` varchar(64) DEFAULT NULL,
+    `string38` varchar(64) DEFAULT NULL,
+    `string39` varchar(64) DEFAULT NULL,
+    `string40` varchar(64) DEFAULT NULL,
+    `string41` varchar(64) DEFAULT NULL,
+    `string42` varchar(64) DEFAULT NULL,
+    `string43` varchar(64) DEFAULT NULL,
+    `string44` varchar(64) DEFAULT NULL,
+    `string45` varchar(64) DEFAULT NULL,
+    `string46` varchar(64) DEFAULT NULL,
+    `string47` varchar(64) DEFAULT NULL,
+    `string48` varchar(64) DEFAULT NULL,
+    `string49` varchar(64) DEFAULT NULL,
+    `string50` varchar(64) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (na_feature_ID),
     FOREIGN KEY (na_sequence_ID) REFERENCES nasequenceimp(na_sequence_ID),
     FOREIGN KEY (parent_ID) REFERENCES nafeatureimp(na_feature_ID) ON DELETE CASCADE
@@ -474,29 +389,30 @@ CREATE TABLE IF NOT EXISTS `nalocation`(
 
 DROP TABLE IF EXISTS `genecategory`;
 CREATE TABLE `genecategory` (
-  `gene_category_ID` int(11) NOT NULL,
-  `term` varchar(80) NOT NULL,
-  `definition` varchar(255) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`gene_category_ID`)
+    `gene_category_ID` int(11) NOT NULL,
+    `term` varchar(80) NOT NULL,
+    `definition` varchar(255) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`gene_category_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `gene`;
 CREATE TABLE `gene` (
-  `gene_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `gene_symbol` varchar(50) DEFAULT NULL,
-  `gene_category_ID` int(11) DEFAULT NULL,
-  `review_status_ID` int(11) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `reviewer_summary` varchar(4000) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`gene_ID`),
-  KEY `gene_FK01` (`gene_category_ID`),
-  KEY `gene_FK02` (`review_status_ID`),
-  CONSTRAINT `gene_FK01` FOREIGN KEY (`gene_category_ID`) REFERENCES `genecategory` (`gene_category_ID`)
+    `gene_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) DEFAULT NULL,
+    `gene_symbol` varchar(50) DEFAULT NULL,
+    `gene_category_ID` int(11) DEFAULT NULL,
+    `review_status_ID` int(11) NOT NULL,
+    `description` varchar(500) DEFAULT NULL,
+    `reviewer_summary` varchar(4000) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`gene_ID`),
+    KEY `gene_FK01` (`gene_category_ID`),
+    KEY `gene_FK02` (`review_status_ID`),
+    CONSTRAINT `gene_FK01` FOREIGN KEY (`gene_category_ID`) REFERENCES `genecategory` (`gene_category_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=510783 DEFAULT CHARSET=utf8;
+
 
 
 
@@ -515,16 +431,16 @@ CREATE TABLE IF NOT EXISTS `geneinstance`(
 
 DROP TABLE IF EXISTS `rna`;
 CREATE TABLE `rna` (
-  `rna_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(500) DEFAULT NULL,
-  `review_status_ID` int(11) NOT NULL,
-  `gene_ID` int(11) DEFAULT NULL,
-  `reviewer_summary` varchar(4000) DEFAULT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`rna_ID`),
-  KEY `RNA_FK01` (`review_status_ID`),
-  KEY `RNA_FK02` (`gene_ID`),
-  CONSTRAINT `RNA_FK02` FOREIGN KEY (`gene_ID`) REFERENCES `gene` (`gene_ID`)
+    `rna_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `description` varchar(500) DEFAULT NULL,
+    `review_status_ID` int(11) NOT NULL,
+    `gene_ID` int(11) DEFAULT NULL,
+    `reviewer_summary` varchar(4000) DEFAULT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`rna_ID`),
+    KEY `RNA_FK01` (`review_status_ID`),
+    KEY `RNA_FK02` (`gene_ID`),
+    CONSTRAINT `RNA_FK02` FOREIGN KEY (`gene_ID`) REFERENCES `gene` (`gene_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=510783 DEFAULT CHARSET=utf8;
 
 
@@ -582,11 +498,11 @@ CREATE TABLE `blatalignment` (
 
 DROP TABLE IF EXISTS `pathway`;
 CREATE TABLE `pathway` (
-  `pathway_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `taxon_ID` int(11) NOT NULL,
-  `version` float NOT NULL,
-  `url` text NOT NULL,
-  PRIMARY KEY (`pathway_ID`)
+    `pathway_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `taxon_ID` int(11) NOT NULL,
+    `version` float NOT NULL,
+    `url` text NOT NULL,
+    PRIMARY KEY (`pathway_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 
@@ -608,13 +524,13 @@ CREATE TABLE IF NOT EXISTS `protein`(
 
 DROP TABLE IF EXISTS `protein_cluster`;
 CREATE TABLE `protein_cluster` (
-  `protein_cluster_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `cluster_ID` int(11) NOT NULL,
-  `gene_ID` int(11) NOT NULL,
-  `taxon_ID` int(11) NOT NULL,
-  `desc` varchar(100) NOT NULL,
-  `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`protein_cluster_ID`)
+    `protein_cluster_ID` int(11) NOT NULL AUTO_INCREMENT,
+    `cluster_ID` int(11) NOT NULL,
+    `gene_ID` int(11) NOT NULL,
+    `taxon_ID` int(11) NOT NULL,
+    `desc` varchar(100) NOT NULL,
+    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`protein_cluster_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45475 DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `proteininstancefeature`;
@@ -710,8 +626,8 @@ select
     `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
     `proteininstancefeature`.`feature_name` AS `feature_name`,
     `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-        `proteininstancefeature`.`domain_name` AS `COG`,
-       `proteininstancefeature`.`prediction_id` AS `prediction_id`,
+    `proteininstancefeature`.`domain_name` AS `COG`,
+    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
     `proteininstancefeature`.`modification_date` AS `modification_date`
 from `proteininstancefeature`
 where (`proteininstancefeature`.`subclass_view` = 'COG');
@@ -755,67 +671,6 @@ PRIMARY KEY(tmhmm_ID),
 FOREIGN KEY(gene_instance_ID) REFERENCES geneinstance(gene_instance_ID)
 )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
-DROP TABLE IF EXISTS `hmmpfam`;
-CREATE TABLE IF NOT EXISTS `hmmpfam`(
-    pfam_ID INT(11) NOT NULL AUTO_INCREMENT,
-    gene_instance_ID INT(11) NOT NULL,
-    e_value FLOAT,
-    score FLOAT,
-    bias FLOAT,
-    accession_id VARCHAR(100),
-    domain_name VARCHAR(1000),
-    domain_description VARCHAR(1000),
-    modification_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY(pfam_ID),
-    FOREIGN KEY(gene_instance_ID) REFERENCES geneinstance(gene_instance_ID)
-)ENGINE=InnoDB AUTO_INCREMENT = 1;
-
-DROP TABLE IF EXISTS `interproscan`;
-CREATE TABLE IF NOT EXISTS `interproscan`(
-    interpro_scan_ID INT(11) NOT NULL AUTO_INCREMENT,
-    gene_instance_ID INT(11) NOT NULL,
-    feature_name VARCHAR(255) NOT NULL,
-    subclass_view VARCHAR(255) NULL,
-    location_start INT(10) NULL,
-    location_stop INT(10) NULL,
-    length INT(10) NULL,
-    prediction_algorithm_id INT(11) NULL,
-    pval_mant FLOAT NULL,
-    pval_exp INT(10) NULL,
-    bit_score FLOAT(20) NULL,
-    domain_name varchar(1000) NULL,
-    prediction_id varchar(100) NULL,
-    go_id varchar(100) NULL,
-    is_reviewed INT(1) NULL,
-    algorithm_id INT(11) NULL,
-    modification_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY(interpro_scan_ID),
-    FOREIGN KEY(gene_instance_ID) REFERENCES geneinstance(gene_instance_ID)
-)ENGINE=InnoDB AUTO_INCREMENT = 1;
-
---
--- Structure for view `BlastProDom`
---
-DROP TABLE IF EXISTS `BlastProDom`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `BlastProDom` AS
-select
-    `proteininstancefeature`.`protein_instance_feature_ID` AS `protein_instance_feature_id`,
-    `proteininstancefeature`.`protein_instance_id` AS `protein_instance_id`,
-    `proteininstancefeature`.`feature_name` AS `feature_name`,
-    `proteininstancefeature`.`subclass_view` AS `subclass_view`,
-    `proteininstancefeature`.`location_start` AS `location_start`,
-    `proteininstancefeature`.`location_stop` AS `location_stop`,
-    `proteininstancefeature`.`length` AS `length`,
-    `proteininstancefeature`.`pval_mant` AS `pval_mant`,
-    `proteininstancefeature`.`pval_exp` AS `pval_exp`,
-    `proteininstancefeature`.`bit_score` AS `bit_score`,
-    `proteininstancefeature`.`domain_name` AS `domain_name`,
-    `proteininstancefeature`.`prediction_id` AS `prediction_id`,
-    `proteininstancefeature`.`modification_date` AS `modification_date`
-from `proteininstancefeature`
-where (`proteininstancefeature`.`subclass_view` = 'BlastProDom');
-
 
 --
 -- Structure for view `cds`
@@ -833,33 +688,6 @@ select
 `nafeatureimp`.`modification_date` AS `modification_date`
 from `nafeatureimp`
 where (`nafeatureimp`.`subclass_view` = 'CDS');
-
--- --------------------------------------------------------
-
-
---
--- Structure for view `externalaasequence`
---
-DROP TABLE IF EXISTS `externalaasequence`;
-
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `externalaasequence` AS
-select
-    `aasequenceimp`.`aa_sequence_id` AS `aa_sequence_ID`,
-    `aasequenceimp`.`subclass_view` AS `subclass_view`,
-    `aasequenceimp`.`molecular_weight` AS `molecular_weight`,
-    `aasequenceimp`.`sequence` AS `sequence`,
-    `aasequenceimp`.`length` AS `length`,
-    `aasequenceimp`.`description` AS `description`,
-    `aasequenceimp`.`external_database_id` AS `external_database_ID`,
-    `aasequenceimp`.`source_id` AS `source_ID`,
-    `aasequenceimp`.`string1` AS `SECONDARY_IDENTIFIER`,
-    `aasequenceimp`.`string2` AS `NAME`,
-    `aasequenceimp`.`string3` AS `MOLECULE_TYPE`,
-    `aasequenceimp`.`string4` AS `CRC32_VALUE`,
-    `aasequenceimp`.`modification_date` AS `modification_date`
-from `aasequenceimp`
-where (`aasequenceimp`.`subclass_view` = 'externalaasequence');
 
 
 -- --------------------------------------------------------
@@ -897,11 +725,11 @@ from `nasequenceimp`;
 -- --------------------------------------------------------
 
 --
--- Structure for view `genefeature`
+-- Structure for view `geneFeature`
 --
-DROP TABLE IF EXISTS `genefeature`;
+DROP TABLE IF EXISTS `geneFeature`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `genefeature` AS
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `geneFeature` AS
 select
     `nafeatureimp`.`na_feature_ID` AS `na_feature_id`,
     `nafeatureimp`.`na_sequence_ID` AS `na_sequence_id`,
@@ -937,7 +765,7 @@ select
     `nafeatureimp`.`string13` AS `USEDIN`,
     `nafeatureimp`.`modification_date` AS `modification_date`
 from `nafeatureimp`
-where (`nafeatureimp`.`subclass_view` = 'genefeature');
+where (`nafeatureimp`.`subclass_view` = 'gene');
 
 -- --------------------------------------------------------
 

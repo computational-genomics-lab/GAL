@@ -29,7 +29,7 @@ def upload_shared_data(db, main_path):
     shared_data.upload_genetic_code()
     shared_data.upload_taxonomy_data()
     shared_data.upload_go_evidence()
-    # shared_data.upload_go_term()
+    shared_data.upload_go_term()
     shared_data.upload_gram_strain()
 
 
@@ -45,7 +45,8 @@ class DefaultSharedData:
         self.data_path = Path(data_path)
 
         gram_strain_file = 'GramStrain.txt'
-        go_term_file = 'go_daily-termdb-tables/term.txt'
+        # go_term_file = 'go_daily-termdb-tables/term.txt'
+        go_term_file = "go_termData.csv"
         go_evidence_file = 'goevidence.out'
         taxonomy_file = 'taxon.out'
         genetic_code_file = 'gene_code.out'
@@ -66,7 +67,7 @@ class UploadCommonData(DefaultSharedData):
         main_path: path
             Path for common data directory
         db_shared_resource: Database Object
-            atabase object for the shared data
+            database object for the shared data
 
         """
 
@@ -112,8 +113,12 @@ class UploadCommonData(DefaultSharedData):
     def upload_go_term(self):
         if self.row_go_term == 0:
             _logger.debug("Upload shared go term data")
-            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE go_term FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED
-                BY '"' LINES TERMINATED BY '\n';""".format(self.go_term_file)
+            # query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE go_term FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED
+            #    BY '"' LINES TERMINATED BY '\n';""".format(self.go_term_file)
+            query = f"""
+            LOAD DATA LOCAL INFILE '{self.go_term_file}' INTO TABLE go_term 
+            FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+            """
             self.db_sres.insert(query)
 
     def upload_gram_strain(self):
@@ -239,6 +244,7 @@ class DownloadCommonData:
         # need to find the go term link
         # self.download_goterm_data()
         self.download_taxon_data()
+
         go_term_file, id_dct = self.parse_genetic_code()
         taxon_file = self.make_taxon(go_term_file)
         return go_term_file, taxon_file

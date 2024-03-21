@@ -62,24 +62,21 @@ class TableStatusID:
 
     def get_protein_feature_table_status(self):
 
-        sql_1 = "SELECT MAX(pfam_ID) as LAST_ID FROM hmmpfam"
+        sql_1 = "SELECT MAX(protein_instance_feature_id) as LAST_ID FROM HmmPfam"
         sql_2 = "SELECT MAX(tmhmm_ID) as LAST_ID FROM tmhmm"
         sql_3 = "SELECT MAX(signalp_ID) as LAST_ID FROM signalp"
-        sql_4 = "SELECT MAX(interpro_scan_ID) AS LAST_ID FROM interproscan"
         # sql_5 = "SELECT MAX(interpro_scan_ID) AS LAST_ID FROM interproscan"
         sql_5 = "Select MAX(protein_instance_feature_ID) as LAST_ID from proteininstancefeature"
 
         row_hmm_pfam = self.get_max_table_value(sql_1)
         row_tmhmm = self.get_max_table_value(sql_2)
         row_signalp = self.get_max_table_value(sql_3)
-        row_interpro = self.get_max_table_value(sql_4)
         row_protein_instance_feature = self.get_max_table_value(sql_5)
 
         row_dct = {
             'pfam': row_hmm_pfam,
             'tmhmm': row_tmhmm,
             'signalp': row_signalp,
-            'interproscan': row_interpro,
             'protein_instance_feature_ID': row_protein_instance_feature
         }
 
@@ -87,7 +84,6 @@ class TableStatusID:
                         hmmpfam ID: {row_hmm_pfam}
                         signalp ID: {row_signalp}
                         tmhmm ID: {row_tmhmm}
-                        interproscan ID: {row_interpro}
                         protein_instance_feature_ID: {row_protein_instance_feature}
                 """
         _logger.info(log_str)

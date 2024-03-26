@@ -1,0 +1,2 @@
+[console_scripts]
+galEupy = galEupy.__main__:main

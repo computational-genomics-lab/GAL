@@ -2,7 +2,7 @@ import sys
 import logging
 from pathlib import Path
 from .config_utility import ConfigFileHandler, DatabaseConfig, OrganismConf
-from .dbconnect import check_db_connection, DbNames, Database, DatabaseCreate
+from .dbconnect import check_db_connection, Database, DatabaseCreate
 from .dbschema import database_schema, UploadSchema
 from .BioFile import genbank_parser
 from .processing_utility import fix_multiple_splicing_bugs, ModelGFFDict, AnnotationData
@@ -44,7 +44,7 @@ class BaseApp(DatabaseConfig):
         schema_existence = schema.check_schema_existence()
 
         if schema_existence:
-            _logger.debug('Database Schemas are already exist')
+            _logger.debug('Database Schemas already exist')
             return True
         else:
             _logger.debug('Database Schemas are missing')
@@ -52,25 +52,21 @@ class BaseApp(DatabaseConfig):
 
     def db_table_log(self):
 
-        db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
-        table_stat = TableStatusID(db_dots)
+        # db_name = DbNames(self.db_prefix)
+        db_conn = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
+        table_stat = TableStatusID(db_conn)
         table_stat.show_id_log()
         table_stat.get_protein_feature_table_status()
 
     def drop_databases(self):
         query_response = query_yes_no("Would you like to delete the database")
         if query_response:
-            db_name = DbNames(self.db_prefix)
             db_obj = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
-            if db_obj.db_existence(db_name.dots) is not None:
-                db_obj.drop_database(db_name.dots)
+            if db_obj.db_existence(self.db_name) is not None:
+                db_obj.drop_database(self.db_name)
             else:
-                _logger.debug(f"Database {db_name.dots} doesn't exist")
-            if db_obj.db_existence(db_name.sres) is not None:
-                db_obj.drop_database(db_name.sres)
-            else:
-                _logger.debug(f"Database {db_name.sres} doesn't exist")
+                _logger.debug(f"Database {self.db_name} doesn't exist")
+
         else:
             _logger.debug("Database drop option skipped")
 
@@ -81,15 +77,15 @@ class OrganismApp(BaseApp, OrganismConf):
         OrganismConf.__init__(self, org_config_file)
 
     def remove_organism_record(self):
-        db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
-        organism_obj = DotsOrganism(db_dots, self.organism, self.version)
+        # db_name = DbNames(self.db_prefix)
+        db_conn = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
+        organism_obj = DotsOrganism(db_conn, self.organism, self.version)
         organism_obj.remove_organism_record()
 
     def get_organism_record(self):
-        db_name = DbNames(self.db_prefix)
-        db_dots = Database(self.host, self.db_username, self.db_password, db_name.dots, 1, port=self.db_port)
-        organism_obj = DotsOrganism(db_dots, self.organism, self.version)
+        # db_name = DbNames(self.db_prefix)
+        db_conn = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
+        organism_obj = DotsOrganism(db_conn, self.organism, self.version)
         organism_obj.get_organism_record()
 
 
@@ -201,6 +197,16 @@ class App(ConfigFileHandler):
             else:
                 _logger.info("tmhmm data is not provided")
 
+            # Eggnog
+            if app1.org_config.eggnog:
+                _logger.info(f"eggnog data is provided: {app1.org_config.eggnog}")
+                if app1.org_config.eggnog.exists():
+                    _logger.info("Processing eggnog data")
+                    protein_annotation_obj.parse_eggnog_result(app1.org_config.eggnog)
+                    protein_annotation_obj.upload_eggnog_data()
+            else:
+                _logger.info("eggnog data is not provided")
+
     def db_table_logs(self):
         app1 = CentralDogmaAnnotator(self.db_config, self.path_config, self.org_config)
         app1.show_id_log()
@@ -262,15 +268,13 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
         self.db_config = db_config
         self.org_config = org_config
         self.path_config = path_config
-        db_name = DbNames(db_config.db_prefix)
 
-        self.db_dots = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 1,
-                                port=db_config.db_port)
-        self.db_sres = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.sres, 0,
-                                port=db_config.db_port)
-        self.file_upload = UploadTableData(self.db_dots, self.path_config.upload_dir)
-        Taxonomy.__init__(self, self.db_sres, self.db_dots, org_config.organism, org_config.version)
-        TableStatusID.__init__(self, self.db_dots)
+        self.db_connection = Database(db_config.host, db_config.db_username, db_config.db_password, db_config.db_name,
+                                      1, port=db_config.db_port)
+
+        self.file_upload = UploadTableData(self.db_connection, self.path_config.upload_dir)
+        Taxonomy.__init__(self, self.db_connection, org_config.organism, org_config.version)
+        TableStatusID.__init__(self, self.db_connection)
 
     def process_genbank_annotation(self):
         _logger.info('Processing  GenBank type Data: start')
@@ -307,7 +311,7 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
         taxonomy_id = self.taxonomy_id_sres
         _logger.info(f"Taxonomy_id: {taxonomy_id}")
 
-        gal_table = TableProcessUtility(self.db_dots, self.path_config.upload_dir, self.org_config.organism,
+        gal_table = TableProcessUtility(self.db_connection, self.path_config.upload_dir, self.org_config.organism,
                                         taxonomy_id, self.org_config.version)
         gal_table.show_id_log()
         gal_table.increase_by_value(1)
@@ -334,15 +338,14 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
             taxonomy_id = self.taxonomy_id_sres
             org_version = self.org_config.version
             _logger.info("Preparing the protein annotation data")
-            protein_annotation_obj = ProteinAnnotations(self.db_dots, self.path_config, self.org_config, random_string,
-                                                        taxonomy_id, org_version)
+            protein_annotation_obj = ProteinAnnotations(self.db_connection, self.path_config, self.org_config,
+                                                        random_string, taxonomy_id, org_version)
             # upload InterProScan data
             if self.org_config.interproscan:
                 _logger.info("InterProScan data is provided")
                 if self.org_config.interproscan.exists():
                     _logger.info("Processing InterProScan data")
-                    protein_annotation_obj.parse_interproscan_data(self.org_config.interproscan, self.taxonomy_id_sres,
-                                                                   self.org_config.version)
+                    protein_annotation_obj.parse_interproscan_data(self.org_config.interproscan)
                 else:
                     _logger.error(f"Please check the path for InterProScan data\n Path: {self.org_config.interproscan}")
             else:
@@ -366,6 +369,15 @@ class CentralDogmaAnnotator(AnnotationCategory, Taxonomy, TableStatusID):
                     protein_annotation_obj.upload_tmhmm_data()
             else:
                 _logger.info("tmhmm data is not provided")
+
+            if self.org_config.eggnog:
+                _logger.info(f"eggnog data is provided: {self.org_config.eggnog}")
+                if self.org_config.eggnog.exists():
+                    _logger.info("Processing eggnog data")
+                    protein_annotation_obj.parse_eggnog_result(self.org_config.eggnog)
+                    protein_annotation_obj.upload_eggnog_data()
+            else:
+                _logger.info("eggnog data is not provided")
 
             # show log
             protein_annotation_obj.show_id_log()

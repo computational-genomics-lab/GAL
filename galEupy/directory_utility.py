@@ -31,11 +31,11 @@ class UploadDirectory(BaseUploadDirectory):
     def __init__(self, upload_dir):
         BaseUploadDirectory.__init__(self, upload_dir)
 
-        self.NaSequenceImp = self.upload_dir.joinpath("NASequenceImp.parsed")
-        self.NaFeatureImp = self.upload_dir.joinpath("NAFeatureImp.parsed")
-        self.NaLocation = self.upload_dir.joinpath("NALocation.parsed")
-        self.GeneInstance = self.upload_dir.joinpath("geneInstance.parsed")
-        self.Protein = self.upload_dir.joinpath("Protein.parsed")
+        self.NaSequenceImp = self.upload_dir.joinpath("nasequenceimp.parsed")
+        self.NaFeatureImp = self.upload_dir.joinpath("nafeatureimp.parsed")
+        self.NaLocation = self.upload_dir.joinpath("nalocation.parsed")
+        self.GeneInstance = self.upload_dir.joinpath("geneinstance.parsed")
+        self.Protein = self.upload_dir.joinpath("protein.parsed")
 
     def protein_feature_directory(self):
         directory_name = "ProteinFeatureData"
@@ -74,8 +74,10 @@ class ProteinAnnotationFiles(UploadDirectory):
         self.PFam = self.feature_path.joinpath("HmmPFam.parsed")
         self.TmHmm = self.feature_path.joinpath("TmHmm.parsed")
         self.SignalP = self.feature_path.joinpath("SignalP.parsed")
+        self.eggnog = self.feature_path.joinpath("eggnog.parsed")
 
         self.PFam_out = self.feature_path.joinpath(f"{random_string}.PFam")
         self.TmHmm_out = self.feature_path.joinpath(f"{random_string}.TmHmm")
         self.SignalP_out = self.feature_path.joinpath(f"{random_string}.SignalP")
+        self.eggnog_out = self.feature_path.joinpath(f"{random_string}.eggnog")
 

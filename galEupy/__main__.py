@@ -3,13 +3,13 @@ import logging
 import pkg_resources
 from pathlib import Path
 from .app import App, BaseApp, OrganismApp
+import sys
 
 
 def main():
     """
     galEupy main command line
     """
-    print("Welcome to galEupy")
 
     default_data_path = pkg_resources.resource_filename('galEupy', 'data')
     default_config_path = Path(default_data_path).joinpath('DefaultConfig')
@@ -46,7 +46,7 @@ def main():
     org_config_file = args.orgconfig
 
     logger = get_logger(args)
-
+    logger.info(f"Command used: {' '.join(sys.argv)}")
     logger.debug("Start logging...")
     logger.debug(f"""Path for configuration files:
     DB Config: {db_config_file}

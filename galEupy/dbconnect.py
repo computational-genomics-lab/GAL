@@ -87,16 +87,9 @@ def check_db_connection(host, db_username, db_password, port=3306):
 
 
 def create_db_dots_connection(db_config):
-    db_name = DbNames(db_config.db_prefix)
-    db = Database(db_config.host, db_config.db_username, db_config.db_password, db_name.dots, 0)
+    # db_name = DbNames(db_config.db_prefix)
+    db = Database(db_config.host, db_config.db_username, db_config.db_password, db_config.db_name, 0)
     return db
-
-
-class DbNames:
-    def __init__(self, db_prefix):
-        self.core = db_prefix + "_core"
-        self.dots = db_prefix + "_dots"
-        self.sres = db_prefix + "_sres"
 
 
 class Database(BaseDatabase):

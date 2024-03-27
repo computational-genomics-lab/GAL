@@ -2,9 +2,10 @@ import logging
 from pathlib import Path
 from .dbtable_utility import TableStatusID
 import re
+import csv
 from .BioFile.interproscan_parser import ParseInterproResult
 from .directory_utility import ProteinAnnotationFiles
-
+import time
 _logger = logging.getLogger("galEupy.protein_annotation_utility")
 
 
@@ -17,9 +18,9 @@ class TranscriptMap:
     @property
     def transcript_map_dct(self):
         sql_query = f"""select p.name as 'name1',naf.name as 'name2', gi.gene_instance_id from 
-    Protein p, GeneInstance gi, NAFeatureImp naf, NASequenceImp na where 
-    gi.gene_instance_id = p.gene_instance_id and
-    naf.na_feature_id = gi.na_feature_id and
+    protein p, geneinstance gi, nafeatureimp naf, nasequenceimp na where 
+    gi.gene_instance_ID = p.gene_instance_ID and
+    naf.na_feature_ID = gi.na_feature_ID and
     naf.feature_type='mRNA' and
     na.na_sequence_id = naf.na_sequence_id and 
     na.taxon_id = {self.taxonomy_id} and
@@ -61,10 +62,10 @@ class TranscriptMap:
 
 
 class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
-    def __init__(self, db_dots, path_config, org_config, random_str):
+    def __init__(self, db_conn, path_config, org_config, random_str):
         ProteinAnnotationFiles.__init__(self, path_config.upload_dir, random_str)
-        TableStatusID.__init__(self, db_dots)
-        self.db_dots = db_dots
+        TableStatusID.__init__(self, db_conn)
+        self.db_conn = db_conn
         self.org_config = org_config
         self.path_config = path_config
         self.random_str = random_str
@@ -79,7 +80,7 @@ class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
         _logger.debug("Creating protein file to store the protein information")
 
         query = f"""select nf.feature_type, nf.name, p.description, p.gene_instance_id, p.sequence from 
-        NASequenceImp ns, NAFeatureImp nf, GeneInstance gi, Protein p where ns.taxon_id = {taxonomy_id}
+        nasequenceimp ns, nafeatureimp nf, geneinstance gi, protein p where ns.taxon_id = {taxonomy_id}
         and ns.sequence_version = {org_version} and ns.sequence_type_id = 6 and nf.na_sequence_id = ns.na_sequence_id
         and nf.feature_type = 'mRNA' and gi.na_feature_id = nf.na_feature_id  and  
         p.gene_instance_id = gi.gene_instance_id"""
@@ -97,9 +98,9 @@ class BaseProteinAnnotations(ProteinAnnotationFiles, TableStatusID):
 
 
 class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
-    def __init__(self, db_dots, path_config, org_config, random_str, taxonomy_id, org_version):
-        BaseProteinAnnotations.__init__(self, db_dots, path_config, org_config, random_str)
-        TranscriptMap.__init__(self, db_dots, taxonomy_id, org_version)
+    def __init__(self, db_conn, path_config, org_config, random_str, taxonomy_id, org_version):
+        BaseProteinAnnotations.__init__(self, db_conn, path_config, org_config, random_str)
+        TranscriptMap.__init__(self, db_conn, taxonomy_id, org_version)
         # self.table_status_dct = self.get_tables_max_id()
 
     def parse_interproscan_data(self, interpro_file):
@@ -112,11 +113,11 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
         self.upload_interpro_data(parsed_file_name)
 
     def upload_interpro_data(self, interpro_data):
-        _logger.debug("Uploading InterProScan data")
+        _logger.debug("Uploading interproscan data")
         # For ProteinInstanceFeature table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{interpro_data}' INTO TABLE InterProScan 
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{interpro_data}' INTO TABLE interproscan 
         FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';"""
-        self.db_dots.insert(sql_1)
+        self.db_conn.insert(sql_1)
 
     def parse_hmmscan_result(self, parsed_file, upload_file):
         fh = open(parsed_file, 'r')
@@ -155,10 +156,10 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
 
     def upload_hmmpfam_data(self, hmmpfam_data):
         # For HmmPfam table
-        sql_1 = f"""LOAD DATA LOCAL INFILE '{hmmpfam_data}' INTO TABLE HmmPfam FIELDS TERMINATED BY '\t' OPTIONALLY
-                   ENCLOSED BY '"' LINES TERMINATED BY '\n' (`PFAM_ID`, `GENE_INSTANCE_ID`, 
-                   `E_VALUE`, `SCORE`, `BIAS`, `ACCESSION_ID`, `DOMAIN_NAME`, `DOMAIN_DESCRIPTION`)"""
-        self.db_dots.insert(sql_1)
+        sql_1 = f"""LOAD DATA LOCAL INFILE '{hmmpfam_data}' INTO TABLE hmmpfam FIELDS TERMINATED BY '\t' OPTIONALLY
+                   ENCLOSED BY '"' LINES TERMINATED BY '\n' (`pfam_ID`, `gene_instance_ID`, 
+                   `e_value`, `score`, `bias`, `accession_id`, `domain_name`, `domain_description`)"""
+        self.db_conn.insert(sql_1)
 
     def parse_signalp_result(self, parsed_file):
         _logger.debug(f"Reading SignalP file from {parsed_file}")
@@ -197,10 +198,10 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
     def upload_signalp_data(self):
         _logger.debug(f"Uploading SignalP data from {self.SignalP}")
         # SignalP table
-        query = f"""LOAD DATA LOCAL INFILE '{self.SignalP}' INTO TABLE SignalP 
+        query = f"""LOAD DATA LOCAL INFILE '{self.SignalP}' INTO TABLE signalp 
                 FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'"""
         # _logger.debug(query)
-        self.db_dots.insert(query)
+        self.db_conn.insert(query)
 
     def parse_tmhmm_result(self, parsed_file):
         fh = open(parsed_file, 'r')
@@ -229,11 +230,71 @@ class ProteinAnnotations(BaseProteinAnnotations, TranscriptMap):
     def upload_tmhmm_data(self):
         _logger.debug(f"Uploading tmhmm data from {self.TmHmm}")
         # For Tmhmm table
-        query = f"""LOAD DATA LOCAL INFILE '{self.TmHmm}' INTO TABLE Tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
+        query = f"""LOAD DATA LOCAL INFILE '{self.TmHmm}' INTO TABLE tmhmm FIELDS TERMINATED BY '\t' OPTIONALLY
                        ENCLOSED BY '"' LINES 
-                       TERMINATED BY '\n' (`TMHMM_ID`, `GENE_INSTANCE_ID`, `INSIDE`, `OUTSIDE`, `TMHELIX`)"""
+                       TERMINATED BY '\n' (`tmhmm_ID`, `gene_instance_ID`, `inside`, `outside`, `tmhelix`)"""
         # _logger.debug(query)
-        self.db_dots.insert(query)
+        self.db_conn.insert(query)
+
+    def parse_eggnog_result(self, parsed_file):
+        _logger.info("Parsing EGGNOG data: Initiated")
+        eggnog_write_fh = open(self.eggnog, 'w')
+        eggnog_row_id = self.table_status_dct['protein_instance_feature_ID']
+
+        field_list = ['Description', 'COG_category', 'GOs', 'EC', 'KEGG_ko', 'KEGG_Pathway',
+                      'KEGG_Module', 'KEGG_Reaction', 'KEGG_rclass', 'BRITE', 'KEGG_TC', 'PFAMs']
+        with open(parsed_file, 'r') as file:
+            # Read lines from the file
+            # lines = file.readlines()
+            # reader = csv.reader(lines, delimiter='\t')
+
+            reader = csv.reader(file, delimiter='\t')
+            header = None
+            for idx, row in enumerate(reader):
+                if row[0].startswith('##'):
+                    continue
+                if row[0].startswith('#'):
+                    header = row
+                    # checking fields
+                    for field_name in field_list:
+                        if field_name not in header:
+                            _logger.error(f"{field_name} doesn't exits")
+                    continue
+                if header:
+                    column = dict(zip(header, row))
+                    protein_instance_id = self.find_transcript_entry(row[0])
+                    feature_name = "EGGNOG"
+
+                    subclass_dct = {}
+                    if column['Description'] != '-':
+                        subclass_dct['COG'] = [column['Description'], column['COG_category']] + [None] * 10
+                    if column['GOs'] != '-':
+                        subclass_dct['GO'] = [None, None, column['GOs']] + [None] * 9
+                    if column['KEGG_ko'] != '-':
+                        kegg_values = [column[key] if column[key] != '-' else None for key in field_list[3:]]
+                        subclass_dct['KEGG'] = [None, None, None] + kegg_values
+                    if column['PFAMs'] != '-':
+                        subclass_dct['Pfam'] = [None] * 11 + [column['PFAMs']]
+
+                    for subclass_view, data_list in subclass_dct.items():
+                        eggnog_row_id += 1
+                        mapping_list = [eggnog_row_id, protein_instance_id, feature_name, subclass_view]
+                        columns_data = mapping_list + data_list
+                        eggnog_write_fh.write("\t".join(map(str, columns_data)) + '\n')
+
+        _logger.info("Parsing EGGNOG data: Complete")
+
+    def upload_eggnog_data(self):
+        _logger.info(f"Uploading EGGNOG data from {self.eggnog}")
+        column_list = ['protein_instance_feature_ID', 'protein_instance_ID', 'feature_name', 'subclass_view',
+                       'domain_name', 'prediction_id', 'go_id',
+                       'text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9']
+
+        query = f"""LOAD DATA LOCAL INFILE '{self.eggnog}' INTO TABLE proteininstancefeature FIELDS 
+        TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '"' LINES 
+        TERMINATED BY '\n' ({",".join(column_list) })"""
+
+        self.db_conn.insert(query)
 
 
 def get_gi_id(string):

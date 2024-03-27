@@ -44,7 +44,7 @@ class BaseApp(DatabaseConfig):
         schema_existence = schema.check_schema_existence()
 
         if schema_existence:
-            _logger.debug('Database Schemas are already exist')
+            _logger.debug('Database Schemas already exist')
             return True
         else:
             _logger.debug('Database Schemas are missing')

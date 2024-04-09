@@ -133,40 +133,40 @@ def database_config_reader(filename):
     host = section_map['host']
     db_username = section_map['db_username']
     db_password = section_map['db_password']
-    db_prefix = section_map['database_prefix']
+    db_name = section_map['db_name']
 
     db_port = section_map['port'] if 'port' in section_map else None
     if db_port == '':
         db_port = None
     if db_port is not None:
         db_port = int(db_port)
-    return host, db_username, db_password, db_prefix, db_port
+    return host, db_username, db_password, db_name, db_port
 
 
 class DatabaseConf:
     def __init__(self, filename):
-        (self.host, self.db_username, self.db_password, self.db_prefix, self.db_port) = database_config_reader(filename)
+        (self.host, self.db_username, self.db_password, self.db_name, self.db_port) = database_config_reader(filename)
 
 
 class DatabaseConfig(ConfigReader):
     def __init__(self, filename):
         ConfigReader.__init__(self, filename)
         self.db_config_file = filename
-        self.host, self.db_username, self.db_password, self.db_prefix, self.db_port = self.config_reader()
+        self.host, self.db_username, self.db_password, self.db_name, self.db_port = self.config_reader()
 
     def config_reader(self):
         section_map = self.section_map("dbconnection")
         host = section_map['host']
         db_username = section_map['db_username']
         db_password = section_map['db_password']
-        db_prefix = section_map['database_prefix']
+        db_name = section_map['db_name']
 
         db_port = section_map['port'] if 'port' in section_map else None
         if db_port == '':
             db_port = None
         if db_port is not None:
             db_port = int(db_port)
-        return host, db_username, db_password, db_prefix, db_port
+        return host, db_username, db_password, db_name, db_port
 
 
 def organism_config_reader(filename):
@@ -200,6 +200,7 @@ def organism_config_reader(filename):
     pfam = config_obj.check_key(config_annotation_path, 'pfam')
     tmhmm = config_obj.check_key(config_annotation_path, 'tmhmm')
     interproscan = config_obj.check_keys(config_annotation_path, ['interproscan', 'interpro'])
+    eggnog = config_obj.check_key(config_annotation_path, 'eggnog')
 
     # header : Other
     config_other = config_obj.section_map('other')
@@ -224,6 +225,7 @@ def organism_config_reader(filename):
         'pfam': pfam,
         'tmhmm': tmhmm,
         'interproscan': interproscan,
+        "eggnog": eggnog,
         'program': program,
         'RefOrg': ref_org
     }
@@ -252,6 +254,7 @@ class OrganismConf:
         self.pfam = organism_config_dct['pfam']
         self.tmhmm = organism_config_dct['tmhmm']
         self.interproscan = organism_config_dct['interproscan']
+        self.eggnog = organism_config_dct['eggnog']
 
         self.program = organism_config_dct['program']
         self.RefOrg = organism_config_dct['RefOrg']
@@ -349,6 +352,7 @@ pfam:
 TMHMM:
 Product:{}
 interproscan:
+eggnog: 
 
 [other]
 program:

@@ -1,5 +1,5 @@
 import os
-from .dbconnect import DbNames, Database
+from .dbconnect import Database
 import logging
 from pathlib import Path, PurePosixPath
 import urllib.request
@@ -15,12 +15,12 @@ def common_data_basic(db_config, main_path):
     host = db_config.host
     db_username = db_config.db_username
     db_password = db_config.db_password
-    db_prefix = db_config.db_prefix
+    db_name = db_config.db_name
 
-    db_name = DbNames(db_prefix)
-    db_sres = Database(host, db_username, db_password, db_name.sres, infile=1)
+    # db_name = DbNames(db_prefix)
+    db_connection = Database(host, db_username, db_password, db_name, infile=1)
 
-    upload_shared_data(db_sres, main_path)
+    upload_shared_data(db_connection, main_path)
 
 
 def upload_shared_data(db, main_path):
@@ -29,7 +29,7 @@ def upload_shared_data(db, main_path):
     shared_data.upload_genetic_code()
     shared_data.upload_taxonomy_data()
     shared_data.upload_go_evidence()
-    # shared_data.upload_go_term()
+    shared_data.upload_go_term()
     shared_data.upload_gram_strain()
 
 
@@ -45,7 +45,8 @@ class DefaultSharedData:
         self.data_path = Path(data_path)
 
         gram_strain_file = 'GramStrain.txt'
-        go_term_file = 'go_daily-termdb-tables/term.txt'
+        # go_term_file = 'go_daily-termdb-tables/term.txt'
+        go_term_file = "go_termData.csv"
         go_evidence_file = 'goevidence.out'
         taxonomy_file = 'taxon.out'
         genetic_code_file = 'gene_code.out'
@@ -66,18 +67,18 @@ class UploadCommonData(DefaultSharedData):
         main_path: path
             Path for common data directory
         db_shared_resource: Database Object
-            Database object for the shared data
+            database object for the shared data
 
         """
 
         DefaultSharedData.__init__(self, main_path)
         self.db_sres = db_shared_resource
 
-        sql_gc = """SELECT * FROM GeneticCode;"""
-        sql_tax = """SELECT * FROM Taxon;"""
-        sql_go_evidence = """SELECT * FROM GOEvidenceCode;"""
-        sql_go_term = """SELECT * FROM GOTerm;"""
-        sql_gram_strain = """SELECT * FROM GramStrain;"""
+        sql_gc = """SELECT * FROM geneticcode;"""
+        sql_tax = """SELECT * FROM taxon;"""
+        sql_go_evidence = """SELECT * FROM goevidencecode;"""
+        sql_go_term = """SELECT * FROM go_term;"""
+        sql_gram_strain = """SELECT * FROM gramstrain;"""
 
         self.row_genetic_code = self.db_sres.rowcount(sql_gc)
         self.row_taxonomy = self.db_sres.rowcount(sql_tax)
@@ -88,39 +89,43 @@ class UploadCommonData(DefaultSharedData):
     def upload_genetic_code(self):
         if self.row_genetic_code == 0:
             _logger.debug("Upload shared genetic code data")
-            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GeneticCode FIELDS TERMINATED BY '\t' OPTIONALLY 
-                ENCLOSED BY '"' LINES TERMINATED BY '\n'(GENETIC_CODE_ID, NCBI_GENETIC_CODE_ID, ABBREVIATION, NAME,
-                CODE, STARTS);""".format(self.genetic_code_file)
+            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE geneticcode FIELDS TERMINATED BY '\t' OPTIONALLY 
+                ENCLOSED BY '"' LINES TERMINATED BY '\n'(geneticcode_ID, ncbi_geneticcode_ID, abbreviation, name,
+                code, starts);""".format(self.genetic_code_file)
             self.db_sres.insert(query)
 
     def upload_taxonomy_data(self):
         if self.row_taxonomy == 0:
             _logger.debug("Upload shared taxonomy data data")
-            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE Taxon FIELDS TERMINATED BY '\t' 
-                OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' (NCBI_TAXON_ID, PARENT_ID, TAXON_NAME, TAXON_STRAIN,
-                `RANK`, GENETIC_CODE_ID, MITOCHONDRIAL_GENETIC_CODE_ID);""".format(self.taxonomy_file)
+            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE taxon FIELDS TERMINATED BY '\t' 
+                OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' (ncbi_taxon_ID, parent_ID, taxon_name, taxon_strain,
+                `rank`, genetic_code_ID, mitochondrial_genetic_code_ID);""".format(self.taxonomy_file)
             self.db_sres.insert(query)
 
     def upload_go_evidence(self):
         if self.row_go_evidence_code == 0:
             _logger.debug("Upload shared go evidence data")
-            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GOEvidenceCode FIELDS TERMINATED BY '\t' OPTIONALLY
-                ENCLOSED BY '"' LINES TERMINATED BY '\n' (NAME, DESCRIPTION, MODIFICATION_DATE);""".format(
+            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE goevidencecode FIELDS TERMINATED BY '\t' OPTIONALLY
+                ENCLOSED BY '"' LINES TERMINATED BY '\n' (name, description, modification_date);""".format(
                 self.go_evidence_file)
             self.db_sres.insert(query)
 
     def upload_go_term(self):
         if self.row_go_term == 0:
             _logger.debug("Upload shared go term data")
-            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GOTerm FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED
-                BY '"' LINES TERMINATED BY '\n';""".format(self.go_term_file)
+            # query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE go_term FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED
+            #    BY '"' LINES TERMINATED BY '\n';""".format(self.go_term_file)
+            query = f"""
+            LOAD DATA LOCAL INFILE '{self.go_term_file}' INTO TABLE go_term 
+            FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
+            """
             self.db_sres.insert(query)
 
     def upload_gram_strain(self):
         if self.gram_strain_file == 0:
             _logger.debug("Upload shared gram strain data")
-            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE GramStrain FIELDS TERMINATED BY '\t' OPTIONALLY 
-                ENCLOSED BY '"' LINES TERMINATED BY '\n'(TAXON_ID, STRAIN_TYPE, ORGANISM, MEMBRANE_TYPE);""".format(
+            query = """LOAD DATA LOCAL INFILE '{}' INTO TABLE gramstrain FIELDS TERMINATED BY '\t' OPTIONALLY 
+                ENCLOSED BY '"' LINES TERMINATED BY '\n'(taxon_ID, strain_type, organism, membrane_type);""".format(
                 self.gram_strain_file)
             self.db_sres.insert(query)
 
@@ -167,7 +172,8 @@ class DownloadCommonData:
 
     def download_taxon_data(self):
         _logger.info("Starting downloading NCBI taxon data...............")
-        target = "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
+        # target = "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
+        target = "https://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz"
         filename = self.download_file(target)
         taxon_data_path = Path(self.download_path).joinpath("taxdump")
         self.unpack_tar(filename, taxon_data_path)
@@ -238,6 +244,7 @@ class DownloadCommonData:
         # need to find the go term link
         # self.download_goterm_data()
         self.download_taxon_data()
+
         go_term_file, id_dct = self.parse_genetic_code()
         taxon_file = self.make_taxon(go_term_file)
         return go_term_file, taxon_file

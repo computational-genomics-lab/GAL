@@ -29,8 +29,10 @@ galEupy/BioFile/gff_parser.py
 galEupy/BioFile/gff_parser_pysam.py
 galEupy/BioFile/interproscan_parser.py
 galEupy/data/CommonData/GramStrain.txt
+galEupy/data/CommonData/go_termData.csv
 galEupy/data/CommonData/goevidence.out
 galEupy/data/CommonData/readme.txt
+galEupy/data/DbSchema/DbSchema.sql
 galEupy/data/DbSchema/DoTS.sql
 galEupy/data/DbSchema/SRes.sql
 galEupy/data/DefaultConfig/database.ini

@@ -1,7 +1,7 @@
 from pathlib import Path
 import pkg_resources
 import logging
-from .dbconnect import DatabaseCreate, DbNames, Database
+from .dbconnect import DatabaseCreate, Database
 from .commondata import DownloadCommonData, upload_shared_data
 from .config_utility import DatabaseConfig
 _logger = logging.getLogger("galEupy.dbschema")
@@ -17,12 +17,7 @@ def database_schema(db_config):
         return True
     else:
         _logger.debug('Uploading Database Scheme : Processing')
-
-        schema.upload_sres_schema()
-        _logger.debug('Shared resource Schema upload complete')
-
-        schema.upload_dots_schema()
-        _logger.debug('DOTS Schema upload complete')
+        schema.upload_schema()
 
         schema.add_database_constrain()
         _logger.debug('Uploading Database Scheme : Complete')
@@ -36,14 +31,11 @@ def database_schema(db_config):
 
 class DefaultSchemaPath:
     def __init__(self):
-        sres_schema = "SRes.sql"
-        dots_schema = "DoTS.sql"
-
+        db_schema = "DbSchema.sql"
         self.default_data_path = pkg_resources.resource_filename('galEupy', 'data')
         schema_path = Path(self.default_data_path).joinpath('DbSchema')
 
-        self.sres_schema_path = schema_path.joinpath(sres_schema)
-        self.dots_schema_path = schema_path.joinpath(dots_schema)
+        self.schema_path = schema_path.joinpath(db_schema)
 
 
 class UploadSchema(DefaultSchemaPath, DatabaseConfig):
@@ -60,75 +52,50 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
 
         # _logger.debug('UploadSchema class initiation')
         self.db = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
-        self.db_name = DbNames(self.db_prefix)
+        self.db_name = self.db_name
 
-    def create_dots(self):
-        # create dots db
-        dots = self.db.create(self.db_name.dots)
-        _logger.debug(f"Database created: {self.db_name.dots}")
-        return dots
-
-    def create_shared_resource(self):
-        # creates sres database
-        shared_resource = self.db.create(self.db_name.sres)
-        _logger.debug(f"Database created: {self.db_name.sres}")
-        return shared_resource
+    def create_database(self):
+        db_name = self.db.create(self.db_name)
+        _logger.debug(f"Database created: {self.db_name}")
+        return db_name
 
     @property
-    def db_dots(self):
-        _logger.debug("connect to db_dots database")
-        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name.dots, 0, port=self.db_port)
+    def db_connection(self):
+        _logger.debug("connect to database")
+        db_dots = Database(self.host, self.db_username, self.db_password, self.db_name, 1, port=self.db_port)
         return db_dots
 
-    @property
-    def db_sres(self):
-        _logger.debug("connect to db_sres database")
-        db_sres = Database(self.host, self.db_username, self.db_password, self.db_name.sres, 1, port=self.db_port)
-        return db_sres
-
     def check_schema_existence(self):
-
         # _logger.debug('Checking Schema existence')
-        sql_tax = "SELECT * FROM {}.GeneticCode;".format(self.db_name.sres)
+        sql_tax = "SELECT * FROM {}.geneticcode;".format(self.db_name)
         row_tax = self.db.rowcount(sql_tax)
         if row_tax is None:
             return False
         else:
             return True
 
-    def upload_sres_schema(self):
-        if self.db.db_existence(self.db_name.sres) is None:
-            _logger.debug(f"Database not exist: {self.db_name.sres}")
-            self.create_shared_resource()
+    def upload_schema(self):
+        if self.db.db_existence(self.db_name) is None:
+            _logger.debug(f"Database not exist: {self.db_name}")
+            self.create_database()
+            # self.create_shared_resource()
 
-        _logger.debug("Uploading SRES schema")
+        _logger.debug("Uploading schema")
 
-        if self.sres_schema_path.exists():
-            _logger.debug(f"Schema path: {self.sres_schema_path}")
-            self.upload_schema_lines(self.sres_schema_path, self.db_sres)
+        if self.schema_path.exists():
+            _logger.debug(f"Schema path: {self.schema_path}")
+            self.upload_schema_lines(self.schema_path, self.db_connection)
         else:
-            _logger.error(f"File not found: {self.sres_schema_path}")
-
-    def upload_dots_schema(self):
-        if self.db.db_existence(self.db_name.dots) is None:
-            _logger.debug(f"Database not exist: {self.db_name.dots}")
-            self.create_dots()
-
-        _logger.debug("Uploading DOTS schema")
-        if self.dots_schema_path.exists():
-            _logger.debug("Schema path: {}".format(self.dots_schema_path))
-            self.upload_schema_lines(self.dots_schema_path, self.db_dots)
-        else:
-            _logger.error("File not found: {}".format(self.dots_schema_path))
+            _logger.error(f"File not found: {self.schema_path}")
 
     def add_database_constrain(self):
-        organism_table = self.db_name.dots + ".Organism"
-        taxonomy_table = self.db_name.sres + ".Taxon"
+        organism_table = self.db_name + ".organism"
+        taxonomy_table = self.db_name + ".taxon"
 
-        organism_constrain_query = f"""ALTER TABLE {organism_table} ADD FOREIGN KEY (TAXON_ID) 
-        REFERENCES {taxonomy_table}(NCBI_TAXON_ID);"""
+        organism_constrain_query = f"""ALTER TABLE {organism_table} ADD FOREIGN KEY (taxon_ID) 
+        REFERENCES {taxonomy_table}(ncbi_taxon_ID);"""
 
-        self.db_dots.query(organism_constrain_query)
+        self.db_connection.query(organism_constrain_query)
 
     def download_upload_commondata(self):
         _logger.debug("Downloading common data")
@@ -139,7 +106,7 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
 
         _logger.debug("Uploading common data")
 
-        upload_shared_data(self.db_sres, default_common_data_path)
+        upload_shared_data(self.db_connection, default_common_data_path)
         """
         shared_data = UploadCommonData(default_common_data_path, self.db_sres)
         shared_data.upload_genetic_code()

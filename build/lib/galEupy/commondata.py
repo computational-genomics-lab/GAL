@@ -1,7 +1,8 @@
 import os
 from .dbconnect import Database
 import logging
-from pathlib import Path, PurePosixPath
+import pkg_resources
+from pathlib import Path
 import urllib.request
 import urllib.error
 import tarfile
@@ -164,11 +165,17 @@ class DownloadCommonData:
         tfile.close()
         _logger.info("Completed unpacking of {}".format(filename))
 
+    # def download_goterm_data(self):
+    #     _logger.info("Starting to download go_daily-termdb-tables.tar.gz...............")
+    #     target = "http://archive.geneontology.org/latest-termdb/go_daily-termdb-tables.tar.gz"
+    #     filename = self.download_file(target)
+    #     self.unpack_tar(filename)
+
     def download_goterm_data(self):
-        _logger.info("Starting to download go_daily-termdb-tables.tar.gz...............")
-        target = "http://archive.geneontology.org/latest-termdb/go_daily-termdb-tables.tar.gz"
-        filename = self.download_file(target)
-        self.unpack_tar(filename)
+        """Downloads (local access in this case) the go term data."""
+        _logger.info("Accessing local go_termData.csv file...")
+        # Path to the local file 
+        self.filename = Path(pkg_resources.resource_filename('galEupy', 'data/commonData/go_termData.csv'))
 
     def download_taxon_data(self):
         _logger.info("Starting downloading NCBI taxon data...............")

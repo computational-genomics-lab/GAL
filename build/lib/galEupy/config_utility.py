@@ -4,7 +4,7 @@ import logging
 from .directory_utility import BaseUploadDirectory
 _logger = logging.getLogger("galEupy.config_utility")
 
-
+#checks the validity of the provided paths for the config files
 class ConfigFileHandler:
     def __init__(self, db_config_file, path_config_file, org_config_file):
         """
@@ -27,6 +27,7 @@ class ConfigFileHandler:
         _logger.info(f"Path configuration file: {self.path_config_file}")
         _logger.info(f"Organism configuration file: {self.org_config_file}")
 
+#checking whether the path provided for the config files are valid or not
     @property
     def db_config(self):
         if self.path_check(self.db_config_file):

@@ -397,21 +397,21 @@ CREATE TABLE `genecategory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `gene`;
-CREATE TABLE `gene` (
-    `gene_ID` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) DEFAULT NULL,
-    `gene_symbol` varchar(50) DEFAULT NULL,
-    `gene_category_ID` int(11) DEFAULT NULL,
-    `review_status_ID` int(11) NOT NULL,
-    `description` varchar(500) DEFAULT NULL,
-    `reviewer_summary` varchar(4000) DEFAULT NULL,
-    `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`gene_ID`),
-    KEY `gene_FK01` (`gene_category_ID`),
-    KEY `gene_FK02` (`review_status_ID`),
-    CONSTRAINT `gene_FK01` FOREIGN KEY (`gene_category_ID`) REFERENCES `genecategory` (`gene_category_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=510783 DEFAULT CHARSET=utf8;
+-- DROP TABLE IF EXISTS `gene`;
+-- CREATE TABLE `gene` (
+--     `gene_ID` int(11) NOT NULL AUTO_INCREMENT,
+--     `name` varchar(255) DEFAULT NULL,
+--     `gene_symbol` varchar(50) DEFAULT NULL,
+--     `gene_category_ID` int(11) DEFAULT NULL,
+--     `review_status_ID` int(11) NOT NULL,
+--     `description` varchar(500) DEFAULT NULL,
+--     `reviewer_summary` varchar(4000) DEFAULT NULL,
+--     `modification_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--     PRIMARY KEY (`gene_ID`),
+--     KEY `gene_FK01` (`gene_category_ID`),
+--     KEY `gene_FK02` (`review_status_ID`),
+--     CONSTRAINT `gene_FK01` FOREIGN KEY (`gene_category_ID`) REFERENCES `genecategory` (`gene_category_ID`)
+-- ) ENGINE=InnoDB AUTO_INCREMENT=510783 DEFAULT CHARSET=utf8;
 
 
 

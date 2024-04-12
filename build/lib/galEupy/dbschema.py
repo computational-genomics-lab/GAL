@@ -13,14 +13,14 @@ def database_schema(db_config):
     schema_existence = schema.check_schema_existence()
 
     if schema_existence:
-        _logger.debug('Database Schema already exist')
+        _logger.debug('Database schema already exists')
         return True
     else:
-        _logger.debug('Uploading Database Scheme : Processing')
+        _logger.debug('Uploading Database Schema : Processing')
         schema.upload_schema()
 
         schema.add_database_constrain()
-        _logger.debug('Uploading Database Scheme : Complete')
+        _logger.debug('Uploading Database Schema : Complete')
 
         _logger.debug('Uploading Shared data : Processing')
         schema.download_upload_commondata()
@@ -76,7 +76,7 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
 
     def upload_schema(self):
         if self.db.db_existence(self.db_name) is None:
-            _logger.debug(f"Database not exist: {self.db_name}")
+            _logger.debug(f"Database does not exist: {self.db_name}")
             self.create_database()
             # self.create_shared_resource()
 
@@ -107,14 +107,7 @@ class UploadSchema(DefaultSchemaPath, DatabaseConfig):
         _logger.debug("Uploading common data")
 
         upload_shared_data(self.db_connection, default_common_data_path)
-        """
-        shared_data = UploadCommonData(default_common_data_path, self.db_sres)
-        shared_data.upload_genetic_code()
-        shared_data.upload_taxonomy_data()
-        shared_data.upload_go_evidence()
-        # shared_data.upload_go_term()
-        shared_data.upload_gram_strain()
-        """
+
 
     @staticmethod
     def upload_schema_lines(filename, db):

@@ -8,7 +8,7 @@ _logger = logging.getLogger("galEupy.dbschema")
 
 
 def database_schema(db_config):
-    _logger.debug('Checking database Schemas')
+    _logger.debug('Checking database Schema')
     schema = UploadSchema(db_config)
     schema_existence = schema.check_schema_existence()
 

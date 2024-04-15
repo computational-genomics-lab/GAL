@@ -647,29 +647,29 @@ select
 from `proteininstancefeature` where (`proteininstancefeature`.`subclass_view` = 'Pfam') ;
 
 
-DROP TABLE IF EXISTS `signalp`;
-CREATE TABLE IF NOT EXISTS `signalp`(
-    signalp_ID INT(11) NOT NULL AUTO_INCREMENT,
-    gene_instance_ID INT(11) NOT NULL,
-    `y-score` FLOAT NULL,
-    `y-pos` INT(11) NULL,
-    `d-score` FLOAT NULL,
-    status varchar(20) NULL,
-    PRIMARY KEY(signalp_ID),
-    FOREIGN KEY(gene_instance_id) REFERENCES geneinstance(gene_instance_ID)
-)ENGINE=InnoDB AUTO_INCREMENT = 1;
+-- DROP TABLE IF EXISTS `signalp`;
+-- CREATE TABLE IF NOT EXISTS `signalp`(
+--     signalp_ID INT(11) NOT NULL AUTO_INCREMENT,
+--     gene_instance_ID INT(11) NOT NULL,
+--     `y-score` FLOAT NULL,
+--     `y-pos` INT(11) NULL,
+--     `d-score` FLOAT NULL,
+--     status varchar(20) NULL,
+--     PRIMARY KEY(signalp_ID),
+--     FOREIGN KEY(gene_instance_id) REFERENCES geneinstance(gene_instance_ID)
+-- )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
-DROP TABLE IF EXISTS `tmhmm`;
-CREATE TABLE IF NOT EXISTS `tmhmm`(
-tmhmm_ID INT(11) NOT NULL AUTO_INCREMENT,
-gene_instance_ID INT(11) NOT NULL,
-inside VARCHAR(60),
-outside VARCHAR(60),
-tmhelix VARCHAR(60),
-modification_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-PRIMARY KEY(tmhmm_ID),
-FOREIGN KEY(gene_instance_ID) REFERENCES geneinstance(gene_instance_ID)
-)ENGINE=InnoDB AUTO_INCREMENT = 1;
+-- DROP TABLE IF EXISTS `tmhmm`;
+-- CREATE TABLE IF NOT EXISTS `tmhmm`(
+-- tmhmm_ID INT(11) NOT NULL AUTO_INCREMENT,
+-- gene_instance_ID INT(11) NOT NULL,
+-- inside VARCHAR(60),
+-- outside VARCHAR(60),
+-- tmhelix VARCHAR(60),
+-- modification_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+-- PRIMARY KEY(tmhmm_ID),
+-- FOREIGN KEY(gene_instance_ID) REFERENCES geneinstance(gene_instance_ID)
+-- )ENGINE=InnoDB AUTO_INCREMENT = 1;
 
 
 --

@@ -1,4 +1,3 @@
-import os
 from .dbconnect import Database
 import logging
 import pkg_resources

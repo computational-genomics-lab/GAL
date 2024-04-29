@@ -1302,10 +1302,6 @@ select
 from `nafeatureimp`
 where (`nafeatureimp`.`subclass_view` = 'tRNA');
 
-ALTER TABLE `gene`
-ADD COLUMN `na_feature_ID` INT(11) DEFAULT NULL, 
-ADD CONSTRAINT `gene_FK03` FOREIGN KEY (`na_feature_ID`) REFERENCES `nafeatureimp` (`na_feature_ID`);
-
 
 
 

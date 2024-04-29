@@ -59,7 +59,7 @@ class BaseApp(DatabaseConfig):
         table_stat.get_protein_feature_table_status()
 
     def drop_databases(self):
-        query_response = query_yes_no("Would you like to delete the database")
+        query_response = query_yes_no("Would you like to delete the Database ? ")
         if query_response:
             db_obj = DatabaseCreate(self.host, self.db_username, self.db_password, port=self.db_port)
             if db_obj.db_existence(self.db_name) is not None:

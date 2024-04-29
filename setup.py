@@ -4,7 +4,7 @@ from setuptools import setup
 __version__ = '1.0.1'
 description = "Python module for gal"
 
-with open("docs/galEupyReadMe.md", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
